@@ -1,10 +1,10 @@
 /**
  * Datenstruktur
- * @version 0.0.4 (08.07.2014)
+ * @version 0.0.5 (22.09.2015)
  * @author Thomas Heym
  */
 public class ClusterFile { 
-  private int length=35;
+  private int length=36;
   private boolean pixel=false;
   private boolean pixelDim=false;
   private boolean pixelOffset=false;
@@ -40,6 +40,7 @@ public class ClusterFile {
   private boolean clusterFile=false;
   private boolean clusterBot=false;
   private boolean error=false;
+  private boolean headUpDisplay=false;
 
 /**
  * Liefert die Anzahl der Variablen  
@@ -92,6 +93,7 @@ public class ClusterFile {
 	  case 32:s="ClusterFile";break;
 	  case 33:s="ClusterBot";break;
 	  case 34:s="boolean";break;
+	  case 35:s="boolean";break;
 	  }
 	  return s;
   }
@@ -140,10 +142,107 @@ public class ClusterFile {
 	  case 32:s="clusterFile";break;
 	  case 33:s="clusterBot";break;
 	  case 34:s="error";break;
+	  case 35:s="headUpDisplay";break;
 	  }
 	  return s;
   }
 
+/**
+ * liefert Index der Variable als String (2 Zeichen)
+ * @param variable
+ * @return Index String
+ */
+    public String getIndexString2(String variable){
+  	  String s="--";
+  	  switch(variable){
+  	  case "pixel":s="00";break;
+  	  case "pixelDim":s="01";break;
+  	  case "pixelOffset":s="02";break;
+  	  case "pixelOriginal":s="03";break;
+  	  case "cluster":s="04";break;
+  	  case "objects":s="05";break;
+  	  case "object":s="06";break;
+  	  case "objectDescription":s="07";break;
+  	  case "vi":s="08";break;
+  	  case "viPath":s="09";break;
+  	  case "pathOption":s="10";break;
+  	  case "descriptionDisplay":s="11";break;
+  	  case "durchlauf":s="12";break;
+  	  case "mik":s="13";break;
+  	  case "e":s="14";break;
+  	  case "calculate":s="15";break;
+  	  case "fuzzyCMeans":s="16";break;
+  	  case "possibilisticCMeans":s="17";break;
+  	  case "sortCluster":s="18";break;
+  	  case "fivtyFivtyJoker":s="19";break;
+  	  case "clusterMax":s="20";break;
+  	  case "pixelObject":s="21";break;
+  	  case "pixelVi":s="22";break;
+  	  case "pixelViPath":s="23";break;
+  	  case "pixelString":s="24";break;
+  	  case "zoom":s="25";break;
+  	  case "title":s="26";break;
+  	  case "version":s="27";break;
+  	  case "jahr":s="28";break;
+  	  case "titleString":s="29";break;
+  	  case "ready":s="30";break;
+  	  case "clusterfreak":s="31";break;
+  	  case "clusterFile":s="32";break;
+  	  case "clusterBot":s="33";break;
+  	  case "error":s="34";break;
+  	  case "headUpDisplay":s="35";break;
+  	  }
+  	  return s;
+    }  
+
+    /**
+     * liefert Index der Variable als Integer
+     * @param variable
+     * @return Index Integer
+     */
+        public int getIndexInt(String variable){
+      	  int i=99;
+      	  switch(variable){
+      	  case "pixel":i=0;break;
+      	  case "pixelDim":i=1;break;
+      	  case "pixelOffset":i=2;break;
+      	  case "pixelOriginal":i=3;break;
+      	  case "cluster":i=4;break;
+      	  case "objects":i=5;break;
+      	  case "object":i=6;break;
+      	  case "objectDescription":i=7;break;
+      	  case "vi":i=8;break;
+      	  case "viPath":i=9;break;
+      	  case "pathOption":i=10;break;
+      	  case "descriptionDisplay":i=11;break;
+      	  case "durchlauf":i=12;break;
+      	  case "mik":i=13;break;
+      	  case "e":i=14;break;
+      	  case "calculate":i=15;break;
+      	  case "fuzzyCMeans":i=16;break;
+      	  case "possibilisticCMeans":i=17;break;
+      	  case "sortCluster":i=18;break;
+      	  case "fivtyFivtyJoker":i=19;break;
+      	  case "clusterMax":i=20;break;
+      	  case "pixelObject":i=21;break;
+      	  case "pixelVi":i=22;break;
+      	  case "pixelViPath":i=23;break;
+      	  case "pixelString":i=24;break;
+      	  case "zoom":i=25;break;
+      	  case "title":i=26;break;
+      	  case "version":i=27;break;
+      	  case "jahr":i=28;break;
+      	  case "titleString":i=29;break;
+      	  case "ready":i=30;break;
+      	  case "clusterfreak":i=31;break;
+      	  case "clusterFile":i=32;break;
+      	  case "clusterBot":i=33;break;
+      	  case "error":i=34;break;
+      	  case "headUpDisplay":i=35;break;
+      	  }
+      	  return i;
+        }  
+        
 /**
  * setzt die Information, ob die Variable Daten hat
  * @param d Index
@@ -186,6 +285,7 @@ public class ClusterFile {
   	  case 32:setClusterFile(data);break;
   	  case 33:setClusterBot(data);break;
   	  case 34:setError(data);break;
+  	  case 35:setHeadUpDisplay(data);break;
   	  }
   }
 
@@ -232,6 +332,7 @@ public class ClusterFile {
   	  case 32:b=isClusterFile();break;
   	  case 33:b=isClusterBot();break;
   	  case 34:b=isError();break;
+  	  case 35:b=isHeadUpDisplay();break;
   	  }
   	  return b;
     }
@@ -512,14 +613,20 @@ public void setClusterBot(boolean clusterBot) {this.clusterBot = clusterBot;}
 /**
  * @return the error
  */
-public boolean isError() {
-	return error;
-}
-
+public boolean isError() {return error;}
 /**
  * @param error the error to set
  */
-public void setError(boolean error) {
-	this.error = error;
+public void setError(boolean error) {this.error = error;
+}
+/**
+ * @return the headUpDisplay
+ */
+public boolean isHeadUpDisplay() {return headUpDisplay;
+}
+/**
+ * @param headUpDisplay the headUpDisplay to set
+ */
+public void setHeadUpDisplay(boolean headUpDisplay) {	this.headUpDisplay = headUpDisplay;
 }
 }

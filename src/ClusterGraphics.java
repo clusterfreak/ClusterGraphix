@@ -57,7 +57,7 @@ import javax.xml.stream.events.Attribute;
 /**
  * Cluster Graphics<P>
  * Grafische Anzeige von Punktemengen und Klassenzentren
- * @version 0.94.8 (20.01.2015)
+ * @version 0.94.9 (22.09.2015)
  * @author Thomas Heym
  */
 public class ClusterGraphics extends JPanel implements ActionListener{
@@ -171,9 +171,9 @@ public class ClusterGraphics extends JPanel implements ActionListener{
  */
   private String title="";
 /**
- * Version von Cluster Graphics
+ * version of Cluster Graphics
  */
-  private static String version = "0.94.8";
+  private static String version = "0.94.9";
 /**
  * Entwicklungsjahr der Version von Cluster Graphics
  */
@@ -303,6 +303,10 @@ public class ClusterGraphics extends JPanel implements ActionListener{
  */
   private boolean error;
 /**
+ * Head Up Display
+ */
+  private boolean headUpDisplay;
+/**
  * Hauptfenster
  */
   private JFrame f;
@@ -321,6 +325,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   private JCheckBoxMenuItem clusterMenuViewPixelMode=new JCheckBoxMenuItem("PixelMode",true);
   private JCheckBoxMenuItem clusterMenuViewPathOption=new JCheckBoxMenuItem("pathOption",false);
   private JCheckBoxMenuItem clusterMenuViewDescriptionDisplay=new JCheckBoxMenuItem("descriptionDisplay",false);
+  private JCheckBoxMenuItem clusterMenuViewHeadUpDisplay=new JCheckBoxMenuItem("headUpDisplay",true);
   private JMenuItem clusterMenuViewRefresh=new JMenuItem("refresh");
   private JMenu clusterMenuZoom=new JMenu("Zoom");
   private JMenuItem clusterMenuZoomDefault=new JMenuItem("default");
@@ -555,6 +560,13 @@ public class ClusterGraphics extends JPanel implements ActionListener{
       }
     });
     clusterMenuViewDescriptionDisplay.addActionListener(this);
+    clusterMenuView.add(clusterMenuViewHeadUpDisplay);
+    clusterMenuViewHeadUpDisplay.addItemListener(new ItemListener() {
+      public void itemStateChanged(ItemEvent e) {
+        setHeadUpDisplay(clusterMenuViewHeadUpDisplay.isSelected());
+      }
+    });
+    clusterMenuViewHeadUpDisplay.addActionListener(this);
     clusterMenuView.addSeparator();
     clusterMenuView.add(clusterMenuViewRefresh);
     clusterMenuView.setMnemonic('R');
@@ -974,11 +986,12 @@ public class ClusterGraphics extends JPanel implements ActionListener{
           };
           clusterThread.start();
     }
-//PixelMode, pathOption, descriptionDisplay, refresh
+//PixelMode, pathOption, descriptionDisplay, refresh, headUpDisplay
     if ("PixelMode".equals(actionCommand))this.repaint();
     if ("pathOption".equals(actionCommand))this.repaint();
     if ("descriptionDisplay".equals(actionCommand))this.repaint();
     if ("refresh".equals(actionCommand))this.repaint();
+    if ("headUpDisplay".equals(actionCommand))this.repaint();
 //computeCluster
     if (("FuzzyCMeans".equals(actionCommand))||
     	("PossibilisticCMeans".equals(actionCommand))||
@@ -1128,6 +1141,8 @@ public class ClusterGraphics extends JPanel implements ActionListener{
       miscData[31][2]="["+String.valueOf(ClusterGraphics.clusterfreak.length)+"]";
       miscData[32][2]=String.valueOf(this.clusterFile.hashCode());
       if(clusterBot!=null)miscData[33][2]="["+String.valueOf(clusterBot.length)+"]";else miscData[33][2]="[null]";
+      miscData[34][2]=String.valueOf(getError());
+      miscData[35][2]=String.valueOf(getHeadUpDisplay());
       miscTable=new JTable(miscData,miscColHeads);
       miscScrollPane.setViewportView(miscTable);
       //object
@@ -1369,7 +1384,6 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 	      }
 	      }//else
       }
-      //g2.drawString("Test",10,20);
       //cluserBot Linien
       if(clusterFile.isClusterBot()){
     	  for(int b=0;b<clusterBot.length;b++){
@@ -1382,6 +1396,26 @@ public class ClusterGraphics extends JPanel implements ActionListener{
     			  }
     		  }
     	  }
+      }
+      //HeadUpDisplay
+      if(getHeadUpDisplay()){
+    	  //cluster
+    	  int x=5; int y=15; int z=15;
+    	  if(getPixel())g2.setColor(Color.green);else g2.setColor(Color.red);
+    	  g2.drawString(clusterFile.getIndexString2("pixel")+" "+clusterFile.getName(clusterFile.getIndexInt("pixel"), false),x,y); 
+    	  y=y+z;
+    	  if(clusterFile.isCluster())g2.setColor(Color.green);else g2.setColor(Color.red);
+    	  g2.drawString(clusterFile.getIndexString2("cluster")+" "+clusterFile.getName(clusterFile.getIndexInt("cluster"), false)+": "+getCluster(),x,y); 
+    	  y=y+z;
+    	  if(clusterFile.isObjects())g2.setColor(Color.green);else g2.setColor(Color.red);
+    	  g2.drawString(clusterFile.getIndexString2("objects")+" "+clusterFile.getName(clusterFile.getIndexInt("objects"), false)+": "+getObjects(),x,y); 
+    	  y=y+z;
+    	  if(clusterFile.isVi())g2.setColor(Color.green);else g2.setColor(Color.red);
+    	  if(getVi()!=null)g2.drawString(clusterFile.getIndexString2("vi")+" "+clusterFile.getName(clusterFile.getIndexInt("vi"), false)+": "+String.valueOf(getVi().length),x,y);
+    	              else g2.drawString(clusterFile.getIndexString2("vi")+" "+clusterFile.getName(clusterFile.getIndexInt("vi"), false)+": 0",x,y); y=y+z;
+    	  if(clusterFile.isClusterBot())g2.setColor(Color.green);else g2.setColor(Color.red);
+    	  g2.drawString(clusterFile.getIndexString2("clusterBot")+" "+clusterFile.getName(clusterFile.getIndexInt("clusterBot"), false),x,y); 
+    	  y=y+z;
       }
       clusterMenu.updateUI();
   }
@@ -1908,6 +1942,14 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 	  this.clusterButtonError.setEnabled(error);
 	  if(error==true)clusterFile.setError(true);else clusterFile.setError(false);
   }
+
+/**
+ * Switch Head Up Display on/off  
+ */
+  private void setHeadUpDisplay(boolean headUpDisplay){
+	  this.headUpDisplay=headUpDisplay;
+	  if(headUpDisplay==false)clusterFile.setHeadUpDisplay(true);else clusterFile.setHeadUpDisplay(false);
+  }
   
 /**
  * liefert den hinteren Teil des Textes in der Titelzeile zurück
@@ -1923,6 +1965,13 @@ public class ClusterGraphics extends JPanel implements ActionListener{
  */
   private boolean getError(){
 	  return error;
+  }
+
+/**
+ * get status Head Up Display  
+ */
+  private boolean getHeadUpDisplay(){
+	  return headUpDisplay;
   }
   
 /**
@@ -2399,6 +2448,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   		  if(clusterFile.getData(27))eventWriter.add(eventFactory.createAttribute(clusterFile.getName(27,false), String.valueOf(ClusterGraphics.version)));
   		  if(clusterFile.getData(28))eventWriter.add(eventFactory.createAttribute(clusterFile.getName(28,false), String.valueOf(ClusterGraphics.jahr)));
   		  if(clusterFile.getData(34))eventWriter.add(eventFactory.createAttribute(clusterFile.getName(34,false), String.valueOf(getError())));
+  		  if(clusterFile.getData(35))eventWriter.add(eventFactory.createAttribute(clusterFile.getName(34,false), String.valueOf(getHeadUpDisplay())));
   		  if(clusterFile.isViPath())if(getViPath()!=null)eventWriter.add(eventFactory.createAttribute("viPathLength", String.valueOf(getViPath().length)));
   		  eventWriter.add(end);
   		  eventWriter.add(tab);
@@ -2551,6 +2601,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 							if(attribute.getName().toString().equals(clusterFile.getName(27,false)))zversion=attribute.getValue();
 							if(attribute.getName().toString().equals(clusterFile.getName(28,false))) {}
 							if(attribute.getName().toString().equals(clusterFile.getName(34,false)))this.setError(Boolean.parseBoolean(attribute.getValue()));
+							if(attribute.getName().toString().equals(clusterFile.getName(35,false)))this.setHeadUpDisplay(Boolean.parseBoolean(attribute.getValue()));
 							if(attribute.getName().toString().equals("viPathLength"))setViPath(new double[Integer.parseInt(attribute.getValue())][2]);
 						}
 						if(clusterFile.isCluster())setVi(new double[getCluster()][2]);
@@ -2894,6 +2945,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 	  setZoom(5);
 	  setTitle("");
 	  setError(false);
+	  setHeadUpDisplay(true);
 	  clusterFile.setVersion(true);
 	  clusterFile.setJahr(false);
 	  clusterFile.setTitleString(false);
