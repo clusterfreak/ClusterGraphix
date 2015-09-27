@@ -20,10 +20,8 @@ v0.94.9
 --------
 - fully integrate Error variable
 - colored headUpDisplay for important data
-- ClusterFile v0.0.5
-	- headUpDisplay added
-	- public String getIndexString2(String variable)
-	- public int getIndexInt(String variable)
+- ClusterFile v0.0.5 (22.09.2015)
+	- common functions moved to ClusterData
 - ClusterData v0.0.1 (24.09.2015)
 
 v0.94.8

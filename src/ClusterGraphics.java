@@ -1101,10 +1101,10 @@ public class ClusterGraphics extends JPanel implements ActionListener{
     }
     if ("Show".equals(actionCommand)){
       //misc
-      String miscData[][]=new String[clusterFile.getLength()][4];
-      for(int l=0;l<clusterFile.getLength();l++){
-    	  miscData[l][0]=clusterFile.getType(l);
-    	  miscData[l][1]=clusterFile.getName(l,true);
+      String miscData[][]=new String[ClusterData.length][4];
+      for(int l=0;l<ClusterData.length;l++){
+    	  miscData[l][0]=ClusterData.type[l];
+    	  miscData[l][1]=ClusterData.nameExtended[l];
     	  if(clusterFile.getData(l))miscData[l][3]="X";else miscData[l][3]="";
       }
       miscData[0][2]=String.valueOf(getPixel());
@@ -1385,7 +1385,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 	      }//else
       }
       //cluserBot Linien
-      if(clusterFile.isClusterBot()){
+      if(clusterFile.getData("ClusterBot")){
     	  for(int b=0;b<clusterBot.length;b++){
     		  if(clusterBot[b].getPoints()>0){
     			  for(int i=0;i<clusterBot[b].getPoint().length;i++){
@@ -1402,19 +1402,19 @@ public class ClusterGraphics extends JPanel implements ActionListener{
     	  //cluster
     	  int x=5; int y=15; int z=15;
     	  if(getPixel())g2.setColor(Color.green);else g2.setColor(Color.red);
-    	  g2.drawString(clusterFile.getIndexString2("pixel")+" "+clusterFile.getName(clusterFile.getIndexInt("pixel"), false),x,y); 
+    	  g2.drawString(ClusterData.getIndexString2("pixel")+" "+ClusterData.getName("pixel"),x,y); 
     	  y=y+z;
-    	  if(clusterFile.isCluster())g2.setColor(Color.green);else g2.setColor(Color.red);
-    	  g2.drawString(clusterFile.getIndexString2("cluster")+" "+clusterFile.getName(clusterFile.getIndexInt("cluster"), false)+": "+getCluster(),x,y); 
+    	  if(clusterFile.getData("Cluster"))g2.setColor(Color.green);else g2.setColor(Color.red);
+    	  g2.drawString(ClusterData.getIndexString2("cluster")+" "+ClusterData.getName("cluster")+": "+getCluster(),x,y); 
     	  y=y+z;
-    	  if(clusterFile.isObjects())g2.setColor(Color.green);else g2.setColor(Color.red);
-    	  g2.drawString(clusterFile.getIndexString2("objects")+" "+clusterFile.getName(clusterFile.getIndexInt("objects"), false)+": "+getObjects(),x,y); 
+    	  if(clusterFile.getData("Objects"))g2.setColor(Color.green);else g2.setColor(Color.red);
+    	  g2.drawString(ClusterData.getIndexString2("objects")+" "+ClusterData.getName("objects")+": "+getObjects(),x,y); 
     	  y=y+z;
-    	  if(clusterFile.isVi())g2.setColor(Color.green);else g2.setColor(Color.red);
-    	  if(getVi()!=null)g2.drawString(clusterFile.getIndexString2("vi")+" "+clusterFile.getName(clusterFile.getIndexInt("vi"), false)+": "+String.valueOf(getVi().length),x,y);
-    	              else g2.drawString(clusterFile.getIndexString2("vi")+" "+clusterFile.getName(clusterFile.getIndexInt("vi"), false)+": 0",x,y); y=y+z;
-    	  if(clusterFile.isClusterBot())g2.setColor(Color.green);else g2.setColor(Color.red);
-    	  g2.drawString(clusterFile.getIndexString2("clusterBot")+" "+clusterFile.getName(clusterFile.getIndexInt("clusterBot"), false),x,y); 
+    	  if(clusterFile.getData("Vi"))g2.setColor(Color.green);else g2.setColor(Color.red);
+    	  if(getVi()!=null)g2.drawString(ClusterData.getIndexString2("vi")+" "+ClusterData.getName("vi")+": "+String.valueOf(getVi().length),x,y);
+    	              else g2.drawString(ClusterData.getIndexString2("vi")+" "+ClusterData.getName("vi")+": 0",x,y); y=y+z;
+    	  if(clusterFile.getData("ClusterBot"))g2.setColor(Color.green);else g2.setColor(Color.red);
+    	  g2.drawString(ClusterData.getIndexString2("clusterBot")+" "+ClusterData.getName("clusterBot"),x,y); 
     	  y=y+z;
       }
       clusterMenu.updateUI();
@@ -1431,8 +1431,8 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   public void setPixel(boolean pixelMode){
 	  this.pixel=pixelMode;
 	  this.clusterMenuViewPixelMode.setSelected(pixelMode);
-	  if(pixel)pixelMatrix(); //th72
-	  if(pixel)clusterFile.setPixel(false);else clusterFile.setPixel(true);
+	  if(pixel)pixelMatrix();
+	  if(pixel)clusterFile.setData("Pixel",false);else clusterFile.setData("Pixel",true);
   }
   
 /**
@@ -1457,9 +1457,9 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 	  setPixelVi(null);
 	  setPixelViPath(null);
 	  setPixelString(null);
-	  if(pixelDim==2)clusterFile.setPixelDim(false);else clusterFile.setPixelDim(true);
-	  clusterFile.setPixelOffset(false);
-	  clusterFile.setPixelString(false);
+	  if(pixelDim==2)clusterFile.setData("PixelDim",false);else clusterFile.setData("PixelDim",true);
+	  clusterFile.setData("PixelOffset",false);
+	  clusterFile.setData("PixelString",false);
   }
   
 /**
@@ -1484,7 +1484,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   */
   private void setPixelOriginal(boolean pixelOriginal){
 	  this.pixelOriginal=pixelOriginal;
-	  if(pixelOriginal)clusterFile.setPixelOriginal(false);else clusterFile.setPixelOriginal(true);
+	  if(pixelOriginal)clusterFile.setData("PixelOriginal",false);else clusterFile.setData("PixelOriginal",true);
   }
   
 /**
@@ -1501,7 +1501,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
  */
   public void setCluster(int cluster){
     this.cluster=cluster;
-    if(cluster==0)this.clusterFile.setCluster(false);else this.clusterFile.setCluster(true);
+    if(cluster==0)this.clusterFile.setData("Cluster",false);else this.clusterFile.setData("Cluster",true);
   }
 
 /**
@@ -1518,7 +1518,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
  */
   private void setObjects(int objects){
 	  this.objects=objects;
-	  if(objects==0)this.clusterFile.setObjects(false);else this.clusterFile.setObjects(true);
+	  if(objects==0)this.clusterFile.setData("Objects",false);else this.clusterFile.setData("Objects",true);
   }
  
 /**
@@ -1537,12 +1537,12 @@ public class ClusterGraphics extends JPanel implements ActionListener{
     this.object=clusterObject;
     if(object!=null){
     	setObjects(object.length);
-    	if(!clusterFile.isObjectDescription())setObjectDescription(new String[object.length]);
-        clusterFile.setObject(true);
+    	if(!clusterFile.getData("ObjectDescription"))setObjectDescription(new String[object.length]);
+        clusterFile.setData("Object",true);
     }
     else{
     	setObjects(0);
-    	clusterFile.setObject(false);
+    	clusterFile.setData("Object",false);
     }
   }
 
@@ -1561,10 +1561,10 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   private void setObjectDescription(String[] objectDescription){ 
 	  this.objectDescription=objectDescription;
 	  if(objectDescription!=null){
-		  if(objectDescription.length>0)clusterFile.setObjectDescription(true);
-		  else clusterFile.setObjectDescription(false);
+		  if(objectDescription.length>0)clusterFile.setData("ObjectDescription",true);
+		  else clusterFile.setData("ObjectDescription",false);
 	  }
-	  else clusterFile.setObjectDescription(false);
+	  else clusterFile.setData("ObjectDescription",false);
   }
   
 /**
@@ -1582,10 +1582,10 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   private void setVi(double vi[][]){
 	  this.vi=vi;
 	  if(vi!=null){
-		  if(vi.length>0)clusterFile.setVi(true);
-		  else clusterFile.setVi(false);
+		  if(vi.length>0)clusterFile.setData("Vi",true);
+		  else clusterFile.setData("Vi",false);
 	  }
-	  else clusterFile.setVi(false);
+	  else clusterFile.setData("Vi",false);
   }
   
 /**
@@ -1603,11 +1603,11 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   private void setViPath(double viPath[][]){
 	  this.viPath=viPath;
 	  if(viPath!=null){
-		  if(viPath.length>0)clusterFile.setViPath(true);
-		  else clusterFile.setViPath(false);
+		  if(viPath.length>0)clusterFile.setData("ViPath",true);
+		  else clusterFile.setData("ViPath",false);
 	  }
 	  else{
-		  clusterFile.setViPath(false);
+		  clusterFile.setData("ViPath",false);
 		  this.setPixelViPath(null);
 	  }
   }
@@ -1627,7 +1627,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   public void setPathOption(boolean path){
     this.pathOption=path;
     this.clusterMenuViewPathOption.setState(path);
-    if(pathOption)clusterFile.setPathOption(true);else clusterFile.setPathOption(false);
+    if(pathOption)clusterFile.setData("PathOption",true);else clusterFile.setData("PathOption",false);
   }
 
 /**
@@ -1645,7 +1645,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   public void setDescriptionDisplay(boolean descriptionDisplay) {
     this.descriptionDisplay=descriptionDisplay;
     this.clusterMenuViewDescriptionDisplay.setState(descriptionDisplay);
-    if(descriptionDisplay)clusterFile.setDescriptionDisplay(true);else clusterFile.setDescriptionDisplay(false);
+    if(descriptionDisplay)clusterFile.setData("DescriptionDisplay",true);else clusterFile.setData("DescriptionDisplay",false);
   }
 
 /**
@@ -1662,7 +1662,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
  */
   public void setDurchlauf(int anzahl){
     this.durchlauf=anzahl;
-    if(durchlauf==1)clusterFile.setDurchlauf(false);else clusterFile.setDurchlauf(true);
+    if(durchlauf==1)clusterFile.setData("Durchlauf",false);else clusterFile.setData("Durchlauf",true);
   }
 
 /**
@@ -1680,10 +1680,10 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   private void setMik(double[][] mik){
 	  this.mik=mik;
 	  if(mik!=null){
-		  if(mik.length>0)clusterFile.setMik(true);
-		  else clusterFile.setMik(false);
+		  if(mik.length>0)clusterFile.setData("Mik",true);
+		  else clusterFile.setData("Mik",false);
 	  }
-	  else clusterFile.setMik(false);
+	  else clusterFile.setData("Mik",false);
   }
   
 /**
@@ -1700,8 +1700,8 @@ public class ClusterGraphics extends JPanel implements ActionListener{
  */
   public void setE(double e){
     this.e=e;
-    if(e==1.0e-7)clusterFile.setE(false);
-    else clusterFile.setE(true);
+    if(e==1.0e-7)clusterFile.setData("E",false);
+    else clusterFile.setData("E",true);
   }
 
 /**
@@ -1719,7 +1719,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   private void setCalculate(boolean calc){
 	  this.calculate=calc;
 	  this.clusterButtonCalculate.setEnabled(calc);
-	  if(calculate)clusterFile.setCalculate(true);else clusterFile.setCalculate(false);
+	  if(calculate)clusterFile.setData("Calculate",true);else clusterFile.setData("Calculate",false);
   }
 
 /**
@@ -1737,7 +1737,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   private void setFuzzyCMeans(boolean fcm){
 	  this.fuzzyCMeans=fcm;
 	  this.clusterMenuSetFuzzyCMeans.setSelected(fcm);
-	  if(fuzzyCMeans)clusterFile.setFuzzyCMeans(true);else clusterFile.setFuzzyCMeans(false);
+	  if(fuzzyCMeans)clusterFile.setData("FuzzyCMeans",true);else clusterFile.setData("FuzzyCMeans",false);
   }
 
 /**
@@ -1755,7 +1755,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   private void setPossibilisticCMeans(boolean pcm){
 	  this.possibilisticCMeans=pcm;
 	  this.clusterMenuSetPossibilisticCMeans.setSelected(pcm);
-	  if(possibilisticCMeans)clusterFile.setPossibilisticCMeans(true);else clusterFile.setPossibilisticCMeans(false);
+	  if(possibilisticCMeans)clusterFile.setData("PossibilisticCMeans",true);else clusterFile.setData("PossibilisticCMeans",false);
   }
 
 /**
@@ -1773,7 +1773,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   private void setSortCluster(boolean sortCluster){
 	  this.sortCluster=sortCluster;
 	  this.clusterMenuSetSortCluster.setSelected(sortCluster);
-	  if(sortCluster)clusterFile.setSortCluster(false);else clusterFile.setSortCluster(true);
+	  if(sortCluster)clusterFile.setData("SortCluster",false);else clusterFile.setData("SortCluster",true);
   }
 
 /**
@@ -1791,7 +1791,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   private void setFivtyFivtyJoker(boolean fivtyFivtyJoker){
 	  this.fivtyFivtyJoker=fivtyFivtyJoker;
 	  this.clusterMenuSetFivtyFivtyJoker.setSelected(fivtyFivtyJoker);
-	  if(fivtyFivtyJoker)clusterFile.setFivtyFivtyJoker(true);else clusterFile.setFivtyFivtyJoker(false);
+	  if(fivtyFivtyJoker)clusterFile.setData("FivtyFivtyJoker",true);else clusterFile.setData("FivtyFivtyJoker",false);
   }
 
 /**
@@ -1809,7 +1809,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   private void setClusterMax(boolean clusterMax){
 	  this.clusterMax=clusterMax;
 	  this.clusterMenuSetClusterMax.setSelected(clusterMax);
-	  if(clusterMax)clusterFile.setClusterMax(true);else clusterFile.setClusterMax(false);
+	  if(clusterMax)clusterFile.setData("ClusterMax",true);else clusterFile.setData("ClusterMax",false);
   }
  
   
@@ -1827,8 +1827,8 @@ public class ClusterGraphics extends JPanel implements ActionListener{
    */
   private void setPixelObject(boolean pixelObject[][]){
 	  this.pixelObject=pixelObject;
-	  if(pixelObject==null)clusterFile.setPixelObject(false);
-	  else clusterFile.setPixelObject(true);
+	  if(pixelObject==null)clusterFile.setData("PixelObject",false);
+	  else clusterFile.setData("PixelObject",true);
   }
   
   /**
@@ -1845,8 +1845,8 @@ public class ClusterGraphics extends JPanel implements ActionListener{
    */
   private void setPixelVi(boolean pixelVi[][]){
 	  this.pixelVi=pixelVi;
-	  if(pixelVi==null)clusterFile.setPixelVi(false);
-	  else clusterFile.setPixelVi(true);
+	  if(pixelVi==null)clusterFile.setData("PixelVi",false);
+	  else clusterFile.setData("PixelVi",true);
   }
   
   /**
@@ -1863,8 +1863,8 @@ public class ClusterGraphics extends JPanel implements ActionListener{
    */
   private void setPixelViPath(boolean pixelViPath[][]){
 	  this.pixelViPath=pixelViPath;
-	  if(pixelViPath==null)clusterFile.setPixelViPath(false);
-	  else clusterFile.setPixelViPath(true);
+	  if(pixelViPath==null)clusterFile.setData("PixelViPath",false);
+	  else clusterFile.setData("PixelViPath",true);
   }
   
   /**
@@ -1881,8 +1881,8 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   */
   private void setPixelString(String[] pixelString){
 	  this.pixelString=pixelString;
-	  if(pixelString==null)clusterFile.setPixelString(false);
-	  else clusterFile.setPixelString(true);
+	  if(pixelString==null)clusterFile.setData("PixelString",false);
+	  else clusterFile.setData("PixelString",true);
   }
   
 /**
@@ -1910,9 +1910,9 @@ public class ClusterGraphics extends JPanel implements ActionListener{
       if (zoom != 5) clusterMenuZoomDefault.setEnabled(true);
       if (zoom == 5){
     	  clusterMenuZoomDefault.setEnabled(false);
-    	  clusterFile.setZoom(false);
+    	  clusterFile.setData("Zoom",false);
       }
-      else clusterFile.setZoom(true);
+      else clusterFile.setData("Zoom",true);
   }
 
 /**
@@ -1930,7 +1930,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   public void setTitle(String titel){
     this.title=titel;
     this.f.setTitle(titleString+title);
-    if(title.equals(""))clusterFile.setTitle(false);else clusterFile.setTitle(true);
+    if(title.equals(""))clusterFile.setData("Title",false);else clusterFile.setData("Title",true);
   }
 
 /**
@@ -1940,7 +1940,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   private void setError(boolean error){
 	  this.error=error;
 	  this.clusterButtonError.setEnabled(error);
-	  if(error==true)clusterFile.setError(true);else clusterFile.setError(false);
+	  if(error==true)clusterFile.setData("Error",true);else clusterFile.setData("Error",false);
   }
 
 /**
@@ -1948,7 +1948,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
  */
   private void setHeadUpDisplay(boolean headUpDisplay){
 	  this.headUpDisplay=headUpDisplay;
-	  if(headUpDisplay==false)clusterFile.setHeadUpDisplay(true);else clusterFile.setHeadUpDisplay(false);
+	  if(headUpDisplay==false)clusterFile.setData("HeadUpDisplay",true);else clusterFile.setData("HeadUpDisplay",false);
   }
   
 /**
@@ -2016,10 +2016,10 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 		  clusterBot[i]=new ClusterBot(i,String.valueOf(i),l,punkt,center);
 	  }
 	  if(clusterBot!=null){
-		  if(clusterBot.length>0)clusterFile.setClusterBot(true);
-		  else clusterFile.setClusterBot(false);
+		  if(clusterBot.length>0)clusterFile.setData("ClusterBot",true);
+		  else clusterFile.setData("ClusterBot",false);
 	  }
-	  else clusterFile.setClusterBot(false);
+	  else clusterFile.setData("ClusterBot",false);
   }
 
 /**
@@ -2274,7 +2274,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
    */
   private void pixelMatrix(){
 	  boolean noPixelObject=false;
-	  if(!clusterFile.isPixelObject())noPixelObject=true;
+	  if(!clusterFile.getData("pixelObject"))noPixelObject=true;
 	  if((!getPixelOriginal())||(noPixelObject))setPixelObject(new boolean[getPixelOffset()][getPixelOffset()]);
 	  setPixelVi(new boolean[getPixelOffset()][getPixelOffset()]);
 	  setPixelViPath(new boolean[getPixelOffset()][getPixelOffset()]);
@@ -2387,7 +2387,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
    * @param x 
    */
   public void addPoint(double x, double y){
-	  if(clusterFile.isObject()){
+	  if(clusterFile.getData("Object")){
 		  double tempObject[][]=new double [getObject().length+1][2];
 		  for(int i=0;i<getObject().length;i++){
 			  tempObject[i][0]=getObject()[i][0];
@@ -2419,125 +2419,125 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   		  StartDocument startDocument = eventFactory.createStartDocument();
   		  eventWriter.add(startDocument);
   		  eventWriter.add(eventFactory.createStartElement("",	"", "ClusterGraphics")); 
-  		  if(clusterFile.getData(0))eventWriter.add(eventFactory.createAttribute(clusterFile.getName(0,false), String.valueOf(getPixel())));
-  		  if(clusterFile.getData(1))eventWriter.add(eventFactory.createAttribute(clusterFile.getName(1,false), String.valueOf(getPixelDim())));
-  		  if(clusterFile.getData(3))eventWriter.add(eventFactory.createAttribute(clusterFile.getName(3,false), String.valueOf(getPixelOriginal())));
-  		  if(clusterFile.getData(4))eventWriter.add(eventFactory.createAttribute(clusterFile.getName(4,false), String.valueOf(getCluster())));
-  		  if(clusterFile.getData(5))eventWriter.add(eventFactory.createAttribute(clusterFile.getName(5,false), String.valueOf(getObjects())));
-  		  if(clusterFile.getData(6))eventWriter.add(eventFactory.createAttribute(clusterFile.getName(6,false), String.valueOf(clusterFile.isObject())));
-  		  if(clusterFile.getData(7))eventWriter.add(eventFactory.createAttribute(clusterFile.getName(7,false), String.valueOf(clusterFile.isObjectDescription())));
-  		  if(clusterFile.getData(8))eventWriter.add(eventFactory.createAttribute(clusterFile.getName(8,false), String.valueOf(clusterFile.isVi())));
-  		  if(clusterFile.getData(9))eventWriter.add(eventFactory.createAttribute(clusterFile.getName(9,false), String.valueOf(clusterFile.isViPath())));
-  		  if(clusterFile.getData(10))eventWriter.add(eventFactory.createAttribute(clusterFile.getName(10,false), String.valueOf(getPathOption())));
-  		  if(clusterFile.getData(11))eventWriter.add(eventFactory.createAttribute(clusterFile.getName(11,false), String.valueOf(getDescriptionDisplay())));
-  		  if(clusterFile.getData(12))eventWriter.add(eventFactory.createAttribute(clusterFile.getName(12,false), String.valueOf(getDurchlauf())));
-  		  if(clusterFile.getData(13))eventWriter.add(eventFactory.createAttribute(clusterFile.getName(13,false), String.valueOf(clusterFile.isMik())));
-  		  if(clusterFile.getData(14))eventWriter.add(eventFactory.createAttribute(clusterFile.getName(14,false), String.valueOf(getE())));
-  		  if(clusterFile.getData(15))eventWriter.add(eventFactory.createAttribute(clusterFile.getName(15,false), String.valueOf(getCalculate())));
-  		  if(clusterFile.getData(16))eventWriter.add(eventFactory.createAttribute(clusterFile.getName(16,false), String.valueOf(getFuzzyCMeans())));
-  		  if(clusterFile.getData(17))eventWriter.add(eventFactory.createAttribute(clusterFile.getName(17,false), String.valueOf(getPossibilisticCMeans())));
-  		  if(clusterFile.getData(18))eventWriter.add(eventFactory.createAttribute(clusterFile.getName(18,false), String.valueOf(getSortCluster())));
-  		  if(clusterFile.getData(19))eventWriter.add(eventFactory.createAttribute(clusterFile.getName(19,false), String.valueOf(getFivtyFivtyJoker())));
-  		  if(clusterFile.getData(20))eventWriter.add(eventFactory.createAttribute(clusterFile.getName(20,false), String.valueOf(getClusterMax())));
-  		  if(clusterFile.getData(21))eventWriter.add(eventFactory.createAttribute(clusterFile.getName(21,false), String.valueOf(clusterFile.isPixelObject())));
-  		  if(clusterFile.getData(22))eventWriter.add(eventFactory.createAttribute(clusterFile.getName(22,false), String.valueOf(clusterFile.isPixelVi())));
-  		  if(clusterFile.getData(23))eventWriter.add(eventFactory.createAttribute(clusterFile.getName(23,false), String.valueOf(clusterFile.isPixelViPath())));
-  		  if(clusterFile.getData(24))eventWriter.add(eventFactory.createAttribute(clusterFile.getName(24,false), String.valueOf(clusterFile.isPixelString())));
-  		  if(clusterFile.getData(25))eventWriter.add(eventFactory.createAttribute(clusterFile.getName(25,false), String.valueOf(getZoom())));
-  		  if(clusterFile.getData(26))eventWriter.add(eventFactory.createAttribute(clusterFile.getName(26,false), String.valueOf(getTitle())));
-  		  if(clusterFile.getData(27))eventWriter.add(eventFactory.createAttribute(clusterFile.getName(27,false), String.valueOf(ClusterGraphics.version)));
-  		  if(clusterFile.getData(28))eventWriter.add(eventFactory.createAttribute(clusterFile.getName(28,false), String.valueOf(ClusterGraphics.jahr)));
-  		  if(clusterFile.getData(34))eventWriter.add(eventFactory.createAttribute(clusterFile.getName(34,false), String.valueOf(getError())));
-  		  if(clusterFile.getData(35))eventWriter.add(eventFactory.createAttribute(clusterFile.getName(34,false), String.valueOf(getHeadUpDisplay())));
-  		  if(clusterFile.isViPath())if(getViPath()!=null)eventWriter.add(eventFactory.createAttribute("viPathLength", String.valueOf(getViPath().length)));
+  		  if(clusterFile.getData(0))eventWriter.add(eventFactory.createAttribute(ClusterData.name[0], String.valueOf(getPixel())));
+  		  if(clusterFile.getData(1))eventWriter.add(eventFactory.createAttribute(ClusterData.name[1], String.valueOf(getPixelDim())));
+  		  if(clusterFile.getData(3))eventWriter.add(eventFactory.createAttribute(ClusterData.name[3], String.valueOf(getPixelOriginal())));
+  		  if(clusterFile.getData(4))eventWriter.add(eventFactory.createAttribute(ClusterData.name[4], String.valueOf(getCluster())));
+  		  if(clusterFile.getData(5))eventWriter.add(eventFactory.createAttribute(ClusterData.name[5], String.valueOf(getObjects())));
+  		  if(clusterFile.getData(6))eventWriter.add(eventFactory.createAttribute(ClusterData.name[6], String.valueOf(clusterFile.getData(6))));
+  		  if(clusterFile.getData(7))eventWriter.add(eventFactory.createAttribute(ClusterData.name[7], String.valueOf(clusterFile.getData(7))));
+  		  if(clusterFile.getData(8))eventWriter.add(eventFactory.createAttribute(ClusterData.name[8], String.valueOf(clusterFile.getData(8))));
+  		  if(clusterFile.getData(9))eventWriter.add(eventFactory.createAttribute(ClusterData.name[9], String.valueOf(clusterFile.getData(9))));
+  		  if(clusterFile.getData(10))eventWriter.add(eventFactory.createAttribute(ClusterData.name[10], String.valueOf(getPathOption())));
+  		  if(clusterFile.getData(11))eventWriter.add(eventFactory.createAttribute(ClusterData.name[11], String.valueOf(getDescriptionDisplay())));
+  		  if(clusterFile.getData(12))eventWriter.add(eventFactory.createAttribute(ClusterData.name[12], String.valueOf(getDurchlauf())));
+  		  if(clusterFile.getData(13))eventWriter.add(eventFactory.createAttribute(ClusterData.name[13], String.valueOf(clusterFile.getData(13))));
+  		  if(clusterFile.getData(14))eventWriter.add(eventFactory.createAttribute(ClusterData.name[14], String.valueOf(getE())));
+  		  if(clusterFile.getData(15))eventWriter.add(eventFactory.createAttribute(ClusterData.name[15], String.valueOf(getCalculate())));
+  		  if(clusterFile.getData(16))eventWriter.add(eventFactory.createAttribute(ClusterData.name[16], String.valueOf(getFuzzyCMeans())));
+  		  if(clusterFile.getData(17))eventWriter.add(eventFactory.createAttribute(ClusterData.name[17], String.valueOf(getPossibilisticCMeans())));
+  		  if(clusterFile.getData(18))eventWriter.add(eventFactory.createAttribute(ClusterData.name[18], String.valueOf(getSortCluster())));
+  		  if(clusterFile.getData(19))eventWriter.add(eventFactory.createAttribute(ClusterData.name[19], String.valueOf(getFivtyFivtyJoker())));
+  		  if(clusterFile.getData(20))eventWriter.add(eventFactory.createAttribute(ClusterData.name[20], String.valueOf(getClusterMax())));
+  		  if(clusterFile.getData(21))eventWriter.add(eventFactory.createAttribute(ClusterData.name[21], String.valueOf(clusterFile.getData(21))));
+  		  if(clusterFile.getData(22))eventWriter.add(eventFactory.createAttribute(ClusterData.name[22], String.valueOf(clusterFile.getData(22))));
+  		  if(clusterFile.getData(23))eventWriter.add(eventFactory.createAttribute(ClusterData.name[23], String.valueOf(clusterFile.getData(23))));
+  		  if(clusterFile.getData(24))eventWriter.add(eventFactory.createAttribute(ClusterData.name[24], String.valueOf(clusterFile.getData(24))));
+  		  if(clusterFile.getData(25))eventWriter.add(eventFactory.createAttribute(ClusterData.name[25], String.valueOf(getZoom())));
+  		  if(clusterFile.getData(26))eventWriter.add(eventFactory.createAttribute(ClusterData.name[26], String.valueOf(getTitle())));
+  		  if(clusterFile.getData(27))eventWriter.add(eventFactory.createAttribute(ClusterData.name[27], String.valueOf(ClusterGraphics.version)));
+  		  if(clusterFile.getData(28))eventWriter.add(eventFactory.createAttribute(ClusterData.name[28], String.valueOf(ClusterGraphics.jahr)));
+  		  if(clusterFile.getData(34))eventWriter.add(eventFactory.createAttribute(ClusterData.name[34], String.valueOf(getError())));
+  		  if(clusterFile.getData(35))eventWriter.add(eventFactory.createAttribute(ClusterData.name[35], String.valueOf(getHeadUpDisplay())));
+  		  if(clusterFile.getData("ViPath"))if(getViPath()!=null)eventWriter.add(eventFactory.createAttribute("viPathLength", String.valueOf(getViPath().length)));
   		  eventWriter.add(end);
   		  eventWriter.add(tab);
   		  //object[][], objectDescription[], mik[][]
-  		  if(clusterFile.isObject())if(getObject()!=null){
+  		  if(clusterFile.getData("Object"))if(getObject()!=null){
   			  for(int i=0;i<getObject().length;i++){
-  			  eventWriter.add(eventFactory.createStartElement("",	"", clusterFile.getName(6,false))); 
+  			  eventWriter.add(eventFactory.createStartElement("",	"",ClusterData.name[6])); 
   			  eventWriter.add(eventFactory.createAttribute("x",String.valueOf(getObject()[i][0])));
   			  eventWriter.add(eventFactory.createAttribute("y",String.valueOf(getObject()[i][1])));
-  			  if(clusterFile.isObjectDescription())if(getObjectDescription()!=null)if(getObjectDescription().length>0)eventWriter.add(eventFactory.createAttribute(clusterFile.getName(7,false),String.valueOf(getObjectDescription()[i])));
-  			  if(clusterFile.isMik())if(getMik()!=null)for(int k=0;k<getCluster();k++)eventWriter.add(eventFactory.createAttribute("k"+String.valueOf(k),String.valueOf(getMik()[i][k])));
+  			  if(clusterFile.getData("ObjectDescription"))if(getObjectDescription()!=null)if(getObjectDescription().length>0)eventWriter.add(eventFactory.createAttribute(ClusterData.name[7],String.valueOf(getObjectDescription()[i])));
+  			  if(clusterFile.getData("Mik"))if(getMik()!=null)for(int k=0;k<getCluster();k++)eventWriter.add(eventFactory.createAttribute("k"+String.valueOf(k),String.valueOf(getMik()[i][k])));
   			  eventWriter.add(end);
   			  eventWriter.add(eventFactory.createCharacters(String.valueOf(i)));
   			  eventWriter.add(end);
-  			  eventWriter.add(eventFactory.createEndElement("", "", clusterFile.getName(6,false)));
+  			  eventWriter.add(eventFactory.createEndElement("", "",ClusterData.name[6]));
   			  eventWriter.add(end);
   			  }
   		  }  
   		  //vi[][]
-  		  if(clusterFile.isVi())if(getVi()!=null){
+  		  if(clusterFile.getData("Vi"))if(getVi()!=null){
   			  for(int i=0;i<getVi().length;i++){
-			  eventWriter.add(eventFactory.createStartElement("",	"", clusterFile.getName(8,false))); 
+			  eventWriter.add(eventFactory.createStartElement("",	"",ClusterData.name[8])); 
 			  eventWriter.add(eventFactory.createAttribute("x",String.valueOf(getVi()[i][0])));
 			  eventWriter.add(eventFactory.createAttribute("y",String.valueOf(getVi()[i][1])));
 			  eventWriter.add(end);
 			  eventWriter.add(eventFactory.createCharacters(String.valueOf(i)));
 			  eventWriter.add(end);
-			  eventWriter.add(eventFactory.createEndElement("", "", clusterFile.getName(8,false)));
+			  eventWriter.add(eventFactory.createEndElement("", "",ClusterData.name[8]));
 			  eventWriter.add(end);
   			  }
   		  }
   		  //viPath[][]
-  		  if(clusterFile.isViPath())if(getViPath()!=null){
+  		  if(clusterFile.getData("ViPath"))if(getViPath()!=null){
   			  for(int i=0;i<getViPath().length;i++){
-			  eventWriter.add(eventFactory.createStartElement("",	"", clusterFile.getName(9,false))); 
+			  eventWriter.add(eventFactory.createStartElement("",	"",ClusterData.name[9])); 
 			  eventWriter.add(eventFactory.createAttribute("x",String.valueOf(getViPath()[i][0])));
 			  eventWriter.add(eventFactory.createAttribute("y",String.valueOf(getViPath()[i][1])));
 			  eventWriter.add(end);
 			  eventWriter.add(eventFactory.createCharacters(String.valueOf(i)));
 			  eventWriter.add(end);
-			  eventWriter.add(eventFactory.createEndElement("", "", clusterFile.getName(9,false)));
+			  eventWriter.add(eventFactory.createEndElement("", "",ClusterData.name[9]));
 			  eventWriter.add(end);
   			  }
   		  }
   		  //pixelObject[]
-  		  if(clusterFile.isPixelObject())if(getPixelObject()!=null){
+  		  if(clusterFile.getData("PixelObject"))if(getPixelObject()!=null){
   			  for(int i=0;i<getPixelObject().length;i++){
-  				  eventWriter.add(eventFactory.createStartElement("",	"", clusterFile.getName(21,false)));
+  				  eventWriter.add(eventFactory.createStartElement("",	"",ClusterData.name[21]));
   				  for(int k=0;k<getPixelObject().length;k++)eventWriter.add(eventFactory.createAttribute("k"+String.valueOf(k), String.valueOf(getPixelObject()[i][k])));
 	  			  eventWriter.add(end);
 	  			  eventWriter.add(eventFactory.createCharacters(String.valueOf(i)));
 	  			  eventWriter.add(end);
-	  			  eventWriter.add(eventFactory.createEndElement("", "", clusterFile.getName(21,false)));
+	  			  eventWriter.add(eventFactory.createEndElement("", "",ClusterData.name[21]));
 	  			  eventWriter.add(end);
   			  }
   		  }
   		  //pixelVi[]
-  		  if(clusterFile.isPixelVi())if(getPixelVi()!=null){
+  		  if(clusterFile.getData("PixelVi"))if(getPixelVi()!=null){
   			  for(int i=0;i<getPixelVi().length;i++){
-  				  eventWriter.add(eventFactory.createStartElement("",	"", clusterFile.getName(22,false)));
+  				  eventWriter.add(eventFactory.createStartElement("",	"",ClusterData.name[22]));
   				  for(int k=0;k<getPixelVi().length;k++)eventWriter.add(eventFactory.createAttribute("k"+String.valueOf(k), String.valueOf(getPixelVi()[i][k])));
 	  			  eventWriter.add(end);
 	  			  eventWriter.add(eventFactory.createCharacters(String.valueOf(i)));
 	  			  eventWriter.add(end);
-	  			  eventWriter.add(eventFactory.createEndElement("", "", clusterFile.getName(22,false)));
+	  			  eventWriter.add(eventFactory.createEndElement("", "",ClusterData.name[22]));
 	  			  eventWriter.add(end);
   			  }
   		  }
   		  //pixelViPath[]
-  		  if(clusterFile.isPixelViPath())if(getPixelViPath()!=null){
+  		  if(clusterFile.getData("PixelViPath"))if(getPixelViPath()!=null){
   			  for(int i=0;i<getPixelViPath().length;i++){
-  				  eventWriter.add(eventFactory.createStartElement("",	"", clusterFile.getName(23,false)));
+  				  eventWriter.add(eventFactory.createStartElement("",	"",ClusterData.name[23]));
   				  for(int k=0;k<getPixelViPath().length;k++)eventWriter.add(eventFactory.createAttribute("k"+String.valueOf(k), String.valueOf(getPixelViPath()[i][k])));
 	  			  eventWriter.add(end);
 	  			  eventWriter.add(eventFactory.createCharacters(String.valueOf(i)));
 	  			  eventWriter.add(end);
-	  			  eventWriter.add(eventFactory.createEndElement("", "", clusterFile.getName(23,false)));
+	  			  eventWriter.add(eventFactory.createEndElement("", "",ClusterData.name[23]));
 	  			  eventWriter.add(end);
   			  }
   		  }
   		  //pixelString[]
-  		  if(clusterFile.isPixelString())if(getPixelString()!=null){
+  		  if(clusterFile.getData("PixelString"))if(getPixelString()!=null){
   			  for(int i=0;i<getPixelString().length;i++){
-  				  eventWriter.add(eventFactory.createStartElement("",	"", clusterFile.getName(24,false))); 
+  				  eventWriter.add(eventFactory.createStartElement("",	"",ClusterData.name[24])); 
   				  eventWriter.add(eventFactory.createAttribute("i", String.valueOf(i)));
 	  			  eventWriter.add(end);
 	  			  eventWriter.add(eventFactory.createCharacters(getPixelString()[i]));
 	  			  eventWriter.add(end);
-	  			  eventWriter.add(eventFactory.createEndElement("", "", clusterFile.getName(24,false)));
+	  			  eventWriter.add(eventFactory.createEndElement("", "",ClusterData.name[24]));
 	  			  eventWriter.add(end);
   			  }
   		  }
@@ -2572,49 +2572,49 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 					Iterator<Attribute> attributes = startElement.getAttributes();
 						while (attributes.hasNext()) {
 							Attribute attribute = attributes.next();
-							if(attribute.getName().toString().equals(clusterFile.getName(0,false)))this.setPixel(Boolean.parseBoolean(attribute.getValue()));
-							if(attribute.getName().toString().equals(clusterFile.getName(1,false)))this.setPixelDim(Integer.parseInt(attribute.getValue()));
-							if(attribute.getName().toString().equals(clusterFile.getName(3,false)))this.setPixelOriginal(Boolean.parseBoolean(attribute.getValue()));
-							if(attribute.getName().toString().equals(clusterFile.getName(4,false)))this.setCluster(Integer.parseInt(attribute.getValue()));
-							if(attribute.getName().toString().equals(clusterFile.getName(5,false)))this.setObjects(Integer.parseInt(attribute.getValue()));
-							if(attribute.getName().toString().equals(clusterFile.getName(6,false)))this.clusterFile.setObject(Boolean.parseBoolean(attribute.getValue()));
-							if(attribute.getName().toString().equals(clusterFile.getName(7,false)))this.clusterFile.setObjectDescription(Boolean.parseBoolean(attribute.getValue()));
-							if(attribute.getName().toString().equals(clusterFile.getName(8,false)))this.clusterFile.setVi(Boolean.parseBoolean(attribute.getValue()));
-							if(attribute.getName().toString().equals(clusterFile.getName(9,false)))this.clusterFile.setViPath(Boolean.parseBoolean(attribute.getValue()));
-							if(attribute.getName().toString().equals(clusterFile.getName(10,false)))this.setPathOption(Boolean.parseBoolean(attribute.getValue()));
-							if(attribute.getName().toString().equals(clusterFile.getName(11,false)))this.setDescriptionDisplay(Boolean.parseBoolean(attribute.getValue()));
-							if(attribute.getName().toString().equals(clusterFile.getName(12,false)))this.setDurchlauf(Integer.parseInt(attribute.getValue()));
-							if(attribute.getName().toString().equals(clusterFile.getName(13,false)))this.clusterFile.setMik(Boolean.parseBoolean(attribute.getValue()));
-							if(attribute.getName().toString().equals(clusterFile.getName(14,false)))this.setE(Double.parseDouble(attribute.getValue()));
-							if(attribute.getName().toString().equals(clusterFile.getName(15,false)))this.setCalculate(Boolean.parseBoolean(attribute.getValue()));
-							if(attribute.getName().toString().equals(clusterFile.getName(16,false)))this.setFuzzyCMeans(Boolean.parseBoolean(attribute.getValue()));
-							if(attribute.getName().toString().equals(clusterFile.getName(17,false)))this.setPossibilisticCMeans(Boolean.parseBoolean(attribute.getValue()));
-							if(attribute.getName().toString().equals(clusterFile.getName(18,false)))this.setSortCluster(Boolean.parseBoolean(attribute.getValue()));
-							if(attribute.getName().toString().equals(clusterFile.getName(19,false)))this.setFivtyFivtyJoker(Boolean.parseBoolean(attribute.getValue()));
-							if(attribute.getName().toString().equals(clusterFile.getName(20,false)))this.setClusterMax(Boolean.parseBoolean(attribute.getValue()));
-							if(attribute.getName().toString().equals(clusterFile.getName(21,false)))this.clusterFile.setPixelObject(Boolean.parseBoolean(attribute.getValue()));
-							if(attribute.getName().toString().equals(clusterFile.getName(22,false)))this.clusterFile.setPixelVi(Boolean.parseBoolean(attribute.getValue()));
-							if(attribute.getName().toString().equals(clusterFile.getName(23,false)))this.clusterFile.setPixelViPath(Boolean.parseBoolean(attribute.getValue()));
-							if(attribute.getName().toString().equals(clusterFile.getName(24,false)))this.clusterFile.setPixelString(Boolean.parseBoolean(attribute.getValue()));
-							if(attribute.getName().toString().equals(clusterFile.getName(25,false)))this.setZoom(Integer.parseInt(attribute.getValue()));
-							if(attribute.getName().toString().equals(clusterFile.getName(26,false)))this.setTitle(attribute.getValue());
-							if(attribute.getName().toString().equals(clusterFile.getName(27,false)))zversion=attribute.getValue();
-							if(attribute.getName().toString().equals(clusterFile.getName(28,false))) {}
-							if(attribute.getName().toString().equals(clusterFile.getName(34,false)))this.setError(Boolean.parseBoolean(attribute.getValue()));
-							if(attribute.getName().toString().equals(clusterFile.getName(35,false)))this.setHeadUpDisplay(Boolean.parseBoolean(attribute.getValue()));
+							if(attribute.getName().toString().equals(ClusterData.name[0]))this.setPixel(Boolean.parseBoolean(attribute.getValue()));
+							if(attribute.getName().toString().equals(ClusterData.name[1]))this.setPixelDim(Integer.parseInt(attribute.getValue()));
+							if(attribute.getName().toString().equals(ClusterData.name[3]))this.setPixelOriginal(Boolean.parseBoolean(attribute.getValue()));
+							if(attribute.getName().toString().equals(ClusterData.name[4]))this.setCluster(Integer.parseInt(attribute.getValue()));
+							if(attribute.getName().toString().equals(ClusterData.name[5]))this.setObjects(Integer.parseInt(attribute.getValue()));
+							if(attribute.getName().toString().equals(ClusterData.name[6]))this.clusterFile.setData(6,Boolean.parseBoolean(attribute.getValue()));
+							if(attribute.getName().toString().equals(ClusterData.name[7]))this.clusterFile.setData(7,Boolean.parseBoolean(attribute.getValue()));
+							if(attribute.getName().toString().equals(ClusterData.name[8]))this.clusterFile.setData(8,Boolean.parseBoolean(attribute.getValue()));
+							if(attribute.getName().toString().equals(ClusterData.name[9]))this.clusterFile.setData(9,Boolean.parseBoolean(attribute.getValue()));
+							if(attribute.getName().toString().equals(ClusterData.name[10]))this.setPathOption(Boolean.parseBoolean(attribute.getValue()));
+							if(attribute.getName().toString().equals(ClusterData.name[11]))this.setDescriptionDisplay(Boolean.parseBoolean(attribute.getValue()));
+							if(attribute.getName().toString().equals(ClusterData.name[12]))this.setDurchlauf(Integer.parseInt(attribute.getValue()));
+							if(attribute.getName().toString().equals(ClusterData.name[13]))this.clusterFile.setData(13,Boolean.parseBoolean(attribute.getValue()));
+							if(attribute.getName().toString().equals(ClusterData.name[14]))this.setE(Double.parseDouble(attribute.getValue()));
+							if(attribute.getName().toString().equals(ClusterData.name[15]))this.setCalculate(Boolean.parseBoolean(attribute.getValue()));
+							if(attribute.getName().toString().equals(ClusterData.name[16]))this.setFuzzyCMeans(Boolean.parseBoolean(attribute.getValue()));
+							if(attribute.getName().toString().equals(ClusterData.name[17]))this.setPossibilisticCMeans(Boolean.parseBoolean(attribute.getValue()));
+							if(attribute.getName().toString().equals(ClusterData.name[18]))this.setSortCluster(Boolean.parseBoolean(attribute.getValue()));
+							if(attribute.getName().toString().equals(ClusterData.name[19]))this.setFivtyFivtyJoker(Boolean.parseBoolean(attribute.getValue()));
+							if(attribute.getName().toString().equals(ClusterData.name[20]))this.setClusterMax(Boolean.parseBoolean(attribute.getValue()));
+							if(attribute.getName().toString().equals(ClusterData.name[21]))this.clusterFile.setData(21,Boolean.parseBoolean(attribute.getValue()));
+							if(attribute.getName().toString().equals(ClusterData.name[22]))this.clusterFile.setData(22,Boolean.parseBoolean(attribute.getValue()));
+							if(attribute.getName().toString().equals(ClusterData.name[23]))this.clusterFile.setData(23,Boolean.parseBoolean(attribute.getValue()));
+							if(attribute.getName().toString().equals(ClusterData.name[24]))this.clusterFile.setData(24,Boolean.parseBoolean(attribute.getValue()));
+							if(attribute.getName().toString().equals(ClusterData.name[25]))this.setZoom(Integer.parseInt(attribute.getValue()));
+							if(attribute.getName().toString().equals(ClusterData.name[26]))this.setTitle(attribute.getValue());
+							if(attribute.getName().toString().equals(ClusterData.name[27]))zversion=attribute.getValue();
+							if(attribute.getName().toString().equals(ClusterData.name[28])) {}
+							if(attribute.getName().toString().equals(ClusterData.name[34]))this.setError(Boolean.parseBoolean(attribute.getValue()));
+							if(attribute.getName().toString().equals(ClusterData.name[35]))this.setHeadUpDisplay(Boolean.parseBoolean(attribute.getValue()));
 							if(attribute.getName().toString().equals("viPathLength"))setViPath(new double[Integer.parseInt(attribute.getValue())][2]);
 						}
-						if(clusterFile.isCluster())setVi(new double[getCluster()][2]);
-						if(clusterFile.isObjects())setObject(new double[getObjects()][2]);
-						if(clusterFile.isObjects())if(clusterFile.isObjectDescription())setObjectDescription(new String[getObjects()]);
-						if(clusterFile.isObjects())if(clusterFile.isCluster())if(clusterFile.isMik())setMik(new double[getObjects()][getCluster()]);
-						if(clusterFile.isPixelObject())setPixelObject(new boolean[getPixelOffset()][getPixelOffset()]);
-						if(clusterFile.isPixelVi())setPixelVi(new boolean[getPixelOffset()][getPixelOffset()]);
-						if(clusterFile.isPixelViPath())setPixelViPath(new boolean[getPixelOffset()][getPixelOffset()]);
-						if(clusterFile.isPixelString())setPixelString(new String[getPixelOffset()]);
+						if(clusterFile.getData("Cluster"))setVi(new double[getCluster()][2]);
+						if(clusterFile.getData("Objects"))setObject(new double[getObjects()][2]);
+						if(clusterFile.getData("Objects"))if(clusterFile.getData("ObjectDescription"))setObjectDescription(new String[getObjects()]);
+						if(clusterFile.getData("Objects"))if(clusterFile.getData("Cluster"))if(clusterFile.getData("Mik"))setMik(new double[getObjects()][getCluster()]);
+						if(clusterFile.getData("PixelObject"))setPixelObject(new boolean[getPixelOffset()][getPixelOffset()]);
+						if(clusterFile.getData("PixelVi"))setPixelVi(new boolean[getPixelOffset()][getPixelOffset()]);
+						if(clusterFile.getData("PixelViPath"))setPixelViPath(new boolean[getPixelOffset()][getPixelOffset()]);
+						if(clusterFile.getData("PixelString"))setPixelString(new String[getPixelOffset()]);
 				  }
 				  //object, objectDescription, mik
-				  if (startElement.getName().getLocalPart().equals(clusterFile.getName(6,false)))if(clusterFile.isObject()){
+				  if (startElement.getName().getLocalPart().equals(ClusterData.name[6]))if(clusterFile.getData("Object")){
 					  event = eventReader.nextEvent();
 					  @SuppressWarnings("unchecked")
 						Iterator<Attribute> attributes = startElement.getAttributes();
@@ -2624,16 +2624,16 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 								objectI=Integer.parseInt(event.asCharacters().getData().replaceAll("\\n", ""));
 								if (attribute.getName().toString().equals("x"))getObject()[objectI][0]=Double.parseDouble(attribute.getValue());
 								if (attribute.getName().toString().equals("y"))getObject()[objectI][1]=Double.parseDouble(attribute.getValue());
-								if (attribute.getName().toString().equals(clusterFile.getName(7,false))){
+								if (attribute.getName().toString().equals(ClusterData.name[7])){
 									if(String.valueOf(attribute.getValue()).equals("null"))getObjectDescription()[objectI]=" ";
 									else getObjectDescription()[objectI]=String.valueOf(attribute.getValue());
 								}
 								if (attribute.getName().toString().substring(0, 1).equals("k"))getMik()[objectI][Integer.parseInt(attribute.getName().toString().substring(1))]=Double.parseDouble(attribute.getValue());				  		
 							}
-							this.clusterFile.setObject(true);
+							this.clusterFile.setData("Object",true);
 				  }
 				  //vi
-				  if (startElement.getName().getLocalPart().equals(clusterFile.getName(8,false)))if(clusterFile.isVi()){
+				  if (startElement.getName().getLocalPart().equals(ClusterData.name[8]))if(clusterFile.getData("Vi")){
 					  event=eventReader.nextEvent();
 					  @SuppressWarnings("unchecked")
 						Iterator<Attribute> attributes = startElement.getAttributes();
@@ -2644,10 +2644,10 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 								if (attribute.getName().toString().equals("x"))getVi()[viI][0]=Double.parseDouble(attribute.getValue());
 								if (attribute.getName().toString().equals("y"))getVi()[viI][1]=Double.parseDouble(attribute.getValue());
 					  		}
-					  this.clusterFile.setVi(true);
+					  this.clusterFile.setData("Vi",true);
 				  }
 				  //viPath
-				  if (startElement.getName().getLocalPart().equals(clusterFile.getName(9,false)))if(clusterFile.isViPath()){
+				  if (startElement.getName().getLocalPart().equals(ClusterData.name[9]))if(clusterFile.getData("ViPath")){
 					  event=eventReader.nextEvent();
 					  @SuppressWarnings("unchecked")
 						Iterator<Attribute> attributes = startElement.getAttributes();
@@ -2658,10 +2658,10 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 								if (attribute.getName().toString().equals("x"))getViPath()[viPathI][0]=Double.parseDouble(attribute.getValue());
 								if (attribute.getName().toString().equals("y"))getViPath()[viPathI][1]=Double.parseDouble(attribute.getValue());
 					  		}
-					  this.clusterFile.setViPath(true);
+					  this.clusterFile.setData("ViPath",true);
 				  }
 				  //pixelObject
-				  if (startElement.getName().getLocalPart().equals(clusterFile.getName(21,false)))if(clusterFile.isPixelObject()){
+				  if (startElement.getName().getLocalPart().equals(ClusterData.name[21]))if(clusterFile.getData("PixelObject")){
 					  event=eventReader.nextEvent();
 					  @SuppressWarnings("unchecked")
 						Iterator<Attribute> attributes = startElement.getAttributes();
@@ -2672,10 +2672,10 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 								if (attribute.getName().toString().substring(0, 1).equals("k"))
 									getPixelObject()[pixelObjectI][Integer.parseInt(attribute.getName().toString().substring(1))]=Boolean.parseBoolean(attribute.getValue());
 					  		}
-					  this.clusterFile.setViPath(true);
+					  this.clusterFile.setData("ViPath",true);
 				  }
 				  //pixelVi
-				  if (startElement.getName().getLocalPart().equals(clusterFile.getName(22,false)))if(clusterFile.isPixelVi()){
+				  if (startElement.getName().getLocalPart().equals(ClusterData.name[22]))if(clusterFile.getData("PixelVi")){
 					  event=eventReader.nextEvent();
 					  @SuppressWarnings("unchecked")
 						Iterator<Attribute> attributes = startElement.getAttributes();
@@ -2686,10 +2686,10 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 								if (attribute.getName().toString().substring(0, 1).equals("k"))
 									getPixelVi()[pixelViI][Integer.parseInt(attribute.getName().toString().substring(1))]=Boolean.parseBoolean(attribute.getValue());
 					  		}
-					  this.clusterFile.setPixelVi(true);
+					  this.clusterFile.setData("PixelVi",true);
 				  }
 				  //pixelViPath
-				  if (startElement.getName().getLocalPart().equals(clusterFile.getName(23,false)))if(clusterFile.isPixelViPath()){
+				  if (startElement.getName().getLocalPart().equals(ClusterData.name[23]))if(clusterFile.getData("PixelViPath")){
 					  event=eventReader.nextEvent();
 					  @SuppressWarnings("unchecked")
 						Iterator<Attribute> attributes = startElement.getAttributes();
@@ -2700,10 +2700,10 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 								if (attribute.getName().toString().substring(0, 1).equals("k"))
 									getPixelViPath()[pixelViPathI][Integer.parseInt(attribute.getName().toString().substring(1))]=Boolean.parseBoolean(attribute.getValue());
 					  		}
-					  this.clusterFile.setPixelViPath(true);
+					  this.clusterFile.setData("PixelViPath",true);
 				  }
 				  //pixelString
-				  if (startElement.getName().getLocalPart().equals(clusterFile.getName(24,false)))if(clusterFile.isPixelString()){
+				  if (startElement.getName().getLocalPart().equals(ClusterData.name[24]))if(clusterFile.getData("PixelString")){
 					  event = eventReader.nextEvent();
 					  @SuppressWarnings("unchecked")
 						Iterator<Attribute> attributes = startElement.getAttributes();
@@ -2715,7 +2715,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 									getPixelString()[i]=s;
 								}
 							}
-					  this.clusterFile.setPixelString(true);
+					  this.clusterFile.setData("PixelString",true);
 				  }
 			  }
 			  if (event.isEndElement()) {
@@ -2742,10 +2742,10 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   private void validation(){
 	try{  
 		ClusterFile validateFile= new ClusterFile();
-		  String validateData[][]=new String[clusterFile.getLength()][4];
-          for(int l=0;l<clusterFile.getLength();l++){
-        	  validateData[l][0]=clusterFile.getType(l);
-        	  validateData[l][1]=clusterFile.getName(l,true);
+		  String validateData[][]=new String[ClusterData.length][4];
+          for(int l=0;l<ClusterData.length;l++){
+        	  validateData[l][0]=ClusterData.type[l];
+        	  validateData[l][1]=ClusterData.nameExtended[l];
         	  if(clusterFile.getData(l))validateData[l][2]="X"; else validateData[l][2]="";
         	  validateData[l][3]="";
           }
@@ -2761,8 +2761,8 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 						Iterator<Attribute> attributes = startElement.getAttributes();
 							while (attributes.hasNext()) {
 								Attribute attribute = attributes.next();
-								for(int f=0;f<validateFile.getLength();f++){
-									if(attribute.getName().toString().equals(validateFile.getName(f,false))){
+								for(int f=0;f<ClusterData.length;f++){
+									if(attribute.getName().toString().equals(ClusterData.name[f])){
 										validateFile.setData(f,true);
 										validateData[f][3]="X "+attribute.getValue();
 									}
@@ -2877,7 +2877,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 				  pixelToObject();
 				  setPixelOriginal(true);
 				  pixelMatrix();
-				  if(!clusterFile.isTitleString())this.setTitle(clusterChooser.getSelectedFile().getName());
+				  if(!clusterFile.getData("TitleString"))this.setTitle(clusterChooser.getSelectedFile().getName());
 				  f.repaint();
 			  }
 			  else JOptionPane.showConfirmDialog(null,"> 1000 Pixel","ClusterGraphics.importPBM",JOptionPane.CLOSED_OPTION,JOptionPane.ERROR_MESSAGE);
@@ -2895,7 +2895,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   public void exportPBM(){
 	  //th72
 	  clusterChooser.setFileFilter(clusterFileFilterPBM);
-	  if (clusterFile.isPixelString()){
+	  if (clusterFile.getData("PixelString")){
 		  try{if (clusterChooser.showSaveDialog(this.f) == JFileChooser.APPROVE_OPTION){
 			  PrintWriter out = new PrintWriter(new FileWriter (clusterChooser.getSelectedFile()));
 			  out.println("P1");
@@ -2946,14 +2946,14 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 	  setTitle("");
 	  setError(false);
 	  setHeadUpDisplay(true);
-	  clusterFile.setVersion(true);
-	  clusterFile.setJahr(false);
-	  clusterFile.setTitleString(false);
-	  clusterFile.setReady(false);
-	  clusterFile.setClusterfreak(false);
-	  clusterFile.setClusterFile(false);
-	  clusterFile.setClusterBot(false);
-	  clusterFile.setError(false);
+	  clusterFile.setData("Version",true);
+	  clusterFile.setData("Jahr",false);
+	  clusterFile.setData("TitleString",false);
+	  clusterFile.setData("Ready",false);
+	  clusterFile.setData("Clusterfreak",false);
+	  clusterFile.setData("ClusterFile",false);
+	  clusterFile.setData("ClusterBot",false);
+	  clusterFile.setData("Error",false);
 	  createClusterBots();
 	  this.miscTable=null;
 	  this.objectTable=null;
@@ -3011,9 +3011,9 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 	  //2; pixelOffset
 	  //3; pixelOriginal
 	  //4; cluster; 8; vi.length
-	  if(clusterFile.isCluster()){
+	  if(clusterFile.getData("Cluster")){
 		  t=String.valueOf("cluster="+getCluster()+"; ");
-		  if(clusterFile.isVi()){
+		  if(clusterFile.getData("Vi")){
 			  t=t+"vi.length="+getVi().length;
 			  if(getVi().length!=getCluster()) checkTextArea.append("error; "+t+"\n");
 			  else checkTextArea.append("ok; "+t+"\n");
@@ -3021,9 +3021,9 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 		  else checkTextArea.append("error; "+t+"vi.length=?\n");
 	  }
 	  //4; cluster; 9; viPath.length
-	  if(clusterFile.isCluster()){
+	  if(clusterFile.getData("Cluster")){
 		  t=String.valueOf("cluster="+getCluster()+"; ");
-		  if(clusterFile.isViPath()){
+		  if(clusterFile.getData("ViPath")){
 			  t=t+"viPath.length="+getViPath().length;
 			  if(getViPath().length>getCluster()) checkTextArea.append("ok; "+t+"\n");
 			  else checkTextArea.append("error; "+t+"\n");
@@ -3031,9 +3031,9 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 		  else checkTextArea.append("error; "+t+"viPath.length=?\n");
 	  }
 	  //4; cluster; 7; objectDescription
-	  if(clusterFile.isCluster()){
+	  if(clusterFile.getData("Cluster")){
 		  t=String.valueOf("cluster="+getCluster()+"; ");
-		  if(clusterFile.isObjectDescription()){
+		  if(clusterFile.getData("ObjectDescription")){
 			  int objectDescriptionM=0;
 			  try{
 				  for(int i=0;i<getObjectDescription().length;i++){
@@ -3051,9 +3051,9 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 		  else checkTextArea.append("error; "+t+"objectDescription ?\n");
 	  }
 	  //5; objects; 6; object.length
-	  if(clusterFile.isObjects()){
+	  if(clusterFile.getData("Objects")){
 		  t=String.valueOf("objects="+getObjects()+"; ");
-		  if(clusterFile.isObject()){
+		  if(clusterFile.getData("Object")){
 			  t=t+"object.length="+getObject().length+"; ";
 			  if(getObjects()==getObject().length)checkTextArea.append("ok; "+t+"\n");
 			  else checkTextArea.append("error; "+t+"\n");
@@ -3061,9 +3061,9 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 		  else checkTextArea.append("error; "+t+"object.length=?\n");
 	  }
 	  //5; objects; 13; mik.length
-	  if(clusterFile.isObjects()){
+	  if(clusterFile.getData("Objects")){
 		  t=String.valueOf("objects="+getObjects()+"; ");
-		  if(clusterFile.isMik()){
+		  if(clusterFile.getData("Mik")){
 			  t=t+"mik.length="+getMik().length+"; ";
 			  if(getObjects()==getMik().length)checkTextArea.append("ok; "+t+"\n");
 			  else checkTextArea.append("error; "+t+"\n");
@@ -3071,9 +3071,9 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 		  else checkTextArea.append("error; "+t+"mik.length=?\n");
 	  }
       //5; object.length; 7; objectDescription.length
-	  if(clusterFile.isObject()){
+	  if(clusterFile.getData("Object")){
 		  t=String.valueOf("object.length="+getObject().length+"; ");
-		  if(clusterFile.isObjectDescription()){
+		  if(clusterFile.getData("ObjectDescription")){
 			  t=t+"objectDescription.length="+getObjectDescription().length;
 			  if(getObject().length==getObjectDescription().length)checkTextArea.append("ok; "+t+"\n");
 			  else checkTextArea.append("error; "+t+"\n");
@@ -3081,9 +3081,9 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 		  else checkTextArea.append("error; "+t+"objectDescription.length=?\n");
 	  }  
 	  //5; object.length; 21; pixelOject 
-	  if(clusterFile.isObject()){
+	  if(clusterFile.getData("Object")){
 		  t=String.valueOf("object.length="+getObject().length+"; ");
-		  if(clusterFile.isPixelObject()){
+		  if(clusterFile.getData("PixelObject")){
 			  int pixelObjectC=0;
 			  if(getPixelObject()!=null){
 				  for(int i=0;i<getPixelObject().length;i++){
@@ -3114,7 +3114,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 	  //fivtyFivtyJoker
 	  //clusterMax
 	  //pixelObject
-	  if(clusterFile.isPixelObject()){
+	  if(clusterFile.getData("PixelObject")){
 		  if(getPixelObject()!=null){
 			  if(getPixelOffset()==getPixelObject().length){
 				  int pixelObjectC=0;
@@ -3132,7 +3132,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 		  }
 	  }
 	  //pixelVi
-	  if(clusterFile.isPixelVi()){
+	  if(clusterFile.getData("PixelVi")){
 		  if(getPixelVi()!=null){
 			  if(getPixelOffset()==getPixelVi().length){
 				  int viC=0;
@@ -3146,7 +3146,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 		  }
 	  }
 	  //pixelViPath
-	  if(clusterFile.isPixelViPath()){
+	  if(clusterFile.getData("PixelViPath")){
 		  if(getPixelViPath()!=null){
 			  if(getPixelOffset()==getPixelViPath().length){
 				  int viPathC=0;
@@ -3160,7 +3160,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 		  }
 	  }
 	  //pixelString
-	  if(clusterFile.isPixelString()){
+	  if(clusterFile.getData("PixelString")){
 		  if(getPixelString()!=null){
 			  if(getPixelOffset()==getPixelString().length){
 				  if(getPixelString()[0].length()==getPixelOffset()){
@@ -3174,7 +3174,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 	  }
 	  //zoom, title, version, jahr, titleString, ready
 	  //clusterfreak
-	  if(clusterFile.isClusterfreak()){
+	  if(clusterFile.getData("Clusterfreak")){
 		  int clusterfreakC=0;
 		  for(int i=0;i<clusterfreak.length;i++){
 			  for(int k=0;k<clusterfreak.length;k++){
