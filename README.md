@@ -20,6 +20,7 @@
 ### Release Information
 
 v0.94.9
+* UTF-8 text for unix support
 * fully integrate Error variable
 * colored headUpDisplay for important data
 * colum number in data tab misc
