@@ -1,3 +1,4 @@
+package cluster;
 /**
  * Datenstruktur
  * @version 0.0.1 (24.09.2015)

@@ -1,3 +1,4 @@
+package cluster;
 import java.io.FileOutputStream;
 import java.io.FileInputStream;
 import java.io.File;
@@ -56,22 +57,24 @@ import javax.xml.stream.events.XMLEvent;
 import javax.xml.stream.events.Attribute;
 /**
  * Cluster Graphics<P>
- * Grafische Anzeige von Punktemengen und Klassenzentren
+ * graphical display of points and clusters
+ * (DE) Grafische Anzeige von Punktemengen und Klassenzentren
  * @version 0.94.9 (22.09.2015)
  * @author Thomas Heym
  */
 public class ClusterGraphics extends JPanel implements ActionListener{
   private static final long serialVersionUID = -3221752010018099832L;
 /**
- * Pixelmodus ja oder nein, zentrale Bedeutung für Umwandlung und Speicherung 
+ * Pixelmode yes or no, general importance for conversion and saving
+ * (DE) Pixelmodus ja oder nein, zentrale Bedeutung fÃ¼r Umwandlung und Speicherung 
  */
   private boolean pixel=true;
 /**
- * Grad der Pixelauflösung, Initialwert 2
+ * Grad der PixelauflÃ¶sung, Initialwert 2
  */
   private int pixelDim=2;
 /**
- * Größe der Pixelauflösung; Initialwert 100
+ * GrÃ¶ÃŸe der PixelauflÃ¶sung; Initialwert 100
  */
   private int pixelOffset=100;
 /**
@@ -91,7 +94,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
  */
   private double object[][]=null;
 /**
- * Beschriftung der Punkte mit der zugehörigen Klasse (Objekte mit zugehörigen Clustern)
+ * Beschriftung der Punkte mit der zugehÃ¶rigen Klasse (Objekte mit zugehÃ¶rigen Clustern)
  */
   private String objectDescription[]=null;
 /**
@@ -103,19 +106,19 @@ public class ClusterGraphics extends JPanel implements ActionListener{
  */
   private double viPath[][]=null;
 /**
- * Option für den Suchpfad der Findung der Klassenzentren, Initialwert false
+ * Option fÃ¼r den Suchpfad der Findung der Klassenzentren, Initialwert false
  */
   private boolean pathOption=false;
 /**
- * Option für Beschriftung der Punkte mit der zugehörigen Klasse, Initialwert false
+ * Option fÃ¼r Beschriftung der Punkte mit der zugehÃ¶rigen Klasse, Initialwert false
  */
   private boolean descriptionDisplay=false;
 /**
- * Anzahl der Durchläufe PCM, Initialwert 1
+ * Anzahl der DurchlÃ¤ufe PCM, Initialwert 1
  */
   private int durchlauf=1;
 /**
- * Zugehörigkeitswerte des k-ten Elements zum i-ten Cluster
+ * ZugehÃ¶rigkeitswerte des k-ten Elements zum i-ten Cluster
  */
   private double mik[][]=null;
 /**
@@ -123,7 +126,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
  */
   private double e = 1.0e-7;
 /**
- * Wenn true, dann wurden Werte verändert und eine Neuberechnung wird ermöglicht.
+ * Wenn true, dann wurden Werte verÃ¤ndert und eine Neuberechnung wird ermÃ¶glicht.
  */
   private boolean calculate=false;
 /**
@@ -139,23 +142,23 @@ public class ClusterGraphics extends JPanel implements ActionListener{
  */
   private boolean sortCluster=true;
 /**
- * Beschriftung mit Zugehörigkeit >0.5
+ * Beschriftung mit ZugehÃ¶rigkeit >0.5
  */
   private boolean fivtyFivtyJoker=false;
 /**
- * Beschriftung nach größter Zugehörigkeit
+ * Beschriftung nach grÃ¶ÃŸter ZugehÃ¶rigkeit
  */
   private boolean clusterMax=false;
 /**
- * Pixelmatrix für Darstellung der Objekte
+ * Pixelmatrix fÃ¼r Darstellung der Objekte
  */
   private boolean pixelObject[][]=null;
 /**
- * Pixelmatrix für Darstellung der Klassenzentren
+ * Pixelmatrix fÃ¼r Darstellung der Klassenzentren
  */
   private boolean pixelVi[][]=null;
 /**
- * Pixelmatrix für Darstellung des Suchpfades de Klassenzentren
+ * Pixelmatrix fÃ¼r Darstellung des Suchpfades de Klassenzentren
  */
   private boolean pixelViPath[][]=null;
 /**
@@ -181,13 +184,13 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 /**
  *  fester vorderer Teil des Textes in der Titelzeile
  */
-  private static String titleString = "ClusterGraphics "+version+" ©"+jahr+" Thomas Heym - ";
+  private static String titleString = "ClusterGraphics "+version+" Â©"+jahr+" Thomas Heym - ";
 /**
- * Fertigmeldung für Statuszeile
+ * Fertigmeldung fÃ¼r Statuszeile
  */
   private static String ready=" ready";
 /**
- * Pixelgrafik für Startbild
+ * Pixelgrafik fÃ¼r Startbild
  */
   private static String clusterfreak[] = {
 	  "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
@@ -361,7 +364,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   private ThreadGroup clusterThreadGroup = new ThreadGroup( "CusterTreadGroup" );
   private JFileChooser clusterChooser=new JFileChooser();
 /**
- * FileFilter für XML-Dateien
+ * FileFilter fÃ¼r XML-Dateien
  */
   private javax.swing.filechooser.FileFilter clusterFileFilterXML=new javax.swing.filechooser.FileFilter(){
 	  public boolean accept(File filen) {
@@ -371,7 +374,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 	  public String getDescription () { return "ClusterGraphics-Dateien (*.xml)"; }  
   };
 /**
- * FileFilter für PBA-Dateien
+ * FileFilter fÃ¼r PBA-Dateien
  */
   private javax.swing.filechooser.FileFilter clusterFileFilterPBM=new javax.swing.filechooser.FileFilter(){
     public boolean accept(File filen) {
@@ -385,7 +388,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
  */
   private JLabel clusterStatus=new JLabel();
 /**
- * Fenster für File Validation
+ * Fenster fÃ¼r FileValidation
  */
   private JFrame fValidate;
   private JPanel validatePanel=new JPanel();
@@ -435,10 +438,10 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   private JTable pixelStringTable=new JTable();
   private JPanel miscPanel=new JPanel();
   private JScrollPane miscScrollPane=new JScrollPane();
-  private String[] miscColHeads={"Typ","Variable","Wert","Daten"};
+  private String[] miscColHeads={"number","type","variable","value","data"};
   private JTable miscTable=new JTable();
 /**
- * Fenster für Checkreport
+ * Fenster fÃ¼r Checkreport
  */
   private JFrame fCheck; 
   private JScrollPane checkScrollPane=new JScrollPane();
@@ -503,7 +506,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
     clusterStatus.setSize(new Dimension(100,16));
     clusterStatus.setText(ready);
     f.getContentPane().add(this.clusterStatus,BorderLayout.SOUTH);
-//Menü
+//MenÃ¼
     f.setJMenuBar(clusterMenu);
     clusterMenu.add(clusterToolBar);
     clusterToolBar.add(clusterButtonCalculate);
@@ -516,7 +519,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
     clusterButtonError.setEnabled(getError());
     clusterButtonError.setRolloverEnabled(false);
     clusterButtonError.setFocusable(false);
-//Menü File
+//MenÃ¼ File
     clusterMenu.add(clusterMenuFile);
     clusterMenuFile.setMnemonic('F');
     clusterMenuFile.add(clusterMenuFileOpen);
@@ -535,7 +538,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
     clusterMenuFileImport.setMnemonic('I');
     clusterMenuFileExport.addActionListener(this);
     clusterMenuFileExport.setMnemonic('E');
-//Menü View
+//MenÃ¼ View
     clusterMenu.add(clusterMenuView);
     clusterMenuView.add(clusterMenuViewPixelMode);
     clusterMenuView.setMnemonic('V');
@@ -571,7 +574,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
     clusterMenuView.add(clusterMenuViewRefresh);
     clusterMenuView.setMnemonic('R');
     clusterMenuViewRefresh.addActionListener(this);
-// Menü Zoom
+// MenÃ¼ Zoom
     clusterMenu.add(clusterMenuZoom);
     clusterMenuZoom.add(clusterMenuZoomDefault);
     clusterMenuZoom.setMnemonic('Z');
@@ -581,14 +584,14 @@ public class ClusterGraphics extends JPanel implements ActionListener{
     clusterMenuZoomOut.addActionListener(this);
     clusterMenuZoom.add(clusterMenuZoomIn);
     clusterMenuZoomIn.addActionListener(this);
-// Menü Data
+// MenÃ¼ Data
     clusterMenu.add(clusterMenuData);
     clusterMenuData.add(clusterMenuDataShow);
     clusterMenuData.setMnemonic('D');
     clusterMenuDataShow.addActionListener(this);
     clusterMenuData.add(clusterMenuDataCheck);
     clusterMenuDataCheck.addActionListener(this);
-// Menü Set
+// MenÃ¼ Set
     clusterMenu.add(clusterMenuSet);
     clusterMenuSet.add(clusterMenuSetPixelDim);
     clusterMenuSet.setMnemonic('S');
@@ -645,7 +648,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
     clusterMenuSet.addSeparator();
     clusterMenuSet.add(clusterMenuSetTitle);
     clusterMenuSetTitle.addActionListener(this);
-// Menü Tools
+// MenÃ¼ Tools
     clusterMenu.add(clusterMenuTools);
     clusterMenuTools.setMnemonic('T');
     clusterMenuTools.add(clusterMenuToolsError);
@@ -658,7 +661,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
     clusterMenuToolsDeleteNotAssigned.addActionListener(this);
     clusterMenuTools.add(clusterMenuToolsClearAll);
     clusterMenuToolsClearAll.addActionListener(this);
-// Menü ?
+// MenÃ¼ ?
     clusterMenu.add(clusterMenuHelp);
     clusterMenuHelp.add(clusterMenuHelpInfo);
     clusterMenuHelp.setMnemonic('?');
@@ -671,7 +674,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
     clusterChooser.setMultiSelectionEnabled(false);
 //Hauptfenster
     try{
-    	f.setIconImage(new ImageIcon(getClass().getResource("res/favicon.ico")).getImage());
+    	f.setIconImage(new ImageIcon(getClass().getResource("favicon.ico")).getImage());
     }catch(Exception e){
     	JOptionPane.showConfirmDialog (null,e,"ClusterGraphics.getResource",JOptionPane.CLOSED_OPTION,JOptionPane.INFORMATION_MESSAGE); 
     }
@@ -726,7 +729,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   }
 
 /**
- * Verarbeitung der Menü- und Button-Ereignisse
+ * Verarbeitung der MenÃ¼- und Button-Ereignisse
  */
   public void actionPerformed(ActionEvent ev){
    	String actionCommand = ev.getActionCommand();
@@ -1101,48 +1104,49 @@ public class ClusterGraphics extends JPanel implements ActionListener{
     }
     if ("Show".equals(actionCommand)){
       //misc
-      String miscData[][]=new String[ClusterData.length][4];
+      String miscData[][]=new String[ClusterData.length][5];
       for(int l=0;l<ClusterData.length;l++){
-    	  miscData[l][0]=ClusterData.type[l];
-    	  miscData[l][1]=ClusterData.nameExtended[l];
-    	  if(clusterFile.getData(l))miscData[l][3]="X";else miscData[l][3]="";
+    	  miscData[l][0]=ClusterData.indexString2[l];
+    	  miscData[l][1]=ClusterData.type[l];
+    	  miscData[l][2]=ClusterData.nameExtended[l];
+    	  if(clusterFile.getData(l))miscData[l][4]="X";else miscData[l][4]="";
       }
-      miscData[0][2]=String.valueOf(getPixel());
-      miscData[1][2]=String.valueOf(getPixelDim());
-      miscData[2][2]=String.valueOf(getPixelOffset());
-      miscData[3][2]=String.valueOf(getPixelOriginal());
-      miscData[4][2]=String.valueOf(getCluster());
-      miscData[5][2]=String.valueOf(getObjects());
-      if(getObject()!=null)miscData[6][2]="["+String.valueOf(getObject().length)+"]";else miscData[6][2]="[null]";
-      if(getObjectDescription()!=null)miscData[7][2]="["+String.valueOf(getObjectDescription().length)+"]";else miscData[7][2]="[null]";
-      if(getVi()!=null)miscData[8][2]="["+String.valueOf(getVi().length)+"]";else miscData[8][2]="[null]";
-      if(getViPath()!=null)miscData[9][2]="["+String.valueOf(getViPath().length)+"]";else miscData[9][2]="[null]";
-      miscData[10][2]=String.valueOf(getPathOption());
-      miscData[11][2]=String.valueOf(getDescriptionDisplay());
-      miscData[12][2]=String.valueOf(getDurchlauf());
-      if(getMik()!=null)miscData[13][2]="["+String.valueOf(getMik().length)+"]";else miscData[13][2]="[null]";
-      miscData[14][2]=String.valueOf(getE());
-      miscData[15][2]=String.valueOf(getCalculate());
-      miscData[16][2]=String.valueOf(getFuzzyCMeans());
-      miscData[17][2]=String.valueOf(getPossibilisticCMeans());
-      miscData[18][2]=String.valueOf(getSortCluster());
-      miscData[19][2]=String.valueOf(getFivtyFivtyJoker());
-      miscData[20][2]=String.valueOf(getClusterMax());
-      if(getPixelObject()!=null)miscData[21][2]="["+String.valueOf(getPixelObject().length)+"]";else miscData[21][2]="[null]";
-      if(getPixelVi()!=null)miscData[22][2]="["+String.valueOf(getPixelVi().length)+"]";else miscData[22][2]="[null]";
-      if(getPixelViPath()!=null)miscData[23][2]="["+String.valueOf(getPixelViPath().length)+"]";else miscData[23][2]="[null]";
-      if(getPixelString()!=null)miscData[24][2]="["+String.valueOf(getPixelString().length)+"]";else miscData[24][2]="[null]";
-      miscData[25][2]=String.valueOf(getZoom());
-      miscData[26][2]=getTitle();
-      miscData[27][2]=ClusterGraphics.version;
-      miscData[28][2]=ClusterGraphics.jahr;
-      miscData[29][2]=ClusterGraphics.titleString;
-      miscData[30][2]=ClusterGraphics.ready;
-      miscData[31][2]="["+String.valueOf(ClusterGraphics.clusterfreak.length)+"]";
-      miscData[32][2]=String.valueOf(this.clusterFile.hashCode());
-      if(clusterBot!=null)miscData[33][2]="["+String.valueOf(clusterBot.length)+"]";else miscData[33][2]="[null]";
-      miscData[34][2]=String.valueOf(getError());
-      miscData[35][2]=String.valueOf(getHeadUpDisplay());
+      miscData[0][3]=String.valueOf(getPixel());
+      miscData[1][3]=String.valueOf(getPixelDim());
+      miscData[2][3]=String.valueOf(getPixelOffset());
+      miscData[3][3]=String.valueOf(getPixelOriginal());
+      miscData[4][3]=String.valueOf(getCluster());
+      miscData[5][3]=String.valueOf(getObjects());
+      if(getObject()!=null)miscData[6][3]="["+String.valueOf(getObject().length)+"]";else miscData[6][3]="[null]";
+      if(getObjectDescription()!=null)miscData[7][3]="["+String.valueOf(getObjectDescription().length)+"]";else miscData[7][3]="[null]";
+      if(getVi()!=null)miscData[8][3]="["+String.valueOf(getVi().length)+"]";else miscData[8][3]="[null]";
+      if(getViPath()!=null)miscData[9][3]="["+String.valueOf(getViPath().length)+"]";else miscData[9][3]="[null]";
+      miscData[10][3]=String.valueOf(getPathOption());
+      miscData[11][3]=String.valueOf(getDescriptionDisplay());
+      miscData[12][3]=String.valueOf(getDurchlauf());
+      if(getMik()!=null)miscData[13][3]="["+String.valueOf(getMik().length)+"]";else miscData[13][3]="[null]";
+      miscData[14][3]=String.valueOf(getE());
+      miscData[15][3]=String.valueOf(getCalculate());
+      miscData[16][3]=String.valueOf(getFuzzyCMeans());
+      miscData[17][3]=String.valueOf(getPossibilisticCMeans());
+      miscData[18][3]=String.valueOf(getSortCluster());
+      miscData[19][3]=String.valueOf(getFivtyFivtyJoker());
+      miscData[20][3]=String.valueOf(getClusterMax());
+      if(getPixelObject()!=null)miscData[21][3]="["+String.valueOf(getPixelObject().length)+"]";else miscData[21][3]="[null]";
+      if(getPixelVi()!=null)miscData[22][3]="["+String.valueOf(getPixelVi().length)+"]";else miscData[22][3]="[null]";
+      if(getPixelViPath()!=null)miscData[23][3]="["+String.valueOf(getPixelViPath().length)+"]";else miscData[23][3]="[null]";
+      if(getPixelString()!=null)miscData[24][3]="["+String.valueOf(getPixelString().length)+"]";else miscData[24][3]="[null]";
+      miscData[25][3]=String.valueOf(getZoom());
+      miscData[26][3]=getTitle();
+      miscData[27][3]=ClusterGraphics.version;
+      miscData[28][3]=ClusterGraphics.jahr;
+      miscData[29][3]=ClusterGraphics.titleString;
+      miscData[30][3]=ClusterGraphics.ready;
+      miscData[31][3]="["+String.valueOf(ClusterGraphics.clusterfreak.length)+"]";
+      miscData[32][3]=String.valueOf(this.clusterFile.hashCode());
+      if(clusterBot!=null)miscData[33][3]="["+String.valueOf(clusterBot.length)+"]";else miscData[33][3]="[null]";
+      miscData[34][3]=String.valueOf(getError());
+      miscData[35][3]=String.valueOf(getHeadUpDisplay());
       miscTable=new JTable(miscData,miscColHeads);
       miscScrollPane.setViewportView(miscTable);
       //object
@@ -1273,7 +1277,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
     if ("+".equals(actionCommand)){
       if (getZoom() < 10)setZoom(getZoom()+1);
       else{
-        JOptionPane.showConfirmDialog (null,"Maximale Vergrößerung erreicht.","Cluster Graphics Hinweis",JOptionPane.CLOSED_OPTION,JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showConfirmDialog (null,"Maximale VergrÃ¶ÃŸerung erreicht.","Cluster Graphics Hinweis",JOptionPane.CLOSED_OPTION,JOptionPane.ERROR_MESSAGE);
         clusterMenuZoomOut.setEnabled(false);
       }
     }
@@ -1289,7 +1293,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   protected void paintComponent(Graphics g){
     try{
       Graphics2D g2 = (Graphics2D) g;
-      // weißer Hintergrund, löschen
+      // weiÃŸer Hintergrund, lÃ¶schen
       g2.setBackground(Color.white);
       g2.clearRect(0,0,f.getWidth(),f.getHeight());
       // graue Gitternetzlinien
@@ -1371,7 +1375,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 	        for(int k=getVi().length-getCluster();k<getVi().length;k++){
 	          g2.fillOval((int)(getVi()[k][0]*getZoom()*100-getZoom()),
 	                      (int)(getVi()[k][1]*getZoom()*100-getZoom()),getZoom()*2,getZoom()*2);
-	        // Beschreibung für rote Punkte
+	        // Beschreibung fÃ¼r rote Punkte
 	          if(getDescriptionDisplay()==true){
 	            g2.drawString(String.valueOf(k-(getVi().length-getCluster())), (int)(getVi()[k][0]*getZoom()*100-getZoom()),
 	                                                                            (int)(getVi()[k][1]*getZoom()*100-getZoom()));
@@ -1444,7 +1448,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   }
 
 /**
- * legt den Grad der Pixelauflösung fest
+ * legt den Grad der PixelauflÃ¶sung fest
  * 1 -> 10 * 10 = 10^1
  * 2 -> 100 * 100 = 10^2
  * 3 -> 1000 * 1000 = 10^3 
@@ -1463,7 +1467,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   }
   
 /**
- * liefert den Grad der Pixelauflösung  
+ * liefert den Grad der PixelauflÃ¶sung  
  * @return pixelDim 1..2
  */
   public int getPixelDim(){
@@ -1471,7 +1475,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   }
 
 /**
- * liefert die Größe der Pixelauflösung  
+ * liefert die GrÃ¶ÃŸe der PixelauflÃ¶sung  
  * @return pixelOffset
  */
   private int getPixelOffset(){
@@ -1496,7 +1500,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   }
   
 /**
- * verändert die Anzahl der Cluster
+ * verÃ¤ndert die Anzahl der Cluster
  * @param cluster neue Anzahl der Cluster
  */
   public void setCluster(int cluster){
@@ -1530,7 +1534,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   }
   
 /**
- * übergibt neue Objekte, vorhandene Objekte werden gelöscht, Anzahl der Objekte wird neu definiert
+ * Ã¼bergibt neue Objekte, vorhandene Objekte werden gelÃ¶scht, Anzahl der Objekte wird neu definiert
  * @param clusterObject Objektmatrix
  */
   public void setObject(double clusterObject[][]){
@@ -1547,7 +1551,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   }
 
 /**
- * liefert die Objekte zurück  
+ * liefert die Objekte zurÃ¼ck  
  * @return object Objektmatrix
  */
   public double[][] getObject(){
@@ -1568,7 +1572,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   }
   
 /**
- * liefert die Beschriftung der Punkte mit der zugehörigen Klass  
+ * liefert die Beschriftung der Punkte mit der zugehÃ¶rigen Klasse
  * @return objectDescription
  */
   private String[] getObjectDescription(){
@@ -1589,7 +1593,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   }
   
 /**
- * liefert die Cluster (Klassenzentren) zurück
+ * liefert die Cluster (Klassenzentren) zurÃ¼ck
  * @return vi Clusterkoordinaten
  */
   public double[][] getVi(){
@@ -1657,8 +1661,8 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   }
   
 /**
- * legt die Anzahl der Durchläufe für den PossibilisticCMeans fest (normalerweise 1)
- * @param anzahl Anzahl der Durchläufe
+ * legt die Anzahl der DurchlÃ¤ufe fÃ¼r den PossibilisticCMeans fest (normalerweise 1)
+ * @param anzahl Anzahl der DurchlÃ¤ufe
  */
   public void setDurchlauf(int anzahl){
     this.durchlauf=anzahl;
@@ -1666,15 +1670,15 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   }
 
 /**
- * liefert die Anzahl der Durchläufe für den PossibilisticCMeans zurück
- * @return durchlauf Anzahl der Durchläufe
+ * liefert die Anzahl der DurchlÃ¤ufe fÃ¼r den PossibilisticCMeans zurÃ¼ck
+ * @return durchlauf Anzahl der DurchlÃ¤ufe
  */
   public int getDurchlauf(){
 	  return durchlauf;
   }
 
 /**
- * setzt die Partitionsmatrix mit den Zugehörigkeitswerten der Objekte zu den Clustern (k. Objet zur i. Klasse)  
+ * setzt die Partitionsmatrix mit den ZugehÃ¶rigkeitswerten der Objekte zu den Clustern (k. Objet zur i. Klasse)  
  * @param mik
  */
   private void setMik(double[][] mik){
@@ -1687,7 +1691,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   }
   
 /**
- * liefert die Partitionsmatrix mit den Zugehörigkeitswerten der Objekte zu den Clustern zurück (k. Objekt zur i. Klasse)
+ * liefert die Partitionsmatrix mit den ZugehÃ¶rigkeitswerten der Objekte zu den Clustern zurÃ¼ck (k. Objekt zur i. Klasse)
  * @return mik Partitionsmatrix
  */
   public double[][] getMik(){
@@ -1705,7 +1709,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   }
 
 /**
- * liefert die Abbruchschwelle e zurück  
+ * liefert die Abbruchschwelle e zurÃ¼ck  
  * @return e Abbruchschwelle
  */
   public double getE(){
@@ -1713,7 +1717,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   }
   
 /**
- * ändert calculate zur Neuberechnung  
+ * Ã¤ndert calculate zur Neuberechnung  
  * @param calc Wert (true/false)
  */
   private void setCalculate(boolean calc){
@@ -1731,7 +1735,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   }
   
 /**
- * setzt Flag für Fuzzy-C-Means Algorithmus  
+ * setzt Flag fÃ¼r Fuzzy-C-Means Algorithmus  
  * @param fcm true false
  */
   private void setFuzzyCMeans(boolean fcm){
@@ -1741,7 +1745,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   }
 
 /**
- * liefert Flag für Fuzzy-C-Means Algorithmus  
+ * liefert Flag fÃ¼r Fuzzy-C-Means Algorithmus  
  * @return fuzzyCMeans
  */
   private boolean getFuzzyCMeans(){
@@ -1749,7 +1753,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   }
   
 /**
- * setzt Flag für Possibilistic-C-Means Algorithmus  
+ * setzt Flag fÃ¼r Possibilistic-C-Means Algorithmus  
  * @param pcm
  */
   private void setPossibilisticCMeans(boolean pcm){
@@ -1759,7 +1763,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   }
 
 /**
- * liefert Flag für Possibilistic-C-Means Algorithmus  
+ * liefert Flag fÃ¼r Possibilistic-C-Means Algorithmus  
  * @return possibilisticCMeans
  */
   private boolean getPossibilisticCMeans(){
@@ -1785,7 +1789,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   }
   
 /**
- * setzt Variable für Beschriftung mit Zugehörigkeit >0.5  
+ * setzt Variable fÃ¼r Beschriftung mit ZugehÃ¶rigkeit >0.5  
  * @param fivtyFivtyJoker true false
  */
   private void setFivtyFivtyJoker(boolean fivtyFivtyJoker){
@@ -1795,7 +1799,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   }
 
 /**
- * liefert Variable für Beschriftung mit Zugehörigkeit >0.5  
+ * liefert Variable fÃ¼r Beschriftung mit ZugehÃ¶rigkeit >0.5  
  * @return fivtyFivtyJoker
  */
   private boolean getFivtyFivtyJoker(){
@@ -1803,7 +1807,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   }
   
 /**
- * setzt Variable für Beschriftung nach größter Zugehörigkeit  
+ * setzt Variable fÃ¼r Beschriftung nach grÃ¶ÃŸter ZugehÃ¶rigkeit  
  * @param clusterMax true false
  */
   private void setClusterMax(boolean clusterMax){
@@ -1814,7 +1818,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
  
   
 /**
- * liefert Variable für Beschriftung nach größter Zugehörigkeit  
+ * liefert Variable fÃ¼r Beschriftung nach grÃ¶ÃŸter ZugehÃ¶rigkeit  
  * @return clusterMax
  */
   private boolean getClusterMax(){
@@ -1822,7 +1826,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   }
   
   /**
-   * setzt die Pixelmatrix für Darstellung der Objekte
+   * setzt die Pixelmatrix fÃ¼r Darstellung der Objekte
    * @param pixelObject
    */
   private void setPixelObject(boolean pixelObject[][]){
@@ -1832,7 +1836,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   }
   
   /**
-   * liefert die Pixelmatrix für Darstellung der Objekte
+   * liefert die Pixelmatrix fÃ¼r Darstellung der Objekte
    * @return pixelObject
    */
   private boolean[][] getPixelObject(){
@@ -1840,7 +1844,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   }
   
   /**
-   * setzt die die Pixelmatrix für Darstellung der Klassenzentren
+   * setzt die die Pixelmatrix fÃ¼r Darstellung der Klassenzentren
    * @param pixelVi
    */
   private void setPixelVi(boolean pixelVi[][]){
@@ -1850,7 +1854,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   }
   
   /**
-   * liefert die Pixelmatrix für Darstellung der Klassenzentren
+   * liefert die Pixelmatrix fÃ¼r Darstellung der Klassenzentren
    * @return pixelVi pixelVi
    */
   private boolean[][] getPixelVi(){
@@ -1858,7 +1862,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   }
   
   /**
-   * setzt die Pixelmatrix für Darstellung des Suchpfades de Klassenzentren
+   * setzt die Pixelmatrix fÃ¼r Darstellung des Suchpfades de Klassenzentren
    * @param pixelViPath
    */
   private void setPixelViPath(boolean pixelViPath[][]){
@@ -1868,7 +1872,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   }
   
   /**
-   * liefert die Pixelmatrix für Darstellung des Suchpfades de Klassenzentren
+   * liefert die Pixelmatrix fÃ¼r Darstellung des Suchpfades de Klassenzentren
    * @return pixelViPath pixelViPath
    */
   private boolean[][] getPixelViPath(){
@@ -1894,7 +1898,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   }
   
 /**
- * verändert die Größe der Grafik  
+ * verÃ¤ndert die GrÃ¶ÃŸe der Grafik  
  * @param zoom 1..10
  */
   private void setZoom(int zoom){
@@ -1916,7 +1920,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   }
 
 /**
- * liefert die Größe der Grafik
+ * liefert die GrÃ¶ÃŸe der Grafik
  * @return zoom 1..10
  */
   private int getZoom(){
@@ -1924,7 +1928,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   }
   
 /**
- * verändert den hinteren Teil des Textes in der Titelzeile
+ * verÃ¤ndert den hinteren Teil des Textes in der Titelzeile
  * @param titel Text, der angezeigt werden soll
  */
   public void setTitle(String titel){
@@ -1952,7 +1956,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   }
   
 /**
- * liefert den hinteren Teil des Textes in der Titelzeile zurück
+ * liefert den hinteren Teil des Textes in der Titelzeile zurÃ¼ck
  * @return title Titel
  */
   public String getTitle(){
@@ -2023,7 +2027,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   }
 
 /**
- * führt den Fuzzy-C-Means Algorithmus aus
+ * fÃ¼hrt den Fuzzy-C-Means Algorithmus aus
  */
   public void useFuzzyCMeans(){
 	  setFuzzyCMeans(true);
@@ -2039,7 +2043,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   }
 
  /**
-  * führt den Possibilistic-C-Means Algorithmus aus 
+  * fÃ¼hrt den Possibilistic-C-Means Algorithmus aus 
   */
   public void usePossibilisticCMeans(){
 	  setFuzzyCMeans(false);
@@ -2121,7 +2125,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 
 /**
  * Cluster-Nummer zur Beschriftung in der Grafik
- * Es werden nur die Objekte mit einer Zugehörigkeit > 0.5 entsprechend beschriftet.
+ * Es werden nur die Objekte mit einer ZugehÃ¶rigkeit > 0.5 entsprechend beschriftet.
  */
   public void fivtyFivtyJoker(){
 	setFivtyFivtyJoker(true);
@@ -2139,7 +2143,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 
 /**
  * Cluster-Nummer zur Beschriftung in der Grafik
- * Alle Objekte werden mit dem Cluster beschriftet, welches die größte Zugehörigkeit hat.
+ * Alle Objekte werden mit dem Cluster beschriftet, welches die grÃ¶ÃŸte ZugehÃ¶rigkeit hat.
  */
   public void clusterMax(){
 	setFivtyFivtyJoker(false);
@@ -2158,7 +2162,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   }
  
 /**
- * löscht ein Cluster, keine Parameterübergabe, Abfrage durch Confirm Dialog
+ * lÃ¶scht ein Cluster, keine ParameterÃ¼bergabe, Abfrage durch Confirm Dialog
  */
   public void deleteCluster(int clusterToDelete) {
 	int tempI=0;
@@ -2167,7 +2171,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
     String tempObjectDescription[]=new String[getObject().length];
     double tempVi[][]=new double[getVi().length][2];
     double tempMik[][]=new double[getMik().length][getCluster()];
-//Punkte in object[][] und mik[][] löschen
+//Punkte in object[][] und mik[][] lÃ¶schen
     try{
 	    for(int i=0;i<getObjectDescription().length;i++){
 	      if(getObjectDescription()[i]==null)getObjectDescription()[i]=String.valueOf(Integer.MIN_VALUE);
@@ -2193,7 +2197,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
       getObject()[i][0]=tempObject[i][0];
       getObject()[i][1]=tempObject[i][1];
     }
-//Cluster in objectDescription[], vi[][] und mik[][] löschen
+//Cluster in objectDescription[], vi[][] und mik[][] lÃ¶schen
     tempMik=new double [getMik().length][getCluster()-1];
     tempI=0;
     tempK=0;
@@ -2238,7 +2242,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   }
   
 /**
- * löscht alle nicht zugeordneten Punkte
+ * lÃ¶scht alle nicht zugeordneten Punkte
  */
   public void deleteNotAssigned(){
 	 if(getObjectDescription()!=null){
@@ -2349,7 +2353,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   
   /**
    * berechnet die Objektdatenstrukturen pixelObject[][] und object[][] aus der Pixelgrafik pixelString[] neu
-   * (wird momentan nur beim Start aufgerufen und lässt ObjectDescription außen von, sodass da ein Fehler gemeldet wird)
+   * (wird momentan nur beim Start aufgerufen und lÃ¤sst ObjectDescription auÃŸen von, sodass da ein Fehler gemeldet wird)
    */
   private void pixelToObject(){
 	  setPixelObject(new boolean[getPixelOffset()][getPixelOffset()]);
@@ -2382,7 +2386,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   }
   
   /**
-   * ermöglicht das Hinzufügen eines Punktes
+   * ermÃ¶glicht das HinzufÃ¼gen eines Punktes
    * @param y 
    * @param x 
    */
@@ -2406,7 +2410,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   }
   
   /**
-   * speichert sämtliche Daten in eine XML-Datei
+   * speichert sÃ¤mtliche Daten in eine XML-Datei
    */
   public void save(){
 	  clusterChooser.setFileFilter(clusterFileFilterXML);
@@ -2553,7 +2557,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   }
   
   /**
-   * läd sämtliche Daten aus einer XML-Datei
+   * lÃ¤d sÃ¤mtliche Daten aus einer XML-Datei
    */
   public void open(){
 	  clusterChooser.setFileFilter(clusterFileFilterXML);
@@ -2807,7 +2811,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 			  int siz=Integer.parseInt(si[0]);
 			  if(Integer.parseInt(si[1])>siz)siz=Integer.parseInt(si[1]);;
 			  int size[]=new int[2];
-			  //Länge
+			  //LÃ¤nge
 			  size[0]=Integer.parseInt(si[0]);
 			  //Breite
 			  size[1]=Integer.parseInt(si[1]);
@@ -2913,7 +2917,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   }
   
 /**
- * setzt alle Variablen zurück  
+ * setzt alle Variablen zurÃ¼ck  
  */
   public void clearAll(){
     //Variablen
@@ -2973,19 +2977,19 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   }
   
 /**
- * einfache Konsistenzprüfung  
+ * einfache KonsistenzprÃ¼fung  
  */
   private boolean quickCheck(){
 	  boolean quickCheckStatus=true;
 	  setError(false);
-  // Prüfung, ob ein Clusteralgorithmus gewählt ist
+  // PrÃ¼fung, ob ein Clusteralgorithmus gewÃ¤hlt ist
 	  if((getFuzzyCMeans()==false)&&
 	     (getPossibilisticCMeans()==false)){
-		  JOptionPane.showConfirmDialog (null,"kein Clusteralgorithmus gewählt","ClusterGraphics.quickCheck",JOptionPane.CLOSED_OPTION,JOptionPane.ERROR_MESSAGE);
+		  JOptionPane.showConfirmDialog (null,"kein Clusteralgorithmus gewÃ¤hlt","ClusterGraphics.quickCheck",JOptionPane.CLOSED_OPTION,JOptionPane.ERROR_MESSAGE);
 	      setError(true);
 		  quickCheckStatus=false;
 	  }
-  // Prüfung, ob Objekte vorhanden sind
+  // PrÃ¼fung, ob Objekte vorhanden sind
 	  if((getObject()==null)){
 		  JOptionPane.showConfirmDialog (null,"keine Objekte vorhanden","ClusterGraphics.quickCheck",JOptionPane.CLOSED_OPTION,JOptionPane.ERROR_MESSAGE);
 	      setError(true);
@@ -3000,7 +3004,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   private void checkReport(){
 	  String t="";
 	  fCheck.setVisible(true);
-	  checkTextArea.setText("Cluster Graphics "+version+" ©"+jahr+" Thomas Heym - Check Report\n");
+	  checkTextArea.setText("Cluster Graphics "+version+" Â©"+jahr+" Thomas Heym - Check Report\n");
 	  checkTextArea.append("*** begin *** ");
 	  clusterDateFormat=DateFormat.getDateInstance(DateFormat.LONG);
 	  checkTextArea.append(clusterDateFormat.format(clusterCalendar.getTime())+", ");
@@ -3194,7 +3198,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   }
   
 /**
- * ermöglicht einen direkten Start ohne Parameterübergabe
+ * ermÃ¶glicht einen direkten Start ohne ParameterÃ¼bergabe
  * @param args
  */
   public static void main(String[] args) {

@@ -1,3 +1,4 @@
+package cluster;
 /**
  * Punkt mit XY-Koordinaten
  * @version 1.1 (27.02.2013)

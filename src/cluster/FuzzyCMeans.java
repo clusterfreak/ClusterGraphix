@@ -1,3 +1,4 @@
+package cluster;
 import java.util.Vector;
 /**
  * Fuzzy-C-Means (FCM)<P>
@@ -26,7 +27,7 @@ public class FuzzyCMeans {
  */
   private double e = 1.0e-7;
 /**
- * Objekte repräsentieren je 1 Cluster vi
+ * Objekte reprÃ¤sentieren je 1 Cluster vi
  */
   private double object[][];
 /**
@@ -34,11 +35,11 @@ public class FuzzyCMeans {
  */
   private double vi[][];
 /**
- * Zugehörigkeitswerte des k-ten Elements zum i-ten Cluster
+ * ZugehÃ¶rigkeitswerte des k-ten Elements zum i-ten Cluster
  */
   private static double getMik[][];
 /**
- * bei false werden nur die Klassenzentren zurückgegeben
+ * bei false werden nur die Klassenzentren zurÃ¼ckgegeben
  */
   private static boolean path=false;
 /**
@@ -64,8 +65,8 @@ public class FuzzyCMeans {
     this.e=e;
   }
 /**
- * liefert die Clusterzentren zurück
- * @param      returnPath bestimmt, ob der komplette Suchpfad zurückgeliefert wird. Werte: <code>true</code>, <code>false</code>
+ * liefert die Clusterzentren zurÃ¼ck
+ * @param      returnPath bestimmt, ob der komplette Suchpfad zurÃ¼ckgeliefert wird. Werte: <code>true</code>, <code>false</code>
  * @return     Clusterzentren und Suchpfad (optional); Die Clusterzentren stehen am Ende.
  */
   public double[][] clusterzentrenBestimmen(boolean returnPath){
@@ -139,7 +140,7 @@ public class FuzzyCMeans {
   }
 
  /**
- * Liefert die Partitionsmatrix zurück. (Zugehörigkeitswerte des k-ten Elements zum i-ten Cluster)
+ * Liefert die Partitionsmatrix zurÃ¼ck. (ZugehÃ¶rigkeitswerte des k-ten Elements zum i-ten Cluster)
  * Diese Funktion wird auch aus dem PossibilisticCMeans heraus aufgerufen.
  * @return Partitionsmatrix
  */
@@ -156,7 +157,7 @@ public class FuzzyCMeans {
   }
 
   /**
- * Liefert die Klassenzentren vi zurück
+ * Liefert die Klassenzentren vi zurÃ¼ck
  * @return Klassenzentren
  */
   public double[][] getVi(){

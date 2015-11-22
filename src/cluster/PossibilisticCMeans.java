@@ -1,3 +1,4 @@
+package cluster;
 import java.util.Vector;
 /**
  * Possivilistic-C-Means (PCM) <P>
@@ -27,7 +28,7 @@ public class PossibilisticCMeans {
  */
   private double e = 1.0e-7;
 /**
- * Objekte repräsentieren je 1 Cluster vi
+ * Objekte reprÃ¤sentieren je 1 Cluster vi
  */
   private double object[][];
 /**
@@ -39,19 +40,19 @@ public class PossibilisticCMeans {
  */
   private double ni[];
 /**
- * bei false werden nur die Klassenzentren zurückgegeben
+ * bei false werden nur die Klassenzentren zurÃ¼ckgegeben
  */
   private static boolean path=false;
 /**
- * Berechnung von ni durchführen
+ * Berechnung von ni durchfÃ¼hren
  */
   private static boolean ni_calc = true;
 /**
- * Anzahl der Durchläufe PCM
+ * Anzahl der DurchlÃ¤ufe PCM
  */
   private int durchlauf=1;
 /**
- * Zugehörigkeitswerte des k-ten Elements zum i-ten Cluster
+ * ZugehÃ¶rigkeitswerte des k-ten Elements zum i-ten Cluster
  */
   private static double getMik[][];
   
@@ -59,7 +60,7 @@ public class PossibilisticCMeans {
  * generiert ein PCM-Object aus einer Menge von Punkten
  * @param     object Objekte
  * @param     clusterCount Anzahl der Cluster
- * @param     durchlauf Anzahl der der PCM-Durchläufe bei der Bestimmung der Clusterzentren
+ * @param     durchlauf Anzahl der der PCM-DurchlÃ¤ufe bei der Bestimmung der Clusterzentren
  * @see       FuzzyCMeans
  */
   public PossibilisticCMeans (double object[][],int clusterCount,int durchlauf){
@@ -73,7 +74,7 @@ public class PossibilisticCMeans {
  * generiert ein PCM-Object aus einer Menge von Punkten
  * @param     object Objekte
  * @param     clusterCount Anzahl der Cluster
- * @param     durchlauf Anzahl der der PCM-Durchläufe bei der Bestimmung der Clusterzentren
+ * @param     durchlauf Anzahl der der PCM-DurchlÃ¤ufe bei der Bestimmung der Clusterzentren
  * @param     e Abbruchschwelle (Standard ist 1.0e-7)
  * @see       FuzzyCMeans
  */
@@ -86,8 +87,8 @@ public class PossibilisticCMeans {
     this.e=e;
   }
 /**
- * liefert die Clusterzentren zurück
- * @param      returnPath bestimmt, ob der komplette Suchpfad zurückgeliefert wird. Werte: <code>true</code>, <code>false</code>
+ * liefert die Clusterzentren zurÃ¼ck
+ * @param      returnPath bestimmt, ob der komplette Suchpfad zurÃ¼ckgeliefert wird. Werte: <code>true</code>, <code>false</code>
  * @return     Clusterzentren und Suchpfad (optional); Die Clusterzentren stehen am Ende.
  */
   public double[][] clusterzentrenBestimmen(boolean returnPath){
@@ -131,13 +132,13 @@ public class PossibilisticCMeans {
         double mik_vorher[][]= new double [mik.length][cluster];
         double miks[]= new double[vi.length];
         if(ni_calc==true) {
-          // ni berechnen (Abstand vom Clusterzentrum bis zum Punkt mit dem Zugehörigkeitswert 0.5 zum aktuellen Cluster)
+          // ni berechnen (Abstand vom Clusterzentrum bis zum Punkt mit dem ZugehÃ¶rigkeitswert 0.5 zum aktuellen Cluster)
           // ni = 0
           for(int i=0;i<vi.length;i++) {
             ni[i]=0.0;
             miks[i]=0.0;
           }
-          // ni = Summe mik²*dik²
+          // ni = Summe mikÂ²*dikÂ²
           for(int i=0;i<mik.length;i++) {
             for(int k=0;k<vi.length;k++) {
               double dik=Math.sqrt(Math.pow(object[i][0]-vi[k][0],2)+Math.pow(object[i][1]-vi[k][1],2));
@@ -145,7 +146,7 @@ public class PossibilisticCMeans {
               miks[k]+=Math.pow(mik[i][k],2);
             }
           }
-          // ni = Summe(mik²*dik²) / Summe mik²
+          // ni = Summe(mikÂ²*dikÂ²) / Summe mikÂ²
           for(int i=0;i<vi.length;i++) {
             ni[i]/=miks[i];
           }
@@ -172,7 +173,7 @@ public class PossibilisticCMeans {
     }
     while (durchlauf>0);
     getMik=mik;
-    //Wertrückgabe
+    //WertrÃ¼ckgabe
     if(path==true){
       double viPathCut[][]=new double [viPath.size()][2];
       for(int k=0;k<viPathCut.length;k++){
@@ -187,7 +188,7 @@ public class PossibilisticCMeans {
     }
   }
 /**
- * Liefert die Partitionsmatrix zurück. (Zugehörigkeitswerte des k-ten Elements zum i-ten Cluster)
+ * Liefert die Partitionsmatrix zurÃ¼ck. (ZugehÃ¶rigkeitswerte des k-ten Elements zum i-ten Cluster)
  * Diese Funktion wird auch aus dem PossibilisticCMeans heraus aufgerufen.
  * @return Partitionsmatrix
  */

@@ -1,3 +1,4 @@
+package cluster;
 /**
  * Clusterstruktur
  * @version 0.0.2 (28.02.2013)

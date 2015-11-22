@@ -1,5 +1,6 @@
+package cluster;
 /**
- * Verfügbare Daten
+ * VerfÃ¼gbare Daten
  * @version 0.0.5 (22.09.2015)
  * @author Thomas Heym
  */
