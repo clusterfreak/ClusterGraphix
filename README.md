@@ -1,12 +1,13 @@
 # Cluster
-**Cluster Graphics** - Grafische Anzeige von Punktemengen und Klassenzentren  
-(start with GitHub; Branch: *V0.94.9* on *17.09.2015*)
+**Cluster Graphics**
+(en) Graphical Display for clusters and cluster centers
+(de) Grafische Anzeige von Punktemengen und Klassenzentren  
+(start GitHub with Branch *V0.94.9* on *17.09.2015*)
 
 **&copy; Thomas Heym - clusterfreak** (cF) clstrfrk 
-![clusterfreak](https://sourceforge.net/images/icon_linux.gif "clusterfreak")
+![clusterfreak](https://http://clusterfreak.com/favicon.ico "clusterfreak")
 
 ### Version Information
-
 * ClusterGraphics v0.94.9 (22.09.2015)
 * ClusterBot v0.0.2 (28.02.2013)
 * ClusterData v0.0.1 (24.09.2015)
@@ -14,16 +15,15 @@
 * FuzzyCMeans v1.5.4 (28.02.2012)
 * PossibilisticCMeans v1.1.4 (28.02.2012)
 * Punkt2D v1.1 (27.02.2013)
-
 * * *
-
 ### Release Information
-
 v0.94.9
+* download function for data file
 * UTF-8 text for unix support
 * fully integrate Error variable
 * colored headUpDisplay for important data
 * colum number in data tab misc
+* application icon image
 * ClusterFile v0.0.5 (22.09.2015)
 	* common functions moved to ClusterData
 * ClusterData v0.0.1 (24.09.2015)
@@ -37,19 +37,20 @@ v0.94.7
 
 v0.94.6
 * file import/export
-* ClusterBot mit grafischer Darstellung
-* viPath wird dynamisch erweitert und bei Possibil aus fuzzy ¸bernommen
+* ClusterBot visualisation
+* extended viPath from Possibil and fuzzy
 * save and open in xml file
 * testfunction for internal data
 * status bar
-* eigene Main-Methode, kann selbst laufen
+* main-methode
 * import/export of pixel objects in pbm format
 
 * * *
 
 ### Ishues for GitHub
-
-* ClusterBot Information sollte der n‰chste Groﬂe Schritt sein.
-* Wird File-Validate gew‰hlt, dann wird ggf. die importierte Datei vorgeschlagen. Das w¸rde zu einem Fehler f¸hren.
-* Der Dateiname sollte hier gelˆscht werden.
-* Die Schriftart Hack sollte nun endlich mal ¸berall installiert werden. So kann man gleich mal Erfahrungen mit ttf sammeln
+* Durchlauf -> pass rename
+* get initial in verschiedenen int boolean Varianten, probieren, ob die richtige gezogen wird
+* ClusterBot Information sollte der n√§chste Gro√üe Schritt sein.
+* Wird File-Validate gew√§hlt, dann wird ggf. die importierte Datei vorgeschlagen. Das w√ºrde zu einem Fehler f√ºhren.
+* Der Dateiname sollte hier gel√∂scht werden.
+* Die Schriftart Hack sollte nun endlich mal √ºberall installiert werden. So kann man gleich mal Erfahrungen mit ttf sammeln

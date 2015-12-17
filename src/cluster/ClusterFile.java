@@ -6,7 +6,15 @@ package cluster;
  */
 public class ClusterFile {
   private boolean data[]=ClusterData.data;
-        
+
+/**
+ * Variable initialisieren
+ * @param variable
+ */
+  public void setInitial(String variable){
+	  this.setData(variable, ClusterData.getData(variable));
+  }
+  
 /**
  * setzt die Information, ob die Variable Daten hat
  * @param i Index

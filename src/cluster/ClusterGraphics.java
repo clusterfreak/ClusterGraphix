@@ -23,8 +23,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
+//javax.imageio.*
+import javax.imageio.ImageIO;
 //javax.swing.*
-import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -57,84 +58,82 @@ import javax.xml.stream.events.XMLEvent;
 import javax.xml.stream.events.Attribute;
 /**
  * Cluster Graphics<P>
- * graphical display of points and clusters
- * (DE) Grafische Anzeige von Punktemengen und Klassenzentren
+ * Display of objects and clusters with integrated cluster analysis
  * @version 0.94.9 (22.09.2015)
  * @author Thomas Heym
  */
 public class ClusterGraphics extends JPanel implements ActionListener{
   private static final long serialVersionUID = -3221752010018099832L;
 /**
- * Pixelmode yes or no, general importance for conversion and saving
- * (DE) Pixelmodus ja oder nein, zentrale Bedeutung für Umwandlung und Speicherung 
+ * General importance for conversion and saving
  */
   private boolean pixel=true;
 /**
- * Grad der Pixelauflösung, Initialwert 2
+ * Pixel resolution
  */
   private int pixelDim=2;
 /**
- * Größe der Pixelauflösung; Initialwert 100
+ * Pixel size
  */
   private int pixelOffset=100;
 /**
- * Pixelobjekt oder Doubleobjekt hat Originaldaten
+ * Pixel object original indicator
  */
   private boolean pixelOriginal=true;
 /**
- * Anzahl der Cluster, Initialwert 0
+ * Quantity/number of clusters
  */
   private int cluster=0;
 /**
- * Anzahl der Objekte, Intitialwert 0
+ * Quantity/number of objects
  */
   private int objects=0;
 /**
- * Objektmatrix, Punkte
+ * Object matrix
  */
   private double object[][]=null;
 /**
- * Beschriftung der Punkte mit der zugehörigen Klasse (Objekte mit zugehörigen Clustern)
+ * Object description with associated clusters
  */
   private String objectDescription[]=null;
 /**
- * Klassenzentren vi
+ * Cluster centers matrix vi
  */
   private double vi[][]=null;
 /**
- * Verlauf der Findung der Klassenzentren
+ * History of cluster centers detection matrix
  */
   private double viPath[][]=null;
 /**
- * Option für den Suchpfad der Findung der Klassenzentren, Initialwert false
+ * Option to display the history of cluster centers detection
  */
   private boolean pathOption=false;
 /**
- * Option für Beschriftung der Punkte mit der zugehörigen Klasse, Initialwert false
+ * Option to display the object description with associated clusters
  */
   private boolean descriptionDisplay=false;
 /**
- * Anzahl der Durchläufe PCM, Initialwert 1
+ * Number of PCM passes
  */
   private int durchlauf=1;
 /**
- * Zugehörigkeitswerte des k-ten Elements zum i-ten Cluster
+ * Membership values of the k-th object to the i-th cluster
  */
   private double mik[][]=null;
 /**
- * Abbruchschwelle, Initialwert 1.0e-7
+ * Termination threshold
  */
   private double e = 1.0e-7;
 /**
- * Wenn true, dann wurden Werte verändert und eine Neuberechnung wird ermöglicht.
+ * recalculate indicator
  */
   private boolean calculate=false;
 /**
- * Berechnung nach dem Fuzzy-C-Means Algorithmus
+ * Calculated with Fuzzy-C-Means clustering algorithm
  */
   private boolean fuzzyCMeans=false;
 /**
- * Berechnung nach dem Possibilistic-C-Means Algorithmus
+ * Calculated with Possibilistic-C-Means clustering algorithm
  */
   private boolean possibilisticCMeans=false;
 /**
@@ -150,15 +149,15 @@ public class ClusterGraphics extends JPanel implements ActionListener{
  */
   private boolean clusterMax=false;
 /**
- * Pixelmatrix für Darstellung der Objekte
+ * Pixel object matrix
  */
   private boolean pixelObject[][]=null;
 /**
- * Pixelmatrix für Darstellung der Klassenzentren
+ * Pixel cluster centers matrix
  */
   private boolean pixelVi[][]=null;
 /**
- * Pixelmatrix für Darstellung des Suchpfades de Klassenzentren
+ * Pixel history of cluster centers detection matrix
  */
   private boolean pixelViPath[][]=null;
 /**
@@ -166,7 +165,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
  */
   private String pixelString[]=null;
 /**
- * Zoomfaktor
+ * Zoom factor
  */
   private int zoom=5;
 /**
@@ -176,19 +175,19 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 /**
  * version of Cluster Graphics
  */
-  private static String version = "0.94.9";
+  private String version;
 /**
  * Entwicklungsjahr der Version von Cluster Graphics
  */
-  private static String jahr = "2015";
+  private String jahr;
 /**
  *  fester vorderer Teil des Textes in der Titelzeile
  */
-  private static String titleString = "ClusterGraphics "+version+" ©"+jahr+" Thomas Heym - ";
+  private String titleString;
 /**
  * Fertigmeldung für Statuszeile
  */
-  private static String ready=" ready";
+  private String ready=" ready";
 /**
  * Pixelgrafik für Startbild
  */
@@ -298,7 +297,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
  */
   private ClusterFile clusterFile= new ClusterFile();
 /**
- * Bot Speicher  
+ * Bot memory  
  */
   private ClusterBot[] clusterBot;
 /**
@@ -310,12 +309,12 @@ public class ClusterGraphics extends JPanel implements ActionListener{
  */
   private boolean headUpDisplay;
 /**
- * Hauptfenster
+ * Main Window
  */
   private JFrame f;
   private JLabel l=new JLabel();
 /**
- * Menu Hauptfenster
+ * Menu Main Window
  */
   private JMenuBar clusterMenu=new JMenuBar();
   private JMenu clusterMenuFile=new JMenu("File");
@@ -357,6 +356,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   private JMenuItem clusterMenuToolsDeleteNotAssigned=new JMenuItem("Delete not assigned");
   private JMenuItem clusterMenuToolsClearAll=new JMenuItem("Clear All");
   private JMenu clusterMenuHelp=new JMenu("?");
+  private JMenuItem clusterMenuHelpDataFile=new JMenuItem("DataFile");
   private JMenuItem clusterMenuHelpInfo=new JMenuItem("Info");
   private JToolBar clusterToolBar=new JToolBar("ClusterGraphics");
   private JButton clusterButtonCalculate=new JButton("Calculate");
@@ -364,7 +364,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   private ThreadGroup clusterThreadGroup = new ThreadGroup( "CusterTreadGroup" );
   private JFileChooser clusterChooser=new JFileChooser();
 /**
- * FileFilter für XML-Dateien
+ * FileFilter for XML-files
  */
   private javax.swing.filechooser.FileFilter clusterFileFilterXML=new javax.swing.filechooser.FileFilter(){
 	  public boolean accept(File filen) {
@@ -374,7 +374,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 	  public String getDescription () { return "ClusterGraphics-Dateien (*.xml)"; }  
   };
 /**
- * FileFilter für PBA-Dateien
+ * FileFilter for PBA-files
  */
   private javax.swing.filechooser.FileFilter clusterFileFilterPBM=new javax.swing.filechooser.FileFilter(){
     public boolean accept(File filen) {
@@ -493,6 +493,11 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   private void clusterGraphicsGenerator(){
     //Hauptfenster
     f = new JFrame(titleString+getTitle());
+    try{
+    	f.setIconImage(ImageIO.read(getClass().getResource("/cluster/kugel32.png")));
+    }catch(Exception e){
+    	JOptionPane.showConfirmDialog (null,e,"ClusterGraphics.setIconImage",JOptionPane.CLOSED_OPTION,JOptionPane.INFORMATION_MESSAGE); 
+    }
     f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     f.setResizable(false);
     f.setLayout(new BorderLayout());
@@ -663,6 +668,9 @@ public class ClusterGraphics extends JPanel implements ActionListener{
     clusterMenuToolsClearAll.addActionListener(this);
 // Menü ?
     clusterMenu.add(clusterMenuHelp);
+    clusterMenuHelp.add(clusterMenuHelpDataFile);
+    clusterMenuHelp.setMnemonic('D');
+    clusterMenuHelpDataFile.addActionListener(this);
     clusterMenuHelp.add(clusterMenuHelpInfo);
     clusterMenuHelp.setMnemonic('?');
     clusterMenuHelpInfo.addActionListener(this);
@@ -673,11 +681,6 @@ public class ClusterGraphics extends JPanel implements ActionListener{
     clusterChooser.setFileFilter(clusterFileFilterXML);
     clusterChooser.setMultiSelectionEnabled(false);
 //Hauptfenster
-    try{
-    	f.setIconImage(new ImageIcon(getClass().getResource("favicon.ico")).getImage());
-    }catch(Exception e){
-    	JOptionPane.showConfirmDialog (null,e,"ClusterGraphics.getResource",JOptionPane.CLOSED_OPTION,JOptionPane.INFORMATION_MESSAGE); 
-    }
     f.pack();
     f.setVisible(true);
 //FileValidationFenster
@@ -1087,6 +1090,21 @@ public class ClusterGraphics extends JPanel implements ActionListener{
                 };
                 clusterThread.start();
     }
+//DataFile
+    if ("DataFile".equals(actionCommand)){
+  	  clusterStatus.setText(" DataFile");
+  	  Thread clusterThread = new Thread(clusterThreadGroup,"DataFile") {
+            public void run() {
+          		dataFile();
+                SwingUtilities.invokeLater(new Runnable() {
+                	public void run() {
+               		clusterStatus.setText(ready);
+                	}
+                });
+            }
+      };
+      clusterThread.start();
+    }          
 //info
     if ("Info".equals(actionCommand)){
     	clusterStatus.setText(" info");
@@ -1138,10 +1156,10 @@ public class ClusterGraphics extends JPanel implements ActionListener{
       if(getPixelString()!=null)miscData[24][3]="["+String.valueOf(getPixelString().length)+"]";else miscData[24][3]="[null]";
       miscData[25][3]=String.valueOf(getZoom());
       miscData[26][3]=getTitle();
-      miscData[27][3]=ClusterGraphics.version;
-      miscData[28][3]=ClusterGraphics.jahr;
-      miscData[29][3]=ClusterGraphics.titleString;
-      miscData[30][3]=ClusterGraphics.ready;
+      miscData[27][3]=this.version;
+      miscData[28][3]=this.jahr;
+      miscData[29][3]=this.titleString;
+      miscData[30][3]=this.ready;
       miscData[31][3]="["+String.valueOf(ClusterGraphics.clusterfreak.length)+"]";
       miscData[32][3]=String.valueOf(this.clusterFile.hashCode());
       if(clusterBot!=null)miscData[33][3]="["+String.valueOf(clusterBot.length)+"]";else miscData[33][3]="[null]";
@@ -2449,8 +2467,8 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   		  if(clusterFile.getData(24))eventWriter.add(eventFactory.createAttribute(ClusterData.name[24], String.valueOf(clusterFile.getData(24))));
   		  if(clusterFile.getData(25))eventWriter.add(eventFactory.createAttribute(ClusterData.name[25], String.valueOf(getZoom())));
   		  if(clusterFile.getData(26))eventWriter.add(eventFactory.createAttribute(ClusterData.name[26], String.valueOf(getTitle())));
-  		  if(clusterFile.getData(27))eventWriter.add(eventFactory.createAttribute(ClusterData.name[27], String.valueOf(ClusterGraphics.version)));
-  		  if(clusterFile.getData(28))eventWriter.add(eventFactory.createAttribute(ClusterData.name[28], String.valueOf(ClusterGraphics.jahr)));
+  		  if(clusterFile.getData(27))eventWriter.add(eventFactory.createAttribute(ClusterData.name[27], String.valueOf(this.version)));
+  		  if(clusterFile.getData(28))eventWriter.add(eventFactory.createAttribute(ClusterData.name[28], String.valueOf(this.jahr)));
   		  if(clusterFile.getData(34))eventWriter.add(eventFactory.createAttribute(ClusterData.name[34], String.valueOf(getError())));
   		  if(clusterFile.getData(35))eventWriter.add(eventFactory.createAttribute(ClusterData.name[35], String.valueOf(getHeadUpDisplay())));
   		  if(clusterFile.getData("ViPath"))if(getViPath()!=null)eventWriter.add(eventFactory.createAttribute("viPathLength", String.valueOf(getViPath().length)));
@@ -2921,44 +2939,44 @@ public class ClusterGraphics extends JPanel implements ActionListener{
  */
   public void clearAll(){
     //Variablen
-	  setPixel(true);
-	  setPixelDim(2);
-	//pixelOffset > setPixelDim
-	  setPixelOriginal(true);
-	  setCluster(0);
-	//objects > setObject 
-	  setObject(null);
-	  setObjectDescription(new String[0]);
-	  setVi(new double[getCluster()][2]);
-	  setViPath(null);
-	  setPathOption(false);
-	  setDescriptionDisplay(false);
-	  setDurchlauf(1);
-	  setMik(new double[getObjects()][getCluster()]);
-	  setE(1.0e-7);
-	  setCalculate(false);
-	  setFuzzyCMeans(false);
-	  setPossibilisticCMeans(false);
-	  setSortCluster(true);
-	  setFivtyFivtyJoker(false);
-	  setClusterMax(false);
-	//pixelObject > setPixelDim
-	//pixelVi > setPixelDim
-	//pixelViPath > setPixelDim
-	//pixelString > setPixelDim
-	  setZoom(5);
-	  setTitle("");
-	  setError(false);
-	  setHeadUpDisplay(true);
-	  clusterFile.setData("Version",true);
-	  clusterFile.setData("Jahr",false);
-	  clusterFile.setData("TitleString",false);
-	  clusterFile.setData("Ready",false);
-	  clusterFile.setData("Clusterfreak",false);
-	  clusterFile.setData("ClusterFile",false);
-	  clusterFile.setData("ClusterBot",false);
-	  clusterFile.setData("Error",false);
-	  createClusterBots();
+	  setPixel(true);//0
+	  setPixelDim(2);//1
+	//pixelOffset > setPixelDim//2
+	  setPixelOriginal(true);//3
+	  setCluster(0);//4
+	//objects > setObject//5 
+	  setObject(null);//6
+	  setObjectDescription(new String[0]);//7
+	  setVi(new double[getCluster()][2]);//8
+	  setViPath(null);//9
+	  setPathOption(false);//10
+	  setDescriptionDisplay(false);//11
+	  setDurchlauf(1);//12
+	  setMik(new double[getObjects()][getCluster()]);//13
+	  setE(1.0e-7);//14
+	  setCalculate(false);//15
+	  setFuzzyCMeans(false);//16
+	  setPossibilisticCMeans(false);//17
+	  setSortCluster(true);//18
+	  setFivtyFivtyJoker(false);//19
+	  setClusterMax(false);//20
+	//pixelObject > setPixelDim//21
+	//pixelVi > setPixelDim//22
+	//pixelViPath > setPixelDim//23
+	//pixelString > setPixelDim//24
+	  setZoom(5);//25
+	  setTitle("");//26
+	  this.version=ClusterData.initial[ClusterData.getIndexInt("version")];clusterFile.setInitial("Version");//27
+	  this.jahr=ClusterData.initial[ClusterData.getIndexInt("jahr")];clusterFile.setInitial("Jahr");//28
+	  this.titleString=ClusterData.initial[ClusterData.getIndexInt("titleString")];	  clusterFile.setInitial("TitleString");//29
+	  this.ready=ClusterData.initial[ClusterData.getIndexInt("ready")];clusterFile.setInitial("Ready");//30
+	  clusterFile.setInitial("Clusterfreak");//31
+	  clusterFile.setInitial("ClusterFile");//32
+	  createClusterBots();clusterFile.setInitial("ClusterBot");//33
+	  setError(false);//34
+	  clusterFile.setInitial("Error");//34
+	  setHeadUpDisplay(true);//35
+//user interface reset
 	  this.miscTable=null;
 	  this.objectTable=null;
 	  this.descriptionTable=null;
@@ -3195,6 +3213,61 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 	  checkTextArea.append(clusterDateFormat.format(clusterCalendar.getTime())+"\n");
 	  if(checkTextArea.getText().contains("error"))checkTextArea.append(" error\n");
 	  else checkTextArea.append(" ok\n");
+  }
+
+/**
+ * Erzeugt eine Datei mit der Meta-Daten-Struktur
+ */
+  private void dataFile(){
+	  try{
+		  PrintWriter dataFile = new PrintWriter(new FileWriter ("DataFile.html"));
+		  dataFile.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">");
+		  dataFile.println("<HTML><HEAD><meta charset=\"utf-8\"><TITLE>ClusterGraphics-DataFile</TITLE>");
+		  dataFile.println("<link rel=\"shortcut icon\" href=\"http://clusterfreak.com/favicon.ico\" type=\"image/x-icon\">");
+		  dataFile.println("</HEAD><BODY bgcolor=\"#f0f8ff\" text=\"#001C66\">");
+		  dataFile.println("<font face=\"Arial\">");
+		  dataFile.println("ClusterGraphics "+version+" "+jahr);
+		  dataFile.println("<TABLE border=\"1\">");
+		  dataFile.println("<p style=\"font-size:small\">");
+		  dataFile.println("<TR>");
+		  dataFile.println("<TH align=right>"+"number"+"</TH>");
+		  dataFile.println("<TH align=left>"+"type"+"</TH>");
+		  dataFile.println("<TH align=left>"+"name"+"</TH>");
+		  dataFile.println("<TH align=left>"+"initial"+"</TH>");
+		  dataFile.println("<TH align=left>"+"gui"+"</TH>");
+		  dataFile.println("<TH align=left>"+"set"+"</TH>");
+		  dataFile.println("<TH align=left>"+"get"+"</TH>");
+		  dataFile.println("<TH align=center>"+"edit"+"</TH>");
+		  dataFile.println("<TH align=center>"+"save"+"</TH>");
+		  dataFile.println("<TH align=center>"+"Load"+"</TH>");
+		  dataFile.println("<TH align=left>"+"nameCapital"+"</TH>");
+		  dataFile.println("<TH align=left>"+"nameExtended"+"</TH>");
+		  dataFile.println("<TH align=left>"+"data"+"</TH>");
+		  dataFile.println("</TR>");
+		  for(int i=0;i<ClusterData.length;i++){
+			  dataFile.println("<TR>");
+			  dataFile.println("<TH align=right>"+ClusterData.number[i]+"</TH>");
+			  dataFile.println("<TH align=left>"+ClusterData.type[i]+"</TH>");
+			  dataFile.println("<TH align=left>"+ClusterData.name[i]+"</TH>");
+			  dataFile.println("<TH align=left>"+ClusterData.initial[i]+"</TH>");
+			  dataFile.println("<TH align=left>"+ClusterData.gui[i]+"</TH>");
+			  dataFile.println("<TH align=left>"+ClusterData.set[i]+"</TH>");
+			  dataFile.println("<TH align=left>"+ClusterData.get[i]+"</TH>");
+			  dataFile.println("<TH align=center>"+ClusterData.edit[i]+"</TH>");
+			  dataFile.println("<TH align=center>"+ClusterData.save[i]+"</TH>");
+			  dataFile.println("<TH align=center>"+ClusterData.load[i]+"</TH>");
+			  dataFile.println("<TH align=left>"+ClusterData.nameCapital[i]+"</TH>");
+			  dataFile.println("<TH align=left>"+ClusterData.nameExtended[i]+"</TH>");
+			  dataFile.println("<TH align=left>"+ClusterData.data[i]+"</TH>");
+			  dataFile.println("</TR>");
+		  }
+		  dataFile.println("</p></TABLE>");
+		  dataFile.println("</BODY></HTML>");
+		  dataFile.close();
+	  }
+	  catch(Exception e){
+		  JOptionPane.showConfirmDialog(null,e,"ClusterGraphics.dataFile",JOptionPane.CLOSED_OPTION,JOptionPane.INFORMATION_MESSAGE);  
+	  }
   }
   
 /**
