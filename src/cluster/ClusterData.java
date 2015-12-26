@@ -1,6 +1,6 @@
 package cluster;
 /**
- * Datenstruktur
+ * Cluster meta data
  * @version 0.0.1 (24.09.2015)
  * @author Thomas Heym
  */

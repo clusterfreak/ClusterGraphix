@@ -2,28 +2,28 @@ package cluster;
 import java.util.Vector;
 /**
  * Fuzzy-C-Means (FCM)<P>
- * Berechnung der Klassenzentren einer Punktmenge
- * <PRE>
- * Schritt 1: Initialisierung
- * Schritt 2: Bestimmung der Clusterzentren
- * Schritt 3: Berechnen der neuen Partitionsmatrix
- * Schritt 4: Abbruch oder Wiederholung
- * Schritt 5: optional - Wiederhole Berechnung (Schritte 2 bis 4)</PRE>
+ * Cluster analysis with Fuzzy-C-Means clustering algorithm
+ * <pre>
+ * Step 1: Initialization
+ * Step 2: Determination of the cluster centers
+ * Step 3: Calculate the new partition matrix
+ * Step 4: Termination or repetition
+ * Step 5: optional - Repeat calculation (steps 2 to 4)</PRE>
  *
- * @version 1.5.4 (28.02.2012)
+ * @version 1.5.5 (27.12.2015)
  * @author Thomas Heym
  */
 public class FuzzyCMeans {
 /**
- * Anzahl der Cluster, Initialwert 2
+ * Quantity/number of clusters, initial value 2
  */
   private int cluster = 2;
 /**
- * euklidische Abstandsnorm; Exponent
+ * Euclidean distance norm, exponent, initial value 2
  */
   private static int m = 2;
 /**
- * Abbruchschwelle, Initialwert 1.0e-7
+ * Termination threshold, initial value 1.0e-7
  */
   private double e = 1.0e-7;
 /**
@@ -74,7 +74,7 @@ public class FuzzyCMeans {
     double mik[][]= new double [object.length][cluster];
     path=returnPath;
     Vector<Punkt2D> viPath = new Vector<Punkt2D>();
-// Schritt 1: Initialisierung
+//Step 1: Initialization
     for(int i = 0; i < mik.length; i++){
       for(int k=0;k<cluster;k++){
         mik[i][k] = Math.random();

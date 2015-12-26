@@ -1,6 +1,6 @@
 package cluster;
 /**
- * Clusterstruktur
+ * Cluster structure
  * @version 0.0.2 (28.02.2013)
  * @author Thomas Heym
  */
