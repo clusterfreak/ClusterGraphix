@@ -1,20 +1,19 @@
 # Cluster
 **Cluster Graphics**
-(en) Graphical Display for clusters and cluster centers
-(de) Grafische Anzeige von Punktemengen und Klassenzentren  
+Display for clusters and cluster centers - Grafische Anzeige von Punktemengen und Klassenzentren  
 (start GitHub with Branch *V0.94.9* on *17.09.2015*)
 
-**&copy; Thomas Heym - clusterfreak** (cF) clstrfrk 
+**&copy; Thomas Heym - clusterfreak** (cF) clstrfrk
 ![clusterfreak](https://http://clusterfreak.com/favicon.ico "clusterfreak")
 
 ### Version Information
 * ClusterGraphics v0.94.9 (22.09.2015)
-* ClusterBot v0.0.2 (28.02.2013)
+* ClusterBot v0.0.3 (28.12.2015)
 * ClusterData v0.0.1 (24.09.2015)
 * ClusterFile v0.0.5 (22.09.2015)
-* FuzzyCMeans v1.5.4 (28.02.2012)
-* PossibilisticCMeans v1.1.4 (28.02.2012)
-* Punkt2D v1.1 (27.02.2013)
+* FuzzyCMeans v1.5.5 (28.12.2015)
+* PossibilisticCMeans v1.1.5 (28.12.2015)
+* Punkt2D v1.2.0 (28.12.2015)
 * * *
 ### Release Information
 v0.94.9
@@ -27,6 +26,10 @@ v0.94.9
 * ClusterFile v0.0.5 (22.09.2015)
 	* common functions moved to ClusterData
 * ClusterData v0.0.1 (24.09.2015)
+* FuzzyCMeans v1.5.5 (28.12.2015)
+* Punkt2D v1.2.0 (28.12.2015)
+* ClusterBot v0.0.3 (28.12.2015)
+* PossibilisticCMeans v1.1.5 (28.12.2015)
 
 v0.94.8
 * Error-Button function

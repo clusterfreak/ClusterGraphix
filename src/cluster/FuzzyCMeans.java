@@ -10,7 +10,7 @@ import java.util.Vector;
  * Step 4: Termination or repetition
  * Step 5: optional - Repeat calculation (steps 2 to 4)</PRE>
  *
- * @version 1.5.5 (27.12.2015)
+ * @version 1.5.5 (28.12.2015)
  * @author Thomas Heym
  */
 public class FuzzyCMeans {
@@ -27,25 +27,25 @@ public class FuzzyCMeans {
  */
   private double e = 1.0e-7;
 /**
- * Objekte repräsentieren je 1 Cluster vi
+ * Each Object represents 1 cluster vi
  */
   private double object[][];
 /**
- * Klassenzentren vi
+ * Cluster centers vi
  */
   private double vi[][];
 /**
- * Zugehörigkeitswerte des k-ten Elements zum i-ten Cluster
+ * Partition matrix (Membership values of the k-th object to the i-th cluster)
  */
   private static double getMik[][];
 /**
- * bei false werden nur die Klassenzentren zurückgegeben
+ * When false return only the class centers
  */
   private static boolean path=false;
 /**
- * generiert ein FCM-Object aus einer Menge von Punkten
- * @param     object Objekte
- * @param     clusterCount Anzahl der Cluster
+ * Generates FCM-Object from a set of Points
+ * @param     object Objects
+ * @param     clusterCount  Number of clusters
  */
   public FuzzyCMeans (double object[][],int clusterCount){
     this.object=object;
@@ -53,10 +53,10 @@ public class FuzzyCMeans {
     this.vi=new double[cluster][2];
   }
 /**
- * generiert ein FCM-Object aus einer Menge von Punkten
- * @param     object Objekte
- * @param     clusterCount Anzahl der Cluster
- * @param     e Abbruchschwelle (Standard ist 1.0e-7)
+ * Generates FCM-Object from a set of Points
+ * @param     object Objects
+ * @param     clusterCount Number of clusters
+ * @param     e Termination threshold, initial value 1.0e-7
  */
   public FuzzyCMeans (double object[][],int clusterCount,double e){
     this.object=object;
@@ -65,15 +65,15 @@ public class FuzzyCMeans {
     this.e=e;
   }
 /**
- * liefert die Clusterzentren zurück
- * @param      returnPath bestimmt, ob der komplette Suchpfad zurückgeliefert wird. Werte: <code>true</code>, <code>false</code>
- * @return     Clusterzentren und Suchpfad (optional); Die Clusterzentren stehen am Ende.
+ * Returns the cluster centers
+ * @param      returnPath Determines whether return the complete search path. Values: <code>true</code>, <code>false</code>
+ * @return     Cluster centers and serarch path (optional); The cluster centers are at the end.
  */
-  public double[][] clusterzentrenBestimmen(boolean returnPath){
-    double euklidischerAbstand;
+  public double[][] determineClusterCenters(boolean returnPath){
+    double euclideanDistance;
     double mik[][]= new double [object.length][cluster];
     path=returnPath;
-    Vector<Punkt2D> viPath = new Vector<Punkt2D>();
+    Vector<Point2D> viPath = new Vector<Point2D>();
 //Step 1: Initialization
     for(int i = 0; i < mik.length; i++){
       for(int k=0;k<cluster;k++){
@@ -81,8 +81,8 @@ public class FuzzyCMeans {
       }
     }
     do {
-// Schritt 2: Bestimmung der Clusterzentren
-// --> Schritt 5: optional - Wiederhole Berechnung (Schritte 2 bis 4)
+//Step 2: Determination of the cluster centers
+// --> Step 5: optional - Repeat calculation (steps 2 to 4)
       for(int k=0;k<vi.length;k++) {
         double mikm=0.0,mikm0=0.0,mikm1=0.0,mikms=0.0;
         for(int i=0;i<mik.length;i++) {
@@ -94,16 +94,16 @@ public class FuzzyCMeans {
         vi[k][0]=mikm0/mikms;
         vi[k][1]=mikm1/mikms;
       }
-      //Clusterpunkte aufzeichnen
+      //record cluster points
       if(path==true){
-        for(int k=0;k<vi.length;k++) viPath.add(new Punkt2D(vi[k][0],vi[k][1]));
+        for(int k=0;k<vi.length;k++) viPath.add(new Point2D(vi[k][0],vi[k][1]));
       }
-// Schritt 3: Berechnen der neuen Partitionsmatrix
-      double mik_vorher[][]= new double [mik.length][cluster];
+//Step 3: Calculate the new partition matrix
+      double mik_before[][]= new double [mik.length][cluster];
       for(int k=0;k<vi.length;k++) {
         for(int i=0;i<mik.length;i++) {
           double dik=0.0;
-          mik_vorher[i][k]=mik[i][k];
+          mik_before[i][k]=mik[i][k];
           for(int j=0;j<vi.length;j++) {
             dik+=Math.pow(1/(Math.sqrt(Math.pow(object[i][0]-vi[j][0],2)
                                      + Math.pow(object[i][1]-vi[j][1],2))),1/(m-1));
@@ -113,22 +113,22 @@ public class FuzzyCMeans {
                       /dik;
         }
       }
-// euklidischen Abstand berechnen
-      euklidischerAbstand=0.0;
+//calculate euclidean distance
+      euclideanDistance=0.0;
       for(int k=0;k<vi.length;k++) {
         for(int i=0;i<mik.length;i++) {
-          euklidischerAbstand+=Math.pow((mik[i][k]-mik_vorher[i][k]),2);
+        	euclideanDistance+=Math.pow((mik[i][k]-mik_before[i][k]),2);
         }
       }
-      euklidischerAbstand=Math.sqrt(euklidischerAbstand);
+      euclideanDistance=Math.sqrt(euclideanDistance);
     }
-// Schritt 4: Abbruch oder Wiederholung
-    while (euklidischerAbstand>=e);
+//Step 4: Termination or repetition
+    while (euclideanDistance>=e);
     getMik=mik;
     if(path==true){
       double viPathCut[][]=new double [viPath.size()][2];
       for(int k=0;k<viPathCut.length;k++){
-        Punkt2D cut = viPath.elementAt(k);
+        Point2D cut = viPath.elementAt(k);
         viPathCut[k][0]=cut.x;
         viPathCut[k][1]=cut.y;
       }
@@ -140,16 +140,16 @@ public class FuzzyCMeans {
   }
 
  /**
- * Liefert die Partitionsmatrix zurück. (Zugehörigkeitswerte des k-ten Elements zum i-ten Cluster)
- * Diese Funktion wird auch aus dem PossibilisticCMeans heraus aufgerufen.
- * @return Partitionsmatrix
+ * Returns the partition matrix (Membership values of the k-th object to the i-th cluster)
+ * The method is also called from PossibilisticCMeans.
+ * @return Partition matrix
  */
   public double[][] getMik(){
     return getMik;
   }
 
 /**
- * Erlaubt die Manipulation der Partintionsmatrix
+ * Set partition matrix
  * @param setMik
  */
   public static void setMik(double setMik[][]){
@@ -157,8 +157,8 @@ public class FuzzyCMeans {
   }
 
   /**
- * Liefert die Klassenzentren vi zurück
- * @return Klassenzentren
+ * Returns cluster centers vi
+ * @return Cluster centers
  */
   public double[][] getVi(){
 	return vi;

@@ -494,7 +494,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
     //Main frame
     f = new JFrame(titleString+getTitle());
     try{
-    	f.setIconImage(ImageIO.read(getClass().getResource("/cluster/kugel32.png")));
+    	f.setIconImage(ImageIO.read(getClass().getResource("/cluster/sphere32.png")));
     }catch(Exception e){
     	JOptionPane.showConfirmDialog (null,e,"ClusterGraphics.setIconImage",JOptionPane.CLOSED_OPTION,JOptionPane.INFORMATION_MESSAGE); 
     }
@@ -686,7 +686,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 //FileValidation frame
     fValidate= new JFrame(titleString+" Validate");
     try{
-    	fValidate.setIconImage(ImageIO.read(getClass().getResource("/cluster/kugel32.png")));
+    	fValidate.setIconImage(ImageIO.read(getClass().getResource("/cluster/sphere32.png")));
     }catch(Exception e){
     	JOptionPane.showConfirmDialog (null,e,"ClusterGraphics.setIconImage",JOptionPane.CLOSED_OPTION,JOptionPane.INFORMATION_MESSAGE); 
     }
@@ -697,7 +697,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 //Data frame
     fData= new JFrame(titleString+" Data");
     try{
-    	fData.setIconImage(ImageIO.read(getClass().getResource("/cluster/kugel32.png")));
+    	fData.setIconImage(ImageIO.read(getClass().getResource("/cluster/sphere32.png")));
     }catch(Exception e){
     	JOptionPane.showConfirmDialog (null,e,"ClusterGraphics.setIconImage",JOptionPane.CLOSED_OPTION,JOptionPane.INFORMATION_MESSAGE); 
     }
@@ -736,7 +736,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 //Check report frame
     fCheck= new JFrame(titleString+" Check");
     try{
-    	fCheck.setIconImage(ImageIO.read(getClass().getResource("/cluster/kugel32.png")));
+    	fCheck.setIconImage(ImageIO.read(getClass().getResource("/cluster/sphere32.png")));
     }catch(Exception e){
     	JOptionPane.showConfirmDialog (null,e,"ClusterGraphics.setIconImage",JOptionPane.CLOSED_OPTION,JOptionPane.INFORMATION_MESSAGE); 
     }
@@ -2050,17 +2050,17 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 		  for(int p=0;p<getObjectDescription().length;p++){
 			  if(String.valueOf(i).equals(getObjectDescription()[p]))l++;
 		  }
-		  Punkt2D[] punkt=new Punkt2D[l];
+		  Point2D[] punkt=new Point2D[l];
 		  l=0;
 		  for(int p=0;p<getObjectDescription().length;p++){
 			  if(String.valueOf(i).equals(getObjectDescription()[p])){
-				  punkt[l]=new Punkt2D(0.0,0.0);
+				  punkt[l]=new Point2D(0.0,0.0);
 				  punkt[l].x=getObject()[p][0];
 				  punkt[l].y=getObject()[p][1];
 				  l++;
 			  }
 		  }
-		  Punkt2D center=new Punkt2D(0.0,0.0);
+		  Point2D center=new Point2D(0.0,0.0);
 		  center.x=getVi()[i][0];
 		  center.y=getVi()[i][1];
 		  clusterBot[i]=new ClusterBot(i,String.valueOf(i),l,punkt,center);
@@ -2080,8 +2080,8 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 	  setPossibilisticCMeans(false);
 	  clusterMenuSetFuzzyCMeans.setSelected(true);
 	  FuzzyCMeans fcm=new FuzzyCMeans(getObject(), getCluster(), getE());
-	  setVi(fcm.clusterzentrenBestimmen(false));
-	  if(getPathOption())setViPath(fcm.clusterzentrenBestimmen(true));
+	  setVi(fcm.determineClusterCenters(false));
+	  if(getPathOption())setViPath(fcm.determineClusterCenters(true));
 	  else setViPath(null);
 	  setMik(fcm.getMik());
 	  fcm=null;

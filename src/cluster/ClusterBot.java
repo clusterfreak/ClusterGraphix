@@ -1,17 +1,17 @@
 package cluster;
 /**
  * Cluster structure
- * @version 0.0.2 (28.02.2013)
+ * @version 0.0.3 (28.12.2015)
  * @author Thomas Heym
  */
 public class ClusterBot {
 	private int number;
 	private String name;
 	private int points;
-	private Punkt2D point[];
-	private Punkt2D center;
+	private Point2D point[];
+	private Point2D center;
 	private double offset[]={0.0,0.0};
-	public ClusterBot(int number,String name,int points,Punkt2D point[],Punkt2D center){
+	public ClusterBot(int number,String name,int points,Point2D point[],Point2D center){
 		setNumber(number);
 		setName(name);
 		setPoints(points);
@@ -57,25 +57,25 @@ public class ClusterBot {
 	/**
 	 * @return the point
 	 */
-	public Punkt2D[] getPoint() {
+	public Point2D[] getPoint() {
 		return point;
 	}
 	/**
 	 * @param point the point to set
 	 */
-	public void setPoint(Punkt2D point[]) {
+	public void setPoint(Point2D point[]) {
 		this.point = point;
 	}
 	/**
 	 * @return the center
 	 */
-	public Punkt2D getCenter() {
+	public Point2D getCenter() {
 		return center;
 	}
 	/**
 	 * @param center the center to set
 	 */
-	public void setCenter(Punkt2D center) {
+	public void setCenter(Point2D center) {
 		this.center = center;
 	}
 	/**

@@ -10,7 +10,7 @@ import java.util.Vector;
  * Schritt 4: Abbruch oder Wiederholung
  * Schritt 5: optional - Wiederhole Berechnung (Schritte 2 bis 4)</PRE>
  *
- * @version 1.1.4 (28.02.2012)
+ * @version 1.1.5 (28.12.2015)
  * @author Thomas Heym
  * @see FuzzyCMeans
  */
@@ -94,7 +94,7 @@ public class PossibilisticCMeans {
   public double[][] clusterzentrenBestimmen(boolean returnPath){
     double euklidischerAbstand;
     path=returnPath;
-    Vector<Punkt2D> viPath = new Vector<Punkt2D>();
+    Vector<Point2D> viPath = new Vector<Point2D>();
 // Schritt 1: Initialisierung
     FuzzyCMeans fcm;
     if(e==1.0e-7){
@@ -103,8 +103,8 @@ public class PossibilisticCMeans {
     else{
       fcm=new FuzzyCMeans(object,cluster,e);
     }
-    double getViPath[][]=fcm.clusterzentrenBestimmen(true);
-    for(int v=0;v<getViPath.length;v++) viPath.add(new Punkt2D(getViPath[v][0],getViPath[v][1]));
+    double getViPath[][]=fcm.determineClusterCenters(true);
+    for(int v=0;v<getViPath.length;v++) viPath.add(new Point2D(getViPath[v][0],getViPath[v][1]));
     vi=fcm.getVi();
     double mik[][]=fcm.getMik();
     do { //while (durchlauf>0)
@@ -126,7 +126,7 @@ public class PossibilisticCMeans {
         }
         //Clusterpunkte aufzeichnen
         if(path==true){
-          for(int k=0;k<vi.length;k++) viPath.add(new Punkt2D(vi[k][0],vi[k][1]));
+          for(int k=0;k<vi.length;k++) viPath.add(new Point2D(vi[k][0],vi[k][1]));
         }
   // Schritt 3: Berechnen der neuen Partitionsmatrix
         double mik_vorher[][]= new double [mik.length][cluster];
@@ -177,7 +177,7 @@ public class PossibilisticCMeans {
     if(path==true){
       double viPathCut[][]=new double [viPath.size()][2];
       for(int k=0;k<viPathCut.length;k++){
-        Punkt2D cut = viPath.elementAt(k);
+        Point2D cut = viPath.elementAt(k);
         viPathCut[k][0]=cut.x;
         viPathCut[k][1]=cut.y;
       }
