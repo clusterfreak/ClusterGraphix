@@ -1,14 +1,14 @@
 package cluster;
 /**
  * Cluster meta data
- * @version 0.0.1 (24.09.2015)
+ * @version 0.0.2 (28.12.2015)
  * @author Thomas Heym
  */
 public class ClusterData {
 	public static int length = 36;
     public static int number[] = {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35};
     public static String type[] = {"boolean","int","int","boolean","int","int","double","String","double","double","boolean","boolean","int","double","double","boolean","boolean","boolean","boolean","boolean","boolean","boolean","boolean","boolean","String","int","String","String","String","String","String","boolean","ClusterFile","ClusterBot","boolean","boolean"};
-    public static String name[] = {"pixel","pixelDim","pixelOffset","pixelOriginal","cluster","objects","object","objectDescription","vi","viPath","pathOption","descriptionDisplay","durchlauf","mik","e","calculate","fuzzyCMeans","possibilisticCMeans","sortCluster","fivtyFivtyJoker","clusterMax","pixelObject","pixelVi","pixelViPath","pixelString","zoom","title","version","jahr","titleString","ready","clusterfreak","clusterFile","clusterBot","error","headUpDisplay"};
+    public static String name[] = {"pixel","pixelDim","pixelOffset","pixelOriginal","cluster","objects","object","objectDescription","vi","viPath","pathOption","descriptionDisplay","repeat","mik","e","calculate","fuzzyCMeans","possibilisticCMeans","sortCluster","fivtyFivtyJoker","clusterMax","pixelObject","pixelVi","pixelViPath","pixelString","zoom","title","version","jahr","titleString","ready","clusterfreak","clusterFile","clusterBot","error","headUpDisplay"};
     public static String description[] = {
     		"General importance for conversion and saving",
     		"Pixel resolution",
@@ -53,8 +53,8 @@ public class ClusterData {
     public static String edit[] = {"x","x","-","-","x","-","","-","","","x","x","","","x","x","","","","","","","","","","x","x","-","-","-","-","-","-","-","-","x"};
     public static String save[] = {"x","x","-","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","-","-","-","-","-","x","x"};
     public static String load[] = {"x","x","-","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","-","-","-","-","-","x","x"};
-    public static String nameCapital[] = {"Pixel","PixelDim","PixelOffset","PixelOriginal","Cluster","Objects","Object","ObjectDescription","Vi","ViPath","PathOption","DescriptionDisplay","Durchlauf","Mik","E","Calculate","FuzzyCMeans","PossibilisticCMeans","SortCluster","FivtyFivtyJoker","ClusterMax","PixelObject","PixelVi","PixelViPath","PixelString","Zoom","Title","Version","Jahr","TitleString","Ready","Clusterfreak","ClusterFile","ClusterBot","Error","HeadUpDisplay"};
-    public static String nameExtended[] = {"pixel","pixelDim","pixelOffset","pixelOriginal","cluster","objects","object[][]","objectDescription[]","vi[][]","viPath[][]","pathOption","descriptionDisplay","durchlauf","mik[][]","e","calculate","fuzzyCMeans","possibilisticCMeans","sortCluster","fivtyFivtyJoker","clusterMax","pixelObject[][]","pixelVi[][]","pixelViPath[][]","pixelString[]","zoom","title","version","jahr","titleString","ready","clusterfreak","clusterFile","clusterBot","error","headUpDisplay"};
+    public static String nameCapital[] = {"Pixel","PixelDim","PixelOffset","PixelOriginal","Cluster","Objects","Object","ObjectDescription","Vi","ViPath","PathOption","DescriptionDisplay","Repeat","Mik","E","Calculate","FuzzyCMeans","PossibilisticCMeans","SortCluster","FivtyFivtyJoker","ClusterMax","PixelObject","PixelVi","PixelViPath","PixelString","Zoom","Title","Version","Jahr","TitleString","Ready","Clusterfreak","ClusterFile","ClusterBot","Error","HeadUpDisplay"};
+    public static String nameExtended[] = {"pixel","pixelDim","pixelOffset","pixelOriginal","cluster","objects","object[][]","objectDescription[]","vi[][]","viPath[][]","pathOption","descriptionDisplay","repeat","mik[][]","e","calculate","fuzzyCMeans","possibilisticCMeans","sortCluster","fivtyFivtyJoker","clusterMax","pixelObject[][]","pixelVi[][]","pixelViPath[][]","pixelString[]","zoom","title","version","jahr","titleString","ready","clusterfreak","clusterFile","clusterBot","error","headUpDisplay"};
     public static String indexString2[] = {"00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35"};
     public static boolean data[] = {false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,true,false,false,false,false,false,false,false,false};
     

@@ -2,13 +2,13 @@ package cluster;
 import java.util.Vector;
 /**
  * Possivilistic-C-Means (PCM) <P>
- * Berechnung der Klassenzentren einer Punktmenge
+ * Cluster analysis with Possivilistic-C-Means clustering algorithm
  * <PRE>
- * Schritt 1: Initialisierung
- * Schritt 2: Bestimmung der Clusterzentren
- * Schritt 3: Berechnen der neuen Partitionsmatrix inkl. Berechnung ni
- * Schritt 4: Abbruch oder Wiederholung
- * Schritt 5: optional - Wiederhole Berechnung (Schritte 2 bis 4)</PRE>
+ * Step 1: Initialization
+ * Step 2: Determination of the cluster centers
+ * Step 3: Calculate the new partition matrix and ni
+ * Step 4: Termination or repetition
+ * Step 5: optional - Repeat calculation (steps 2 to 4)</PRE>
  *
  * @version 1.1.5 (28.12.2015)
  * @author Thomas Heym
@@ -16,23 +16,23 @@ import java.util.Vector;
  */
 public class PossibilisticCMeans {
 /**
- * Anzahl der Cluster, Initialwert 2
+ * Quantity/number of clusters, initial value 2
  */
   private int cluster = 2;
 /**
- * euklidische Abstandsnorm; Exponent, Initialwert 2
+ * Euclidean distance norm, exponent, initial value 2
  */
   private static int m = 2;
 /**
- * Abbruchschwelle, Initialwert 1.0e-7
+ * Termination threshold, initial value 1.0e-7
  */
   private double e = 1.0e-7;
 /**
- * Objekte repräsentieren je 1 Cluster vi
+ * Each Object represents 1 cluster vi
  */
   private double object[][];
 /**
- * Klassenzentren vi
+ * Cluster centers vi
  */
   private double vi[][];
 /**
@@ -40,62 +40,62 @@ public class PossibilisticCMeans {
  */
   private double ni[];
 /**
- * bei false werden nur die Klassenzentren zurückgegeben
+ * When false return only the class centers
  */
   private static boolean path=false;
 /**
- * Berechnung von ni durchführen
+ * Perform calculation of ni
  */
   private static boolean ni_calc = true;
 /**
- * Anzahl der Durchläufe PCM
+ * Number of PCM passes
  */
-  private int durchlauf=1;
+  private int repeat=1;
 /**
- * Zugehörigkeitswerte des k-ten Elements zum i-ten Cluster
+ * Partition matrix (Membership values of the k-th object to the i-th cluster)
  */
   private static double getMik[][];
   
 /**
- * generiert ein PCM-Object aus einer Menge von Punkten
- * @param     object Objekte
- * @param     clusterCount Anzahl der Cluster
- * @param     durchlauf Anzahl der der PCM-Durchläufe bei der Bestimmung der Clusterzentren
+ * Generates PCM-Object from a set of Points
+ * @param     object Objects
+ * @param     clusterCount Number of clusters
+ * @param     repeat Number of PCM passes for determination of the cluster centers
  * @see       FuzzyCMeans
  */
-  public PossibilisticCMeans (double object[][],int clusterCount,int durchlauf){
+  public PossibilisticCMeans (double object[][],int clusterCount,int repeat){
     this.object=object;
     this.cluster=clusterCount;
     this.vi=new double[cluster][2];
     this.ni=new double[cluster];
-    this.durchlauf=durchlauf;
+    this.repeat=repeat;
   }
 /**
- * generiert ein PCM-Object aus einer Menge von Punkten
- * @param     object Objekte
- * @param     clusterCount Anzahl der Cluster
- * @param     durchlauf Anzahl der der PCM-Durchläufe bei der Bestimmung der Clusterzentren
- * @param     e Abbruchschwelle (Standard ist 1.0e-7)
+ * Generates PCM-Object from a set of Points
+ * @param     object Objects
+ * @param     clusterCount Number of clusters
+ * @param     repeat Number of PCM passes for determination of the cluster centers
+ * @param     e Termination threshold, initial value 1.0e-7
  * @see       FuzzyCMeans
  */
-  public PossibilisticCMeans (double object[][],int clusterCount,int durchlauf,double e){
+  public PossibilisticCMeans (double object[][],int clusterCount,int repeat,double e){
     this.object=object;
     this.cluster=clusterCount;
     this.vi=new double[cluster][2];
     this.ni=new double[cluster];
-    this.durchlauf=durchlauf;
+    this.repeat=repeat;
     this.e=e;
   }
 /**
- * liefert die Clusterzentren zurück
- * @param      returnPath bestimmt, ob der komplette Suchpfad zurückgeliefert wird. Werte: <code>true</code>, <code>false</code>
- * @return     Clusterzentren und Suchpfad (optional); Die Clusterzentren stehen am Ende.
+ * Returns the cluster centers
+ * @param      returnPath Determines whether return the complete search path. Values: <code>true</code>, <code>false</code>
+ * @return     Cluster centers and serarch path (optional); The cluster centers are at the end.
  */
-  public double[][] clusterzentrenBestimmen(boolean returnPath){
-    double euklidischerAbstand;
+  public double[][] determineClusterCenters(boolean returnPath){
+    double euclideanDistance;
     path=returnPath;
     Vector<Point2D> viPath = new Vector<Point2D>();
-// Schritt 1: Initialisierung
+//Step 1: Initialization
     FuzzyCMeans fcm;
     if(e==1.0e-7){
       fcm=new FuzzyCMeans(object,cluster);
@@ -107,12 +107,12 @@ public class PossibilisticCMeans {
     for(int v=0;v<getViPath.length;v++) viPath.add(new Point2D(getViPath[v][0],getViPath[v][1]));
     vi=fcm.getVi();
     double mik[][]=fcm.getMik();
-    do { //while (durchlauf>0)
-      durchlauf--;
+    do { //while (repeat>0)
+      repeat--;
       ni_calc=true;
-      do { //while (euklidischerAbstand>=e)
-  // Schritt 2: Bestimmung der Clusterzentren
-  // --> Schritt 5: optional - Wiederhole Berechnung (Schritte 2 bis 4)
+      do { //while (euclideanDistance>=e)
+  //Step 2: Determination of the cluster centers
+  // --> Step 5: optional - Repeat calculation (steps 2 to 4)
         for(int k=0;k<vi.length;k++) {
           double mikm=0.0,mikm0=0.0,mikm1=0.0,mikms=0.0;
           for(int i=0;i<mik.length;i++) {
@@ -124,21 +124,21 @@ public class PossibilisticCMeans {
           vi[k][0]=mikm0/mikms;
           vi[k][1]=mikm1/mikms;
         }
-        //Clusterpunkte aufzeichnen
+        //record cluster points
         if(path==true){
           for(int k=0;k<vi.length;k++) viPath.add(new Point2D(vi[k][0],vi[k][1]));
         }
-  // Schritt 3: Berechnen der neuen Partitionsmatrix
-        double mik_vorher[][]= new double [mik.length][cluster];
+  // Step 3: Calculate the new partition matrix and ni
+        double mik_before[][]= new double [mik.length][cluster];
         double miks[]= new double[vi.length];
         if(ni_calc==true) {
-          // ni berechnen (Abstand vom Clusterzentrum bis zum Punkt mit dem Zugehörigkeitswert 0.5 zum aktuellen Cluster)
-          // ni = 0
+          // Calulate ni (Distance from the class center to the point with a membership value of 0.5 to the actual cluster)
+          // initial ni = 0
           for(int i=0;i<vi.length;i++) {
             ni[i]=0.0;
             miks[i]=0.0;
           }
-          // ni = Summe mik²*dik²
+          // ni = sum mik²*dik²
           for(int i=0;i<mik.length;i++) {
             for(int k=0;k<vi.length;k++) {
               double dik=Math.sqrt(Math.pow(object[i][0]-vi[k][0],2)+Math.pow(object[i][1]-vi[k][1],2));
@@ -146,7 +146,7 @@ public class PossibilisticCMeans {
               miks[k]+=Math.pow(mik[i][k],2);
             }
           }
-          // ni = Summe(mik²*dik²) / Summe mik²
+          // ni = sum(mik²*dik²) / sum mik²
           for(int i=0;i<vi.length;i++) {
             ni[i]/=miks[i];
           }
@@ -154,26 +154,26 @@ public class PossibilisticCMeans {
         }
         for(int k=0;k<vi.length;k++) {
           for(int i=0;i<mik.length;i++) {
-            mik_vorher[i][k]=mik[i][k];
+            mik_before[i][k]=mik[i][k];
             mik[i][k]=1/(1+(Math.pow(Math.sqrt(Math.pow(object[i][0]-vi[k][0],2)
                                              + Math.pow(object[i][1]-vi[k][1],2)),2))/ni[k]);
           }
         }
-  // euklidischen Abstand berechnen
-        euklidischerAbstand=0.0;
+  //calculate euclidean distance
+        euclideanDistance=0.0;
         for(int k=0;k<vi.length;k++) {
           for(int i=0;i<mik.length;i++) {
-            euklidischerAbstand+=Math.pow((mik[i][k]-mik_vorher[i][k]),2);
+        	euclideanDistance+=Math.pow((mik[i][k]-mik_before[i][k]),2);
           }
         }
-        euklidischerAbstand=Math.sqrt(euklidischerAbstand);
+        euclideanDistance=Math.sqrt(euclideanDistance);
       }
-  // Schritt 4: Abbruch oder Wiederholung
-      while (euklidischerAbstand>=e);
+  //Step 4: Termination or repetition
+      while (euclideanDistance>=e);
     }
-    while (durchlauf>0);
+    while (repeat>0);
     getMik=mik;
-    //Wertrückgabe
+    //Value return
     if(path==true){
       double viPathCut[][]=new double [viPath.size()][2];
       for(int k=0;k<viPathCut.length;k++){
@@ -188,16 +188,14 @@ public class PossibilisticCMeans {
     }
   }
 /**
- * Liefert die Partitionsmatrix zurück. (Zugehörigkeitswerte des k-ten Elements zum i-ten Cluster)
- * Diese Funktion wird auch aus dem PossibilisticCMeans heraus aufgerufen.
- * @return Partitionsmatrix
+ * Returns the partition matrix (Membership values of the k-th object to the i-th cluster)
+ * @return Partition matrix
  */
   public double[][] getMik(){
     return getMik;
   }
 /**
- * erlaubt die Manipulation der Partitionsmatrix
- * @param setMik Partitionsmatrix
+ * Set partition matrix
  */
   public static void setMik(double setMik[][]){
     getMik=setMik;
