@@ -7,25 +7,35 @@ Display for clusters and cluster centers - Grafische Anzeige von Punktemengen un
 ![clusterfreak](https://http://clusterfreak.com/favicon.ico "clusterfreak")
 
 ### Version Information
-* ClusterGraphics v0.94.9 (22.09.2015)
+* ClusterGraphics v0.95.0 (01-24-2016)
 * ClusterBot v0.0.3 (28.12.2015)
-* ClusterData v0.0.1 (24.09.2015)
-* ClusterFile v0.0.5 (22.09.2015)
-* FuzzyCMeans v1.5.5 (28.12.2015)
-* PossibilisticCMeans v1.1.5 (28.12.2015)
-* Punkt2D v1.2.0 (28.12.2015)
+* ClusterData v0.1.0 (01-24-2016)
+* ClusterFile v0.1.0 (01-24-2016)
+* FuzzyCMeans v1.6.0 (01-24-2016)
+* PossibilisticCMeans v1.2.0 (01-24-2016)
+* Point2D v1.3.0 (01-24-2016)
 * * *
 ### Release Information
+v0.95.0
+* FuzzyCMeans v1.6.0, PossibilisticCMeans v1.2.0
+* ClusterData v0.1.0
+	* new initial values
+	* extended error handling
+* ClusterFile v0.1.0, Point2D v1.3.0
+	* stable release
+
 v0.94.9
 * download function for data file
 * UTF-8 text for unix support
 * fully integrate Error variable
 * colored headUpDisplay for important data
 * colum number in data tab misc
+* addPointPixelObject
 * application icon image
+* rename durchlauf to pass
 * ClusterFile v0.0.5 (22.09.2015)
 	* common functions moved to ClusterData
-* ClusterData v0.0.1 (24.09.2015)
+* ClusterData v0.0.2 (28.12.2015)
 * FuzzyCMeans v1.5.5 (28.12.2015)
 * Punkt2D v1.2.0 (28.12.2015)
 * ClusterBot v0.0.3 (28.12.2015)
@@ -51,7 +61,6 @@ v0.94.6
 * * *
 
 ### Ishues for GitHub
-* Durchlauf -> pass rename
 * get initial in verschiedenen int boolean Varianten, probieren, ob die richtige gezogen wird
 * ClusterBot Information sollte der nächste Große Schritt sein.
 * Wird File-Validate gewählt, dann wird ggf. die importierte Datei vorgeschlagen. Das würde zu einem Fehler führen.

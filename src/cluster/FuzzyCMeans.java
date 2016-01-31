@@ -10,7 +10,7 @@ import java.util.Vector;
  * Step 4: Termination or repetition
  * Step 5: optional - Repeat calculation (steps 2 to 4)</PRE>
  *
- * @version 1.5.5 (28.12.2015)
+ * @version 1.6.0 (01-24-2016)
  * @author Thomas Heym
  */
 public class FuzzyCMeans {
@@ -21,7 +21,7 @@ public class FuzzyCMeans {
 /**
  * Euclidean distance norm, exponent, initial value 2
  */
-  private static int m = 2;
+  private final static int m = 2;
 /**
  * Termination threshold, initial value 1.0e-7
  */
@@ -69,16 +69,29 @@ public class FuzzyCMeans {
  * @param      returnPath Determines whether return the complete search path. Values: <code>true</code>, <code>false</code>
  * @return     Cluster centers and serarch path (optional); The cluster centers are at the end.
  */
-  public double[][] determineClusterCenters(boolean returnPath){
+  public double[][] determineClusterCenters(boolean random, boolean returnPath){
     double euclideanDistance;
     double mik[][]= new double [object.length][cluster];
     path=returnPath;
     Vector<Point2D> viPath = new Vector<Point2D>();
 //Step 1: Initialization
-    for(int i = 0; i < mik.length; i++){
-      for(int k=0;k<cluster;k++){
-        mik[i][k] = Math.random();
-      }
+    if(random){
+    	for(int i = 0; i < mik.length; i++){
+    		for(int k=0;k<cluster;k++){
+    		mik[i][k] = Math.random();
+    		}
+    	}
+    }
+    else{
+    	int s=0;
+    	for(int i = 0; i < mik.length; i++){
+    		for(int k=0;k<cluster;k++){
+    			if(k==s)mik[i][k] = 1;
+    			else mik[i][k] = 0.0;
+    		}
+    		s++;
+    		if(s==cluster)s=0;
+    	}
     }
     do {
 //Step 2: Determination of the cluster centers
