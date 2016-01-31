@@ -1,14 +1,17 @@
 package cluster;
+
+import javax.swing.JOptionPane;
+
 /**
  * Cluster meta data
- * @version 0.0.2 (28.12.2015)
+ * @version 0.1.0 (01-24-2016)
  * @author Thomas Heym
  */
 public class ClusterData {
-	public static int length = 36;
-    public static int number[] = {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35};
-    public static String type[] = {"boolean","int","int","boolean","int","int","double","String","double","double","boolean","boolean","int","double","double","boolean","boolean","boolean","boolean","boolean","boolean","boolean","boolean","boolean","String","int","String","String","String","String","String","boolean","ClusterFile","ClusterBot","boolean","boolean"};
-    public static String name[] = {"pixel","pixelDim","pixelOffset","pixelOriginal","cluster","objects","object","objectDescription","vi","viPath","pathOption","descriptionDisplay","repeat","mik","e","calculate","fuzzyCMeans","possibilisticCMeans","sortCluster","fivtyFivtyJoker","clusterMax","pixelObject","pixelVi","pixelViPath","pixelString","zoom","title","version","jahr","titleString","ready","clusterfreak","clusterFile","clusterBot","error","headUpDisplay"};
+	public static int length = 37;
+    public static int number[] = {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36};
+    public static String type[] = {"boolean","int","int","boolean","int","int","double","String","double","double","boolean","boolean","int","double","double","boolean","boolean","boolean","boolean","boolean","boolean","boolean","boolean","boolean","String","int","String","String","String","String","String","boolean","ClusterFile","ClusterBot","boolean","boolean","boolean"};
+    public static String name[] = {"pixel","pixelDim","pixelOffset","pixelOriginal","cluster","objects","object","objectDescription","vi","viPath","pathOption","descriptionDisplay","repeat","mik","e","calculate","fuzzyCMeans","possibilisticCMeans","sortCluster","fivtyFivtyJoker","clusterMax","pixelObject","pixelVi","pixelViPath","pixelString","zoom","title","version","jahr","titleString","ready","clusterfreak","clusterFile","clusterBot","error","headUpDisplay","random"};
     public static String description[] = {
     		"General importance for conversion and saving",
     		"Pixel resolution",
@@ -45,23 +48,24 @@ public class ClusterData {
     		"Variables",
     		"Cluster bot memory",
     		"Error status from quickCheck()",
-    		"Head up display"};
-    public static String initial[] = {"true","2","100","true","0","0","null","[0]","[0][2]","null","false","false","1","[0][0]","1.0e-7","false","false","false","true","false","false","[100]","[100]","[100]","0","5","","0.94.9","2015","ClusterGraphics "+"0.94.9"+" ©"+"2015"+" Thomas Heym - "," ready","{...","false","0","false","true"};
-    public static String gui[] = {"Menü pixelMode","Data misc","Data misc","","Data misc","Data misc","Data object","Data objectDescription","Data vi","Data viPath","Menü pathOption","Menü descriptionDisplay","Data misc","Data mik","Data misc","Data misc","Data misc","Data misc","Data misc","Data misc","Data misc","pixelObject","pixelVi","pixelViPath","Data pixelString","Data misc","Data misc","Data misc","Data misc","Data misc","Data misc","Data misc","","","Data misc","Data misc"};
-    public static String set[] = {"public","public","-","private","public","-","public","private","private","private","public","public","public","private","public","private","private","private","private","private","private","private","private","private","private","private","public","-","-","-","-","-","-","-","private","private"};
-    public static String get[] = {"public","public","private","private","public","private","public","private","public","private","public","public","public","public","public","private","private","private","private","private","private","private","private","private","private","private","public","-","-","-","-","-","-","-","private","private"};
-    public static String edit[] = {"x","x","-","-","x","-","","-","","","x","x","","","x","x","","","","","","","","","","x","x","-","-","-","-","-","-","-","-","x"};
-    public static String save[] = {"x","x","-","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","-","-","-","-","-","x","x"};
-    public static String load[] = {"x","x","-","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","-","-","-","-","-","x","x"};
-    public static String nameCapital[] = {"Pixel","PixelDim","PixelOffset","PixelOriginal","Cluster","Objects","Object","ObjectDescription","Vi","ViPath","PathOption","DescriptionDisplay","Repeat","Mik","E","Calculate","FuzzyCMeans","PossibilisticCMeans","SortCluster","FivtyFivtyJoker","ClusterMax","PixelObject","PixelVi","PixelViPath","PixelString","Zoom","Title","Version","Jahr","TitleString","Ready","Clusterfreak","ClusterFile","ClusterBot","Error","HeadUpDisplay"};
-    public static String nameExtended[] = {"pixel","pixelDim","pixelOffset","pixelOriginal","cluster","objects","object[][]","objectDescription[]","vi[][]","viPath[][]","pathOption","descriptionDisplay","repeat","mik[][]","e","calculate","fuzzyCMeans","possibilisticCMeans","sortCluster","fivtyFivtyJoker","clusterMax","pixelObject[][]","pixelVi[][]","pixelViPath[][]","pixelString[]","zoom","title","version","jahr","titleString","ready","clusterfreak","clusterFile","clusterBot","error","headUpDisplay"};
-    public static String indexString2[] = {"00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35"};
-    public static boolean data[] = {false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,true,false,false,false,false,false,false,false,false};
+    		"Head up display",
+    		"Random ...."};
+    public static String initial[] = {"true","2","100","true","0","0","null","[0]","[0][2]","null","false","false","1","[0][0]","1.0e-7","false","false","false","true","false","false","[100]","[100]","[100]","0","5","","0.95.0","2016","ClusterGraphics "+"0.95.0"+" ©"+"2016"+" Thomas Heym - "," ready","{...","false","0","false","true","true"};
+    public static String gui[] = {"Menü pixelMode","Data misc","Data misc","","Data misc","Data misc","Data object","Data objectDescription","Data vi","Data viPath","Menü pathOption","Menü descriptionDisplay","Data misc","Data mik","Data misc","Data misc","Data misc","Data misc","Data misc","Data misc","Data misc","pixelObject","pixelVi","pixelViPath","Data pixelString","Data misc","Data misc","Data misc","Data misc","Data misc","Data misc","Data misc","","","Data misc","Data misc",""};
+    public static String set[] = {"public","public","-","private","public","-","public","private","private","private","public","public","public","private","public","private","private","private","private","private","private","private","private","private","private","private","public","-","-","-","-","-","-","-","private","private","private"};
+    public static String get[] = {"public","public","private","private","public","private","public","private","public","private","public","public","public","public","public","private","private","private","private","private","private","private","private","private","private","private","public","-","-","-","-","-","-","-","private","private","private"};
+    public static String edit[] = {"x","x","-","-","x","-","","-","","","x","x","","","x","x","","","","","","","","","","x","x","-","-","-","-","-","-","-","-","x","x"};
+    public static String save[] = {"x","x","-","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","-","-","-","-","-","x","x","-"};
+    public static String load[] = {"x","x","-","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","-","-","-","-","-","x","x","-"};
+    public static String nameCapital[] = {"Pixel","PixelDim","PixelOffset","PixelOriginal","Cluster","Objects","Object","ObjectDescription","Vi","ViPath","PathOption","DescriptionDisplay","Repeat","Mik","E","Calculate","FuzzyCMeans","PossibilisticCMeans","SortCluster","FivtyFivtyJoker","ClusterMax","PixelObject","PixelVi","PixelViPath","PixelString","Zoom","Title","Version","Jahr","TitleString","Ready","Clusterfreak","ClusterFile","ClusterBot","Error","HeadUpDisplay","Random"};
+    public static String nameExtended[] = {"pixel","pixelDim","pixelOffset","pixelOriginal","cluster","objects","object[][]","objectDescription[]","vi[][]","viPath[][]","pathOption","descriptionDisplay","repeat","mik[][]","e","calculate","fuzzyCMeans","possibilisticCMeans","sortCluster","fivtyFivtyJoker","clusterMax","pixelObject[][]","pixelVi[][]","pixelViPath[][]","pixelString[]","zoom","title","version","jahr","titleString","ready","clusterfreak","clusterFile","clusterBot","error","headUpDisplay","random"};
+    public static String indexString2[] = {"00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36"};
+    public static boolean data[] = {false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,true,false,false,false,false,false,false,false,false,false};
     
     /**
-     * liefert den extended String der Variable
+     * Get the extended string for the variable
      * @param variable
-     * @return
+     * @return extended string
      */
         public static String getNameExtended(String variable){
         	String s="?";
@@ -79,9 +83,9 @@ public class ClusterData {
         }
     
 	/**
-	 * liefert den String der Variable
+	 * Get the string for the variable
 	 * @param variable
-	 * @return
+	 * @return string
 	 */
 	    public static String getName(String variable){
 	    	String s="?";
@@ -99,7 +103,7 @@ public class ClusterData {
 	    }
 	    
 	/**
-	 * liefert Index der Variable als String (2 Zeichen)
+	 * Get the index for the variable as a string value (2 characters)
 	 * @param variable
 	 * @return Index String
 	 */
@@ -119,7 +123,7 @@ public class ClusterData {
 	    }
 	
 	/**
-	 * liefert Index der Variable als Integer
+	 * Get the index of a variable as an integer value
 	 * @param variable
 	 * @return Index Integer
 	 */
@@ -139,12 +143,33 @@ public class ClusterData {
 	    }
 
 	/**
-	 *     Fehler abfangen !!!!!!!!
+	 * Get initial value for available data
 	 * @param variable
-	 * @return
+	 * @return data true/false
 	 */
 	    public static boolean getData(String variable){
-	    	int i=getIndexInt(variable);
-	    	return ClusterData.data[i];
+	    	boolean ok=false;
+	    	for(int i=0;i<name.length;i++)if(name[i].equals(variable)){
+	    		ok=true;
+	    		break;
+	    	}
+	    	if(ok){
+	    		int i=getIndexInt(variable);
+	    		return ClusterData.data[i];
+	    	}
+	    	else{
+	    		for(int i=0;i<nameCapital.length;i++)if(nameCapital[i].equals(variable)){
+            		ok=true;
+            		break;
+            	}
+	    		if(ok){
+	    			int i=getIndexInt(variable);
+		    		return ClusterData.data[i];
+	    		}
+	    		else{
+	    			JOptionPane.showConfirmDialog (null,"Internal Error - Variable not found","ClusterData.getData",JOptionPane.CLOSED_OPTION,JOptionPane.ERROR_MESSAGE);
+	    			return false;
+	    		}	
+	    	}
 	    }
 }

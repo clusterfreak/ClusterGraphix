@@ -59,7 +59,7 @@ import javax.xml.stream.events.Attribute;
 /**
  * Cluster Graphics<P>
  * Display of objects and clusters with integrated cluster analysis
- * @version 0.94.9 (22.09.2015)
+ * @version 0.95.0 (01-24-2016)
  * @author Thomas Heym
  */
 public class ClusterGraphics extends JPanel implements ActionListener{
@@ -309,6 +309,10 @@ public class ClusterGraphics extends JPanel implements ActionListener{
  */
   private boolean headUpDisplay;
 /**
+ * ....
+ */
+  private boolean random;
+/**
  * Main frame
  */
   private JFrame f;
@@ -344,6 +348,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   private JRadioButtonMenuItem clusterMenuSetPossibilisticCMeans = new JRadioButtonMenuItem("PossibilisticCMeans",false);
   private ButtonGroup clusterButtonGroupSet1=new ButtonGroup();
   private JMenuItem clusterMenuSetRepeat=new JMenuItem("repeat");
+  private JCheckBoxMenuItem clusterMenuSetRandom=new JCheckBoxMenuItem("random",true);
   private JCheckBoxMenuItem clusterMenuSetSortCluster=new JCheckBoxMenuItem("SortCluster",true);
   private JRadioButtonMenuItem clusterMenuSetFivtyFivtyJoker=new JRadioButtonMenuItem("FivtyFivtyJoker",false);
   private JRadioButtonMenuItem clusterMenuSetClusterMax=new JRadioButtonMenuItem("ClusterMax",false);
@@ -624,6 +629,12 @@ public class ClusterGraphics extends JPanel implements ActionListener{
     clusterButtonGroupSet1.add(clusterMenuSetPossibilisticCMeans);
     clusterMenuSet.add(clusterMenuSetRepeat);
     clusterMenuSetRepeat.addActionListener(this);
+    clusterMenuSet.add(clusterMenuSetRandom);
+    clusterMenuSetRandom.addItemListener(new ItemListener() {
+        public void itemStateChanged(ItemEvent e) {
+        	setRandom(clusterMenuSetRandom.isSelected());
+        }
+      });
     clusterMenuSet.addSeparator();
     clusterMenuSet.add(clusterMenuSetSortCluster);
     clusterMenuSetSortCluster.addItemListener(new ItemListener() {
@@ -1187,6 +1198,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
       if(clusterBot!=null)miscData[33][3]="["+String.valueOf(clusterBot.length)+"]";else miscData[33][3]="[null]";
       miscData[34][3]=String.valueOf(getError());
       miscData[35][3]=String.valueOf(getHeadUpDisplay());
+      miscData[36][3]=String.valueOf(getRandom());
       miscTable=new JTable(miscData,miscColHeads);
       miscScrollPane.setViewportView(miscTable);
 //object
@@ -1809,6 +1821,24 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   private boolean getPossibilisticCMeans(){
 	  return possibilisticCMeans;
   }
+
+/**
+ * Set random  
+ * @param random
+ */
+  private void setRandom(boolean random){
+	  this.random=random;
+	  this.clusterMenuSetRandom.setSelected(random);
+	  if(random)clusterFile.setData("Random",false);else clusterFile.setData("Random",true);
+  }
+  
+/**
+ * Get random  
+ * @return
+ */
+  private boolean getRandom(){
+	  return random;
+  }
   
 /**
  * Set flag for sorting matrixes mik, object, vi with objectDescription in cluster sequence
@@ -2090,8 +2120,8 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 	  setPossibilisticCMeans(false);
 	  clusterMenuSetFuzzyCMeans.setSelected(true);
 	  FuzzyCMeans fcm=new FuzzyCMeans(getObject(), getCluster(), getE());
-	  setVi(fcm.determineClusterCenters(false));
-	  if(getPathOption())setViPath(fcm.determineClusterCenters(true));
+	  setVi(fcm.determineClusterCenters(random, false));
+	  if(getPathOption())setViPath(fcm.determineClusterCenters(random, true));
 	  else setViPath(null);
 	  setMik(fcm.getMik());
 	  fcm=null;
@@ -2106,8 +2136,8 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 	  setPossibilisticCMeans(true);
 	  clusterMenuSetPossibilisticCMeans.setSelected(true);
 	  PossibilisticCMeans pcm=new PossibilisticCMeans(getObject(), getCluster(), getRepeat(), getE());
-	  setVi(pcm.determineClusterCenters(false));
-	  if(getPathOption())setViPath(pcm.determineClusterCenters(true));
+	  setVi(pcm.determineClusterCenters(random, false));
+	  if(getPathOption())setViPath(pcm.determineClusterCenters(random, true));
 	  else setViPath(null);
 	  setMik(pcm.getMik());
 	  pcm=null;
@@ -3032,6 +3062,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 	  setError(false);//34
 	  clusterFile.setInitial("Error");//34
 	  setHeadUpDisplay(true);//35
+	  setRandom(true);//36
 //user interface reset
 	  this.miscTable=null;
 	  this.objectTable=null;

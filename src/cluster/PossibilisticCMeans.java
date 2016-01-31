@@ -10,7 +10,7 @@ import java.util.Vector;
  * Step 4: Termination or repetition
  * Step 5: optional - Repeat calculation (steps 2 to 4)</PRE>
  *
- * @version 1.1.5 (28.12.2015)
+ * @version 1.2.0 (01-24-2016)
  * @author Thomas Heym
  * @see FuzzyCMeans
  */
@@ -22,7 +22,7 @@ public class PossibilisticCMeans {
 /**
  * Euclidean distance norm, exponent, initial value 2
  */
-  private static int m = 2;
+  private final static int m = 2;
 /**
  * Termination threshold, initial value 1.0e-7
  */
@@ -91,7 +91,7 @@ public class PossibilisticCMeans {
  * @param      returnPath Determines whether return the complete search path. Values: <code>true</code>, <code>false</code>
  * @return     Cluster centers and serarch path (optional); The cluster centers are at the end.
  */
-  public double[][] determineClusterCenters(boolean returnPath){
+  public double[][] determineClusterCenters(boolean random, boolean returnPath){
     double euclideanDistance;
     path=returnPath;
     Vector<Point2D> viPath = new Vector<Point2D>();
@@ -103,7 +103,7 @@ public class PossibilisticCMeans {
     else{
       fcm=new FuzzyCMeans(object,cluster,e);
     }
-    double getViPath[][]=fcm.determineClusterCenters(true);
+    double getViPath[][]=fcm.determineClusterCenters(random, true);
     for(int v=0;v<getViPath.length;v++) viPath.add(new Point2D(getViPath[v][0],getViPath[v][1]));
     vi=fcm.getVi();
     double mik[][]=fcm.getMik();
