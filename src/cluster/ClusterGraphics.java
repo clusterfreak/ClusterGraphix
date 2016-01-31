@@ -321,57 +321,57 @@ public class ClusterGraphics extends JPanel implements ActionListener{
  * Menu main frame
  */
   private final JMenuBar clusterMenu=new JMenuBar();
-  private JMenu clusterMenuFile=new JMenu("File");
-  private JMenuItem clusterMenuFileOpen=new JMenuItem("Open");
-  private JMenuItem clusterMenuFileSave=new JMenuItem("Save");
-  private JMenuItem clusterMenuFileValidate=new JMenuItem("Validate");
-  private JMenuItem clusterMenuFileImport=new JMenuItem("Import");
-  private JMenuItem clusterMenuFileExport=new JMenuItem("Export");
-  private JMenu clusterMenuView=new JMenu("View");
-  private JCheckBoxMenuItem clusterMenuViewPixelMode=new JCheckBoxMenuItem("PixelMode",true);
-  private JCheckBoxMenuItem clusterMenuViewPathOption=new JCheckBoxMenuItem("pathOption",false);
-  private JCheckBoxMenuItem clusterMenuViewDescriptionDisplay=new JCheckBoxMenuItem("descriptionDisplay",false);
-  private JCheckBoxMenuItem clusterMenuViewHeadUpDisplay=new JCheckBoxMenuItem("headUpDisplay",true);
-  private JMenuItem clusterMenuViewRefresh=new JMenuItem("refresh");
-  private JMenu clusterMenuZoom=new JMenu("Zoom");
-  private JMenuItem clusterMenuZoomDefault=new JMenuItem("default");
-  private JMenuItem clusterMenuZoomOut=new JMenuItem("+");
-  private JMenuItem clusterMenuZoomIn=new JMenuItem("-");
-  private JMenu clusterMenuData=new JMenu("Data");
-  private JMenuItem clusterMenuDataShow=new JMenuItem("Show");
-  private JMenuItem clusterMenuDataCheck=new JMenuItem("Check");
-  private JMenu clusterMenuSet=new JMenu("Set");
-  private JMenuItem clusterMenuSetPixelDim=new JMenuItem("pixelDim");
-  private JMenuItem clusterMenuSetCluster=new JMenuItem("cluster");
-  private JMenuItem clusterMenuSetE=new JMenuItem("e");
-  private JRadioButtonMenuItem clusterMenuSetFuzzyCMeans=new JRadioButtonMenuItem("FuzzyCMeans",false);
-  private JRadioButtonMenuItem clusterMenuSetPossibilisticCMeans = new JRadioButtonMenuItem("PossibilisticCMeans",false);
-  private ButtonGroup clusterButtonGroupSet1=new ButtonGroup();
-  private JMenuItem clusterMenuSetRepeat=new JMenuItem("repeat");
-  private JCheckBoxMenuItem clusterMenuSetRandom=new JCheckBoxMenuItem("random",true);
-  private JCheckBoxMenuItem clusterMenuSetSortCluster=new JCheckBoxMenuItem("SortCluster",true);
-  private JRadioButtonMenuItem clusterMenuSetFivtyFivtyJoker=new JRadioButtonMenuItem("FivtyFivtyJoker",false);
-  private JRadioButtonMenuItem clusterMenuSetClusterMax=new JRadioButtonMenuItem("ClusterMax",false);
-  private ButtonGroup clusterButtonGroupSet2=new ButtonGroup();
-  private JMenuItem clusterMenuSetTitle=new JMenuItem("title");
-  private JMenu clusterMenuTools=new JMenu("Tools");
-  private JMenuItem clusterMenuToolsError=new JMenuItem("Error");
-  private JMenuItem clusterMenuToolsAddPoint=new JMenuItem("Add Point");
-  private JMenuItem clusterMenuToolsDelete=new JMenuItem("Delete Cluster");
-  private JMenuItem clusterMenuToolsDeleteNotAssigned=new JMenuItem("Delete not assigned");
-  private JMenuItem clusterMenuToolsClearAll=new JMenuItem("Clear All");
-  private JMenu clusterMenuHelp=new JMenu("?");
-  private JMenuItem clusterMenuHelpDataFile=new JMenuItem("DataFile");
-  private JMenuItem clusterMenuHelpInfo=new JMenuItem("Info");
-  private JToolBar clusterToolBar=new JToolBar("ClusterGraphics");
-  private JButton clusterButtonCalculate=new JButton("Calculate");
-  private JButton clusterButtonError=new JButton("Error");
-  private ThreadGroup clusterThreadGroup = new ThreadGroup( "CusterTreadGroup" );
-  private JFileChooser clusterChooser=new JFileChooser();
+  private final JMenu clusterMenuFile=new JMenu("File");
+  private final JMenuItem clusterMenuFileOpen=new JMenuItem("Open");
+  private final JMenuItem clusterMenuFileSave=new JMenuItem("Save");
+  private final JMenuItem clusterMenuFileValidate=new JMenuItem("Validate");
+  private final JMenuItem clusterMenuFileImport=new JMenuItem("Import");
+  private final JMenuItem clusterMenuFileExport=new JMenuItem("Export");
+  private final JMenu clusterMenuView=new JMenu("View");
+  private final JCheckBoxMenuItem clusterMenuViewPixelMode=new JCheckBoxMenuItem("PixelMode",true);
+  private final JCheckBoxMenuItem clusterMenuViewPathOption=new JCheckBoxMenuItem("pathOption",false);
+  private final JCheckBoxMenuItem clusterMenuViewDescriptionDisplay=new JCheckBoxMenuItem("descriptionDisplay",false);
+  private final JCheckBoxMenuItem clusterMenuViewHeadUpDisplay=new JCheckBoxMenuItem("headUpDisplay",true);
+  private final JMenuItem clusterMenuViewRefresh=new JMenuItem("refresh");
+  private final JMenu clusterMenuZoom=new JMenu("Zoom");
+  private final JMenuItem clusterMenuZoomDefault=new JMenuItem("default");
+  private final JMenuItem clusterMenuZoomOut=new JMenuItem("+");
+  private final JMenuItem clusterMenuZoomIn=new JMenuItem("-");
+  private final JMenu clusterMenuData=new JMenu("Data");
+  private final JMenuItem clusterMenuDataShow=new JMenuItem("Show");
+  private final JMenuItem clusterMenuDataCheck=new JMenuItem("Check");
+  private final JMenu clusterMenuSet=new JMenu("Set");
+  private final JMenuItem clusterMenuSetPixelDim=new JMenuItem("pixelDim");
+  private final JMenuItem clusterMenuSetCluster=new JMenuItem("cluster");
+  private final JMenuItem clusterMenuSetE=new JMenuItem("e");
+  private final JRadioButtonMenuItem clusterMenuSetFuzzyCMeans=new JRadioButtonMenuItem("FuzzyCMeans",false);
+  private final JRadioButtonMenuItem clusterMenuSetPossibilisticCMeans = new JRadioButtonMenuItem("PossibilisticCMeans",false);
+  private final ButtonGroup clusterButtonGroupSet1=new ButtonGroup();
+  private final JMenuItem clusterMenuSetRepeat=new JMenuItem("repeat");
+  private final JCheckBoxMenuItem clusterMenuSetRandom=new JCheckBoxMenuItem("random",true);
+  private final JCheckBoxMenuItem clusterMenuSetSortCluster=new JCheckBoxMenuItem("SortCluster",true);
+  private final JRadioButtonMenuItem clusterMenuSetFivtyFivtyJoker=new JRadioButtonMenuItem("FivtyFivtyJoker",false);
+  private final JRadioButtonMenuItem clusterMenuSetClusterMax=new JRadioButtonMenuItem("ClusterMax",false);
+  private final ButtonGroup clusterButtonGroupSet2=new ButtonGroup();
+  private final JMenuItem clusterMenuSetTitle=new JMenuItem("title");
+  private final JMenu clusterMenuTools=new JMenu("Tools");
+  private final JMenuItem clusterMenuToolsError=new JMenuItem("Error");
+  private final JMenuItem clusterMenuToolsAddPoint=new JMenuItem("Add Point");
+  private final JMenuItem clusterMenuToolsDelete=new JMenuItem("Delete Cluster");
+  private final JMenuItem clusterMenuToolsDeleteNotAssigned=new JMenuItem("Delete not assigned");
+  private final JMenuItem clusterMenuToolsClearAll=new JMenuItem("Clear All");
+  private final JMenu clusterMenuHelp=new JMenu("?");
+  private final JMenuItem clusterMenuHelpDataFile=new JMenuItem("DataFile");
+  private final JMenuItem clusterMenuHelpInfo=new JMenuItem("Info");
+  private final JToolBar clusterToolBar=new JToolBar("ClusterGraphics");
+  private final JButton clusterButtonCalculate=new JButton("Calculate");
+  private final JButton clusterButtonError=new JButton("Error");
+  private final ThreadGroup clusterThreadGroup = new ThreadGroup( "CusterTreadGroup" );
+  private final JFileChooser clusterChooser=new JFileChooser();
 /**
  * FileFilter for XML-files
  */
-  private javax.swing.filechooser.FileFilter clusterFileFilterXML=new javax.swing.filechooser.FileFilter(){
+  private final javax.swing.filechooser.FileFilter clusterFileFilterXML=new javax.swing.filechooser.FileFilter(){
 	  public boolean accept(File filen) {
 	      if (filen.isDirectory()) return true;
 	      return filen.getName().toLowerCase().endsWith(".xml");
@@ -381,7 +381,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 /**
  * FileFilter for PBA-files
  */
-  private javax.swing.filechooser.FileFilter clusterFileFilterPBM=new javax.swing.filechooser.FileFilter(){
+  private final javax.swing.filechooser.FileFilter clusterFileFilterPBM=new javax.swing.filechooser.FileFilter(){
     public boolean accept(File filen) {
   	    if (filen.isDirectory()) return true;
   	    return filen.getName().toLowerCase().endsWith(".pbm");
@@ -391,14 +391,14 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 /**
  * Status bar main frame
  */
-  private JLabel clusterStatus=new JLabel();
+  private final JLabel clusterStatus=new JLabel();
 /**
  * FileValidation frame
  */
   private JFrame fValidate;
-  private JPanel validatePanel=new JPanel();
-  private JScrollPane validateScrollPane=new JScrollPane();
-  private String[] validateColHeads={"Typ","Variable","Daten","Datei"};
+  private final JPanel validatePanel=new JPanel();
+  private final JScrollPane validateScrollPane=new JScrollPane();
+  private final String[] validateColHeads={"Typ","Variable","Daten","Datei"};
   private JTable validateTable=new JTable();
 /**
  * Data frame
@@ -449,9 +449,9 @@ public class ClusterGraphics extends JPanel implements ActionListener{
  * Check report frame
  */
   private JFrame fCheck; 
-  private JScrollPane checkScrollPane=new JScrollPane();
-  private JTextArea checkTextArea=new JTextArea();
-  private GregorianCalendar clusterCalendar=new GregorianCalendar();
+  private final JScrollPane checkScrollPane=new JScrollPane();
+  private final JTextArea checkTextArea=new JTextArea();
+  private final GregorianCalendar clusterCalendar=new GregorianCalendar();
   private DateFormat clusterDateFormat=DateFormat.getDateInstance(DateFormat.SHORT);
   
 /**
@@ -495,7 +495,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 /**
  * Generation of GUI
  */
-  private void clusterGraphicsGenerator(){
+  private final void clusterGraphicsGenerator(){
     //Main frame
     f = new JFrame(titleString+getTitle());
     try{
