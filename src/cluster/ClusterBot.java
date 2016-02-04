@@ -1,7 +1,7 @@
 package cluster;
 /**
  * Cluster structure
- * @version 0.0.3 (28.12.2015)
+ * @version 0.1.0 (01-24-2016)
  * @author Thomas Heym
  */
 public class ClusterBot {
