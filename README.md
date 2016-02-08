@@ -17,6 +17,7 @@ Display for clusters and cluster centers - Grafische Anzeige von Punktemengen un
 * * *
 ### Release Information
 v0.95.0
+* clusterBot-Info at the end of the check report
 * FuzzyCMeans v1.6.0, PossibilisticCMeans v1.2.0
 * ClusterData v0.1.0
 	* new initial values
