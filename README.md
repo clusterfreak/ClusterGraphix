@@ -62,7 +62,6 @@ v0.94.6
 
 ### Ishues for GitHub
 * get initial in verschiedenen int boolean Varianten, probieren, ob die richtige gezogen wird
-* ClusterBot Information sollte der nächste Große Schritt sein.
 * Wird File-Validate gewählt, dann wird ggf. die importierte Datei vorgeschlagen. Das würde zu einem Fehler führen.
 * Der Dateiname sollte hier gelöscht werden.
 * Die Schriftart Hack sollte nun endlich mal überall installiert werden. So kann man gleich mal Erfahrungen mit ttf sammeln
