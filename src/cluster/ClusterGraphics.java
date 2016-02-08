@@ -3300,6 +3300,13 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 	  checkTextArea.append(clusterDateFormat.format(clusterCalendar.getTime())+"\n");
 	  if(checkTextArea.getText().contains("error"))checkTextArea.append(" error\n");
 	  else checkTextArea.append(" ok\n");
+	  //clusterBot-Info
+	  checkTextArea.append("clusterBot-Info\n");
+	  if(clusterFile.getData("clusterBot")){
+		  for(int i=0;i<clusterBot.length;i++){
+			  checkTextArea.append(clusterBot[i].getNumber()+" - "+clusterBot[i].getName()+" ("+clusterBot[i].getPoints()+" Points, x="+clusterBot[i].getCenter().x+", y="+clusterBot[i].getCenter().y+")\n");
+		  }
+	  }
   }
 
 /**
