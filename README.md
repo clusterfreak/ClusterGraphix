@@ -8,7 +8,7 @@ Display for clusters and cluster centers - Grafische Anzeige von Punktemengen un
 
 ### Version Information
 * ClusterGraphics v0.95.0 (01-24-2016)
-* ClusterBot v0.0.3 (28.12.2015)
+* ClusterBot v0.1.0 (01-24-2016)
 * ClusterData v0.1.0 (01-24-2016)
 * ClusterFile v0.1.0 (01-24-2016)
 * FuzzyCMeans v1.6.0 (01-24-2016)
@@ -21,7 +21,7 @@ v0.95.0
 * ClusterData v0.1.0
 	* new initial values
 	* extended error handling
-* ClusterFile v0.1.0, Point2D v1.3.0
+* ClusterFile v0.1.0, Point2D v1.3.0, ClusterBot v0.1.0
 	* stable release
 
 v0.94.9
@@ -66,3 +66,4 @@ v0.94.6
 * Wird File-Validate gewählt, dann wird ggf. die importierte Datei vorgeschlagen. Das würde zu einem Fehler führen.
 * Der Dateiname sollte hier gelöscht werden.
 * Die Schriftart Hack sollte nun endlich mal überall installiert werden. So kann man gleich mal Erfahrungen mit ttf sammeln
+* ...
