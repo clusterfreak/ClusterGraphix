@@ -66,4 +66,3 @@ v0.94.6
 * Wird File-Validate gewählt, dann wird ggf. die importierte Datei vorgeschlagen. Das würde zu einem Fehler führen.
 * Der Dateiname sollte hier gelöscht werden.
 * Die Schriftart Hack sollte nun endlich mal überall installiert werden. So kann man gleich mal Erfahrungen mit ttf sammeln
-* ...
