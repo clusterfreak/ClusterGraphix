@@ -1,7 +1,6 @@
 # Cluster
 **Cluster Graphics**
 Display for clusters and cluster centers - Grafische Anzeige von Punktemengen und Klassenzentren  
-(start GitHub with Branch *V0.94.9* on *17.09.2015*)
 
 **&copy; Thomas Heym - clusterfreak** (cF) clstrfrk
 ![clusterfreak](https://http://clusterfreak.com/favicon.ico "clusterfreak")
@@ -14,16 +13,24 @@ Display for clusters and cluster centers - Grafische Anzeige von Punktemengen un
 * FuzzyCMeans v1.6.0 (01-24-2016)
 * PossibilisticCMeans v1.2.0 (01-24-2016)
 * Point2D v1.3.0 (01-24-2016)
+* PointPixel v1.0.0 (01-24-2016)
 * * *
 ### Release Information
 v0.95.0
 * clusterBot-Info at the end of the check report
-* FuzzyCMeans v1.6.0, PossibilisticCMeans v1.2.0
 * ClusterData v0.1.0
 	* new initial values
 	* extended error handling
-* ClusterFile v0.1.0, Point2D v1.3.0, ClusterBot v0.1.0
+* FuzzyCMeans v1.6.0
+	* if NaN-Error mik=1.0
+* PossibilisticCMeans v1.2.0, ClusterFile v0.1.0
 	* stable release
+* ClusterBot v0.1.0
+	* add pointPixel[] and centerPixel
+* Point2D v1.3.0
+	* new function toPointPixel(int pixelOffset)
+* PointPixel v1.0.0
+	* new class for ClusterBot
 
 v0.94.9
 * download function for data file
@@ -41,6 +48,7 @@ v0.94.9
 * Punkt2D v1.2.0 (28.12.2015)
 * ClusterBot v0.0.3 (28.12.2015)
 * PossibilisticCMeans v1.1.5 (28.12.2015)
+* start GitHub with Branch *V0.94.9* on *17.09.2015*
 
 v0.94.8
 * Error-Button function
@@ -66,4 +74,5 @@ v0.94.6
 * Wird File-Validate gewählt, dann wird ggf. die importierte Datei vorgeschlagen. Das würde zu einem Fehler führen.
 * Der Dateiname sollte hier gelöscht werden.
 * Die Schriftart Hack sollte nun endlich mal überall installiert werden. So kann man gleich mal Erfahrungen mit ttf sammeln
-* ...
+* Beim laden ist vi und viPath daten markiert
+* add Point setzt pixelOriginal nicht

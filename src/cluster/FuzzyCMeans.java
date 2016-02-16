@@ -124,6 +124,8 @@ public class FuzzyCMeans {
           mik[i][k]=Math.pow(1/(Math.sqrt(Math.pow(object[i][0]-vi[k][0],2)
                                         + Math.pow(object[i][1]-vi[k][1],2))),1/(m-1))
                       /dik;
+          //NaN-Error
+          if(Double.isNaN(mik[i][k]))mik[i][k]=1.0;
         }
       }
 //calculate euclidean distance

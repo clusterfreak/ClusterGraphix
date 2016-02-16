@@ -1455,20 +1455,26 @@ public class ClusterGraphics extends JPanel implements ActionListener{
       }
       //HeadUpDisplay
       if(getHeadUpDisplay()){
-    	  //cluster
-    	  int x=5; int y=15; int z=15;
-    	  if(getPixel())g2.setColor(Color.green);else g2.setColor(Color.red);
+    	  int x=5; int y=15; int z=15;//00 pixel
+    	  if(clusterFile.getData("pixel"))g2.setColor(Color.green);else g2.setColor(Color.red);
     	  g2.drawString(ClusterData.getIndexString2("pixel")+" "+ClusterData.getName("pixel"),x,y); 
-    	  y=y+z;
+    	  y=y+z;//03 pixelOriginal
+    	  if(clusterFile.getData("pixelOriginal"))g2.setColor(Color.green);else g2.setColor(Color.red);
+    	  g2.drawString(ClusterData.getIndexString2("pixelOriginal")+" "+ClusterData.getName("pixelOriginal"),x,y);
+    	  y=y+z;//04 cluster
     	  if(clusterFile.getData("Cluster"))g2.setColor(Color.green);else g2.setColor(Color.red);
     	  g2.drawString(ClusterData.getIndexString2("cluster")+" "+ClusterData.getName("cluster")+": "+getCluster(),x,y); 
-    	  y=y+z;
+    	  y=y+z;//05 objects
     	  if(clusterFile.getData("Objects"))g2.setColor(Color.green);else g2.setColor(Color.red);
     	  g2.drawString(ClusterData.getIndexString2("objects")+" "+ClusterData.getName("objects")+": "+getObjects(),x,y); 
-    	  y=y+z;
+    	  y=y+z;//07 objectDescription
+    	  if(clusterFile.getData("objectDescription"))g2.setColor(Color.green);else g2.setColor(Color.red);
+    	  g2.drawString(ClusterData.getIndexString2("objectDescription")+" "+ClusterData.getName("objectDescription"),x,y); 
+    	  y=y+z;//08 vi
     	  if(clusterFile.getData("Vi"))g2.setColor(Color.green);else g2.setColor(Color.red);
     	  if(getVi()!=null)g2.drawString(ClusterData.getIndexString2("vi")+" "+ClusterData.getName("vi")+": "+String.valueOf(getVi().length),x,y);
-    	              else g2.drawString(ClusterData.getIndexString2("vi")+" "+ClusterData.getName("vi")+": 0",x,y); y=y+z;
+    	              else g2.drawString(ClusterData.getIndexString2("vi")+" "+ClusterData.getName("vi")+": 0",x,y); 
+    	  y=y+z;//33 clusterBot
     	  if(clusterFile.getData("ClusterBot"))g2.setColor(Color.green);else g2.setColor(Color.red);
     	  g2.drawString(ClusterData.getIndexString2("clusterBot")+" "+ClusterData.getName("clusterBot"),x,y); 
     	  y=y+z;
@@ -1617,7 +1623,14 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   private void setObjectDescription(String[] objectDescription){ 
 	  this.objectDescription=objectDescription;
 	  if(objectDescription!=null){
-		  if(objectDescription.length>0)clusterFile.setData("ObjectDescription",true);
+		  if(objectDescription.length>0){
+			    boolean data=false;
+			    for(int i=0;i<getObjectDescription().length;i++)
+			    	if(getObjectDescription()[i]==null);
+			    	else if(!getObjectDescription()[i].equals(""))data=true;
+			    if(data)clusterFile.setData("objectDescription", true);
+			    else    clusterFile.setData("objectDescription", false);
+		  }
 		  else clusterFile.setData("ObjectDescription",false);
 	  }
 	  else clusterFile.setData("ObjectDescription",false);
@@ -2067,12 +2080,12 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 	  if(getFivtyFivtyJoker())fivtyFivtyJoker();
 	  clusterStatus.setText(" calculate -> clusterMax()");
 	  if(getClusterMax())clusterMax();
+	  clusterStatus.setText(" calculate -> createClusterBots()");
+	  createClusterBots();
 	  clusterStatus.setText(" calculate -> pixelMatrix()");
 	  if(getPixel())pixelMatrix();
 	  clusterStatus.setText(" calculate -> set/getObject()");
 	  if(object!=null)setObjects(getObject().length);else setObjects(0);
-	  clusterStatus.setText(" calculate -> createClusterBots()");
-	  createClusterBots();
 	  clusterStatus.setText(" calculate");
 	  setCalculate(false);
 	  repaint();
@@ -2090,20 +2103,26 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 		  for(int p=0;p<getObjectDescription().length;p++){
 			  if(String.valueOf(i).equals(getObjectDescription()[p]))l++;
 		  }
-		  Point2D[] punkt=new Point2D[l];
+		  Point2D[] point2D=new Point2D[l];
+		  PointPixel[] pointPixel=new PointPixel[l];
 		  l=0;
 		  for(int p=0;p<getObjectDescription().length;p++){
 			  if(String.valueOf(i).equals(getObjectDescription()[p])){
-				  punkt[l]=new Point2D(0.0,0.0);
-				  punkt[l].x=getObject()[p][0];
-				  punkt[l].y=getObject()[p][1];
+				  point2D[l]=new Point2D(0.0,0.0);
+				  point2D[l].x=getObject()[p][0];
+				  point2D[l].y=getObject()[p][1];
+				  pointPixel[l]=point2D[l].toPointPixel(getPixelOffset());
 				  l++;
 			  }
 		  }
 		  Point2D center=new Point2D(0.0,0.0);
 		  center.x=getVi()[i][0];
 		  center.y=getVi()[i][1];
-		  clusterBot[i]=new ClusterBot(i,String.valueOf(i),l,punkt,center);
+		  clusterBot[i]=new ClusterBot(i,String.valueOf(i),l,point2D,center);
+		  for(int ip=0;ip<pointPixel.length;ip++){
+			  clusterBot[i].addPointPixel(pointPixel[ip]);
+		  }
+		  clusterBot[i].setCenterPixel(center.toPointPixel(getPixelOffset()));
 	  }
 	  if(clusterBot!=null){
 		  if(clusterBot.length>0)clusterFile.setData("ClusterBot",true);
@@ -2224,6 +2243,12 @@ public class ClusterGraphics extends JPanel implements ActionListener{
         }
       }
     }
+    boolean data=false;
+    for(int i=0;i<getObjectDescription().length;i++)
+    	if(getObjectDescription()[i]==null);
+    	else if(!getObjectDescription()[i].equals(""))data=true;
+    if(data)clusterFile.setData("objectDescription", true);
+    else    clusterFile.setData("objectDescription", false);
   }
 
 /**
@@ -2243,6 +2268,12 @@ public class ClusterGraphics extends JPanel implements ActionListener{
         }
       }
     }
+    boolean data=false;
+    for(int i=0;i<getObjectDescription().length;i++)
+    	if(getObjectDescription()[i]==null);
+    	else if(!getObjectDescription()[i].equals(""))data=true;
+    if(data)clusterFile.setData("objectDescription", true);
+    else    clusterFile.setData("objectDescription", false);
   }
  
 /**
@@ -2362,6 +2393,8 @@ public class ClusterGraphics extends JPanel implements ActionListener{
    */
   private void pixelMatrix(){
 	  boolean noPixelObject=false;
+	  Point2D point2D = new Point2D(0.0,0.0);
+	  PointPixel pointPixel = new PointPixel(0,0);
 	  if(!clusterFile.getData("pixelObject"))noPixelObject=true;
 	  if((!getPixelOriginal())||(noPixelObject))setPixelObject(new boolean[getPixelOffset()][getPixelOffset()]);
 	  setPixelVi(new boolean[getPixelOffset()][getPixelOffset()]);
@@ -2374,51 +2407,29 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 			  getPixelViPath()[i][k]=false;
 		  }
 	  }
-	  int x; int y; double o; double p;
 	  if(getObject()!=null){
 		  if((!getPixelOriginal())||(noPixelObject)){
 			  for(int i=0;i<getObject().length;i++){
-				  x=0; y=0;
-				  for(int t=0;t<getPixelOffset();t++){
-					  o = (double)t/getPixelOffset();
-					  p = o+(double)1/getPixelOffset();
-					  p=Math.round(p*100.)/100.;
-					  if((getObject()[i][0]>o) & (getObject()[i][0]<=p))x=t;  
-					  if((getObject()[i][1]>o) & (getObject()[i][1]<=p))y=t;
-					  //Attention! 0 and 1 are excluded as extreme values
-				  }
-				  getPixelObject()[x][y]=true;
+				  point2D=new Point2D(getObject()[i][0],getObject()[i][1]);
+				  pointPixel=point2D.toPointPixel(getPixelOffset());
+				  getPixelObject()[pointPixel.x][pointPixel.y]=true;
 			  }	
 		  }
 	  }else setPixelObject(null);
 	  
 	  if(getVi()!=null)if(getVi().length>0){
 		  for(int i=0;i<getVi().length;i++){
-			  x=0; y=0;
-			  for(int t=0;t<getPixelOffset();t++){
-				  o = (double)t/getPixelOffset();
-				  p = o+(double)1/getPixelOffset();
-				  p=Math.round(p*100.)/100.;
-				  if((getVi()[i][0]>o) & (getVi()[i][0]<=p))x=t;  
-				  if((getVi()[i][1]>o) & (getVi()[i][1]<=p))y=t;
-				  //Attention! 0 and 1 are excluded as extreme values
-			  }
-			  getPixelVi()[x][y]=true;
+			  point2D=new Point2D(getVi()[i][0],getVi()[i][1]);
+			  pointPixel=point2D.toPointPixel(getPixelOffset());
+			  getPixelVi()[pointPixel.x][pointPixel.y]=true;
 		  }	
 	  }else setPixelVi(null);
 	  
 	  if(getViPath()!=null){
 		  for(int i=0;i<getViPath().length;i++){
-			  x=0; y=0;
-			  for(int t=0;t<getPixelOffset();t++){
-				  o = (double)t/getPixelOffset();
-				  p = o+(double)1/getPixelOffset();
-				  p=Math.round(p*100.)/100.;
-				  if((getViPath()[i][0]>o) & (getViPath()[i][0]<=p))x=t;  
-				  if((getViPath()[i][1]>o) & (getViPath()[i][1]<=p))y=t;
-				  //Attention! 0 and 1 are excluded as extreme values
-			  }
-			  getPixelViPath()[x][y]=true;
+			  point2D=new Point2D(getViPath()[i][0],getViPath()[i][1]);
+			  pointPixel=point2D.toPointPixel(getPixelOffset());
+			  getPixelViPath()[pointPixel.x][pointPixel.y]=true;
 		  }
 	  }else setPixelViPath(null);
 	  
@@ -3304,7 +3315,14 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 	  checkTextArea.append("clusterBot-Info\n");
 	  if(clusterFile.getData("clusterBot")){
 		  for(int i=0;i<clusterBot.length;i++){
-			  checkTextArea.append(clusterBot[i].getNumber()+" - "+clusterBot[i].getName()+" ("+clusterBot[i].getPoints()+" Points, x="+clusterBot[i].getCenter().x+", y="+clusterBot[i].getCenter().y+")\n");
+			  checkTextArea.append(clusterBot[i].getNumber()+" - "+
+					  			   clusterBot[i].getName()+" ("+
+					  			   clusterBot[i].getPoints()+" Points, x="+
+					  			   clusterBot[i].getCenter().x+", y="+
+					  			   clusterBot[i].getCenter().y+", "+
+					  			   clusterBot[i].getPointsPixel()+" Pixelpoints, x="+
+					  			   clusterBot[i].getCenterPixel().x+", y="+
+					  			   clusterBot[i].getCenterPixel().y+")\n");
 		  }
 	  }
   }
