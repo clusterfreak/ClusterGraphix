@@ -73,10 +73,6 @@ v0.94.6
 * get initial in verschiedenen int boolean Varianten, probieren, ob die richtige gezogen wird
 * Wird File-Validate gewählt, dann wird ggf. die importierte Datei vorgeschlagen. Das würde zu einem Fehler führen.
 * Der Dateiname sollte hier gelöscht werden.
-<<<<<<< HEAD
 * Die Schriftart Hack sollte nun endlich mal überall installiert werden. So kann man gleich mal Erfahrungen mit ttf sammeln
 * Beim laden ist vi und viPath daten markiert
 * add Point setzt pixelOriginal nicht
-=======
-* Die Schriftart Hack sollte nun endlich mal überall installiert werden. So kann man gleich mal Erfahrungen mit ttf sammeln
->>>>>>> origin/V0.95.0
