@@ -2569,6 +2569,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   		  if(clusterFile.getData(28))eventWriter.add(eventFactory.createAttribute(ClusterData.name[28], String.valueOf(this.jahr)));
   		  if(clusterFile.getData(34))eventWriter.add(eventFactory.createAttribute(ClusterData.name[34], String.valueOf(getError())));
   		  if(clusterFile.getData(35))eventWriter.add(eventFactory.createAttribute(ClusterData.name[35], String.valueOf(getHeadUpDisplay())));
+  		  if(clusterFile.getData(36))eventWriter.add(eventFactory.createAttribute(ClusterData.name[36], String.valueOf(getRandom())));
   		  if(clusterFile.getData("ViPath"))if(getViPath()!=null)eventWriter.add(eventFactory.createAttribute("viPathLength", String.valueOf(getViPath().length)));
   		  eventWriter.add(end);
   		  eventWriter.add(tab);
@@ -2722,6 +2723,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 							if(attribute.getName().toString().equals(ClusterData.name[28])) {}
 							if(attribute.getName().toString().equals(ClusterData.name[34]))this.setError(Boolean.parseBoolean(attribute.getValue()));
 							if(attribute.getName().toString().equals(ClusterData.name[35]))this.setHeadUpDisplay(Boolean.parseBoolean(attribute.getValue()));
+							if(attribute.getName().toString().equals(ClusterData.name[36]))this.setRandom(Boolean.parseBoolean(attribute.getValue()));
 							if(attribute.getName().toString().equals("viPathLength"))setViPath(new double[Integer.parseInt(attribute.getValue())][2]);
 						}
 						if(clusterFile.getData("Cluster"))setVi(new double[getCluster()][2]);

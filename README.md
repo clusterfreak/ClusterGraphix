@@ -75,4 +75,3 @@ v0.94.6
 * Der Dateiname sollte hier gelöscht werden.
 * Die Schriftart Hack sollte nun endlich mal überall installiert werden. So kann man gleich mal Erfahrungen mit ttf sammeln
 * Beim laden ist vi und viPath daten markiert
-* add Point setzt pixelOriginal nicht
