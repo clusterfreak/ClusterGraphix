@@ -143,7 +143,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 /**
  * Object description only for affiliation >0.5
  */
-  private boolean fivtyFivtyJoker=false;
+  private boolean fiftyFiftyJoker=false;
 /**
  * Object description according to the largest affiliation
  */
@@ -350,7 +350,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   private final JMenuItem clusterMenuSetRepeat=new JMenuItem("repeat");
   private final JCheckBoxMenuItem clusterMenuSetRandom=new JCheckBoxMenuItem("random",true);
   private final JCheckBoxMenuItem clusterMenuSetSortCluster=new JCheckBoxMenuItem("SortCluster",true);
-  private final JRadioButtonMenuItem clusterMenuSetFivtyFivtyJoker=new JRadioButtonMenuItem("FivtyFivtyJoker",false);
+  private final JRadioButtonMenuItem clusterMenuSetFiftyFiftyJoker=new JRadioButtonMenuItem("FiftyFiftyJoker",false);
   private final JRadioButtonMenuItem clusterMenuSetClusterMax=new JRadioButtonMenuItem("ClusterMax",false);
   private final ButtonGroup clusterButtonGroupSet2=new ButtonGroup();
   private final JMenuItem clusterMenuSetTitle=new JMenuItem("title");
@@ -644,14 +644,14 @@ public class ClusterGraphics extends JPanel implements ActionListener{
       });
     clusterMenuSetSortCluster.addActionListener(this);
     clusterMenuSet.addSeparator();
-    clusterMenuSet.add(clusterMenuSetFivtyFivtyJoker);
-    clusterMenuSetFivtyFivtyJoker.addItemListener(new ItemListener() {
+    clusterMenuSet.add(clusterMenuSetFiftyFiftyJoker);
+    clusterMenuSetFiftyFiftyJoker.addItemListener(new ItemListener() {
       public void itemStateChanged(ItemEvent e) {
-    	  setFivtyFivtyJoker(clusterMenuSetFivtyFivtyJoker.isSelected());
+    	  setFiftyFiftyJoker(clusterMenuSetFiftyFiftyJoker.isSelected());
       }
     });
-    clusterMenuSetFivtyFivtyJoker.addActionListener(this);
-    clusterButtonGroupSet2.add(clusterMenuSetFivtyFivtyJoker);
+    clusterMenuSetFiftyFiftyJoker.addActionListener(this);
+    clusterButtonGroupSet2.add(clusterMenuSetFiftyFiftyJoker);
     
     clusterMenuSet.add(clusterMenuSetClusterMax);
     clusterMenuSetClusterMax.addItemListener(new ItemListener() {
@@ -1028,7 +1028,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
     if (("FuzzyCMeans".equals(actionCommand))||
     	("PossibilisticCMeans".equals(actionCommand))||
     	("SortCluster".equals(actionCommand))||
-    	("FivtyFivtyJoker".equals(actionCommand))||
+    	("FiftyFiftyJoker".equals(actionCommand))||
     	("ClusterMax".equals(actionCommand))){
     	clusterStatus.setText(" computeCluster");
     	Thread clusterThread = new Thread(clusterThreadGroup,"computeCluster") {
@@ -1181,7 +1181,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
       miscData[16][3]=String.valueOf(getFuzzyCMeans());
       miscData[17][3]=String.valueOf(getPossibilisticCMeans());
       miscData[18][3]=String.valueOf(getSortCluster());
-      miscData[19][3]=String.valueOf(getFivtyFivtyJoker());
+      miscData[19][3]=String.valueOf(getFiftyFiftyJoker());
       miscData[20][3]=String.valueOf(getClusterMax());
       if(getPixelObject()!=null)miscData[21][3]="["+String.valueOf(getPixelObject().length)+"]";else miscData[21][3]="[null]";
       if(getPixelVi()!=null)miscData[22][3]="["+String.valueOf(getPixelVi().length)+"]";else miscData[22][3]="[null]";
@@ -1873,20 +1873,20 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   
 /**
  * Set flag for object description only for affiliation >0.5  
- * @param fivtyFivtyJoker true false
+ * @param fiftyFiftyJoker true false
  */
-  private void setFivtyFivtyJoker(boolean fivtyFivtyJoker){
-	  this.fivtyFivtyJoker=fivtyFivtyJoker;
-	  this.clusterMenuSetFivtyFivtyJoker.setSelected(fivtyFivtyJoker);
-	  if(fivtyFivtyJoker)clusterFile.setData("FivtyFivtyJoker",true);else clusterFile.setData("FivtyFivtyJoker",false);
+  private void setFiftyFiftyJoker(boolean fiftyFiftyJoker){
+	  this.fiftyFiftyJoker=fiftyFiftyJoker;
+	  this.clusterMenuSetFiftyFiftyJoker.setSelected(fiftyFiftyJoker);
+	  if(fiftyFiftyJoker)clusterFile.setData("FiftyFiftyJoker",true);else clusterFile.setData("FiftyFiftyJoker",false);
   }
 
 /**
  * Get flag for object description only for affiliation >0.5 
- * @return fivtyFivtyJoker
+ * @return fiftyFiftyJoker
  */
-  private boolean getFivtyFivtyJoker(){
-	  return fivtyFivtyJoker;
+  private boolean getFiftyFiftyJoker(){
+	  return fiftyFiftyJoker;
   }
   
 /**
@@ -2076,8 +2076,8 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 	  if(getPossibilisticCMeans())usePossibilisticCMeans();
 	  clusterStatus.setText(" calculate -> sortCluster()");
 	  if(getSortCluster())sortCluster();
-	  clusterStatus.setText(" calculate -> fivtyFivtyJoker()");
-	  if(getFivtyFivtyJoker())fivtyFivtyJoker();
+	  clusterStatus.setText(" calculate -> fiftyFiftyJoker()");
+	  if(getFiftyFiftyJoker())fiftyFiftyJoker();
 	  clusterStatus.setText(" calculate -> clusterMax()");
 	  if(getClusterMax())clusterMax();
 	  clusterStatus.setText(" calculate -> createClusterBots()");
@@ -2231,10 +2231,10 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 /**
  * Produce object description only for affiliation >0.5
  */
-  public void fivtyFivtyJoker(){
-	setFivtyFivtyJoker(true);
+  public void fiftyFiftyJoker(){
+	setFiftyFiftyJoker(true);
     setClusterMax(false);
-    this.clusterMenuSetFivtyFivtyJoker.setSelected(true);
+    this.clusterMenuSetFiftyFiftyJoker.setSelected(true);
 	setObjectDescription(new String[getMik().length]);
     for(int i=0;i<getMik().length;i++){
       for(int k=0;k<getCluster();k++){
@@ -2255,7 +2255,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
  * Produce object description according to the largest affiliation
  */
   public void clusterMax(){
-	setFivtyFivtyJoker(false);
+	setFiftyFiftyJoker(false);
     setClusterMax(true);
     this.clusterMenuSetClusterMax.setSelected(true);
 	setObjectDescription(new String[getMik().length]);
@@ -2557,7 +2557,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
   		  if(clusterFile.getData(16))eventWriter.add(eventFactory.createAttribute(ClusterData.name[16], String.valueOf(getFuzzyCMeans())));
   		  if(clusterFile.getData(17))eventWriter.add(eventFactory.createAttribute(ClusterData.name[17], String.valueOf(getPossibilisticCMeans())));
   		  if(clusterFile.getData(18))eventWriter.add(eventFactory.createAttribute(ClusterData.name[18], String.valueOf(getSortCluster())));
-  		  if(clusterFile.getData(19))eventWriter.add(eventFactory.createAttribute(ClusterData.name[19], String.valueOf(getFivtyFivtyJoker())));
+  		  if(clusterFile.getData(19))eventWriter.add(eventFactory.createAttribute(ClusterData.name[19], String.valueOf(getFiftyFiftyJoker())));
   		  if(clusterFile.getData(20))eventWriter.add(eventFactory.createAttribute(ClusterData.name[20], String.valueOf(getClusterMax())));
   		  if(clusterFile.getData(21))eventWriter.add(eventFactory.createAttribute(ClusterData.name[21], String.valueOf(clusterFile.getData(21))));
   		  if(clusterFile.getData(22))eventWriter.add(eventFactory.createAttribute(ClusterData.name[22], String.valueOf(clusterFile.getData(22))));
@@ -2711,7 +2711,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 							if(attribute.getName().toString().equals(ClusterData.name[16]))this.setFuzzyCMeans(Boolean.parseBoolean(attribute.getValue()));
 							if(attribute.getName().toString().equals(ClusterData.name[17]))this.setPossibilisticCMeans(Boolean.parseBoolean(attribute.getValue()));
 							if(attribute.getName().toString().equals(ClusterData.name[18]))this.setSortCluster(Boolean.parseBoolean(attribute.getValue()));
-							if(attribute.getName().toString().equals(ClusterData.name[19]))this.setFivtyFivtyJoker(Boolean.parseBoolean(attribute.getValue()));
+							if(attribute.getName().toString().equals(ClusterData.name[19]))this.setFiftyFiftyJoker(Boolean.parseBoolean(attribute.getValue()));
 							if(attribute.getName().toString().equals(ClusterData.name[20]))this.setClusterMax(Boolean.parseBoolean(attribute.getValue()));
 							if(attribute.getName().toString().equals(ClusterData.name[21]))this.clusterFile.setData(21,Boolean.parseBoolean(attribute.getValue()));
 							if(attribute.getName().toString().equals(ClusterData.name[22]))this.clusterFile.setData(22,Boolean.parseBoolean(attribute.getValue()));
@@ -3057,7 +3057,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 	  setFuzzyCMeans(false);//16
 	  setPossibilisticCMeans(false);//17
 	  setSortCluster(true);//18
-	  setFivtyFivtyJoker(false);//19
+	  setFiftyFiftyJoker(false);//19
 	  setClusterMax(false);//20
 	//pixelObject > setPixelDim//21
 	//pixelVi > setPixelDim//22
@@ -3233,7 +3233,7 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 	  //fuzzyCMeans
 	  //possibilisticCMeans
 	  //sortCluster
-	  //fivtyFivtyJoker
+	  //fiftyFiftyJoker
 	  //clusterMax
 	  //pixelObject
 	  if(clusterFile.getData("PixelObject")){
@@ -3325,6 +3325,9 @@ public class ClusterGraphics extends JPanel implements ActionListener{
 					  			   clusterBot[i].getPointsPixel()+" Pixelpoints, x="+
 					  			   clusterBot[i].getCenterPixel().x+", y="+
 					  			   clusterBot[i].getCenterPixel().y+")\n");
+			  for(int p=0;p<clusterBot[i].getPointsPixel();p++){
+				  checkTextArea.append("	Point "+p+" ("+clusterBot[i].getPointPixel()[p].x+", "+clusterBot[i].getPointPixel()[p].x+")\n");
+			  }
 		  }
 	  }
   }

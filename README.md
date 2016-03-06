@@ -18,6 +18,7 @@ Display for clusters and cluster centers - Grafische Anzeige von Punktemengen un
 ### Release Information
 v0.95.0
 * clusterBot-Info at the end of the check report
+* rename fiftyFiftyJoker
 * ClusterData v0.1.0
 	* new initial values
 	* extended error handling
@@ -75,3 +76,5 @@ v0.94.6
 * Der Dateiname sollte hier gelöscht werden.
 * Die Schriftart Hack sollte nun endlich mal überall installiert werden. So kann man gleich mal Erfahrungen mit ttf sammeln
 * Beim laden ist vi und viPath daten markiert
+* with possibilistic there is no objectDescription, it is space
+* the pixel value is not the same all the time, it is decreasing, clusterBot calculation fail, the display is right, but the bot value not, in the topointpixel function
