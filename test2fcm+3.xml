@@ -1,4 +1,4 @@
-<?xml version="1.0"?><ClusterGraphics pixel="false" cluster="2" objects="21" object="true" objectDescription="true" vi="true" viPath="true" pathOption="true" descriptionDisplay="true" mik="true" fuzzyCMeans="true" fivtyFivtyJoker="true" pixelObject="true" pixelVi="true" pixelViPath="true" title="FCM" version="0.94.6" viPathLength="44">
+<?xml version="1.0"?><ClusterGraphix pixel="false" cluster="2" objects="21" object="true" objectDescription="true" vi="true" viPath="true" pathOption="true" descriptionDisplay="true" mik="true" fuzzyCMeans="true" fivtyFivtyJoker="true" pixelObject="true" pixelVi="true" pixelViPath="true" title="FCM" version="0.94.6" viPathLength="44">
 	<object x="0.2" y="0.2" objectDescription="0" k0="0.8345728866320141" k1="0.16542711336798585">
 0
 </object>
@@ -1100,4 +1100,4 @@
 <pixelViPath k0="false" k1="false" k2="false" k3="false" k4="false" k5="false" k6="false" k7="false" k8="false" k9="false" k10="false" k11="false" k12="false" k13="false" k14="false" k15="false" k16="false" k17="false" k18="false" k19="false" k20="false" k21="false" k22="false" k23="false" k24="false" k25="false" k26="false" k27="false" k28="false" k29="false" k30="false" k31="false" k32="false" k33="false" k34="false" k35="false" k36="false" k37="false" k38="false" k39="false" k40="false" k41="false" k42="false" k43="false" k44="false" k45="false" k46="false" k47="false" k48="false" k49="false" k50="false" k51="false" k52="false" k53="false" k54="false" k55="false" k56="false" k57="false" k58="false" k59="false" k60="false" k61="false" k62="false" k63="false" k64="false" k65="false" k66="false" k67="false" k68="false" k69="false" k70="false" k71="false" k72="false" k73="false" k74="false" k75="false" k76="false" k77="false" k78="false" k79="false" k80="false" k81="false" k82="false" k83="false" k84="false" k85="false" k86="false" k87="false" k88="false" k89="false" k90="false" k91="false" k92="false" k93="false" k94="false" k95="false" k96="false" k97="false" k98="false" k99="false">
 99
 </pixelViPath>
-</ClusterGraphics>
+</ClusterGraphix>

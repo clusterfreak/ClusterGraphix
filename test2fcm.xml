@@ -1,4 +1,4 @@
-<?xml version="1.0"?><ClusterGraphics pixel="false" cluster="2" objects="18" object="true" objectDescription="true" vi="true" viPath="true" pathOption="true" descriptionDisplay="true" mik="true" fuzzyCMeans="true" fivtyFivtyJoker="true" title="FCM" version="0.94.2" viPathLength="28">
+<?xml version="1.0"?><ClusterGraphix pixel="false" cluster="2" objects="18" object="true" objectDescription="true" vi="true" viPath="true" pathOption="true" descriptionDisplay="true" mik="true" fuzzyCMeans="true" fivtyFivtyJoker="true" title="FCM" version="0.94.2" viPathLength="28">
 	<object x="0.2" y="0.2" objectDescription="0" k0="0.8430057908767588" k1="0.15699420912324125">
 0
 </object>
@@ -143,4 +143,4 @@
 <viPath x="0.7901040536137218" y="0.7901040536137192">
 27
 </viPath>
-</ClusterGraphics>
+</ClusterGraphix>

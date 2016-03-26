@@ -1,6 +1,6 @@
 # Cluster
 **Cluster Graphix**
-Display for clusters and cluster centers - Grafische Anzeige von Punktemengen und Klassenzentren  
+Display of objects and clusters - Grafische Anzeige von Punktemengen und Klassenzentren  
 
 **&copy; Thomas Heym - clusterfreak** (cF) clstrfrk
 ![clusterfreak](https://http://clusterfreak.com/favicon.ico "clusterfreak")
