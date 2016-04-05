@@ -36,6 +36,10 @@ public class PossibilisticCMeans {
  */
   private double vi[][];
 /**
+ * Complete search path  
+ */
+  private double viPath[][];
+/**
  * npcm
  */
   private double ni[];
@@ -94,7 +98,7 @@ public class PossibilisticCMeans {
   public double[][] determineClusterCenters(boolean random, boolean returnPath){
     double euclideanDistance;
     path=returnPath;
-    Vector<Point2D> viPath = new Vector<Point2D>();
+    Vector<Point2D> viPathRec = new Vector<Point2D>();
 //Step 1: Initialization
     FuzzyCMeans fcm;
     if(e==1.0e-7){
@@ -104,7 +108,7 @@ public class PossibilisticCMeans {
       fcm=new FuzzyCMeans(object,cluster,e);
     }
     double getViPath[][]=fcm.determineClusterCenters(random, true);
-    for(int v=0;v<getViPath.length;v++) viPath.add(new Point2D(getViPath[v][0],getViPath[v][1]));
+    for(int v=0;v<getViPath.length;v++) viPathRec.add(new Point2D(getViPath[v][0],getViPath[v][1]));
     vi=fcm.getVi();
     double mik[][]=fcm.getMik();
     do { //while (repeat>0)
@@ -126,7 +130,7 @@ public class PossibilisticCMeans {
         }
         //record cluster points
         if(path==true){
-          for(int k=0;k<vi.length;k++) viPath.add(new Point2D(vi[k][0],vi[k][1]));
+          for(int k=0;k<vi.length;k++) viPathRec.add(new Point2D(vi[k][0],vi[k][1]));
         }
   // Step 3: Calculate the new partition matrix and ni
         double mik_before[][]= new double [mik.length][cluster];
@@ -157,6 +161,8 @@ public class PossibilisticCMeans {
             mik_before[i][k]=mik[i][k];
             mik[i][k]=1/(1+(Math.pow(Math.sqrt(Math.pow(object[i][0]-vi[k][0],2)
                                              + Math.pow(object[i][1]-vi[k][1],2)),2))/ni[k]);
+            //NaN-Error
+            if(Double.isNaN(mik[i][k]))mik[i][k]=1.0;
           }
         }
   //calculate euclidean distance
@@ -175,17 +181,15 @@ public class PossibilisticCMeans {
     getMik=mik;
     //Value return
     if(path==true){
-      double viPathCut[][]=new double [viPath.size()][2];
+      double viPathCut[][]=new double [viPathRec.size()][2];
       for(int k=0;k<viPathCut.length;k++){
-        Point2D cut = viPath.elementAt(k);
+        Point2D cut = viPathRec.elementAt(k);
         viPathCut[k][0]=cut.x;
         viPathCut[k][1]=cut.y;
       }
-      return viPathCut;
+      setViPath(viPathCut);
     }
-    else {
-      return vi;
-    }
+    return vi;
   }
 /**
  * Returns the partition matrix (Membership values of the k-th object to the i-th cluster)
@@ -200,4 +204,28 @@ public class PossibilisticCMeans {
   public static void setMik(double setMik[][]){
     getMik=setMik;
   }
+  
+/**
+ * Returns cluster centers vi
+ * @return vi
+ */
+  public double[][] getVi(){
+    return vi;
+  }
+    
+/**
+ * Set viPath  
+ * @param setViPath
+ */
+  private void setViPath(double setViPath[][]){
+   viPath=setViPath;
+  }
+    
+/**
+ * Returns the complete search path  
+ * @return viPath
+ */
+  public double[][] getViPath(){
+    return viPath;
+  } 
 }

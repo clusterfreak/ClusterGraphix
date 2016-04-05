@@ -35,6 +35,10 @@ public class FuzzyCMeans {
  */
   private double vi[][];
 /**
+ * Complete search path  
+ */
+  private double viPath[][];
+/**
  * Partition matrix (Membership values of the k-th object to the i-th cluster)
  */
   private static double getMik[][];
@@ -73,7 +77,7 @@ public class FuzzyCMeans {
     double euclideanDistance;
     double mik[][]= new double [object.length][cluster];
     path=returnPath;
-    Vector<Point2D> viPath = new Vector<Point2D>();
+    Vector<Point2D> viPathRec = new Vector<Point2D>();
 //Step 1: Initialization
     if(random){
     	for(int i = 0; i < mik.length; i++){
@@ -109,7 +113,7 @@ public class FuzzyCMeans {
       }
       //record cluster points
       if(path==true){
-        for(int k=0;k<vi.length;k++) viPath.add(new Point2D(vi[k][0],vi[k][1]));
+        for(int k=0;k<vi.length;k++) viPathRec.add(new Point2D(vi[k][0],vi[k][1]));
       }
 //Step 3: Calculate the new partition matrix
       double mik_before[][]= new double [mik.length][cluster];
@@ -141,17 +145,15 @@ public class FuzzyCMeans {
     while (euclideanDistance>=e);
     getMik=mik;
     if(path==true){
-      double viPathCut[][]=new double [viPath.size()][2];
+      double viPathCut[][]=new double [viPathRec.size()][2];
       for(int k=0;k<viPathCut.length;k++){
-        Point2D cut = viPath.elementAt(k);
+        Point2D cut = viPathRec.elementAt(k);
         viPathCut[k][0]=cut.x;
         viPathCut[k][1]=cut.y;
       }
-      return viPathCut;
+      setViPath(viPathCut);
     }
-    else {
-      return vi;
-    }
+    return vi;
   }
 
  /**
@@ -170,12 +172,28 @@ public class FuzzyCMeans {
   public static void setMik(double setMik[][]){
     getMik=setMik;
   }
-
-  /**
+  
+/**
  * Returns cluster centers vi
- * @return Cluster centers
+ * @return vi
  */
   public double[][] getVi(){
 	return vi;
-  } 
+  }
+  
+/**
+ * Set viPath  
+ * @param setViPath
+ */
+  private void setViPath(double setViPath[][]){
+	  viPath=setViPath;
+  }
+  
+/**
+ * Returns the complete search path  
+ * @return viPath
+ */
+  public double[][] getViPath(){
+	  return viPath;
+  }
 }

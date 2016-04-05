@@ -1,5 +1,5 @@
 # Cluster
-**Cluster Graphix**
+**ClusterGraphix**
 Display of objects and clusters - Grafische Anzeige von Punktemengen und Klassenzentren  
 
 **&copy; Thomas Heym - clusterfreak** (cF) clstrfrk
@@ -21,13 +21,15 @@ v0.95.0
 * rename from ClusterGraphics
 * clusterBot-Info at the end of the check report
 * rename fiftyFiftyJoker
+* clear file chooser all the time
 * Core classes
 	* ClusterData v0.1.0
 		* new initial values
 		* extended error handling
-	* FuzzyCMeans v1.6.0
+	* FuzzyCMeans v1.6.0, PossibilisticCMeans v1.2.0
 		* if NaN-Error mik=1.0
-	* PossibilisticCMeans v1.2.0, ClusterFile v0.1.0
+		* separate getViPath method
+	* ClusterFile v0.1.0
 		* stable release
 	* ClusterBot v0.1.0
 		* add pointPixel[] and centerPixel
@@ -70,13 +72,3 @@ v0.94.6
 * status bar
 * main-methode
 * import/export of pixel objects in pbm format
-
-* * *
-
-### Ishues for GitHub
-* the pixel value is not the same all the time, it is decreasing, clusterBot calculation fail, the display is right, but the bot value not, in the topointpixel function
-* with possibilistic there is no objectDescription, it is space
-* Beim laden ist vi und viPath daten markiert
-* Wird File-Validate gewählt, dann wird ggf. die importierte Datei vorgeschlagen. Das würde zu einem Fehler führen.
-	* Der Dateiname sollte hier gelöscht werden.
-* get initial in verschiedenen int boolean Varianten, probieren, ob die richtige gezogen wird

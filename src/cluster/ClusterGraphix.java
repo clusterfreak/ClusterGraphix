@@ -368,6 +368,7 @@ public class ClusterGraphix extends JPanel implements ActionListener{
   private final JButton clusterButtonError=new JButton("Error");
   private final ThreadGroup clusterThreadGroup = new ThreadGroup( "CusterTreadGroup" );
   private final JFileChooser clusterChooser=new JFileChooser();
+  private final File clusterChooserFileClear=new File("");
 /**
  * FileFilter for XML-files
  */
@@ -1455,29 +1456,21 @@ public class ClusterGraphix extends JPanel implements ActionListener{
       }
       //HeadUpDisplay
       if(getHeadUpDisplay()){
-    	  int x=5; int y=15; int z=15;//00 pixel
-    	  if(clusterFile.getData("pixel"))g2.setColor(Color.green);else g2.setColor(Color.red);
-    	  g2.drawString(ClusterData.getIndexString2("pixel")+" "+ClusterData.getName("pixel"),x,y); 
-    	  y=y+z;//03 pixelOriginal
-    	  if(clusterFile.getData("pixelOriginal"))g2.setColor(Color.green);else g2.setColor(Color.red);
-    	  g2.drawString(ClusterData.getIndexString2("pixelOriginal")+" "+ClusterData.getName("pixelOriginal"),x,y);
-    	  y=y+z;//04 cluster
-    	  if(clusterFile.getData("Cluster"))g2.setColor(Color.green);else g2.setColor(Color.red);
-    	  g2.drawString(ClusterData.getIndexString2("cluster")+" "+ClusterData.getName("cluster")+": "+getCluster(),x,y); 
-    	  y=y+z;//05 objects
-    	  if(clusterFile.getData("Objects"))g2.setColor(Color.green);else g2.setColor(Color.red);
-    	  g2.drawString(ClusterData.getIndexString2("objects")+" "+ClusterData.getName("objects")+": "+getObjects(),x,y); 
-    	  y=y+z;//07 objectDescription
-    	  if(clusterFile.getData("objectDescription"))g2.setColor(Color.green);else g2.setColor(Color.red);
-    	  g2.drawString(ClusterData.getIndexString2("objectDescription")+" "+ClusterData.getName("objectDescription"),x,y); 
-    	  y=y+z;//08 vi
-    	  if(clusterFile.getData("Vi"))g2.setColor(Color.green);else g2.setColor(Color.red);
-    	  if(getVi()!=null)g2.drawString(ClusterData.getIndexString2("vi")+" "+ClusterData.getName("vi")+": "+String.valueOf(getVi().length),x,y);
-    	              else g2.drawString(ClusterData.getIndexString2("vi")+" "+ClusterData.getName("vi")+": 0",x,y); 
-    	  y=y+z;//33 clusterBot
-    	  if(clusterFile.getData("ClusterBot"))g2.setColor(Color.green);else g2.setColor(Color.red);
-    	  g2.drawString(ClusterData.getIndexString2("clusterBot")+" "+ClusterData.getName("clusterBot"),x,y); 
-    	  y=y+z;
+    	  int x=5; int y=15; int z=15;
+    	  for(int v=0;v<ClusterData.length;v++){
+    		  if(clusterFile.getData(v))g2.setColor(Color.green);else g2.setColor(Color.red);
+        	  g2.drawString(ClusterData.indexString2[v]+" "+ClusterData.name[v],x,y);
+        	  if(v==4)g2.drawString(ClusterData.indexString2[v]+" "+ClusterData.name[v]+": "+getCluster(),x,y);
+        	  if(v==5)g2.drawString(ClusterData.indexString2[v]+" "+ClusterData.name[v]+": "+getObjects(),x,y);
+        	  if(v==8){
+        		  if(getVi()!=null)g2.drawString(ClusterData.indexString2[v]+" "+ClusterData.name[v]+": "+String.valueOf(getVi().length),x,y);
+	              else g2.drawString(ClusterData.indexString2[v]+" "+ClusterData.name[v]+": 0",x,y);
+        	  }
+    		  y=y+z;
+    		  if(v==32){
+    			  x=255; y=15; z=15;//2nd colum after 32 on the left side
+    		  }
+    	  }
       }
       clusterMenu.updateUI();
   }
@@ -2139,8 +2132,8 @@ public class ClusterGraphix extends JPanel implements ActionListener{
 	  setPossibilisticCMeans(false);
 	  clusterMenuSetFuzzyCMeans.setSelected(true);
 	  FuzzyCMeans fcm=new FuzzyCMeans(getObject(), getCluster(), getE());
-	  setVi(fcm.determineClusterCenters(random, false));
-	  if(getPathOption())setViPath(fcm.determineClusterCenters(random, true));
+	  setVi(fcm.determineClusterCenters(random, getPathOption()));
+	  if(getPathOption())setViPath(fcm.getViPath());
 	  else setViPath(null);
 	  setMik(fcm.getMik());
 	  fcm=null;
@@ -2155,8 +2148,8 @@ public class ClusterGraphix extends JPanel implements ActionListener{
 	  setPossibilisticCMeans(true);
 	  clusterMenuSetPossibilisticCMeans.setSelected(true);
 	  PossibilisticCMeans pcm=new PossibilisticCMeans(getObject(), getCluster(), getRepeat(), getE());
-	  setVi(pcm.determineClusterCenters(random, false));
-	  if(getPathOption())setViPath(pcm.determineClusterCenters(random, true));
+	  setVi(pcm.determineClusterCenters(random, getPathOption()));
+	  if(getPathOption())setViPath(pcm.getViPath());
 	  else setViPath(null);
 	  setMik(pcm.getMik());
 	  pcm=null;
@@ -2530,6 +2523,7 @@ public class ClusterGraphix extends JPanel implements ActionListener{
    */
   public void save(){
 	  clusterChooser.setFileFilter(clusterFileFilterXML);
+	  clusterChooser.setSelectedFile(clusterChooserFileClear);
 	  try{if (clusterChooser.showSaveDialog(this.f) == JFileChooser.APPROVE_OPTION){
           XMLOutputFactory outputFactory = XMLOutputFactory.newInstance();
           XMLEventWriter eventWriter = outputFactory.createXMLEventWriter(new FileOutputStream(clusterChooser.getSelectedFile()));
@@ -2678,6 +2672,7 @@ public class ClusterGraphix extends JPanel implements ActionListener{
    */
   public void open(){
 	  clusterChooser.setFileFilter(clusterFileFilterXML);
+	  clusterChooser.setSelectedFile(clusterChooserFileClear);
 	  String zversion="";
 	  try{
 		  if(clusterChooser.showOpenDialog(this.f) == JFileChooser.APPROVE_OPTION){
@@ -2794,7 +2789,7 @@ public class ClusterGraphix extends JPanel implements ActionListener{
 								if (attribute.getName().toString().substring(0, 1).equals("k"))
 									getPixelObject()[pixelObjectI][Integer.parseInt(attribute.getName().toString().substring(1))]=Boolean.parseBoolean(attribute.getValue());
 					  		}
-					  this.clusterFile.setData("ViPath",true);
+					  this.clusterFile.setData("PixelObject",true);
 				  }
 				  //pixelVi
 				  if (startElement.getName().getLocalPart().equals(ClusterData.name[22]))if(clusterFile.getData("PixelVi")){
@@ -2871,6 +2866,8 @@ public class ClusterGraphix extends JPanel implements ActionListener{
         	  if(clusterFile.getData(l))validateData[l][2]="X"; else validateData[l][2]="";
         	  validateData[l][3]="";
           }
+        clusterChooser.setFileFilter(clusterFileFilterXML);
+        clusterChooser.setSelectedFile(clusterChooserFileClear);
 		if(clusterChooser.showOpenDialog(this.f) == JFileChooser.APPROVE_OPTION){
 			  XMLInputFactory inputFactory = XMLInputFactory.newInstance();
 			  try{XMLEventReader eventReader = inputFactory.createXMLEventReader(new FileInputStream(clusterChooser.getSelectedFile()));
@@ -2898,10 +2895,6 @@ public class ClusterGraphix extends JPanel implements ActionListener{
 				  JOptionPane.showConfirmDialog(null,e,"ClusterGraphix.validation (XML-Error)",JOptionPane.CLOSED_OPTION,JOptionPane.INFORMATION_MESSAGE);  
 			  }
 		}
-		  
-		  
-		  
-
           validateTable=new JTable(validateData,validateColHeads);
           validateScrollPane.setViewportView(validateTable);
           fValidate.setVisible(true);
@@ -2916,6 +2909,7 @@ public class ClusterGraphix extends JPanel implements ActionListener{
  */
   public void importPBM(){
 	  clusterChooser.setFileFilter(clusterFileFilterPBM);
+	  clusterChooser.setSelectedFile(clusterChooserFileClear);
 	  try{if (clusterChooser.showOpenDialog(this.f) == JFileChooser.APPROVE_OPTION){
 		  BufferedReader in = new BufferedReader(new FileReader(clusterChooser.getSelectedFile()));
 		  if(in.readLine().equals("P1")){
@@ -3016,6 +3010,7 @@ public class ClusterGraphix extends JPanel implements ActionListener{
  */
   public void exportPBM(){
 	  clusterChooser.setFileFilter(clusterFileFilterPBM);
+	  clusterChooser.setSelectedFile(clusterChooserFileClear);
 	  if (clusterFile.getData("PixelString")){
 		  try{if (clusterChooser.showSaveDialog(this.f) == JFileChooser.APPROVE_OPTION){
 			  PrintWriter out = new PrintWriter(new FileWriter (clusterChooser.getSelectedFile()));
@@ -3077,6 +3072,7 @@ public class ClusterGraphix extends JPanel implements ActionListener{
 	  setHeadUpDisplay(true);//35
 	  setRandom(true);//36
 //user interface reset
+	  clusterChooser.setSelectedFile(clusterChooserFileClear);
 	  this.miscTable=null;
 	  this.objectTable=null;
 	  this.descriptionTable=null;

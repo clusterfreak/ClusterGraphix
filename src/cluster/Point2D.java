@@ -24,9 +24,8 @@ class Point2D {
 		  o = (double)t/pixelOffset;
 		  p = o+(double)1/pixelOffset;
 		  p=Math.round(p*100.)/100.;
-		  if((this.x>o) & (this.x<=p))x=t;  
-		  if((this.y>o) & (this.y<=p))y=t;
-		  //Attention! 0 and 1 are excluded as extreme values
+		  if((this.x>=o) & (this.x<p))x=t;  
+		  if((this.y>=o) & (this.y<p))y=t;
 	    }
 	    pointPixel.x=x;
 	    pointPixel.y=y;
