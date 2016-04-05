@@ -1,14 +1,14 @@
 package cluster;
 /**
- * Available data
- * @version 0.0.5 (22.09.2015)
+ * Available data values
+ * @version 0.1.0 (1-24-2016)
  * @author Thomas Heym
  */
 public class ClusterFile {
   private boolean data[]=ClusterData.data;
 
 /**
- * Variable initialisieren
+ * Initialize variable
  * @param variable
  */
   public void setInitial(String variable){
@@ -16,36 +16,36 @@ public class ClusterFile {
   }
   
 /**
- * setzt die Information, ob die Variable Daten hat
- * @param i Index
- * @param d true/false
+ * Set the information of available data
+ * @param i Index of Variable
+ * @param d Data true/false
  */
   public void setData(int i,boolean d){
       data[i]=d;
   }
 
 /**
- * liefert die Information, ob die Variable Daten hat
- * @param i Index
- * @return d
+ * Get the information of available data
+ * @param i Index of Variable
+ * @return Data true/false
  */
-  public boolean getData(int d){
-  	return data[d];
+  public boolean getData(int i){
+  	return data[i];
   }
 
 /**
- * setzt die Information, ob die Variable Daten hat
- * @param s
- * @param d
+ * Set the information of available data
+ * @param s Variable
+ * @param d Data true/false
  */
   public void setData(String s,boolean d){
 	  data[ClusterData.getIndexInt(s)]=d;
   }
   
 /**
- * liefert die Information, ob die Variable Daten hat
- * @param s
- * @return
+ * Get the information of available data
+ * @param s Variable
+ * @return Data true/false
  */
   public boolean getData(String s){
 	  return data[ClusterData.getIndexInt(s)];

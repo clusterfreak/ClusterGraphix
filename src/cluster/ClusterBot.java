@@ -1,7 +1,7 @@
 package cluster;
 /**
  * Cluster structure
- * @version 0.0.3 (28.12.2015)
+ * @version 0.1.0 (01-24-2016)
  * @author Thomas Heym
  */
 public class ClusterBot {
@@ -10,6 +10,9 @@ public class ClusterBot {
 	private int points;
 	private Point2D point[];
 	private Point2D center;
+	private int pointsPixel=0;
+	private PointPixel pointPixel[];
+	private PointPixel centerPixel;
 	private double offset[]={0.0,0.0};
 	public ClusterBot(int number,String name,int points,Point2D point[],Point2D center){
 		setNumber(number);
@@ -17,6 +20,35 @@ public class ClusterBot {
 		setPoints(points);
 		setPoint(point);
 		setCenter(center);
+		setPointsPixel(0);
+		PointPixel pp = new PointPixel(0,0);
+		setCenterPixel(pp);
+	}
+	/**
+	 * Add Point pixel format
+	 * @param pp
+	 */
+	public void addPointPixel(PointPixel pp){
+		PointPixel ppNew[];
+		if(getPointsPixel()==0){
+			ppNew=new PointPixel[1];
+			ppNew[0]=pp;
+			setPointPixel(ppNew);
+			setPointsPixel(1);
+		}
+		else{
+			boolean newPoint=true;
+			ppNew=new PointPixel[getPointPixel().length+1];
+			for(int i=0;i<getPointPixel().length;i++){
+				ppNew[i]=getPointPixel()[i];
+				if(ppNew[i]==pp)newPoint=false;
+			}
+			if(newPoint){
+				ppNew[getPointPixel().length]=pp;
+				setPointsPixel(getPointPixel().length+1);
+				setPointPixel(ppNew);
+			}
+		}
 	}
 	/**
 	 * @return the number
@@ -89,5 +121,41 @@ public class ClusterBot {
 	 */
 	public void setOffset(double offset[]) {
 		this.offset = offset;
+	}
+	/**
+	 * @return the pointsPixel
+	 */
+	public int getPointsPixel() {
+		return pointsPixel;
+	}
+	/**
+	 * @param pointsPixel the pointsPixel to set
+	 */
+	public void setPointsPixel(int pointsPixel) {
+		this.pointsPixel = pointsPixel;
+	}
+	/**
+	 * @return the pointPixel
+	 */
+	public PointPixel[] getPointPixel() {
+		return pointPixel;
+	}
+	/**
+	 * @param pointPixel the pointPixel to set
+	 */
+	public void setPointPixel(PointPixel pointPixel[]) {
+		this.pointPixel = pointPixel;
+	}
+	/**
+	 * @return the centerPixel
+	 */
+	public PointPixel getCenterPixel() {
+		return centerPixel;
+	}
+	/**
+	 * @param centerPixel the centerPixel to set
+	 */
+	public void setCenterPixel(PointPixel centerPixel) {
+		this.centerPixel = centerPixel;
 	}
 }
