@@ -15,10 +15,11 @@ Display of objects and clusters - Grafische Anzeige von Punktemengen und Klassen
 	* PossibilisticCMeans v1.2.0 (01-24-2016)
 	* Point2D v1.3.0 (01-24-2016)
 	* PointPixel v1.0.0 (01-24-2016)
-* * *
+
 ### Release Information
 v0.95.1
 * ...
+
 v0.95.0
 * rename from ClusterGraphics
 * clusterBot-Info at the end of the check report
