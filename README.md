@@ -18,7 +18,7 @@ Display of objects and clusters - Grafische Anzeige von Punktemengen und Klassen
 * * *
 ### Release Information
 v0.95.1
-
+* ...
 v0.95.0
 * rename from ClusterGraphics
 * clusterBot-Info at the end of the check report
