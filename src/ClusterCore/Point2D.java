@@ -1,12 +1,14 @@
-package cluster;
+package ClusterCore;
+
 /**
  * Point with 2D coordinates
- * @version 1.3.0 (01-24-2016)
+ * @version 1.3.1 (04-10-2016)
  * @author Thomas Heym
  */
-class Point2D { 
-	double x,y=0.0;
-	Point2D(double xi, double yi){
+public class Point2D { 
+	public double x;
+	public double y=0.0;
+	public Point2D(double xi, double yi){
 		x=xi; y=yi;
 	}
 /**

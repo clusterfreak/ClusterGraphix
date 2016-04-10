@@ -1,4 +1,4 @@
-package cluster;
+package ClusterGraphix;
 import java.io.FileOutputStream;
 import java.io.FileInputStream;
 import java.io.File;
@@ -56,10 +56,16 @@ import javax.xml.stream.events.StartDocument;
 import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
 import javax.xml.stream.events.Attribute;
+//ClusterCore
+import ClusterCore.FuzzyCMeans;
+import ClusterCore.Point2D;
+import ClusterCore.PointPixel;
+import ClusterCore.PossibilisticCMeans;
+
 /**
  * ClusterGraphix<P>
  * Display of objects and clusters with integrated cluster analysis
- * @version 0.95.0 (01-24-2016)
+ * @version 0.95.1 (04-10-2016)
  * @author Thomas Heym
  */
 public class ClusterGraphix extends JPanel implements ActionListener{
@@ -500,7 +506,7 @@ public class ClusterGraphix extends JPanel implements ActionListener{
     //Main frame
     f = new JFrame(titleString+getTitle());
     try{
-    	f.setIconImage(ImageIO.read(getClass().getResource("/cluster/sphere32.png")));
+    	f.setIconImage(ImageIO.read(getClass().getResource("/ClusterCore/sphere32.png")));
     }catch(Exception e){
     	JOptionPane.showConfirmDialog (null,e,"ClusterGraphix.setIconImage",JOptionPane.CLOSED_OPTION,JOptionPane.INFORMATION_MESSAGE); 
     }
@@ -698,7 +704,7 @@ public class ClusterGraphix extends JPanel implements ActionListener{
 //FileValidation frame
     fValidate= new JFrame(titleString+" Validate");
     try{
-    	fValidate.setIconImage(ImageIO.read(getClass().getResource("/cluster/sphere32.png")));
+    	fValidate.setIconImage(ImageIO.read(getClass().getResource("/ClusterCore/sphere32.png")));
     }catch(Exception e){
     	JOptionPane.showConfirmDialog (null,e,"ClusterGraphix.setIconImage",JOptionPane.CLOSED_OPTION,JOptionPane.INFORMATION_MESSAGE); 
     }
@@ -709,7 +715,7 @@ public class ClusterGraphix extends JPanel implements ActionListener{
 //Data frame
     fData= new JFrame(titleString+" Data");
     try{
-    	fData.setIconImage(ImageIO.read(getClass().getResource("/cluster/sphere32.png")));
+    	fData.setIconImage(ImageIO.read(getClass().getResource("/ClusterCore/sphere32.png")));
     }catch(Exception e){
     	JOptionPane.showConfirmDialog (null,e,"ClusterGraphix.setIconImage",JOptionPane.CLOSED_OPTION,JOptionPane.INFORMATION_MESSAGE); 
     }
@@ -748,7 +754,7 @@ public class ClusterGraphix extends JPanel implements ActionListener{
 //Check report frame
     fCheck= new JFrame(titleString+" Check");
     try{
-    	fCheck.setIconImage(ImageIO.read(getClass().getResource("/cluster/sphere32.png")));
+    	fCheck.setIconImage(ImageIO.read(getClass().getResource("/ClusterCore/sphere32.png")));
     }catch(Exception e){
     	JOptionPane.showConfirmDialog (null,e,"ClusterGraphix.setIconImage",JOptionPane.CLOSED_OPTION,JOptionPane.INFORMATION_MESSAGE); 
     }

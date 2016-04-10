@@ -6,19 +6,21 @@ Display of objects and clusters - Grafische Anzeige von Punktemengen und Klassen
 ![clusterfreak](https://http://clusterfreak.com/favicon.ico "clusterfreak")
 
 ### Version Information
-* ClusterGraphix v0.95.0 (01-24-2016)
-* Cluster core classes
-	* ClusterBot v0.1.0 (01-24-2016)
-	* ClusterData v0.1.0 (01-24-2016)
-	* ClusterFile v0.1.0 (01-24-2016)
+* ClusterCore v1.0.0 (04-10-2016)
 	* FuzzyCMeans v1.6.0 (01-24-2016)
 	* PossibilisticCMeans v1.2.0 (01-24-2016)
-	* Point2D v1.3.0 (01-24-2016)
-	* PointPixel v1.0.0 (01-24-2016)
+	* Point2D v1.3.1 (04-10-2016)
+	* PointPixel v1.0.1 (04-10-2016)
+* ClusterGraphix v0.95.1 (04-10-2016)
+	* ClusterGraphix v0.95.1 (04-10-2016)
+	* ClusterBot v0.1.0 (01-24-2016)
+	* ClusterData v0.1.1 (04-10-2016)
+	* ClusterFile v0.1.0 (01-24-2016)
+
 
 ### Release Information
 v0.95.1
-* ...
+* ClusterCore package
 
 v0.95.0
 * rename from ClusterGraphics
