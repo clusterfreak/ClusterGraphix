@@ -5,7 +5,7 @@ import ClusterCore.PointPixel;
 
 /**
  * Cluster structure
- * @version 0.1.0 (01-24-2016)
+ * @version 0.1.1 (04-10-2016)
  * @author Thomas Heym
  */
 public class ClusterBot {
@@ -45,7 +45,7 @@ public class ClusterBot {
 			ppNew=new PointPixel[getPointPixel().length+1];
 			for(int i=0;i<getPointPixel().length;i++){
 				ppNew[i]=getPointPixel()[i];
-				if(ppNew[i]==pp)newPoint=false;
+				if((ppNew[i].x==pp.x)&&(ppNew[i].y==pp.y))newPoint=false;
 			}
 			if(newPoint){
 				ppNew[getPointPixel().length]=pp;

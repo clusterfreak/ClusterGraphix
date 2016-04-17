@@ -13,14 +13,17 @@ Display of objects and clusters - Grafische Anzeige von Punktemengen und Klassen
 	* PointPixel v1.0.1 (04-10-2016)
 * ClusterGraphix v0.95.1 (04-10-2016)
 	* ClusterGraphix v0.95.1 (04-10-2016)
-	* ClusterBot v0.1.0 (01-24-2016)
+	* ClusterBot v0.1.1 (04-10-2016)
+	* ClusterBotNet v0.1.0 (04-10-2016)
 	* ClusterData v0.1.1 (04-10-2016)
 	* ClusterFile v0.1.0 (01-24-2016)
 
-
 ### Release Information
 v0.95.1
-* ClusterCore package
+* ClusterCore v1.0.0 package
+* detailed ClusterBot Info
+* ClusterBot.addPointPixel()
+* ClusterBotNet
 
 v0.95.0
 * rename from ClusterGraphics

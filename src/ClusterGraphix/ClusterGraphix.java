@@ -305,7 +305,7 @@ public class ClusterGraphix extends JPanel implements ActionListener{
 /**
  * Cluster bot memory  
  */
-  private ClusterBot[] clusterBot;
+  private ClusterBotNet clusterBot;
 /**
  * Error status from quickCheck()  
  */
@@ -1202,7 +1202,7 @@ public class ClusterGraphix extends JPanel implements ActionListener{
       miscData[30][3]=this.ready;
       miscData[31][3]="["+String.valueOf(ClusterGraphix.clusterfreak.length)+"]";
       miscData[32][3]=String.valueOf(this.clusterFile.hashCode());
-      if(clusterBot!=null)miscData[33][3]="["+String.valueOf(clusterBot.length)+"]";else miscData[33][3]="[null]";
+      if(clusterBot!=null)miscData[33][3]="["+String.valueOf(clusterBot.getClusterBots().length)+"]";else miscData[33][3]="[null]";
       miscData[34][3]=String.valueOf(getError());
       miscData[35][3]=String.valueOf(getHeadUpDisplay());
       miscData[36][3]=String.valueOf(getRandom());
@@ -1449,13 +1449,13 @@ public class ClusterGraphix extends JPanel implements ActionListener{
       }
       //cluserBot lines
       if(clusterFile.getData("ClusterBot")){
-    	  for(int b=0;b<clusterBot.length;b++){
-    		  if(clusterBot[b].getPoints()>0){
-    			  for(int i=0;i<clusterBot[b].getPoint().length;i++){
-    				  g2.drawLine((int)(clusterBot[b].getPoint()[i].x*getZoom()*100), 
-    			    		      (int)(clusterBot[b].getPoint()[i].y*getZoom()*100), 
-    			    		      (int)(clusterBot[b].getCenter().x*getZoom()*100), 
-    			    		      (int)(clusterBot[b].getCenter().y*getZoom()*100)); 
+    	  for(int b=0;b<clusterBot.getClusterBots().length;b++){
+    		  if(clusterBot.getClusterBots()[b].getPoints()>0){
+    			  for(int i=0;i<clusterBot.getClusterBots()[b].getPoint().length;i++){
+    				  g2.drawLine((int)(clusterBot.getClusterBots()[b].getPoint()[i].x*getZoom()*100), 
+    			    		      (int)(clusterBot.getClusterBots()[b].getPoint()[i].y*getZoom()*100), 
+    			    		      (int)(clusterBot.getClusterBots()[b].getCenter().x*getZoom()*100), 
+    			    		      (int)(clusterBot.getClusterBots()[b].getCenter().y*getZoom()*100)); 
     			  }
     		  }
     	  }
@@ -2095,8 +2095,9 @@ public class ClusterGraphix extends JPanel implements ActionListener{
 /**
  * Generates Cluster Bots  
  */
-  private void createClusterBots(){
-	  clusterBot=new ClusterBot[getCluster()];
+  @SuppressWarnings("unused")
+private void createClusterBots(){
+	  ClusterBot clusterBots[]=new ClusterBot[getCluster()];
 	  for(int i=0;i<getCluster();i++){
 		  int l=0;
 		  for(int p=0;p<getObjectDescription().length;p++){
@@ -2117,14 +2118,15 @@ public class ClusterGraphix extends JPanel implements ActionListener{
 		  Point2D center=new Point2D(0.0,0.0);
 		  center.x=getVi()[i][0];
 		  center.y=getVi()[i][1];
-		  clusterBot[i]=new ClusterBot(i,String.valueOf(i),l,point2D,center);
+		  clusterBots[i]=new ClusterBot(i,String.valueOf(i),l,point2D,center);
 		  for(int ip=0;ip<pointPixel.length;ip++){
-			  clusterBot[i].addPointPixel(pointPixel[ip]);
+			  clusterBots[i].addPointPixel(pointPixel[ip]);
 		  }
-		  clusterBot[i].setCenterPixel(center.toPointPixel(getPixelOffset()));
+		  clusterBots[i].setCenterPixel(center.toPointPixel(getPixelOffset()));
 	  }
-	  if(clusterBot!=null){
-		  if(clusterBot.length>0)clusterFile.setData("ClusterBot",true);
+	  clusterBot=new ClusterBotNet(clusterBots);
+	  if(clusterBots!=null){
+		  if(clusterBots.length>0)clusterFile.setData("ClusterBot",true);
 		  else clusterFile.setData("ClusterBot",false);
 	  }
 	  else clusterFile.setData("ClusterBot",false);
@@ -3318,17 +3320,15 @@ public class ClusterGraphix extends JPanel implements ActionListener{
 	  //clusterBot-Info
 	  checkTextArea.append("clusterBot-Info\n");
 	  if(clusterFile.getData("clusterBot")){
-		  for(int i=0;i<clusterBot.length;i++){
-			  checkTextArea.append(clusterBot[i].getNumber()+" - "+
-					  			   clusterBot[i].getName()+" ("+
-					  			   clusterBot[i].getPoints()+" Points, x="+
-					  			   clusterBot[i].getCenter().x+", y="+
-					  			   clusterBot[i].getCenter().y+", "+
-					  			   clusterBot[i].getPointsPixel()+" Pixelpoints, x="+
-					  			   clusterBot[i].getCenterPixel().x+", y="+
-					  			   clusterBot[i].getCenterPixel().y+")\n");
-			  for(int p=0;p<clusterBot[i].getPointsPixel();p++){
-				  checkTextArea.append("	Point "+p+" ("+clusterBot[i].getPointPixel()[p].x+", "+clusterBot[i].getPointPixel()[p].x+")\n");
+		  for(int i=0;i<clusterBot.getClusterBots().length;i++){
+			  checkTextArea.append("number: "+clusterBot.getClusterBots()[i].getNumber()+", name: "+clusterBot.getClusterBots()[i].getName()+", points: "+clusterBot.getClusterBots()[i].getPoints()+", pointsPixel: "+clusterBot.getClusterBots()[i].getPointsPixel()+"\n");
+			  checkTextArea.append(" center={"+clusterBot.getClusterBots()[i].getCenter().x+","+clusterBot.getClusterBots()[i].getCenter().y+"}, "+
+					  			   "centerPixel={"+clusterBot.getClusterBots()[i].getCenterPixel().x+","+clusterBot.getClusterBots()[i].getCenterPixel().y+"}\n");
+			  for(int p=0;p<clusterBot.getClusterBots()[i].getPoints();p++){
+				  checkTextArea.append("  point["+p+"]={"+clusterBot.getClusterBots()[i].getPoint()[p].x+","+clusterBot.getClusterBots()[i].getPoint()[p].y+"}\n");
+			  }
+			  for(int p=0;p<clusterBot.getClusterBots()[i].getPointsPixel();p++){
+				  checkTextArea.append("  pointPixel["+p+"]={"+clusterBot.getClusterBots()[i].getPointPixel()[p].x+","+clusterBot.getClusterBots()[i].getPointPixel()[p].y+"}\n");
 			  }
 		  }
 	  }
