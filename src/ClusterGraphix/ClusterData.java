@@ -64,7 +64,7 @@ public class ClusterData {
     
     /**
      * Get the extended string for the variable
-     * @param variable
+     * @param variable variable
      * @return extended string
      */
         public static String getNameExtended(String variable){
@@ -84,8 +84,8 @@ public class ClusterData {
     
 	/**
 	 * Get the string for the variable
-	 * @param variable
-	 * @return string
+	 * @param variable variable
+	 * @return string string
 	 */
 	    public static String getName(String variable){
 	    	String s="?";
@@ -104,7 +104,7 @@ public class ClusterData {
 	    
 	/**
 	 * Get the index for the variable as a string value (2 characters)
-	 * @param variable
+	 * @param variable variable
 	 * @return Index String
 	 */
 	    public static String getIndexString2(String variable){
@@ -124,7 +124,7 @@ public class ClusterData {
 	
 	/**
 	 * Get the index of a variable as an integer value
-	 * @param variable
+	 * @param variable variable
 	 * @return Index Integer
 	 */
 	    public static int getIndexInt(String variable){
@@ -144,7 +144,7 @@ public class ClusterData {
 
 	/**
 	 * Get initial value for available data
-	 * @param variable
+	 * @param variable variable
 	 * @return data true/false
 	 */
 	    public static boolean getData(String variable){

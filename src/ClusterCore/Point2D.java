@@ -13,8 +13,8 @@ public class Point2D {
 	}
 /**
  * Convert Point2D to PointPixel
- * @param pixelOffset
- * @return PointPixel
+ * @param pixelOffset pixel Offset
+ * @return PointPixel pixel point
  */
 	public PointPixel toPointPixel(int pixelOffset){
 		PointPixel pointPixel = new PointPixel(0,0);

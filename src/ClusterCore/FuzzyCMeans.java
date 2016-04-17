@@ -10,7 +10,7 @@ import java.util.Vector;
  * Step 4: Termination or repetition
  * Step 5: optional - Repeat calculation (steps 2 to 4)</PRE>
  *
- * @version 1.6.0 (01-24-2016)
+ * @version 1.6.1 (04-10-2016)
  * @author Thomas Heym
  */
 public class FuzzyCMeans {
@@ -70,6 +70,7 @@ public class FuzzyCMeans {
   }
 /**
  * Returns the cluster centers
+ * @param      random random initialization
  * @param      returnPath Determines whether return the complete search path. Values: <code>true</code>, <code>false</code>
  * @return     Cluster centers and serarch path (optional); The cluster centers are at the end.
  */
@@ -167,7 +168,7 @@ public class FuzzyCMeans {
 
 /**
  * Set partition matrix
- * @param setMik
+ * @param setMik partition matrix
  */
   public static void setMik(double setMik[][]){
     getMik=setMik;

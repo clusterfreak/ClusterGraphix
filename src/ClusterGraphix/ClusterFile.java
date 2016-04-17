@@ -1,7 +1,7 @@
 package ClusterGraphix;
 /**
  * Available data values for ClusterGraphix
- * @version 0.1.0 (1-24-2016)
+ * @version 0.1.1 (04-10-2016)
  * @author Thomas Heym
  */
 public class ClusterFile {
@@ -9,7 +9,7 @@ public class ClusterFile {
 
 /**
  * Initialize variable
- * @param variable
+ * @param variable variable
  */
   public void setInitial(String variable){
 	  this.setData(variable, ClusterData.getData(variable));

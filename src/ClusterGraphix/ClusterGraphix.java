@@ -147,7 +147,7 @@ public class ClusterGraphix extends JPanel implements ActionListener{
  */
   private boolean sortCluster=true;
 /**
- * Object description only for affiliation >0.5
+ * Object description only for affiliation {@literal >} 0.5
  */
   private boolean fiftyFiftyJoker=false;
 /**
@@ -462,7 +462,8 @@ public class ClusterGraphix extends JPanel implements ActionListener{
   private DateFormat clusterDateFormat=DateFormat.getDateInstance(DateFormat.SHORT);
   
 /**
- * Display of objects and clusters 
+ * Display of objects and clusters
+ * @throws InterruptedException not used
  */
   public ClusterGraphix() throws InterruptedException{ 
     clusterGraphixGenerator();
@@ -1506,10 +1507,12 @@ public class ClusterGraphix extends JPanel implements ActionListener{
 
 /**
  * Set pixel resolution
- * 1 -> 10 * 10 = 10^1
- * 2 -> 100 * 100 = 10^2
- * 3 -> 1000 * 1000 = 10^3 
- * @param pixelDim 1..2
+ * <ul>
+ * <li>1: 10 * 10 = 10^1
+ * <li>2: 100 * 100 = 10^2
+ * <li>3: 1000 * 1000 = 10^3 
+ * </ul>
+ * @param pixelDim Dimension 1..2
  */
   public void setPixelDim(int pixelDim){
 	  this.pixelDim=pixelDim;
@@ -2011,14 +2014,14 @@ public class ClusterGraphix extends JPanel implements ActionListener{
   
 /**
  * Set the back part of title string for main frame and first part for other frames
- * @param titel
+ * @param title title
  */
-  public void setTitle(String titel){
-    this.title=titel;
+  public void setTitle(String title){
+    this.title=title;
     this.f.setTitle(titleString+title);
-    this.fCheck.setTitle(titel+" Check");
-    this.fData.setTitle(titel+" Data");
-    this.fValidate.setTitle(titel+" Validate");
+    this.fCheck.setTitle(title+" Check");
+    this.fData.setTitle(title+" Data");
+    this.fValidate.setTitle(title+" Validate");
     if(title.equals(""))clusterFile.setData("Title",false);else clusterFile.setData("Title",true);
   }
   
@@ -2230,7 +2233,7 @@ private void createClusterBots(){
   }
 
 /**
- * Produce object description only for affiliation >0.5
+ * Produce object description only for affiliation {@literal >} 0.5
  */
   public void fiftyFiftyJoker(){
 	setFiftyFiftyJoker(true);
@@ -2278,7 +2281,8 @@ private void createClusterBots(){
   }
  
 /**
- * Deletes all objects of a cluster, no parameters, input with confirm dialog
+ * Deletes all objects of a cluster, input with confirm dialog
+ * @param clusterToDelete cluster to delete
  */
   public void deleteCluster(int clusterToDelete) {
 	int tempI=0;
@@ -2483,8 +2487,8 @@ private void createClusterBots(){
   
   /**
    * Add an object with doubles
-   * @param y 
-   * @param x 
+   * @param y y
+   * @param x x
    */
   public void addPointObject(double x, double y){
 	  if(clusterFile.getData("Object")){
@@ -2507,8 +2511,8 @@ private void createClusterBots(){
   
   /**
    * Add an object with pixels
-   * @param y 
-   * @param x 
+   * @param y y
+   * @param x x
    */
   public void addPointPixelObject(int x, int y){
 	  if(!clusterFile.getData("pixelString")){
@@ -3424,7 +3428,7 @@ private void createClusterBots(){
   
 /**
  * Starts the program without parameters
- * @param args
+ * @param args not used
  */
   public static void main(String[] args) {
 	    try {

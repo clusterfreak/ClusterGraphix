@@ -30,7 +30,7 @@ public class ClusterBot {
 	}
 	/**
 	 * Add Point pixel format
-	 * @param pp
+	 * @param pp PointPixel
 	 */
 	public void addPointPixel(PointPixel pp){
 		PointPixel ppNew[];
