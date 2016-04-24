@@ -21,6 +21,7 @@ Display of objects and clusters - Grafische Anzeige von Punktemengen und Klassen
 ### Release Information
 v0.95.1
 * ClusterCore v1.0.0 package
+* String objectDescirption -> int objectMembership
 * detailed ClusterBot Info
 * ClusterBot.addPointPixel()
 * ClusterBotNet

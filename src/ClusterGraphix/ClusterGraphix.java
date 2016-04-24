@@ -101,7 +101,7 @@ public class ClusterGraphix extends JPanel implements ActionListener{
 /**
  * Object description with associated clusters
  */
-  private String objectDescription[]=null;
+  private boolean objectMembership[][]=null;
 /**
  * Cluster centers matrix vi
  */
@@ -143,7 +143,7 @@ public class ClusterGraphix extends JPanel implements ActionListener{
  */
   private boolean possibilisticCMeans=false;
 /**
- * Matrixes mik, object, vi will be sorted with objectDescription in cluster sequence
+ * Matrixes mik, object, vi will be sorted with objectMembership in cluster sequence
  */
   private boolean sortCluster=true;
 /**
@@ -368,6 +368,7 @@ public class ClusterGraphix extends JPanel implements ActionListener{
   private final JMenuItem clusterMenuToolsClearAll=new JMenuItem("Clear All");
   private final JMenu clusterMenuHelp=new JMenu("?");
   private final JMenuItem clusterMenuHelpDataFile=new JMenuItem("DataFile");
+  private final JMenuItem clusterMenuHelpExample=new JMenuItem("Example");
   private final JMenuItem clusterMenuHelpInfo=new JMenuItem("Info");
   private final JToolBar clusterToolBar=new JToolBar("ClusterGraphix");
   private final JButton clusterButtonCalculate=new JButton("Calculate");
@@ -416,10 +417,10 @@ public class ClusterGraphix extends JPanel implements ActionListener{
   private final JScrollPane objectScrollPane=new JScrollPane();
   private final String[] objectColHeads={"#","X","Y"};
   private JTable objectTable=new JTable();
-  private final JPanel descriptionPanel=new JPanel();
-  private final JScrollPane descriptionScrollPane=new JScrollPane();
-  private final String[] descriptionColHeads={"#","Cluster"};
-  private JTable descriptionTable=new JTable();
+  private final JPanel membershipPanel=new JPanel();
+  private final JScrollPane membershipScrollPane=new JScrollPane();
+  private String[] membershipColHeads={"#","0","1"};
+  private JTable membershipTable=new JTable();
   private final JPanel viPanel=new JPanel();
   private final JScrollPane viScrollPane=new JScrollPane();
   private final String[] viColHeads={"#","X","Y"};
@@ -690,6 +691,8 @@ public class ClusterGraphix extends JPanel implements ActionListener{
     clusterMenuHelp.add(clusterMenuHelpDataFile);
     clusterMenuHelp.setMnemonic('D');
     clusterMenuHelpDataFile.addActionListener(this);
+    clusterMenuHelp.add(clusterMenuHelpExample);
+    clusterMenuHelpExample.addActionListener(this);
     clusterMenuHelp.add(clusterMenuHelpInfo);
     clusterMenuHelp.setMnemonic('?');
     clusterMenuHelpInfo.addActionListener(this);
@@ -727,9 +730,9 @@ public class ClusterGraphix extends JPanel implements ActionListener{
     objectPanel.setLayout(new GridLayout(1,1));
     objectPanel.add(objectScrollPane, BorderLayout.CENTER);
     tabbedPaneData.addTab("object",objectPanel);
-    descriptionPanel.setLayout(new GridLayout(1,1));
-    descriptionPanel.add(descriptionScrollPane, BorderLayout.CENTER);
-    tabbedPaneData.addTab("objectDescription",descriptionPanel);
+    membershipPanel.setLayout(new GridLayout(1,1));
+    membershipPanel.add(membershipScrollPane, BorderLayout.CENTER);
+    tabbedPaneData.addTab("objectMembership",membershipPanel);
     viPanel.setLayout(new GridLayout(1,1));
     viPanel.add(viScrollPane, BorderLayout.CENTER);
     tabbedPaneData.addTab("vi",viPanel);
@@ -1145,7 +1148,22 @@ public class ClusterGraphix extends JPanel implements ActionListener{
             }
       };
       clusterThread.start();
-    }          
+    } 
+//Example
+    if ("Example".equals(actionCommand)){
+    	  clusterStatus.setText(" Example");
+    	  Thread clusterThread = new Thread(clusterThreadGroup,"Example") {
+              public void run() {
+            		example();
+                  SwingUtilities.invokeLater(new Runnable() {
+                  	public void run() {
+                 		clusterStatus.setText(ready);
+                  	}
+                  });
+              }
+        };
+        clusterThread.start();
+      }     
 //info
     if ("Info".equals(actionCommand)){
     	clusterStatus.setText(" info");
@@ -1177,7 +1195,7 @@ public class ClusterGraphix extends JPanel implements ActionListener{
       miscData[4][3]=String.valueOf(getCluster());
       miscData[5][3]=String.valueOf(getObjects());
       if(getObject()!=null)miscData[6][3]="["+String.valueOf(getObject().length)+"]";else miscData[6][3]="[null]";
-      if(getObjectDescription()!=null)miscData[7][3]="["+String.valueOf(getObjectDescription().length)+"]";else miscData[7][3]="[null]";
+      if(getObjectMembership()!=null)miscData[7][3]="["+String.valueOf(getObjectMembership().length)+"]";else miscData[7][3]="[null]";
       if(getVi()!=null)miscData[8][3]="["+String.valueOf(getVi().length)+"]";else miscData[8][3]="[null]";
       if(getViPath()!=null)miscData[9][3]="["+String.valueOf(getViPath().length)+"]";else miscData[9][3]="[null]";
       miscData[10][3]=String.valueOf(getPathOption());
@@ -1220,16 +1238,23 @@ public class ClusterGraphix extends JPanel implements ActionListener{
     	  objectTable = new JTable(objectData, objectColHeads);
     	  objectScrollPane.setViewportView(objectTable);
       }else objectTable=null;
-//objectDescription
-      if (getObjectDescription()!=null){
-    	  String descriptionData[][]=new String[getObjectDescription().length][2];
-    	  for(int i=0;i<getObjectDescription().length;i++){
-    		  descriptionData[i][0]=String.valueOf(i);
-    		  descriptionData[i][1]=getObjectDescription()[i];
+//objectMembership
+      if (getObjectMembership()!=null){
+    	  String membershipData[][]=new String[getObjectMembership().length][getCluster()+1];
+    	  for(int i=0;i<getObjectMembership().length;i++){
+    		  membershipData[i][0]=String.valueOf(i);
+    		  for(int k=0;k<getCluster();k++){
+    			  membershipData[i][k+1]=String.valueOf(getObjectMembership()[i][k]);
+    		  }
     	  }
-    	  descriptionTable = new JTable(descriptionData, descriptionColHeads);
-    	  descriptionScrollPane.setViewportView(descriptionTable);
-      }else descriptionTable=null;
+    	  membershipColHeads=new String[getCluster()+1];
+    	  membershipColHeads[0]="#";
+    	  for(int k=0;k<getCluster();k++){
+    		  membershipColHeads[k+1]=String.valueOf(k);
+    	  }
+    	  membershipTable = new JTable(membershipData, membershipColHeads);
+    	  membershipScrollPane.setViewportView(membershipTable);
+      }else membershipTable=null;
 //vi
       if (getVi()!=null){
     	 String viData[][]=new String[getVi().length][3];
@@ -1332,6 +1357,7 @@ public class ClusterGraphix extends JPanel implements ActionListener{
       }else pixelStringTable=null;
       fData.setVisible(true);
     }
+
 //zoom
     if ("default".equals(actionCommand))setZoom(5);
     if ("+".equals(actionCommand)){
@@ -1421,8 +1447,8 @@ public class ClusterGraphix extends JPanel implements ActionListener{
 	                    (int)(getObject()[k][1]*getZoom()*100-getZoom()),getZoom()*2,getZoom()*2);
 	      //Description of blue points
 	        if(getDescriptionDisplay()==true){
-	          if(getObjectDescription()[k]!=null){
-	            g2.drawString(getObjectDescription()[k],(int)(getObject()[k][0]*getZoom()*100-getZoom()),
+	          if(getObjectMembership()!=null){
+	            g2.drawString(getDescription(k),(int)(getObject()[k][0]*getZoom()*100-getZoom()),
 	                                               (int)(getObject()[k][1]*getZoom()*100-getZoom()));
 	          }
 	        }
@@ -1601,7 +1627,7 @@ public class ClusterGraphix extends JPanel implements ActionListener{
     this.object=clusterObject;
     if(object!=null){
     	setObjects(object.length);
-    	if(!clusterFile.getData("ObjectDescription"))setObjectDescription(new String[object.length]);
+    	if(!clusterFile.getData("ObjectMembership"))setObjectMembership(new boolean[getObjects()][getCluster()]);
         clusterFile.setData("Object",true);
     }
     else{
@@ -1620,30 +1646,30 @@ public class ClusterGraphix extends JPanel implements ActionListener{
 
 /**
  * Set description of objects
- * @param objectDescription
+ * @param objectMembership
  */
-  private void setObjectDescription(String[] objectDescription){ 
-	  this.objectDescription=objectDescription;
-	  if(objectDescription!=null){
-		  if(objectDescription.length>0){
+  private void setObjectMembership(boolean[][] objectMembership){ 
+	  this.objectMembership=objectMembership;
+	  if(objectMembership!=null){
+		  if(objectMembership.length>0){
 			    boolean data=false;
-			    for(int i=0;i<getObjectDescription().length;i++)
-			    	if(getObjectDescription()[i]==null);
-			    	else if(!getObjectDescription()[i].equals(""))data=true;
-			    if(data)clusterFile.setData("objectDescription", true);
-			    else    clusterFile.setData("objectDescription", false);
+			    for(int i=0;i<getObjectMembership().length;i++)
+			    	if(getObjectMembership()[i]==null);
+			    	else if(!getObjectMembership()[i].equals(""))data=true;
+			    if(data)clusterFile.setData("objectMembership", true);
+			    else    clusterFile.setData("objectMembership", false);
 		  }
-		  else clusterFile.setData("ObjectDescription",false);
+		  else clusterFile.setData("ObjectMembership",false);
 	  }
-	  else clusterFile.setData("ObjectDescription",false);
+	  else clusterFile.setData("ObjectMembership",false);
   }
   
 /**
  * Set description of objects (membership values for clusters)
- * @return objectDescription
+ * @return objectMembership
  */
-  private String[] getObjectDescription(){
-	return objectDescription;
+  private boolean[][] getObjectMembership(){
+	return objectMembership;
   }
   
 /**
@@ -1856,7 +1882,7 @@ public class ClusterGraphix extends JPanel implements ActionListener{
   }
   
 /**
- * Set flag for sorting matrixes mik, object, vi with objectDescription in cluster sequence
+ * Set flag for sorting matrixes mik, object, vi with objectMembership in cluster sequence
  * @param sortCluster
  */
   private void setSortCluster(boolean sortCluster){
@@ -1866,7 +1892,7 @@ public class ClusterGraphix extends JPanel implements ActionListener{
   }
 
 /**
- * Get flag for sorting matrixes mik, object, vi with objectDescription in cluster sequence  
+ * Get flag for sorting matrixes mik, object, vi with objectMembership in cluster sequence  
  * @return sortCluster
  */
   private boolean getSortCluster(){
@@ -2103,14 +2129,14 @@ private void createClusterBots(){
 	  ClusterBot clusterBots[]=new ClusterBot[getCluster()];
 	  for(int i=0;i<getCluster();i++){
 		  int l=0;
-		  for(int p=0;p<getObjectDescription().length;p++){
-			  if(String.valueOf(i).equals(getObjectDescription()[p]))l++;
+		  for(int p=0;p<getObjectMembership().length;p++){
+			  if(getObjectMembership()[p][i])l++;
 		  }
 		  Point2D[] point2D=new Point2D[l];
 		  PointPixel[] pointPixel=new PointPixel[l];
 		  l=0;
-		  for(int p=0;p<getObjectDescription().length;p++){
-			  if(String.valueOf(i).equals(getObjectDescription()[p])){
+		  for(int p=0;p<getObjectMembership().length;p++){
+			  if(getObjectMembership()[p][i]){
 				  point2D[l]=new Point2D(0.0,0.0);
 				  point2D[l].x=getObject()[p][0];
 				  point2D[l].y=getObject()[p][1];
@@ -2168,7 +2194,7 @@ private void createClusterBots(){
   }
 
  /**
- * Matrixes mik, object, vi will be sorted with objectDescription in cluster sequence
+ * Matrixes mik, object, vi will be sorted with objectMembership in cluster sequence
  */
   public void sortCluster(){
 	this.setSortCluster(true);
@@ -2239,20 +2265,24 @@ private void createClusterBots(){
 	setFiftyFiftyJoker(true);
     setClusterMax(false);
     this.clusterMenuSetFiftyFiftyJoker.setSelected(true);
-	setObjectDescription(new String[getMik().length]);
+	setObjectMembership(new boolean[getMik().length][getCluster()]);
     for(int i=0;i<getMik().length;i++){
       for(int k=0;k<getCluster();k++){
         if (getMik()[i][k]>0.5) {
-        	getObjectDescription()[i]=String.valueOf(k);
+        	getObjectMembership()[i][k]=true;
         }
       }
     }
     boolean data=false;
-    for(int i=0;i<getObjectDescription().length;i++)
-    	if(getObjectDescription()[i]==null);
-    	else if(!getObjectDescription()[i].equals(""))data=true;
-    if(data)clusterFile.setData("objectDescription", true);
-    else    clusterFile.setData("objectDescription", false);
+    for(int i=0;i<getObjectMembership().length;i++)
+    	if(getObjectMembership()==null);
+    	else{
+    		for(int k=0;k<getCluster();k++){
+    			if(getObjectMembership()[i][k])data=true;
+    		}
+    	}
+    if(data)clusterFile.setData("objectMembership", true);
+    else    clusterFile.setData("objectMembership", false);
   }
 
 /**
@@ -2262,22 +2292,28 @@ private void createClusterBots(){
 	setFiftyFiftyJoker(false);
     setClusterMax(true);
     this.clusterMenuSetClusterMax.setSelected(true);
-	setObjectDescription(new String[getMik().length]);
+	setObjectMembership(new boolean[getMik().length][getCluster()]);
     for(int i=0;i<getMik().length;i++){
       double maxCluster=0;
+      int cmax=Integer.MIN_VALUE;
       for(int k=0;k<getCluster();k++){
         if (getMik()[i][k]>maxCluster) {
           maxCluster=getMik()[i][k];
-          getObjectDescription()[i]=String.valueOf(k);
+          cmax=k; 
         }
       }
+      getObjectMembership()[i][cmax]=true;
     }
     boolean data=false;
-    for(int i=0;i<getObjectDescription().length;i++)
-    	if(getObjectDescription()[i]==null);
-    	else if(!getObjectDescription()[i].equals(""))data=true;
-    if(data)clusterFile.setData("objectDescription", true);
-    else    clusterFile.setData("objectDescription", false);
+    for(int i=0;i<getObjectMembership().length;i++)
+    	if(getObjectMembership()==null);
+    	else{
+    		for(int k=0;k<getCluster();k++){
+    			if(getObjectMembership()[i][k])data=true;
+    		}
+    }
+    if(data)clusterFile.setData("objectMembership", true);
+    else    clusterFile.setData("objectMembership", false);
   }
  
 /**
@@ -2288,21 +2324,20 @@ private void createClusterBots(){
 	int tempI=0;
     int tempK=0;
     double tempObject[][]=new double[getObject().length][2];
-    String tempObjectDescription[]=new String[getObject().length];
+    boolean tempObjectMembership[][]=new boolean[getObject().length][getCluster()];
     double tempVi[][]=new double[getVi().length][2];
     double tempMik[][]=new double[getMik().length][getCluster()];
 //Delete objects in object[][] and mik[][]
     try{
-	    for(int i=0;i<getObjectDescription().length;i++){
-	      if(getObjectDescription()[i]==null)getObjectDescription()[i]=String.valueOf(Integer.MIN_VALUE);
-	      if(Integer.valueOf(getObjectDescription()[i])!=clusterToDelete){
-	        tempObject[tempI][0]=getObject()[i][0];
-	        tempObject[tempI][1]=getObject()[i][1];
-	        for(int k=0;k<getCluster();k++){
-	          tempMik[tempI][k]=getMik()[i][k];
-	        }
+	    for(int i=0;i<getObjectMembership().length;i++){
+	    	if(getObjectMembership()[i][clusterToDelete]==false){
+	    		tempObject[tempI][0]=getObject()[i][0];
+	   			tempObject[tempI][1]=getObject()[i][1];
+	    		for(int k=0;k<getCluster();k++){
+	    			tempMik[tempI][k]=getMik()[i][k];
+	    		}
+	    	}
 	      tempI++;
-	      }
 	    }
     }
     catch(Exception e){
@@ -2323,13 +2358,13 @@ private void createClusterBots(){
     tempK=0;
     for(int i=0;i<getCluster();i++){
       if(i!=clusterToDelete){
-        for(int j=0;j<getObjectDescription().length;j++){
-          if(Integer.valueOf(getObjectDescription()[j])==i){
+        for(int j=0;j<getObjectMembership().length;j++){
+          if(getObjectMembership()[j][i]){
             if(i<clusterToDelete){
-              tempObjectDescription[tempI]=String.valueOf(i);
+              tempObjectMembership[tempI][i]=true;
             }
             else{
-              tempObjectDescription[tempI]=String.valueOf(tempK);
+              tempObjectMembership[tempI][tempK]=true;
             }
             tempI++;
           }
@@ -2342,9 +2377,9 @@ private void createClusterBots(){
         tempK++;
       }
     }
-    setObjectDescription(new String[tempI]);
+    setObjectMembership(new boolean[tempI][getCluster()-1]);
     for(int i=0;i<tempI;i++){
-    	getObjectDescription()[i]=tempObjectDescription[i];
+    	getObjectMembership()[i]=tempObjectMembership[i];
     }
     setVi(new double [tempK][2]);
     for(int i=0;i<tempK;i++){
@@ -2365,26 +2400,26 @@ private void createClusterBots(){
  * Deletes Objects witch not assigned to a cluster
  */
   public void deleteNotAssigned(){
-	 if(getObjectDescription()!=null){
+	 if(getObjectMembership()!=null){
 		 int countDescription=0;
-		 for(int i=0;i<getObjectDescription().length;i++){
-			 if(getObjectDescription()[i]==null);else countDescription++; 
+		 for(int i=0;i<getObjectMembership().length;i++){
+			 if(getObjectMembership()[i]==null);else countDescription++; 
 		 }
 		 double tempObject[][]=new double[getObject().length][2];
-		 String tempObjectDescription[]=new String[getObject().length];
+		 boolean tempObjectMembership[][]=new boolean[getObject().length][getCluster()];
 		 double tempMik[][]=new double[getMik().length][getCluster()];
 		 tempObject=getObject();
-		 tempObjectDescription=getObjectDescription();
+		 tempObjectMembership=getObjectMembership();
 		 tempMik=getMik();
 		 setObject(new double [countDescription][2]);
-		 setObjectDescription(new String[countDescription]);
+		 setObjectMembership(new boolean[countDescription][getCluster()]);
 		 setMik(new double[countDescription][getCluster()]);
 		 int o=0;
-		 for(int i=0;i<tempObjectDescription.length;i++){
-			 if(tempObjectDescription[i]==null);else {
+		 for(int i=0;i<tempObjectMembership.length;i++){
+			 if(tempObjectMembership[i]==null);else {
 				 getObject()[o][0]=tempObject[i][0];
 				 getObject()[o][1]=tempObject[i][1];
-				 getObjectDescription()[o]=tempObjectDescription[i];
+				 getObjectMembership()[o]=tempObjectMembership[i];
 				 getMik()[o][0]=tempMik[i][0];
 				 getMik()[o][1]=tempMik[i][1];
 				 o++;
@@ -2453,7 +2488,7 @@ private void createClusterBots(){
   
   /**
    * Recalculate pixelObject[][] and object[][] object matrixes from pixel string memory pixelString[]
-   * (used at start, not for objectDescription jet, error)
+   * (used at start, not for objectMembership jet, error)
    */
   private void pixelStringToObject(){
 	  setPixelObject(new boolean[getPixelOffset()][getPixelOffset()]);
@@ -2579,13 +2614,13 @@ private void createClusterBots(){
   		  if(clusterFile.getData("ViPath"))if(getViPath()!=null)eventWriter.add(eventFactory.createAttribute("viPathLength", String.valueOf(getViPath().length)));
   		  eventWriter.add(end);
   		  eventWriter.add(tab);
-  		  //object[][], objectDescription[], mik[][]
+  		  //object[][], objectMembership[][], mik[][]
   		  if(clusterFile.getData("Object"))if(getObject()!=null){
   			  for(int i=0;i<getObject().length;i++){
   			  eventWriter.add(eventFactory.createStartElement("",	"",ClusterData.name[6])); 
   			  eventWriter.add(eventFactory.createAttribute("x",String.valueOf(getObject()[i][0])));
   			  eventWriter.add(eventFactory.createAttribute("y",String.valueOf(getObject()[i][1])));
-  			  if(clusterFile.getData("ObjectDescription"))if(getObjectDescription()!=null)if(getObjectDescription().length>0)eventWriter.add(eventFactory.createAttribute(ClusterData.name[7],String.valueOf(getObjectDescription()[i])));
+  			  if(clusterFile.getData("ObjectMembership"))if(getObjectMembership()!=null)for(int m=0;m<getCluster();m++)eventWriter.add(eventFactory.createAttribute("m"+String.valueOf(m),String.valueOf(getObjectMembership()[i][m])));
   			  if(clusterFile.getData("Mik"))if(getMik()!=null)for(int k=0;k<getCluster();k++)eventWriter.add(eventFactory.createAttribute("k"+String.valueOf(k),String.valueOf(getMik()[i][k])));
   			  eventWriter.add(end);
   			  eventWriter.add(eventFactory.createCharacters(String.valueOf(i)));
@@ -2682,7 +2717,10 @@ private void createClusterBots(){
   /**
    * Read all the data from an XML-file
    */
-  public void open(){
+  /**
+ * 
+ */
+public void open(){
 	  clusterChooser.setFileFilter(clusterFileFilterXML);
 	  clusterChooser.setSelectedFile(clusterChooserFileClear);
 	  String zversion="";
@@ -2735,14 +2773,14 @@ private void createClusterBots(){
 						}
 						if(clusterFile.getData("Cluster"))setVi(new double[getCluster()][2]);
 						if(clusterFile.getData("Objects"))setObject(new double[getObjects()][2]);
-						if(clusterFile.getData("Objects"))if(clusterFile.getData("ObjectDescription"))setObjectDescription(new String[getObjects()]);
+						if(clusterFile.getData("Objects"))if(clusterFile.getData("ObjectMembership"))setObjectMembership(new boolean[getObjects()][getCluster()]);
 						if(clusterFile.getData("Objects"))if(clusterFile.getData("Cluster"))if(clusterFile.getData("Mik"))setMik(new double[getObjects()][getCluster()]);
 						if(clusterFile.getData("PixelObject"))setPixelObject(new boolean[getPixelOffset()][getPixelOffset()]);
 						if(clusterFile.getData("PixelVi"))setPixelVi(new boolean[getPixelOffset()][getPixelOffset()]);
 						if(clusterFile.getData("PixelViPath"))setPixelViPath(new boolean[getPixelOffset()][getPixelOffset()]);
 						if(clusterFile.getData("PixelString"))setPixelString(new String[getPixelOffset()]);
 				  }
-				  //object, objectDescription, mik
+				  //object, objectMembership, mik
 				  if (startElement.getName().getLocalPart().equals(ClusterData.name[6]))if(clusterFile.getData("Object")){
 					  event = eventReader.nextEvent();
 					  @SuppressWarnings("unchecked")
@@ -2753,10 +2791,7 @@ private void createClusterBots(){
 								objectI=Integer.parseInt(event.asCharacters().getData().replaceAll("\\n", ""));
 								if (attribute.getName().toString().equals("x"))getObject()[objectI][0]=Double.parseDouble(attribute.getValue());
 								if (attribute.getName().toString().equals("y"))getObject()[objectI][1]=Double.parseDouble(attribute.getValue());
-								if (attribute.getName().toString().equals(ClusterData.name[7])){
-									if(String.valueOf(attribute.getValue()).equals("null"))getObjectDescription()[objectI]=" ";
-									else getObjectDescription()[objectI]=String.valueOf(attribute.getValue());
-								}
+								if (attribute.getName().toString().substring(0, 1).equals("m"))getObjectMembership()[objectI][Integer.parseInt(attribute.getName().toString().substring(1))]=Boolean.parseBoolean(attribute.getValue());
 								if (attribute.getName().toString().substring(0, 1).equals("k"))getMik()[objectI][Integer.parseInt(attribute.getName().toString().substring(1))]=Double.parseDouble(attribute.getValue());				  		
 							}
 							this.clusterFile.setData("Object",true);
@@ -3052,7 +3087,7 @@ private void createClusterBots(){
 	  setCluster(0);//4
 	//objects > setObject//5 
 	  setObject(null);//6
-	  setObjectDescription(new String[0]);//7
+	  setObjectMembership(new boolean[0][0]);//7
 	  setVi(new double[getCluster()][2]);//8
 	  setViPath(null);//9
 	  setPathOption(false);//10
@@ -3087,7 +3122,7 @@ private void createClusterBots(){
 	  clusterChooser.setSelectedFile(clusterChooserFileClear);
 	  this.miscTable=null;
 	  this.objectTable=null;
-	  this.descriptionTable=null;
+	  this.membershipTable=null;
 	  this.viTable=null;
 	  this.viPathTable=null;
 	  this.mikTable=null;
@@ -3160,26 +3195,7 @@ private void createClusterBots(){
 		  }
 		  else checkTextArea.append("error; "+t+"viPath.length=?\n");
 	  }
-	  //4; cluster; 7; objectDescription
-	  if(clusterFile.getData("Cluster")){
-		  t=String.valueOf("cluster="+getCluster()+"; ");
-		  if(clusterFile.getData("ObjectDescription")){
-			  int objectDescriptionM=0;
-			  try{
-				  for(int i=0;i<getObjectDescription().length;i++){
-					  if(getObjectDescription()[i]!=" "){
-						  if(Integer.parseInt(getObjectDescription()[i])+1>objectDescriptionM)objectDescriptionM=Integer.parseInt(getObjectDescription()[i])+1;
-					  }
-				  }
-			  }catch(Exception e){
-				  checkTextArea.append("error; "+t+"objectDescription "+e+"\n");  
-			  }
-			  t=t+"objectDesciption "+objectDescriptionM;
-			  if(objectDescriptionM!=getCluster())checkTextArea.append("error ; "+t+"\n");
-			  else checkTextArea.append("ok; "+t+"\n");
-		  }
-		  else checkTextArea.append("error; "+t+"objectDescription ?\n");
-	  }
+	  //4; cluster;
 	  //5; objects; 6; object.length
 	  if(clusterFile.getData("Objects")){
 		  t=String.valueOf("objects="+getObjects()+"; ");
@@ -3200,15 +3216,15 @@ private void createClusterBots(){
 		  }
 		  else checkTextArea.append("error; "+t+"mik.length=?\n");
 	  }
-      //5; object.length; 7; objectDescription.length
+      //5; object.length; 7; objectMembership.length
 	  if(clusterFile.getData("Object")){
 		  t=String.valueOf("object.length="+getObject().length+"; ");
-		  if(clusterFile.getData("ObjectDescription")){
-			  t=t+"objectDescription.length="+getObjectDescription().length;
-			  if(getObject().length==getObjectDescription().length)checkTextArea.append("ok; "+t+"\n");
+		  if(clusterFile.getData("ObjectMembership")){
+			  t=t+"objectMembership.length="+getObjectMembership().length;
+			  if(getObject().length==getObjectMembership().length)checkTextArea.append("ok; "+t+"\n");
 			  else checkTextArea.append("error; "+t+"\n");
 		  }
-		  else checkTextArea.append("error; "+t+"objectDescription.length=?\n");
+		  else checkTextArea.append("error; "+t+"objectMembership.length=?\n");
 	  }  
 	  //5; object.length; 21; pixelOject 
 	  if(clusterFile.getData("Object")){
@@ -3229,7 +3245,7 @@ private void createClusterBots(){
 		  else checkTextArea.append("error; "+t+"pixelObject ?\n"); 
 	  }
 	  //6; object
-	  //7; objectDescription
+	  //7; objectMembership
 	  //8; vi
 	  //9; viPath
 	  //10; pathOption
@@ -3424,6 +3440,42 @@ private void createClusterBots(){
 	  catch(Exception e){
 		  JOptionPane.showConfirmDialog(null,e,"ClusterGraphix.dataFile",JOptionPane.CLOSED_OPTION,JOptionPane.INFORMATION_MESSAGE);  
 	  }
+  }
+
+/**
+ * Get the object description as a comma separated String  
+ * @param i	number
+ * @return String
+ */
+  private String getDescription(int i){
+	  String description="";
+	  for(int k=0;k<getCluster();k++){
+		  if(getObjectMembership()[i][k]){
+			  if(description!="")description=description.concat(", ");
+			  description=description.concat(String.valueOf(k));			  
+		  }
+	  }
+	  return description;
+  }
+
+/**
+ * Executes example functions  
+ */
+  private void example(){
+	  clearAll();
+	  setTitle("Example");
+	  addPointPixelObject(50,50);
+	  addPointPixelObject(50,60);
+	  addPointPixelObject(80,20);
+	  addPointPixelObject(90,20);
+	  addPointPixelObject(60,60);
+	  addPointPixelObject(90,50);
+	  setCluster(2);
+	  setFuzzyCMeans(true);
+	  setClusterMax(true);
+	  setDescriptionDisplay(true);
+	  setPixel(false);
+	  calculateCluster();
   }
   
 /**
