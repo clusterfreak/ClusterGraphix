@@ -17,8 +17,9 @@ public class ClusterBot {
 	private int pointsPixel=0;
 	private PointPixel pointPixel[];
 	private PointPixel centerPixel;
+	private double pointMik[][];
 	private double offset[]={0.0,0.0};
-	public ClusterBot(int number,String name,int points,Point2D point[],Point2D center){
+	public ClusterBot(int number,String name,int points,Point2D point[],Point2D center,double pointMik[][]){
 		setNumber(number);
 		setName(name);
 		setPoints(points);
@@ -27,6 +28,7 @@ public class ClusterBot {
 		setPointsPixel(0);
 		PointPixel pp = new PointPixel(0,0);
 		setCenterPixel(pp);
+		setPointMik(pointMik);
 	}
 	/**
 	 * Add Point pixel format
@@ -161,5 +163,17 @@ public class ClusterBot {
 	 */
 	public void setCenterPixel(PointPixel centerPixel) {
 		this.centerPixel = centerPixel;
+	}
+	/**
+	 * @return the pointMik
+	 */
+	public double[][] getPointMik() {
+		return pointMik;
+	}
+	/**
+	 * @param pointMik2 the pointMik to set
+	 */
+	public void setPointMik(double[][] pointMik2) {
+		this.pointMik = pointMik2;
 	}
 }

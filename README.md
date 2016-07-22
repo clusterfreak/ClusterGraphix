@@ -18,11 +18,19 @@ Display of objects and clusters - Grafische Anzeige von Punktemengen und Klassen
 	* ClusterData v0.1.1 (04-10-2016)
 	* ClusterFile v0.1.1 (04-10-2016)
 
+### Bugs
+* no
+
+### Ideas
+* test mik for all points in the cluster > 0.1 -> retry
+* mik for all points in the cluster > 0.1 -> vi new calculation and mirror back
+
 ### Release Information
 v0.95.1
 * ClusterCore v1.0.0 package
 * String objectDescirption -> int objectMembership
 * detailed ClusterBot Info
+* no more ClusterBot Lines
 * ClusterBot.addPointPixel()
 * ClusterBotNet
 
