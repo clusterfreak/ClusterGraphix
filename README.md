@@ -19,7 +19,7 @@ Display of objects and clusters - Grafische Anzeige von Punktemengen und Klassen
 	* ClusterFile v0.1.1 (04-10-2016)
 
 ### Bugs
-* no
+* no known
 
 ### Ideas
 * test mik for all points in the cluster > 0.1 -> retry
