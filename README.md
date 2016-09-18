@@ -19,16 +19,16 @@ Display of objects and clusters - Grafische Anzeige von Punktemengen und Klassen
 	* ClusterFile v0.1.1 (04-10-2016)
 
 ### Bugs
-* no
+* Call Example -> sometimes Error in ClusterGraphix.paintComponent.points.red
 
 ### Ideas
-* test mik for all points in the cluster > 0.1 -> retry
-* mik for all points in the cluster > 0.1 -> vi new calculation and mirror back
+* no
 
 ### Release Information
 v0.95.1
 * ClusterCore v1.0.0 package
 * String objectDescirption -> int objectMembership
+* bugfixes checkReport()
 * detailed ClusterBot Info
 * no more ClusterBot Lines
 * ClusterBot.addPointPixel()

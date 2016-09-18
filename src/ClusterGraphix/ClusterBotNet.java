@@ -13,6 +13,11 @@ public class ClusterBotNet {
 	public ClusterBot[] getClusterBots(){
 		return clusterNet;
 	}
+	/**
+	 * PointMik-Value of each point in clusterNet > mik_value for the associated cluster and < mik_value for all other clusters
+	 * @param mik_value
+	 * @return true/false
+	 */
 	public boolean clusterQuality(double mik_value){
 		boolean quality=false;
 		if(clusterNet!=null){

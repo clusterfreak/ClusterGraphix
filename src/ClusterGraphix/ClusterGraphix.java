@@ -1394,9 +1394,11 @@ public class ClusterGraphix extends JPanel implements ActionListener{
       g2.drawRect(0,0,getZoom()*100,getZoom()*100);
       //pixel
       if (getPixel()==true){
-    	double pixelPaint = 100*Math.pow(10.0,(double)-getPixelDim());//th72
+    	double pixelPaint = 100*Math.pow(10.0,(double)-getPixelDim());
         for(int i=0;i<getPixelOffset();i++){
   		  for(int k=0;k<getPixelOffset();k++){
+  			  if(clusterFile.getData("PixelViPath")){
+  			  if(getPixelViPath()!=null){
   			  try{
   				  if (getPixelViPath()[i][k]==true){
 					  g2.setColor(Color.yellow);
@@ -1406,7 +1408,11 @@ public class ClusterGraphix extends JPanel implements ActionListener{
 					      g2.fillRect((int)((i)*pixelPaint*getZoom()),(int)((k)*pixelPaint*getZoom()),(int)(pixelPaint*getZoom()),(int)(pixelPaint*getZoom())); 
   				  }
   			  }catch(Exception e){
-			  }	 
+  				  JOptionPane.showConfirmDialog (null,e,"ClusterGraphix.paintComponent.pixel.yello",JOptionPane.CLOSED_OPTION,JOptionPane.INFORMATION_MESSAGE);  
+  				  System.out.println(e);
+			  }}}
+  			  if(clusterFile.getData("PixelObject")){
+  			  if(getPixelObject()!=null){
   			  try{
 	  			  if (getPixelObject()[i][k]==true){
 	  				  g2.setColor(Color.blue);
@@ -1416,7 +1422,11 @@ public class ClusterGraphix extends JPanel implements ActionListener{
 						  g2.fillRect((int)((i)*pixelPaint*getZoom()),(int)((k)*pixelPaint*getZoom()),(int)(pixelPaint*getZoom()),(int)(pixelPaint*getZoom()));
 	  			  }
   			  }catch(Exception e){
-			  }	 
+  				JOptionPane.showConfirmDialog (null,e,"ClusterGraphix.paintComponent.pixel.blue",JOptionPane.CLOSED_OPTION,JOptionPane.INFORMATION_MESSAGE);  
+  				System.out.println(e);
+			  }}}
+  			  if(clusterFile.getData("PixelVi")){
+  			  if(getPixelVi()!=null){
   			  try{
 	  			  if (getPixelVi()[i][k]==true){
 					  g2.setColor(Color.red);
@@ -1426,45 +1436,55 @@ public class ClusterGraphix extends JPanel implements ActionListener{
 						  g2.fillRect((int)((i)*pixelPaint*getZoom()),(int)((k)*pixelPaint*getZoom()),(int)(pixelPaint*getZoom()),(int)(pixelPaint*getZoom()));
 				  }
   			  }catch(Exception e){
-			  }	 
+  				JOptionPane.showConfirmDialog (null,e,"ClusterGraphix.paintComponent.pixel.red",JOptionPane.CLOSED_OPTION,JOptionPane.INFORMATION_MESSAGE);  
+			  }}}
   		  }
   	    }  
       }
       else{  
       //Yellow points (Path)
-      if ((getPathOption()==true) & (getViPath()!=null)){
+      try{
+      if (getPathOption()==true && getViPath()!=null){
         g2.setColor(Color.yellow);
         for(int k = 0; k < getViPath().length; k++){
           g2.fillOval((int)(getViPath()[k][0]*getZoom()*100-getZoom()),
                       (int)(getViPath()[k][1]*getZoom()*100-getZoom()),getZoom()*2,getZoom()*2);
         }
-      }
+      }}catch(Exception e){
+			JOptionPane.showConfirmDialog (null,e,"ClusterGraphix.paintComponent.points.yellow",JOptionPane.CLOSED_OPTION,JOptionPane.INFORMATION_MESSAGE); 
+			System.out.println(e);
+	  }
       //Blue points (objects)
-      if(getObject()!=null){
+      try{
+      if(clusterFile.getData("Objects") && clusterFile.getData("Object") && getObject()!=null){
     	  g2.setColor(Color.blue);
 	      for(int k = 0; k < getObject().length; k++){
 	        g2.fillOval((int)(getObject()[k][0]*getZoom()*100-getZoom()),
 	                    (int)(getObject()[k][1]*getZoom()*100-getZoom()),getZoom()*2,getZoom()*2);
 	      //Description of blue points
-	        if(getDescriptionDisplay()==true){
+	        if(getDescriptionDisplay()){
 	          if(getObjectMembership()!=null){
 	            g2.drawString(getDescription(k),(int)(getObject()[k][0]*getZoom()*100-getZoom()),
-	                                               (int)(getObject()[k][1]*getZoom()*100-getZoom()));
+	                                            (int)(getObject()[k][1]*getZoom()*100-getZoom()));
 	          }
 	        }
 	      }
-      }
+      }}catch(Exception e){
+			JOptionPane.showConfirmDialog (null,e,"ClusterGraphix.paintComponent.points.blue",JOptionPane.CLOSED_OPTION,JOptionPane.INFORMATION_MESSAGE);
+			System.out.println(e);
+	  }
       //Red points (clusters)
-      if(getVi()!=null){
+      try{
+      if(getVi()!=null && getCluster()!=0){
     	  g2.setColor(Color.red);
 	      if(getVi().length > 1){
 	        for(int k=getVi().length-getCluster();k<getVi().length;k++){
 	          g2.fillOval((int)(getVi()[k][0]*getZoom()*100-getZoom()),
 	                      (int)(getVi()[k][1]*getZoom()*100-getZoom()),getZoom()*2,getZoom()*2);
 	        //Description for red points
-	          if(getDescriptionDisplay()==true){
-	            g2.drawString(String.valueOf(k-(getVi().length-getCluster())), (int)(getVi()[k][0]*getZoom()*100-getZoom()),
-	                                                                            (int)(getVi()[k][1]*getZoom()*100-getZoom()));
+	          if(getDescriptionDisplay()){
+	        	g2.drawString(String.valueOf(k-(getVi().length-getCluster())), (int)(getVi()[k][0]*getZoom()*100-getZoom()),
+	                                                                           (int)(getVi()[k][1]*getZoom()*100-getZoom()));
 	          }
 	        }
 	      }
@@ -1472,7 +1492,10 @@ public class ClusterGraphix extends JPanel implements ActionListener{
 	        g2.fillOval((int)(getVi()[0][0]*getZoom()*100-getZoom()),
 	                    (int)(getVi()[0][1]*getZoom()*100-getZoom()),getZoom()*2,getZoom()*2);
 	      }
-	      }//else
+	      }}catch(Exception e){
+        	  JOptionPane.showConfirmDialog (null,e,"ClusterGraphix.paintComponent.points.red",JOptionPane.CLOSED_OPTION,JOptionPane.INFORMATION_MESSAGE);  
+        	  System.out.println(e);
+      }//else
       }
       //HeadUpDisplay
       if(getHeadUpDisplay()){
@@ -1496,6 +1519,7 @@ public class ClusterGraphix extends JPanel implements ActionListener{
   }
   catch(Exception e){
       JOptionPane.showConfirmDialog (null,e,"ClusterGraphix.paintComponent",JOptionPane.CLOSED_OPTION,JOptionPane.INFORMATION_MESSAGE);  
+      System.out.println(e);
     }
   }
 
@@ -3195,7 +3219,10 @@ public void open(){
 			  if(getViPath().length>getCluster()) checkTextArea.append("ok; "+t+"\n");
 			  else checkTextArea.append("error; "+t+"\n");
 		  }
-		  else checkTextArea.append("error; "+t+"viPath.length=?\n");
+		  else{
+			  if(!pathOption)checkTextArea.append("ok; "+t+"viPath.length=0\n");
+			  else checkTextArea.append("error; "+t+"viPath.length=?\n");
+		  }
 	  }
 	  //4; cluster;
 	  //5; objects; 6; object.length
@@ -3451,17 +3478,18 @@ public void open(){
  */
   private String getDescription(int i){
 	  String description="";
+	  if(clusterFile.getData("ObjectMembership") && getObjectMembership()!=null && clusterFile.getData("Cluster")){
 	  for(int k=0;k<getCluster();k++){
 		  if(getObjectMembership()[i][k]){
 			  if(description!="")description=description.concat(", ");
 			  description=description.concat(String.valueOf(k));			  
 		  }
-	  }
+	  }}
 	  return description;
   }
 
 /**
- * Executes example functions  
+ * Executes  functions  
  */
   private void example(){
 	  clearAll();
