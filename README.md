@@ -2,7 +2,7 @@
 **ClusterGraphix**
 Display of objects and clusters - Grafische Anzeige von Punktemengen und Klassenzentren  
 
-**&copy; Thomas Heym - clusterfreak** (cF) clstrfrk
+**&copy; Thomas Heym - clusterfreak**
 ![clusterfreak](https://http://clusterfreak.com/favicon.ico "clusterfreak")
 
 ### Version Information
@@ -19,10 +19,11 @@ Display of objects and clusters - Grafische Anzeige von Punktemengen und Klassen
 	* ClusterFile v0.1.1 (04-10-2016)
 
 ### Bugs
-* Call Example -> sometimes Error in ClusterGraphix.paintComponent.points.red
+* Call Example -> sometimes getCluster() has no data, and sometimes getDescription() has no parameter i
+* it seems there is a process running in background, get transparency, active threads
 
 ### Ideas
-* no
+* remove test statements in getDescription()
 
 ### Release Information
 v0.95.1
