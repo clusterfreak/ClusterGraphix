@@ -4096,10 +4096,8 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 				}
 			}
 		} catch (Exception e) {
-//			JOptionPane.showConfirmDialog(null, e, "ClusterGraphix.getDescription", JOptionPane.CLOSED_OPTION,
-//					JOptionPane.INFORMATION_MESSAGE);
-//			JOptionPane.showConfirmDialog(null, e.getStackTrace()[0].getLineNumber(), "ClusterGraphix.getDescription",
-//					JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showConfirmDialog(null, e, "ClusterGraphix.getDescription", JOptionPane.CLOSED_OPTION,
+					JOptionPane.INFORMATION_MESSAGE);
 		}
 		return description;
 	}
