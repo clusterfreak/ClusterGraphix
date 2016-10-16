@@ -1593,7 +1593,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 							// Description of blue points
 							if (getDescriptionDisplay()) {
 								if (clusterFile.getData("ObjectMembership") && getObjectMembership() != null) {
-									g2.drawString(getDescription(k),
+									g2.drawString(getDescription(k, getCluster()),
 											(int) (getObject()[k][0] * getZoom() * 100 - getZoom()),
 											(int) (getObject()[k][1] * getZoom() * 100 - getZoom()));
 								}
@@ -4084,11 +4084,10 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	 *            number
 	 * @return String
 	 */
-	private String getDescription(int i) {
+	private String getDescription(int i, int c) {
 		String description = "";
 		try {
-			for (int k = 0; k < getCluster(); k++) {
-				System.out.println(i + " " + k + " " + getObjectMembership().length + " " + getCluster()+ " " + clusterFile.getData("objectMembership"));
+			for (int k = 0; k < c; k++) {
 				if (getObjectMembership()[i][k]) {
 					if (description != "")
 						description = description.concat(", ");
