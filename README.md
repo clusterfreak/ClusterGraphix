@@ -19,7 +19,7 @@ Display of objects and clusters - Grafische Anzeige von Punktemengen und Klassen
 	* ClusterFile v0.1.1 (04-10-2016)
 
 ### Bugs
-* Call Example -> sometimes getCluster() has no data, and sometimes getDescription() has no parameter i
+* Call Example -> sometimes getCluster() has no data, and sometimes getDescription() has no parameter i, so there can be different exceptions in paintComponent() or in getDescription, seems to be no problem, next refresh all ok 
 * it seems there is a process running in background, get transparency, active threads
 
 ### Ideas
