@@ -17,23 +17,30 @@ Display of objects and clusters - Grafische Anzeige von Punktemengen und Klassen
 	* ClusterBotNet v0.1.0 (04-10-2016)
 	* ClusterData v0.1.1 (04-10-2016)
 	* ClusterFile v0.1.1 (04-10-2016)
+* ClusterTest v0.1.0 (04-10-2016)
+	* ClusterTest v0.1.0 (04-10-2016)
 
 ### Bugs
 * Call Example -> sometimes getCluster() has no data, and sometimes getDescription() has no parameter i, so there can be different exceptions in paintComponent() or in getDescription, seems to be no problem, next refresh all ok 
-* it seems there is a process running in background, get transparency, active threads
+
+### Steps for new variable
+* fill in data for new variable in ClusterData, Menu Item if needed, get and set functions, insert in clearAll(), miscData get in actionPerformed, load, save
 
 ### Ideas
 * remove test statements in getDescription()
+* it seems there is a process running in background, get transparency, active threads
 
 ### Release Information
 v0.95.1
 * ClusterCore v1.0.0 package
+* ClusterTest v0.1.0 package
 * String objectDescirption -> int objectMembership
 * bugfixes checkReport()
 * detailed ClusterBot Info
 * no more ClusterBot Lines
 * ClusterBot.addPointPixel()
 * ClusterBotNet
+* developerMode
 
 v0.95.0
 * rename from ClusterGraphics
