@@ -20,6 +20,7 @@ public class ClusterBotNet {
 	/**
 	 * PointMik-Value of each point in clusterNet > mik_value for the associated
 	 * cluster and < mik_value for all other clusters
+	 * if minimum 1 Point in every cluster
 	 * 
 	 * @param mik_value
 	 * @return true/false
@@ -29,14 +30,18 @@ public class ClusterBotNet {
 		if (clusterNet != null) {
 			quality = true;
 			for (int i = 0; i < clusterNet.length; i++) {
-				for (int p = 0; p < clusterNet[i].getPointMik().length; p++) {
-					for (int k = 0; k < clusterNet[i].getPointMik()[p].length; k++) {
-						if (k == i) {
-							if (clusterNet[i].getPointMik()[p][k] < mik_value)
-								quality = false;
-						} else {
-							if (clusterNet[i].getPointMik()[p][k] > mik_value)
-								quality = false;
+				if (clusterNet[i].getPoints() == 0 && clusterNet[i].getPointsPixel() == 0)
+					quality = false;
+				else {
+					for (int p = 0; p < clusterNet[i].getPointMik().length; p++) {
+						for (int k = 0; k < clusterNet[i].getPointMik()[p].length; k++) {
+							if (k == i) {
+								if (clusterNet[i].getPointMik()[p][k] < mik_value)
+									quality = false;
+							} else {
+								if (clusterNet[i].getPointMik()[p][k] > mik_value)
+									quality = false;
+							}
 						}
 					}
 				}

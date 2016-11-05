@@ -730,7 +730,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 			}
 		});
 		clusterMenuHelpDeveloperMode.addActionListener(this);
-		clusterMenuHelp.addSeparator();			
+		clusterMenuHelp.addSeparator();
 		clusterMenuHelp.add(clusterMenuHelpInfo);
 		clusterMenuHelp.setMnemonic('?');
 		clusterMenuHelpInfo.addActionListener(this);
@@ -1537,8 +1537,9 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 													(int) (pixelPaint * getZoom()), (int) (pixelPaint * getZoom()));
 									}
 								} catch (Exception e) {
-									if(developerMode)JOptionPane.showConfirmDialog(null, e, "Cl..ix.paintComponent.pixel.yello",
-											JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
+									if (developerMode)
+										JOptionPane.showConfirmDialog(null, e, "Cl..ix.paintComponent.pixel.yello",
+												JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
 								}
 							}
 						}
@@ -1556,8 +1557,9 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 													(int) (pixelPaint * getZoom()), (int) (pixelPaint * getZoom()));
 									}
 								} catch (Exception e) {
-									if(developerMode)JOptionPane.showConfirmDialog(null, e, "Cl..ix.paintComponent.pixel.blue",
-											JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
+									if (developerMode)
+										JOptionPane.showConfirmDialog(null, e, "Cl..ix.paintComponent.pixel.blue",
+												JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
 								}
 							}
 						}
@@ -1575,8 +1577,9 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 													(int) (pixelPaint * getZoom()), (int) (pixelPaint * getZoom()));
 									}
 								} catch (Exception e) {
-									if(developerMode)JOptionPane.showConfirmDialog(null, e, "Cl..ix.paintComponent.pixel.red",
-											JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
+									if (developerMode)
+										JOptionPane.showConfirmDialog(null, e, "Cl..ix.paintComponent.pixel.red",
+												JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
 								}
 							}
 						}
@@ -1594,8 +1597,9 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 						}
 					}
 				} catch (Exception e) {
-					if(developerMode)JOptionPane.showConfirmDialog(null, e, "Cl..ix.paintComponent.points.yellow",
-							JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
+					if (developerMode)
+						JOptionPane.showConfirmDialog(null, e, "Cl..ix.paintComponent.points.yellow",
+								JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
 				}
 				// Blue points (objects)
 				try {
@@ -1608,7 +1612,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 							// Description of blue points
 							if (getDescriptionDisplay()) {
 								if (clusterFile.getData("ObjectMembership") && getObjectMembership() != null) {
-									g2.drawString(getDescription(k, getCluster()),
+									g2.drawString(getDescriptionX(k, getCluster()),
 											(int) (getObject()[k][0] * getZoom() * 100 - getZoom()),
 											(int) (getObject()[k][1] * getZoom() * 100 - getZoom()));
 								}
@@ -1616,8 +1620,9 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 						}
 					}
 				} catch (Exception e) {
-					if(developerMode)JOptionPane.showConfirmDialog(null, e, "Cl..ix.paintComponent.points.blue",
-							JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
+					if (developerMode)
+						JOptionPane.showConfirmDialog(null, e, "Cl..ix.paintComponent.points.blue",
+								JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
 				}
 				// Red points (clusters)
 				try {
@@ -1641,8 +1646,9 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 						}
 					}
 				} catch (Exception e) {
-					if(developerMode)JOptionPane.showConfirmDialog(null, e, "Cl..ix.paintComponent.points.red",
-							JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
+					if (developerMode)
+						JOptionPane.showConfirmDialog(null, e, "Cl..ix.paintComponent.points.red",
+								JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
 				} // else
 			}
 			// HeadUpDisplay
@@ -2154,12 +2160,13 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 
 	/**
 	 * Get flag to show more error messages
+	 * 
 	 * @return
 	 */
 	private boolean getDeveloperMode() {
 		return developerMode;
 	}
-	
+
 	/**
 	 * Set flag to show more error messages
 	 */
@@ -2171,7 +2178,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 		else
 			clusterFile.setData("DeveloperMode", false);
 	}
-	
+
 	/**
 	 * Set flag for sorting matrixes mik, object, vi with objectMembership in
 	 * cluster sequence
@@ -2380,8 +2387,10 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	 */
 	public void setTitle(String title) {
 		this.title = title;
-		if (title.equals(""))f.setTitle(titleString);
-		else f.setTitle(titleString + " - " + title);
+		if (title.equals(""))
+			f.setTitle(titleString);
+		else
+			f.setTitle(titleString + " - " + title);
 		fCheck.setTitle(title + " Check");
 		fData.setTitle(title + " Data");
 		fValidate.setTitle(title + " Validate");
@@ -2467,34 +2476,44 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 
 	/**
 	 * Recalculation of all
+	 * up to 10 steps depending on clusterQuality > 0.1
 	 */
 	private void calculateCluster() {
 		final long timeBegin = System.currentTimeMillis();
-		clusterStatus.setText(" calculate with Fuzzy-C-Means clustering algorithm");
-		if (getFuzzyCMeans())
-			useFuzzyCMeans();
-		clusterStatus.setText(" calculate with Possibilistic-C-Means clustering algorithm");
-		if (getPossibilisticCMeans())
-			usePossibilisticCMeans();
-		clusterStatus.setText(" calculate -> sortCluster()");
-		if (getSortCluster())
-			sortCluster();
-		clusterStatus.setText(" calculate -> fiftyFiftyJoker()");
-		if (getFiftyFiftyJoker())
-			fiftyFiftyJoker();
-		clusterStatus.setText(" calculate -> clusterMax()");
-		if (getClusterMax())
-			clusterMax();
-		clusterStatus.setText(" calculate -> createClusterBots()");
-		createClusterBots();
-		clusterStatus.setText(" calculate -> pixelMatrix()");
-		if (getPixel())
-			pixelMatrix();
-		clusterStatus.setText(" calculate -> set/getObject()");
-		if (object != null)
-			setObjects(getObject().length);
-		else
-			setObjects(0);
+		boolean loop = true;
+		int step = 0;
+		while (loop) {
+			clusterStatus.setText(" step " + step + " calculate with Fuzzy-C-Means clustering algorithm");
+			if (getFuzzyCMeans())
+				useFuzzyCMeans();
+			clusterStatus.setText(" step " + step + " calculate with Possibilistic-C-Means clustering algorithm");
+			if (getPossibilisticCMeans())
+				usePossibilisticCMeans();
+			clusterStatus.setText(" calculate -> sortCluster()");
+			if (getSortCluster())
+				sortCluster();
+			clusterStatus.setText(" calculate -> fiftyFiftyJoker()");
+			if (getFiftyFiftyJoker())
+				fiftyFiftyJoker();
+			clusterStatus.setText(" calculate -> clusterMax()");
+			if (getClusterMax())
+				clusterMax();
+			clusterStatus.setText(" calculate -> createClusterBots()");
+			createClusterBots();
+			clusterStatus.setText(" calculate -> pixelMatrix()");
+			if (getPixel())
+				pixelMatrix();
+			clusterStatus.setText(" calculate -> set/getObject()");
+			if (object != null)
+				setObjects(getObject().length);
+			else
+				setObjects(0);
+			if (clusterBot.clusterQuality(0.1))
+				loop = false;
+			step++;
+			if (step == 9)
+				loop = false;
+		}
 		clusterStatus.setText(" calculate");
 		setCalculate(false);
 		repaint();
@@ -3086,7 +3105,8 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 				if (clusterFile.getData(36))
 					eventWriter.add(eventFactory.createAttribute(ClusterData.name[36], String.valueOf(getRandom())));
 				if (clusterFile.getData(37))
-					eventWriter.add(eventFactory.createAttribute(ClusterData.name[37], String.valueOf(getDeveloperMode())));
+					eventWriter.add(
+							eventFactory.createAttribute(ClusterData.name[37], String.valueOf(getDeveloperMode())));
 				if (clusterFile.getData("ViPath"))
 					if (getViPath() != null)
 						eventWriter
@@ -4125,7 +4145,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	 *            number
 	 * @return String
 	 */
-	private String getDescription(int i, int c) {
+	private String getDescriptionX(int i, int c) {
 		String description = "";
 		try {
 			for (int k = 0; k < c; k++) {
@@ -4136,8 +4156,9 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 				}
 			}
 		} catch (Exception e) {
-			if(developerMode)JOptionPane.showConfirmDialog(null, e, "ClusterGraphix.getDescription", JOptionPane.CLOSED_OPTION,
-					JOptionPane.INFORMATION_MESSAGE);
+			if (developerMode)
+				JOptionPane.showConfirmDialog(null, e, "ClusterGraphix.getDescriptionX", JOptionPane.CLOSED_OPTION,
+						JOptionPane.INFORMATION_MESSAGE);
 		}
 		return description;
 	}
@@ -4146,12 +4167,11 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	 * Executes functions
 	 */
 	private void example() {
-		if(developerMode){
+		if (developerMode) {
 			clearAll();
 			setDeveloperMode(true);
-		}
-		else clearAll();
-		setTitle("Example");
+		} else
+			clearAll();
 		addPointPixelObject(50, 50);
 		addPointPixelObject(50, 60);
 		addPointPixelObject(80, 20);
