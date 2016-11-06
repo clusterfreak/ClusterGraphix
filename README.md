@@ -21,10 +21,7 @@ Display of objects and clusters - Grafische Anzeige von Punktemengen und Klassen
 	* ClusterTest v0.1.0 (04-10-2016)
 
 ### Bugs
-* when import .pbm set cluster has to update objectMembership 
-
-### Steps for new variable
-* fill in data for new variable in ClusterData, Menu Item if needed, get and set functions, insert in clearAll(), miscData get in actionPerformed, load, save
+* when import .pbm set cluster has to update objectMembership, must be an error when no cluster = 0
 
 ### Ideas
 * calcutation of description every time an not only when description display is on

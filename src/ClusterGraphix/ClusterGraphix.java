@@ -2475,13 +2475,12 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	}
 
 	/**
-	 * Recalculation of all
-	 * up to 10 steps depending on clusterQuality > 0.1
+	 * Recalculation of all up to 10 steps depending on clusterQuality > 0.1
 	 */
 	private void calculateCluster() {
 		final long timeBegin = System.currentTimeMillis();
 		boolean loop = true;
-		int step = 0;
+		int step = 1;
 		while (loop) {
 			clusterStatus.setText(" step " + step + " calculate with Fuzzy-C-Means clustering algorithm");
 			if (getFuzzyCMeans())
@@ -2511,15 +2510,19 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 			if (clusterBot.clusterQuality(0.1))
 				loop = false;
 			step++;
-			if (step == 9)
+			if (step == 10)
 				loop = false;
 		}
 		clusterStatus.setText(" calculate");
 		setCalculate(false);
 		repaint();
 		long timeEnd = System.currentTimeMillis() - timeBegin;
-		clusterStatus.setText(
-				ready + " (" + String.valueOf(timeEnd) + "ms) " + String.valueOf(clusterBot.clusterQuality(0.1)));
+		if (step == 1)
+			clusterStatus.setText(ready + " (" + String.valueOf(timeEnd) + "ms) " + step + " step, "
+					+ String.valueOf(clusterBot.clusterQuality(0.1)));
+		else
+			clusterStatus.setText(ready + " (" + String.valueOf(timeEnd) + "ms) " + step + " steps, "
+					+ String.valueOf(clusterBot.clusterQuality(0.1)));
 	}
 
 	/**

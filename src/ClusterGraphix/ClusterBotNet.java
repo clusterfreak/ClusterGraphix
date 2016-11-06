@@ -18,11 +18,11 @@ public class ClusterBotNet {
 	}
 
 	/**
-	 * PointMik-Value of each point in clusterNet > mik_value for the associated
-	 * cluster and < mik_value for all other clusters
+	 * PointMik-Value of each point in clusterNet &gt; mik_value for the associated
+	 * cluster and &lt; mik_value for all other clusters
 	 * if minimum 1 Point in every cluster
 	 * 
-	 * @param mik_value
+	 * @param mik_value mik
 	 * @return true/false
 	 */
 	public boolean clusterQuality(double mik_value) {
