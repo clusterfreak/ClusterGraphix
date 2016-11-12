@@ -21,11 +21,12 @@ Display of objects and clusters - Grafische Anzeige von Punktemengen und Klassen
 	* ClusterTest v0.1.0 (04-10-2016)
 
 ### Bugs
-* when import .pbm set cluster has to update objectMembership, must be an error when no cluster = 0
+* no
 
 ### Ideas
 * calcutation of description every time an not only when description display is on
 * CTRL + SHIFT + F Source Code Pretty Print
+* clusterBotNet.clusterBotCenter only modified when realy modified
 
 ### Release Information
 v0.95.1
@@ -37,6 +38,7 @@ v0.95.1
 * no more ClusterBot Lines
 * getDesciptionX()
 * ClusterBot.addPointPixel()
+* ClusterBot.pixelOffset
 * ClusterBotNet
 * developerMode
 * Recalculation of all up to 10 steps depending on clusterQuality > 0.1

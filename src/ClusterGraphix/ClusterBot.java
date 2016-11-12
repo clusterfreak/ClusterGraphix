@@ -12,6 +12,7 @@ import ClusterCore.PointPixel;
 public class ClusterBot {
 	private int number;
 	private String name;
+	private int pixelOffset;
 	private int points;
 	private Point2D point[];
 	private Point2D center;
@@ -20,10 +21,12 @@ public class ClusterBot {
 	private PointPixel centerPixel;
 	private double pointMik[][];
 	private double offset[] = { 0.0, 0.0 };
+	private boolean modified;
 
-	public ClusterBot(int number, String name, int points, Point2D point[], Point2D center, double pointMik[][]) {
+	public ClusterBot(int number, String name, int pixelOffset, int points, Point2D point[], Point2D center, double pointMik[][]) {
 		setNumber(number);
 		setName(name);
+		setPixelOffset(pixelOffset);
 		setPoints(points);
 		setPoint(point);
 		setCenter(center);
@@ -31,6 +34,7 @@ public class ClusterBot {
 		PointPixel pp = new PointPixel(0, 0);
 		setCenterPixel(pp);
 		setPointMik(pointMik);
+		setModified(false);
 	}
 
 	/**
@@ -210,5 +214,33 @@ public class ClusterBot {
 	 */
 	public void setPointMik(double[][] pointMik2) {
 		this.pointMik = pointMik2;
+	}
+
+	/**
+	 * @return the pixelOffset
+	 */
+	public int getPixelOffset() {
+		return pixelOffset;
+	}
+
+	/**
+	 * @param pixelOffset the pixelOffset to set
+	 */
+	public void setPixelOffset(int pixelOffset) {
+		this.pixelOffset = pixelOffset;
+	}
+
+	/**
+	 * @return the modified
+	 */
+	public boolean isModified() {
+		return modified;
+	}
+
+	/**
+	 * @param modified the modified to set
+	 */
+	public void setModified(boolean modified) {
+		this.modified = modified;
 	}
 }

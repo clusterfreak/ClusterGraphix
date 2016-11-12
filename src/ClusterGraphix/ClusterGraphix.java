@@ -1789,7 +1789,11 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	 *            New number of clusters
 	 */
 	public void setCluster(int cluster) {
-		this.cluster = cluster;
+		if (this.cluster != cluster) {
+			this.cluster = cluster;
+			if (clusterFile.getData("Objects"))
+				setObjectMembership(new boolean[getObjects()][cluster]);
+		}
 		if (cluster == 0)
 			clusterFile.setData("Cluster", false);
 		else
@@ -1815,8 +1819,11 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 		this.objects = objects;
 		if (objects == 0)
 			clusterFile.setData("Objects", false);
-		else
+		else {
 			clusterFile.setData("Objects", true);
+			if (!clusterFile.getData("ObjectMembership"))
+				setObjectMembership(new boolean[getObjects()][getCluster()]);
+		}
 	}
 
 	/**
@@ -1869,7 +1876,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 				boolean data = false;
 				for (int i = 0; i < getObjectMembership().length; i++)
 					if (getObjectMembership()[i] == null)
-						;
+						data = false;
 					else if (!getObjectMembership()[i].equals(""))
 						data = true;
 				if (data)
@@ -2479,6 +2486,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	 */
 	private void calculateCluster() {
 		final long timeBegin = System.currentTimeMillis();
+		boolean quality = false;
 		boolean loop = true;
 		int step = 1;
 		while (loop) {
@@ -2507,22 +2515,32 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 				setObjects(getObject().length);
 			else
 				setObjects(0);
-			if (clusterBot.clusterQuality(0.1))
+			if (clusterBot.clusterQuality(0.1)) {
+				quality = true;
 				loop = false;
+			}
 			step++;
 			if (step == 10)
 				loop = false;
+		}
+		if (quality) {
+			clusterStatus.setText(" calculate -> clusterBotCenter()");
+			clusterBot.clusterBotCenter();
+			setVi(new double[clusterBot.getClusterBots().length][2]);
+			for (int v = 0; v < clusterBot.getClusterBots().length; v++) {
+				getVi()[v][0] = clusterBot.getClusterBots()[v].getCenter().x;
+				getVi()[v][1] = clusterBot.getClusterBots()[v].getCenter().y;
+			}
+			pixelMatrix();
 		}
 		clusterStatus.setText(" calculate");
 		setCalculate(false);
 		repaint();
 		long timeEnd = System.currentTimeMillis() - timeBegin;
 		if (step == 1)
-			clusterStatus.setText(ready + " (" + String.valueOf(timeEnd) + "ms) " + step + " step, "
-					+ String.valueOf(clusterBot.clusterQuality(0.1)));
+			clusterStatus.setText(ready + " (" + String.valueOf(timeEnd) + "ms) " + step + " step, " + quality);
 		else
-			clusterStatus.setText(ready + " (" + String.valueOf(timeEnd) + "ms) " + step + " steps, "
-					+ String.valueOf(clusterBot.clusterQuality(0.1)));
+			clusterStatus.setText(ready + " (" + String.valueOf(timeEnd) + "ms) " + step + " steps, " + quality);
 	}
 
 	/**
@@ -2555,7 +2573,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 			Point2D center = new Point2D(0.0, 0.0);
 			center.x = getVi()[i][0];
 			center.y = getVi()[i][1];
-			clusterBots[i] = new ClusterBot(i, String.valueOf(i), l, point2D, center, pointMik);
+			clusterBots[i] = new ClusterBot(i, String.valueOf(i), getPixelOffset(), l, point2D, center, pointMik);
 			for (int ip = 0; ip < pointPixel.length; ip++) {
 				clusterBots[i].addPointPixel(pointPixel[ip]);
 			}
@@ -3780,11 +3798,26 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 			quickCheckStatus = false;
 		}
 		// Check, if objects present
-		if ((getObjects() == 0)) {
+		if (getObjects() == 0) {
 			JOptionPane.showConfirmDialog(null, "no objects", "ClusterGraphix.quickCheck", JOptionPane.CLOSED_OPTION,
 					JOptionPane.ERROR_MESSAGE);
 			setError(true);
 			quickCheckStatus = false;
+		}
+		// Check, if objectMembership length
+		if (getObjectMembership().length != getObjects()) {
+			JOptionPane.showConfirmDialog(null, "objectMembership length", "ClusterGraphix.quickCheck",
+					JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
+			setError(true);
+			quickCheckStatus = false;
+		} else {
+			// Check, if objectMembership width
+			if (getObjectMembership()[0].length != getCluster()) {
+				JOptionPane.showConfirmDialog(null, "objectMembership width", "ClusterGraphix.quickCheck",
+						JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
+				setError(true);
+				quickCheckStatus = false;
+			}
 		}
 		return quickCheckStatus;
 	}
