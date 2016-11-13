@@ -2526,12 +2526,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 		if (quality) {
 			clusterStatus.setText(" calculate -> clusterBotCenter()");
 			clusterBot.clusterBotCenter();
-			setVi(new double[clusterBot.getClusterBots().length][2]);
-			for (int v = 0; v < clusterBot.getClusterBots().length; v++) {
-				getVi()[v][0] = clusterBot.getClusterBots()[v].getCenter().x;
-				getVi()[v][1] = clusterBot.getClusterBots()[v].getCenter().y;
-			}
-			pixelMatrix();
+			clusterCenterReorg();
 		}
 		clusterStatus.setText(" calculate");
 		setCalculate(false);
@@ -4222,6 +4217,21 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 		setTitle("Example");
 		setPathOption(true);
 		calculateCluster();
+	}
+
+	/**
+	 * Update vi, pixelVi from clusterBot
+	 */
+	private void clusterCenterReorg() {
+		setVi(new double[clusterBot.getClusterBots().length][2]);
+		setPixelVi(new boolean[getPixelOffset()][getPixelOffset()]);
+		for (int v = 0; v < clusterBot.getClusterBots().length; v++) {
+			getVi()[v][0] = clusterBot.getClusterBots()[v].getCenter().x;
+			getVi()[v][1] = clusterBot.getClusterBots()[v].getCenter().y;
+			getPixelVi()[clusterBot.getClusterBots()[v].getCenterPixel().x][clusterBot.getClusterBots()[v]
+					.getCenterPixel().y] = true;
+		}
+
 	}
 
 	/**

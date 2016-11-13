@@ -40,9 +40,11 @@ public class ClusterBotNet {
 					for (int p = 0; p < clusterNet[i].getPointMik().length; p++) {
 						for (int k = 0; k < clusterNet[i].getPointMik()[p].length; k++) {
 							if (k == i) {
+								// the mik-value must be gt mik_value for the associated cluster
 								if (clusterNet[i].getPointMik()[p][k] < mik_value)
 									quality = false;
 							} else {
+								// the mik-value must be lt mik_value for other clusters
 								if (clusterNet[i].getPointMik()[p][k] > mik_value)
 									quality = false;
 							}
@@ -62,9 +64,9 @@ public class ClusterBotNet {
 			for (int i = 0; i < clusterNet.length; i++) {
 				double object[][] = new double[clusterNet[i].getPoints()][2];
 				double vi[][] = new double[1][2];
-				for (int p = 0; p < clusterNet[i].getPoints();p++){
-					object[p][0]=clusterNet[i].getPoint()[p].x;
-					object[p][1]=clusterNet[i].getPoint()[p].y;
+				for (int p = 0; p < clusterNet[i].getPoints(); p++) {
+					object[p][0] = clusterNet[i].getPoint()[p].x;
+					object[p][1] = clusterNet[i].getPoint()[p].y;
 				}
 				FuzzyCMeans fcm = new FuzzyCMeans(object, 1);
 				vi = fcm.determineClusterCenters(true, false);
