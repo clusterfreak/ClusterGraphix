@@ -4201,7 +4201,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 		if (developerMode) {
 			clearAll();
 			setDeveloperMode(true);
-		} else
+		} else 
 			clearAll();
 		addPointPixelObject(50, 50);
 		addPointPixelObject(50, 60);
@@ -4217,6 +4217,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 		setTitle("Example");
 		setPathOption(true);
 		calculateCluster();
+		setCalculate(true);
 	}
 
 	/**

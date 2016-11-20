@@ -22,7 +22,7 @@ public class ClusterBotNet {
 
 	/**
 	 * PointMik-Value of each point in clusterNet &gt; mik_value for the
-	 * associated cluster and &lt; mik_value for all other clusters if minimum 1
+	 * associated cluster or &lt; mik_value for all other clusters if minimum 1
 	 * Point in every cluster
 	 * 
 	 * @param mik_value
@@ -30,30 +30,51 @@ public class ClusterBotNet {
 	 * @return true/false
 	 */
 	public boolean clusterQuality(double mik_value) {
+		ClusterQuality cq = new ClusterQuality();
 		boolean quality = false;
 		if (clusterNet != null) {
 			quality = true;
+			cq.setPointInTheCluster(true);
+			cq.setEachPointInTheCluster(true);
+			cq.setAllOtherClusters(true);
 			for (int i = 0; i < clusterNet.length; i++) {
 				if (clusterNet[i].getPoints() == 0 && clusterNet[i].getPointsPixel() == 0)
-					quality = false;
+					cq.setPointInTheCluster(false);
 				else {
 					for (int p = 0; p < clusterNet[i].getPointMik().length; p++) {
 						for (int k = 0; k < clusterNet[i].getPointMik()[p].length; k++) {
 							if (k == i) {
-								// the mik-value must be gt mik_value for the associated cluster
+								// the mik-value must be gt mik_value for the
+								// associated cluster
 								if (clusterNet[i].getPointMik()[p][k] < mik_value)
-									quality = false;
+									cq.setEachPointInTheCluster(false);
 							} else {
-								// the mik-value must be lt mik_value for other clusters
+								// the mik-value must be lt mik_value for other
+								// clusters
 								if (clusterNet[i].getPointMik()[p][k] > mik_value)
-									quality = false;
+									cq.setAllOtherClusters(false);
 							}
 						}
 					}
 				}
 			}
 		}
+		if (!cq.isPointInTheCluster()) {
+			quality = false;
+		} else {
+			if (clusterNet.length > 10) {
+				if (!cq.isEachPointInTheCluster() || !cq.isAllOtherClusters()) {
+					quality = false;
+				}
+			} else {
+				if (!cq.isEachPointInTheCluster() && !cq.isAllOtherClusters()) {
+
+					quality = false;
+				}
+			}
+		}
 		return quality;
+
 	}
 
 	/**
