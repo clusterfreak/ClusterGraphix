@@ -2,6 +2,7 @@ package ClusterGraphix;
 
 import ClusterCore.FuzzyCMeans;
 import ClusterCore.Point2D;
+import ClusterGraphix.ClusterQuality;
 
 /**
  * Functions for ClusterBots
