@@ -328,6 +328,10 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	 */
 	private boolean developerMode;
 	/**
+	 * Improved clusterfreak algorithm
+	 */
+	private boolean improve;
+	/**
 	 * Main frame
 	 */
 	private JFrame f;
@@ -366,6 +370,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	private final ButtonGroup clusterButtonGroupSet1 = new ButtonGroup();
 	private final JMenuItem clusterMenuSetRepeat = new JMenuItem("repeat");
 	private final JCheckBoxMenuItem clusterMenuSetRandom = new JCheckBoxMenuItem("random", true);
+	private final JCheckBoxMenuItem clusterMenuSetImprove = new JCheckBoxMenuItem("improve", true);
 	private final JCheckBoxMenuItem clusterMenuSetSortCluster = new JCheckBoxMenuItem("SortCluster", true);
 	private final JRadioButtonMenuItem clusterMenuSetFiftyFiftyJoker = new JRadioButtonMenuItem("FiftyFiftyJoker",
 			false);
@@ -673,6 +678,14 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 				setRandom(clusterMenuSetRandom.isSelected());
 			}
 		});
+		clusterMenuSetRandom.addActionListener(this);
+		clusterMenuSet.add(clusterMenuSetImprove);
+		clusterMenuSetImprove.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				setImprove(clusterMenuSetImprove.isSelected());
+			}
+		});
+		clusterMenuSetImprove.addActionListener(this);
 		clusterMenuSet.addSeparator();
 		clusterMenuSet.add(clusterMenuSetSortCluster);
 		clusterMenuSetSortCluster.addItemListener(new ItemListener() {
@@ -919,6 +932,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 			Thread clusterThread = new Thread(clusterThreadGroup, "Import") {
 				public void run() {
 					importPBM();
+					setCalculate(true);
 					SwingUtilities.invokeLater(new Runnable() {
 						public void run() {
 							clusterStatus.setText(ready);
@@ -1091,7 +1105,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 			};
 			clusterThread.start();
 		}
-		// PixelMode, pathOption, descriptionDisplay, refresh, headUpDisplay
+		// PixelMode, pathOption, descriptionDisplay, refresh, headUpDisplay, random, calculate
 		if ("PixelMode".equals(actionCommand))
 			repaint();
 		if ("pathOption".equals(actionCommand))
@@ -1102,6 +1116,10 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 			repaint();
 		if ("headUpDisplay".equals(actionCommand))
 			repaint();
+		if ("random".equals(actionCommand))
+			setCalculate(true);
+		if ("improve".equals(actionCommand))
+			setCalculate(true);
 		// computeCluster
 		if (("FuzzyCMeans".equals(actionCommand)) || ("PossibilisticCMeans".equals(actionCommand))
 				|| ("SortCluster".equals(actionCommand)) || ("FiftyFiftyJoker".equals(actionCommand))
@@ -1234,7 +1252,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 					example();
 					SwingUtilities.invokeLater(new Runnable() {
 						public void run() {
-							clusterStatus.setText(ready);
+							//clusterStatus.setText(ready);
 						}
 					});
 				}
@@ -1337,6 +1355,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 			miscData[35][3] = String.valueOf(getHeadUpDisplay());
 			miscData[36][3] = String.valueOf(getRandom());
 			miscData[37][3] = String.valueOf(getDeveloperMode());
+			miscData[38][3] = String.valueOf(getImprove());
 			miscTable = new JTable(miscData, miscColHeads);
 			miscScrollPane.setViewportView(miscTable);
 			// object
@@ -2159,10 +2178,33 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	/**
 	 * Get random
 	 * 
-	 * @return
+	 * @return random
 	 */
 	private boolean getRandom() {
 		return random;
+	}
+
+	/**
+	 * Set improve
+	 * 
+	 * @param improve
+	 */
+	private void setImprove(boolean improve) {
+		this.improve = improve;
+		clusterMenuSetImprove.setSelected(improve);
+		if (improve)
+			clusterFile.setData("Improve", false);
+		else
+			clusterFile.setData("Improve", true);
+	}
+
+	/**
+	 * Get improve
+	 * 
+	 * @return improve
+	 */
+	private boolean getImprove() {
+		return improve;
 	}
 
 	/**
@@ -2488,8 +2530,9 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 		final long timeBegin = System.currentTimeMillis();
 		boolean quality = false;
 		boolean loop = true;
-		int step = 1;
+		int step = 0;
 		while (loop) {
+			step++;
 			clusterStatus.setText(" step " + step + " calculate with Fuzzy-C-Means clustering algorithm");
 			if (getFuzzyCMeans())
 				useFuzzyCMeans();
@@ -2515,11 +2558,13 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 				setObjects(getObject().length);
 			else
 				setObjects(0);
-			if (clusterBot.clusterQuality(0.1)) {
-				quality = true;
+			if (getImprove()) {
+				if (clusterBot.clusterQuality(0.1)) {
+					quality = true;
+					loop = false;
+				}
+			} else
 				loop = false;
-			}
-			step++;
 			if (step == 10)
 				loop = false;
 		}
@@ -2532,10 +2577,24 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 		setCalculate(false);
 		repaint();
 		long timeEnd = System.currentTimeMillis() - timeBegin;
-		if (step == 1)
-			clusterStatus.setText(ready + " (" + String.valueOf(timeEnd) + "ms) " + step + " step, " + quality);
-		else
-			clusterStatus.setText(ready + " (" + String.valueOf(timeEnd) + "ms) " + step + " steps, " + quality);
+		if (getImprove()) {
+			if (quality) {
+				if (step == 1) {
+					clusterStatus.setText(ready + " (" + String.valueOf(timeEnd) + "ms) " + step + " step, improved");
+				} else {
+					clusterStatus.setText(ready + " (" + String.valueOf(timeEnd) + "ms) " + step + " steps, improved");
+				}
+			} else {
+				if (step == 1) {
+					clusterStatus
+							.setText(ready + " (" + String.valueOf(timeEnd) + "ms) " + step + " step, not improved");
+				} else {
+					clusterStatus
+							.setText(ready + " (" + String.valueOf(timeEnd) + "ms) " + step + " steps, not improved");
+				}
+			}
+		} else
+			clusterStatus.setText(ready + " (" + String.valueOf(timeEnd) + "ms) ");
 	}
 
 	/**
@@ -3760,6 +3819,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 		setHeadUpDisplay(true);// 35
 		setRandom(true);// 36
 		setDeveloperMode(false);// 37
+		setImprove(true);// 38
 		// user interface reset
 		clusterChooser.setSelectedFile(clusterChooserFileClear);
 		miscTable = null;
@@ -3785,6 +3845,13 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	private boolean quickCheck() {
 		boolean quickCheckStatus = true;
 		setError(false);
+		// Check, if cluster = 0
+		if (getCluster()==0){
+			JOptionPane.showConfirmDialog(null, "number of clusters = 0", "ClusterGraphix.quickCheck",
+					JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
+			setError(true);
+			quickCheckStatus = false;
+		}
 		// Check, if a clustering algorithm is selected
 		if ((getFuzzyCMeans() == false) && (getPossibilisticCMeans() == false)) {
 			JOptionPane.showConfirmDialog(null, "no clustering algorithm selected", "ClusterGraphix.quickCheck",
@@ -4201,7 +4268,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 		if (developerMode) {
 			clearAll();
 			setDeveloperMode(true);
-		} else 
+		} else
 			clearAll();
 		addPointPixelObject(50, 50);
 		addPointPixelObject(50, 60);
@@ -4217,7 +4284,6 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 		setTitle("Example");
 		setPathOption(true);
 		calculateCluster();
-		setCalculate(true);
 	}
 
 	/**

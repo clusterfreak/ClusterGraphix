@@ -20,6 +20,7 @@ Display of objects and clusters - Grafische Anzeige von Punktemengen und Klassen
 	* ClusterQuality v0.1.0 (04-10-2016)
 * ClusterTest v0.1.0 (04-10-2016)
 	* ClusterTest v0.1.0 (04-10-2016)
+	* WritePbm v0.1.0 (04-10-2016)
 
 ### Bugs
 * no
