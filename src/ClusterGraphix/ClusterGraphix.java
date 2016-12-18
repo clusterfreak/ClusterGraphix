@@ -36,6 +36,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JRadioButtonMenuItem;
+import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JToolBar;
@@ -841,11 +842,10 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 			JOptionPane.showConfirmDialog(null, e, "ClusterGraphix.setIconImage", JOptionPane.CLOSED_OPTION,
 					JOptionPane.INFORMATION_MESSAGE);
 		}
-		fInfo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		fInfo.setResizable(false);
 		fInfo.setLocation((int) (d.getWidth() / 2 - (fInfo.getWidth() / 2)),
 				(int) (d.getHeight() / 2 - (fInfo.getHeight() / 2)));
-		fInfo.setLayout(new GridLayout(3, 1)); // 3 rows, 1 column
+		fInfo.setLayout(new GridLayout(3, 2, 10, 10)); // 3 rows, 1 column
 		ImageIcon logo = null;
 		try {
 			logo = new ImageIcon(ImageIO.read(getClass().getResource("/ClusterCore/sphere32.png")));
@@ -856,9 +856,12 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 		infoLabel1 = new JLabel("", logo, JLabel.CENTER);
 		infoLabel1.setVerticalTextPosition(JLabel.BOTTOM);
 		infoLabel1.setHorizontalTextPosition(JLabel.CENTER);
+		infoLabel1.setBorder(BorderFactory.createEmptyBorder(20,0,0,0));
 		infoLabel2 = new JLabel();
+		infoLabel2.setBorder(BorderFactory.createEmptyBorder(0,20,0,20));
 		infoLabel3 = new JLabel("", logo, JLabel.CENTER);
 		infoLabel3.setHorizontalTextPosition(JLabel.RIGHT);
+		infoLabel3.setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
 		fInfo.add(infoLabel1);
 		fInfo.add(infoLabel2);
 		fInfo.add(infoLabel3);
@@ -4341,7 +4344,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 		setClusterMax(true);
 		setDescriptionDisplay(true);
 		setPixel(false);
-		setTitle("Example");
+		setTitle("Example 1");
 		setPathOption(true);
 		calculateCluster();
 	}
@@ -4366,7 +4369,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 		setClusterMax(true);
 		setDescriptionDisplay(true);
 		setPixel(false);
-		setTitle("Example");
+		setTitle("Example 2");
 		setPathOption(true);
 		calculateCluster();
 	}
