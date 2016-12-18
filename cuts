@@ -1,3 +1,5 @@
 //			JOptionPane.showConfirmDialog(null, e.getStackTrace()[0].getLineNumber(), "ClusterGraphix.getDescription",
 //					JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
 
+					JOptionPane.showConfirmDialog(null, "Copyright 1999-" + jahr + " Thomas Heym",
+							"ClusterGraphix " + version, JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);

@@ -4,6 +4,7 @@ import java.io.FileOutputStream;
 import java.io.FileInputStream;
 import java.io.File;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.io.FileReader;
 import java.io.BufferedReader;
 import java.io.PrintWriter;
@@ -36,6 +37,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JToolBar;
 import javax.swing.JButton;
 import javax.swing.JTabbedPane;
@@ -385,7 +387,8 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	private final JMenuItem clusterMenuToolsClearAll = new JMenuItem("Clear All");
 	private final JMenu clusterMenuHelp = new JMenu("?");
 	private final JMenuItem clusterMenuHelpDataFile = new JMenuItem("DataFile");
-	private final JMenuItem clusterMenuHelpExample = new JMenuItem("Example");
+	private final JMenuItem clusterMenuHelpExample1 = new JMenuItem("Example 1");
+	private final JMenuItem clusterMenuHelpExample2 = new JMenuItem("Example 2");
 	private final JCheckBoxMenuItem clusterMenuHelpDeveloperMode = new JCheckBoxMenuItem("DeveloperMode", false);
 	private final JMenuItem clusterMenuHelpInfo = new JMenuItem("Info");
 	private final JToolBar clusterToolBar = new JToolBar("ClusterGraphix");
@@ -487,6 +490,13 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	private final JTextArea checkTextArea = new JTextArea();
 	private final GregorianCalendar clusterCalendar = new GregorianCalendar();
 	private DateFormat clusterDateFormat = DateFormat.getDateInstance(DateFormat.SHORT);
+	/**
+	 * Info frame
+	 */
+	private JFrame fInfo;
+	private JLabel infoLabel1 = new JLabel();
+	private JLabel infoLabel2 = new JLabel();
+	private JLabel infoLabel3 = new JLabel();
 
 	/**
 	 * Display of objects and clusters
@@ -733,8 +743,10 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 		clusterMenuHelp.add(clusterMenuHelpDataFile);
 		clusterMenuHelp.setMnemonic('D');
 		clusterMenuHelpDataFile.addActionListener(this);
-		clusterMenuHelp.add(clusterMenuHelpExample);
-		clusterMenuHelpExample.addActionListener(this);
+		clusterMenuHelp.add(clusterMenuHelpExample1);
+		clusterMenuHelpExample1.addActionListener(this);
+		clusterMenuHelp.add(clusterMenuHelpExample2);
+		clusterMenuHelpExample2.addActionListener(this);
 		clusterMenuHelp.add(clusterMenuHelpDeveloperMode);
 		clusterMenuHelp.setMnemonic('M');
 		clusterMenuHelpDeveloperMode.addItemListener(new ItemListener() {
@@ -820,6 +832,37 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 		fCheck.setSize(500, 500);
 		checkScrollPane.setViewportView(checkTextArea);
 		fCheck.getContentPane().add(checkScrollPane);
+		// Info frame
+		fInfo = new JFrame(titleString + " - Info");
+		fInfo.setSize(300, 300);
+		try {
+			fInfo.setIconImage(ImageIO.read(getClass().getResource("/ClusterCore/sphere32.png")));
+		} catch (Exception e) {
+			JOptionPane.showConfirmDialog(null, e, "ClusterGraphix.setIconImage", JOptionPane.CLOSED_OPTION,
+					JOptionPane.INFORMATION_MESSAGE);
+		}
+		fInfo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		fInfo.setResizable(false);
+		fInfo.setLocation((int) (d.getWidth() / 2 - (fInfo.getWidth() / 2)),
+				(int) (d.getHeight() / 2 - (fInfo.getHeight() / 2)));
+		fInfo.setLayout(new GridLayout(3, 1)); // 3 rows, 1 column
+		ImageIcon logo = null;
+		try {
+			logo = new ImageIcon(ImageIO.read(getClass().getResource("/ClusterCore/sphere32.png")));
+		} catch (IOException e1) {
+			JOptionPane.showConfirmDialog(null, e, "ClusterGraphix.setIconImage", JOptionPane.CLOSED_OPTION,
+					JOptionPane.INFORMATION_MESSAGE);
+		}
+		infoLabel1 = new JLabel("", logo, JLabel.CENTER);
+		infoLabel1.setVerticalTextPosition(JLabel.BOTTOM);
+		infoLabel1.setHorizontalTextPosition(JLabel.CENTER);
+		infoLabel2 = new JLabel();
+		infoLabel3 = new JLabel("", logo, JLabel.CENTER);
+		infoLabel3.setHorizontalTextPosition(JLabel.RIGHT);
+		fInfo.add(infoLabel1);
+		fInfo.add(infoLabel2);
+		fInfo.add(infoLabel3);
+		fInfo.setSize(300, 300);
 	}
 
 	/**
@@ -1105,7 +1148,8 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 			};
 			clusterThread.start();
 		}
-		// PixelMode, pathOption, descriptionDisplay, refresh, headUpDisplay, random, calculate
+		// PixelMode, pathOption, descriptionDisplay, refresh, headUpDisplay,
+		// random, calculate
 		if ("PixelMode".equals(actionCommand))
 			repaint();
 		if ("pathOption".equals(actionCommand))
@@ -1244,15 +1288,30 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 			};
 			clusterThread.start();
 		}
-		// Example
-		if ("Example".equals(actionCommand)) {
-			clusterStatus.setText(" Example");
-			Thread clusterThread = new Thread(clusterThreadGroup, "Example") {
+		// Example 1
+		if ("Example 1".equals(actionCommand)) {
+			clusterStatus.setText(" Example 1");
+			Thread clusterThread = new Thread(clusterThreadGroup, "Example 1") {
 				public void run() {
-					example();
+					example1();
 					SwingUtilities.invokeLater(new Runnable() {
 						public void run() {
-							//clusterStatus.setText(ready);
+							// clusterStatus.setText(ready);
+						}
+					});
+				}
+			};
+			clusterThread.start();
+		}
+		// Example 2
+		if ("Example 2".equals(actionCommand)) {
+			clusterStatus.setText(" Example 2");
+			Thread clusterThread = new Thread(clusterThreadGroup, "Example 2") {
+				public void run() {
+					example2();
+					SwingUtilities.invokeLater(new Runnable() {
+						public void run() {
+							// clusterStatus.setText(ready);
 						}
 					});
 				}
@@ -1264,8 +1323,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 			clusterStatus.setText(" info");
 			Thread clusterThread = new Thread(clusterThreadGroup, "Info") {
 				public void run() {
-					JOptionPane.showConfirmDialog(null, "Copyright 1999-" + jahr + " Thomas Heym",
-							"ClusterGraphix " + version, JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
+					info();
 					SwingUtilities.invokeLater(new Runnable() {
 						public void run() {
 							clusterStatus.setText(ready);
@@ -2441,6 +2499,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 		else
 			f.setTitle(titleString + " - " + title);
 		fCheck.setTitle(title + " Check");
+		fInfo.setTitle(title + "Info");
 		fData.setTitle(title + " Data");
 		fValidate.setTitle(title + " Validate");
 		if (title.equals(""))
@@ -3837,6 +3896,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 		fValidate.dispose();
 		fData.dispose();
 		fCheck.dispose();
+		fInfo.dispose();
 	}
 
 	/**
@@ -3846,7 +3906,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 		boolean quickCheckStatus = true;
 		setError(false);
 		// Check, if cluster = 0
-		if (getCluster()==0){
+		if (getCluster() == 0) {
 			JOptionPane.showConfirmDialog(null, "number of clusters = 0", "ClusterGraphix.quickCheck",
 					JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
 			setError(true);
@@ -4262,9 +4322,34 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	}
 
 	/**
-	 * Executes functions
+	 * Executes example functions 1
 	 */
-	private void example() {
+	private void example1() {
+		if (developerMode) {
+			clearAll();
+			setDeveloperMode(true);
+		} else
+			clearAll();
+		addPointPixelObject(50, 50);
+		addPointPixelObject(50, 60);
+		addPointPixelObject(80, 20);
+		addPointPixelObject(90, 20);
+		addPointPixelObject(60, 60);
+		addPointPixelObject(90, 50);
+		setCluster(2);
+		setFuzzyCMeans(true);
+		setClusterMax(true);
+		setDescriptionDisplay(true);
+		setPixel(false);
+		setTitle("Example");
+		setPathOption(true);
+		calculateCluster();
+	}
+
+	/**
+	 * Executes example functions 2
+	 */
+	private void example2() {
 		if (developerMode) {
 			clearAll();
 			setDeveloperMode(true);
@@ -4299,6 +4384,20 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 					.getCenterPixel().y] = true;
 		}
 
+	}
+
+	/**
+	 * Show Info Frame
+	 */
+	private void info() {
+		infoLabel1.setText("ClusterGraphix " + version);
+		infoLabel2.setText("Copyright 1999-" + jahr + " Thomas Heym");
+		infoLabel3.setText("clusterfreak");
+		infoLabel1.setToolTipText("version number");
+		infoLabel2.setToolTipText("Copyright");
+		infoLabel3.setToolTipText("Clusterfreak");
+		fInfo.pack();
+		fInfo.setVisible(true);
 	}
 
 	/**
