@@ -7,7 +7,7 @@ import ClusterGraphix.ClusterQuality;
 /**
  * Functions for ClusterBots
  * 
- * @version 0.1.0 (04-10-2016)
+ * @version 0.1.0 (2016-04-10)
  * @author Thomas Heym
  */
 public class ClusterBotNet {

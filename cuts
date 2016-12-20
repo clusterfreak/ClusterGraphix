@@ -1,5 +1,6 @@
-//			JOptionPane.showConfirmDialog(null, e.getStackTrace()[0].getLineNumber(), "ClusterGraphix.getDescription",
-//					JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
+JOptionPane.showConfirmDialog(null, e.getStackTrace()[0].getLineNumber(), "ClusterGraphix.getDescription", JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
 
-					JOptionPane.showConfirmDialog(null, "Copyright 1999-" + jahr + " Thomas Heym",
-							"ClusterGraphix " + version, JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
+JOptionPane.showConfirmDialog(null, "Copyright 1999-" + jahr + " Thomas Heym", "ClusterGraphix " + version, JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE);
+
+infoLabel3 = new JLabel("", logo, JLabel.CENTER);
+infoLabel3.setHorizontalTextPosition(JLabel.RIGHT);

@@ -15,7 +15,7 @@ import java.util.Vector;
  * Step 5: optional - Repeat calculation (steps 2 to 4)
  * </PRE>
  *
- * @version 1.2.1 (04-10-2016)
+ * @version 1.2.1 (2016-04-10)
  * @author Thomas Heym
  * @see FuzzyCMeans
  */

@@ -6,7 +6,7 @@ import ClusterCore.PointPixel;
 /**
  * Cluster structure
  * 
- * @version 0.1.1 (04-10-2016)
+ * @version 0.1.1 (2016-04-10)
  * @author Thomas Heym
  */
 public class ClusterBot {

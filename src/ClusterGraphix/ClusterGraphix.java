@@ -9,21 +9,32 @@ import java.io.FileReader;
 import java.io.BufferedReader;
 import java.io.PrintWriter;
 import java.lang.String;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.lang.Runnable;
 import java.util.Iterator;
+import java.util.Map;
+import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
 import java.text.DateFormat;
 //java.awt.*
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Desktop;
 import java.awt.GridLayout;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.BasicStroke;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ItemListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.font.TextAttribute;
 import java.awt.event.ItemEvent;
 //javax.imageio.*
 import javax.imageio.ImageIO;
@@ -71,7 +82,7 @@ import ClusterCore.PossibilisticCMeans;
  * <P>
  * Display of objects and clusters with integrated cluster analysis
  * 
- * @version 0.95.1 (04-10-2016)
+ * @version 0.95.1 (2016-04-10)
  * @author Thomas Heym
  */
 public class ClusterGraphix extends JPanel implements ActionListener {
@@ -842,30 +853,54 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 			JOptionPane.showConfirmDialog(null, e, "ClusterGraphix.setIconImage", JOptionPane.CLOSED_OPTION,
 					JOptionPane.INFORMATION_MESSAGE);
 		}
-		fInfo.setResizable(false);
-		fInfo.setLocation((int) (d.getWidth() / 2 - (fInfo.getWidth() / 2)),
-				(int) (d.getHeight() / 2 - (fInfo.getHeight() / 2)));
-		fInfo.setLayout(new GridLayout(3, 2, 10, 10)); // 3 rows, 1 column
+		fInfo.setLayout(new GridLayout(3, 1)); // 3 rows, 1 column
 		ImageIcon logo = null;
 		try {
-			logo = new ImageIcon(ImageIO.read(getClass().getResource("/ClusterCore/sphere32.png")));
+			logo = new ImageIcon(ImageIO.read(getClass().getResource("/ClusterGraphix/ClusterGraphicsInfo.png")));
 		} catch (IOException e1) {
-			JOptionPane.showConfirmDialog(null, e, "ClusterGraphix.setIconImage", JOptionPane.CLOSED_OPTION,
+			JOptionPane.showConfirmDialog(null, e1, "ClusterGraphix.setIconImage", JOptionPane.CLOSED_OPTION,
 					JOptionPane.INFORMATION_MESSAGE);
 		}
 		infoLabel1 = new JLabel("", logo, JLabel.CENTER);
 		infoLabel1.setVerticalTextPosition(JLabel.BOTTOM);
 		infoLabel1.setHorizontalTextPosition(JLabel.CENTER);
-		infoLabel1.setBorder(BorderFactory.createEmptyBorder(20,0,0,0));
+		infoLabel1.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
+		infoLabel1.setForeground(Color.gray);
 		infoLabel2 = new JLabel();
-		infoLabel2.setBorder(BorderFactory.createEmptyBorder(0,20,0,20));
-		infoLabel3 = new JLabel("", logo, JLabel.CENTER);
-		infoLabel3.setHorizontalTextPosition(JLabel.RIGHT);
-		infoLabel3.setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
+		infoLabel2.setBorder(BorderFactory.createEmptyBorder(0, 20, 0, 20));
+		infoLabel2.setForeground(Color.black);
+		infoLabel3 = new JLabel();
+		infoLabel3.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
+		infoLabel3.setHorizontalAlignment(JLabel.CENTER);
+		Font font = infoLabel3.getFont();
+		Map<TextAttribute, Integer> fontAttributes = new HashMap<TextAttribute, Integer>();
+		fontAttributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
+		infoLabel3.setFont(font.deriveFont(fontAttributes));
+		infoLabel3.setForeground(Color.blue);
+		infoLabel3.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		infoLabel3.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				if (e.getClickCount() > 0) {
+					if (Desktop.isDesktopSupported()) {
+						Desktop desktop = Desktop.getDesktop();
+						try {
+							URI uri = new URI("http://clusterfreak.de");
+							desktop.browse(uri);
+						} catch (IOException ex) {
+							JOptionPane.showConfirmDialog(null, ex, "ClusterGraphix", JOptionPane.CLOSED_OPTION,
+									JOptionPane.INFORMATION_MESSAGE);
+						} catch (URISyntaxException ex) {
+							JOptionPane.showConfirmDialog(null, ex, "ClusterGraphix", JOptionPane.CLOSED_OPTION,
+									JOptionPane.INFORMATION_MESSAGE);
+						}
+					}
+				}
+			}
+		});
 		fInfo.add(infoLabel1);
 		fInfo.add(infoLabel2);
 		fInfo.add(infoLabel3);
-		fInfo.setSize(300, 300);
+		fInfo.setSize(300, 250);
 	}
 
 	/**
@@ -1326,7 +1361,12 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 			clusterStatus.setText(" info");
 			Thread clusterThread = new Thread(clusterThreadGroup, "Info") {
 				public void run() {
-					info();
+					try {
+						info();
+					} catch (IOException e) {
+						JOptionPane.showConfirmDialog(null, e, "ClusterGraphix.Info", JOptionPane.CLOSED_OPTION,
+								JOptionPane.INFORMATION_MESSAGE);
+					}
 					SwingUtilities.invokeLater(new Runnable() {
 						public void run() {
 							clusterStatus.setText(ready);
@@ -2502,7 +2542,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 		else
 			f.setTitle(titleString + " - " + title);
 		fCheck.setTitle(title + " Check");
-		fInfo.setTitle(title + "Info");
+		fInfo.setTitle(title + " Info");
 		fData.setTitle(title + " Data");
 		fValidate.setTitle(title + " Validate");
 		if (title.equals(""))
@@ -4391,15 +4431,24 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 
 	/**
 	 * Show Info Frame
+	 * 
+	 * @throws IOException
 	 */
-	private void info() {
-		infoLabel1.setText("ClusterGraphix " + version);
-		infoLabel2.setText("Copyright 1999-" + jahr + " Thomas Heym");
-		infoLabel3.setText("clusterfreak");
-		infoLabel1.setToolTipText("version number");
+	@SuppressWarnings("deprecation")
+	private void info() throws IOException {
+		final Dimension d = getToolkit().getScreenSize();
+		Date date = new Date(
+				ClusterGraphix.class.getResource("ClusterGraphix.class").openConnection().getLastModified());
+		infoLabel1.setText("ClusterGraphix " + version + " (" + String.valueOf(date.getYear()+1900) + "-" + String.valueOf(date.getMonth()+1) + "-"
+				+ String.valueOf(date.getDate()) + ")");
+		infoLabel2.setText("Copyright \u00a9 Thomas Heym 1999-" + jahr);
+		infoLabel3.setText("http://clusterfreak.de");
+		infoLabel1.setToolTipText("Version number");
 		infoLabel2.setToolTipText("Copyright");
-		infoLabel3.setToolTipText("Clusterfreak");
+		infoLabel3.setToolTipText("http://clusterfreak.de");	
+		fInfo.setLocation((int) (d.getWidth() / 2 - (fInfo.getWidth() / 2)),(int) (d.getHeight() / 2 - (fInfo.getHeight() / 2)));
 		fInfo.pack();
+		fInfo.setResizable(false);
 		fInfo.setVisible(true);
 	}
 

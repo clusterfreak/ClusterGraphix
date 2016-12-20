@@ -3,7 +3,7 @@ package ClusterGraphix;
 /**
  * Available data values for ClusterGraphix
  * 
- * @version 0.1.1 (04-10-2016)
+ * @version 0.1.1 (2016-04-10)
  * @author Thomas Heym
  */
 public class ClusterFile {

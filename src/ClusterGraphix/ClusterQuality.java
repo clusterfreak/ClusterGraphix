@@ -3,7 +3,7 @@ package ClusterGraphix;
 /**
  * Structure for the cluster quality
  * 
- * @version 0.1.0 (04-10-2016)
+ * @version 0.1.0 (2016-04-10)
  * @author Thomas Heym
  */
 public class ClusterQuality {
