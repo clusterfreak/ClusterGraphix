@@ -4,3 +4,9 @@ JOptionPane.showConfirmDialog(null, "Copyright 1999-" + jahr + " Thomas Heym", "
 
 infoLabel3 = new JLabel("", logo, JLabel.CENTER);
 infoLabel3.setHorizontalTextPosition(JLabel.RIGHT);
+
+if (System.getProperty("os.name").toLowerCase().contains("windows") && 
+    System.getProperty("os.name").toLowerCase().contains("8.1")
+
+import com.apple.eawt.Application;
+Application.getApplication().setDockIconImage(new ImageIcon("Football.png").getImage());
