@@ -1,6 +1,5 @@
 package ClusterGraphix;
 
-//import com.apple.eawt.Application;
 import java.io.FileOutputStream;
 import java.io.FileInputStream;
 import java.io.File;
@@ -83,7 +82,7 @@ import ClusterCore.PossibilisticCMeans;
  * <P>
  * Display of objects and clusters with integrated cluster analysis
  * 
- * @version 0.95.1 (2016-04-10)
+ * @version 0.95.2 (2017-01-07)
  * @author Thomas Heym
  */
 public class ClusterGraphix extends JPanel implements ActionListener {
@@ -351,7 +350,6 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	 */
 	private JFrame f;
 	private JLabel l = new JLabel();
-//	private Application application;
 	/**
 	 * Menu main frame
 	 */
@@ -566,10 +564,6 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 		f = new JFrame(titleString + " - " + getTitle());
 		try {
 			f.setIconImage(ImageIO.read(getClass().getResource("/ClusterCore/sphere32.png")));
-//			if(System.getProperty("os.name").equals("Mac OS X")){
-//				application = Application.getApplication();
-//				application.setDockIconImage(ImageIO.read(getClass().getResource("/ClusterCore/sphere32.png")));
-//			}
 		} catch (Exception e) {
 			JOptionPane.showConfirmDialog(null, e, "ClusterGraphix.setIconImage", JOptionPane.CLOSED_OPTION,
 					JOptionPane.INFORMATION_MESSAGE);
