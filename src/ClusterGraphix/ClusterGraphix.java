@@ -1,6 +1,6 @@
 package ClusterGraphix;
 
-//import com.apple.eawt.Application;
+import com.apple.eawt.Application;
 import java.io.FileOutputStream;
 import java.io.FileInputStream;
 import java.io.File;
@@ -351,7 +351,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	 */
 	private JFrame f;
 	private JLabel l = new JLabel();
-//	private Application application;
+	private Application application;
 	/**
 	 * Menu main frame
 	 */
@@ -566,10 +566,10 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 		f = new JFrame(titleString + " - " + getTitle());
 		try {
 			f.setIconImage(ImageIO.read(getClass().getResource("/ClusterCore/sphere32.png")));
-//			if(System.getProperty("os.name").equals("Mac OS X")){
-//				application = Application.getApplication();
-//				application.setDockIconImage(ImageIO.read(getClass().getResource("/ClusterCore/sphere32.png")));
-//			}
+			if(System.getProperty("os.name").equals("Mac OS X")){
+				application = Application.getApplication();
+				application.setDockIconImage(ImageIO.read(getClass().getResource("/ClusterCore/sphere32.png")));
+			}
 		} catch (Exception e) {
 			JOptionPane.showConfirmDialog(null, e, "ClusterGraphix.setIconImage", JOptionPane.CLOSED_OPTION,
 					JOptionPane.INFORMATION_MESSAGE);
