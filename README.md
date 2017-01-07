@@ -3,7 +3,6 @@
 Display of objects and clusters - Grafische Anzeige von Punktemengen und Klassenzentren  
 
 **&copy; Thomas Heym - clusterfreak**
-![clusterfreak](https://http://clusterfreak.com/favicon.ico "clusterfreak")
 
 ### Version Information
 * ClusterCore v1.0.0 (2016-04-10)
