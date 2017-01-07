@@ -5,7 +5,7 @@ import javax.swing.JOptionPane;
 /**
  * ClusterGraphix meta data
  * 
- * @version 0.1.1 (2016-04-10)
+ * @version 0.1.2 (2017-01-07)
  * @author Thomas Heym
  */
 public class ClusterData {
@@ -42,7 +42,7 @@ public class ClusterData {
 			"Improved clusterfreak algorithm" };
 	public static String initial[] = { "true", "2", "100", "true", "0", "0", "null", "[0][0]", "[0][2]", "null",
 			"false", "false", "1", "[0][0]", "1.0e-7", "false", "false", "false", "true", "false", "false", "[100]",
-			"[100]", "[100]", "0", "5", "", "0.95.1", "2016", "ClusterGraphix " + "0.95.1", " ready", "{...", "false",
+			"[100]", "[100]", "0", "5", "", "0.95.2", "2017", "ClusterGraphix " + "0.95.2", " ready", "{...", "false",
 			"0", "false", "true", "true", "false", "true" };
 	public static String gui[] = { "Menü pixelMode", "Data misc", "Data misc", "", "Data misc", "Data misc",
 			"Data object", "Data objectMembership", "Data vi", "Data viPath", "Menü pathOption",

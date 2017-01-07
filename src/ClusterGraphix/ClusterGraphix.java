@@ -83,7 +83,7 @@ import ClusterCore.PossibilisticCMeans;
  * <P>
  * Display of objects and clusters with integrated cluster analysis
  * 
- * @version 0.95.1 (2016-04-10)
+ * @version 0.95.2 (2017-01-07)
  * @author Thomas Heym
  */
 public class ClusterGraphix extends JPanel implements ActionListener {
@@ -352,6 +352,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	private JFrame f;
 	private JLabel l = new JLabel();
 	private Application application;
+
 	/**
 	 * Menu main frame
 	 */
