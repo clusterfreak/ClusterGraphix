@@ -1,0 +1,49 @@
+- distance[getCluster()-1], evtl. Matrix [][]
+- offset? -10, -50 
+
+HighM.soft
+- Java-Design Patterns for Cluster-Analysis
+- Object.divide
+- Object.move
+- Object.Offset.xy
+- Object.projektor
+- Object.zoom
+- J2ME Numerische Translation
+- The Double with Integer
+- Java-Connector for SAP (RFC)
+- Java-Services for SAP Business Connector
+
+The Problem: What can I do with Java, Mobile and Cluster Analysis.
+
+Clustermotion
+Clustermotion.drift
+Cluster.divide({double,double}{double,double});
+Cluster.distance(double);
+Cluster.offset();
+Cluster.movexy();
+Clustermotion.diffusor
+expand
+destroy
+delete
+hide
+Clutermotion.freak
+matrixWriter
+fiftyfiftyjoker
+
+
+Es wird aufgezeichnet, welches das i-te Element zur k-ten Klasse ist, 
+aber diese Aufzeichnung kann dann den einzelnen Klassen nicht mehr zugeordnet werden. Wie kann das sein?
+
+Die Klasse Cluster-Freak ermittelt diese Aufzeichnung mit der Methode fiftyfiftyjoker. 
+Sie ermittelt somit, ob das i-te Element zur k-ten Klasse ein Zugehörigkeit von mehr als 0,5 hat.
+
+Welches ist nun die k-te Klasse?
+
+Die Matrix wird zu Beginn mit Zufallszahlen initialisiert. 
+Es wird aber dann doch jedes Element immer wieder der gleichen Klasse zugeordnet. 
+Es ist aber so, dass mal die Elemente der ersten Klasse die 1 bekommen und mal die Elemente der 2. Klasse.
+
+Bei der Verwendung von Cluster-Freak werden keine Berechungen durchgeführt.
+Es wird die Klasse mit der Abhängigkeit des i-ten Elements zur k-ten Klasse initialisiert 
+und dann der fiftyfiftyjoker aufgerufen. Er verwendet dann das k zur Aufzeichnung.
+K enthält dann 0 oder 1 bei einer Matrix mit 2 Klassen. 

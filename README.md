@@ -2,21 +2,48 @@
 **ClusterGraphix**
 Display of objects and clusters - Grafische Anzeige von Punktemengen und Klassenzentren  
 
-**&copy; Thomas Heym - clusterfreak** (cF) clstrfrk
-![clusterfreak](https://http://clusterfreak.com/favicon.ico "clusterfreak")
+**&copy; Thomas Heym - clusterfreak**
 
 ### Version Information
-* ClusterGraphix v0.95.0 (01-24-2016)
-* Cluster core classes
-	* ClusterBot v0.1.0 (01-24-2016)
-	* ClusterData v0.1.0 (01-24-2016)
-	* ClusterFile v0.1.0 (01-24-2016)
-	* FuzzyCMeans v1.6.0 (01-24-2016)
-	* PossibilisticCMeans v1.2.0 (01-24-2016)
-	* Point2D v1.3.0 (01-24-2016)
-	* PointPixel v1.0.0 (01-24-2016)
-* * *
+* ClusterCore v1.0.0 (2016-04-10)
+	* FuzzyCMeans v1.6.1 (2016-04-10)
+	* PossibilisticCMeans v1.2.1 (2016-04-10)
+	* Point2D v1.3.1 (2016-04-10)
+	* PointPixel v1.0.1 (2016-04-10)
+* ClusterGraphix v0.95.1 (2016-04-10)
+	* ClusterGraphix v0.95.1 (2016-04-10)
+	* ClusterBot v0.1.1 (2016-04-10)
+	* ClusterBotNet v0.1.0 (2016-04-10)
+	* ClusterData v0.1.1 (2016-04-10)
+	* ClusterFile v0.1.1 (2016-04-10)
+	* ClusterQuality v0.1.0 (2016-04-10)
+* ClusterTest v0.1.0 (2016-04-10)
+	* ClusterTest v0.1.0 (2016-04-10)
+	* WritePbm v0.1.0 (2016-04-10)
+
+### Bugs
+* no
+
+### Ideas
+* calcutation of description every time an not only when description display is on
+* CTRL + SHIFT + F Source Code Pretty Print
+* clusterBotNet.clusterBotCenter only modified when realy modified
+
 ### Release Information
+v0.95.1
+* ClusterCore v1.0.0 package
+* ClusterTest v0.1.0 package
+* String objectDescirption -> int objectMembership
+* bugfixes checkReport()
+* detailed ClusterBot Info
+* no more ClusterBot Lines
+* getDesciptionX()
+* ClusterBot.addPointPixel()
+* ClusterBot.pixelOffset
+* ClusterBotNet, ClusterQuality
+* developerMode
+* Recalculation of all up to 10 steps depending on clusterQuality > 0.1
+
 v0.95.0
 * rename from ClusterGraphics
 * clusterBot-Info at the end of the check report
