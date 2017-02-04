@@ -2932,8 +2932,8 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 					for (int k = 0; k < getCluster(); k++) {
 						tempMik[tempI][k] = getMik()[i][k];
 					}
-				}
 				tempI++;
+				}
 			}
 		} catch (Exception e) {
 			JOptionPane.showConfirmDialog(null, e, "ClusterGraphix.deleteCluster", JOptionPane.CLOSED_OPTION,
@@ -2989,6 +2989,9 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 		}
 		// Number of clusters -1
 		setCluster(getCluster() - 1);
+		// Refresh pixel data
+		clusterFile.setData("pixelObject",false);
+		pixelMatrix();
 	}
 
 	/**
@@ -4163,7 +4166,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 						for (int k = 0; k < getPixelOffset(); k++)
 							if (getPixelViPath()[i][k])
 								viPathC++;
-					if (viPathC == getCluster())
+					if (viPathC >= getCluster())
 						checkTextArea.append(" pixelViPath - (" + viPathC + " [" + getCluster() + "] ([100])) ok\n");
 					else
 						checkTextArea.append(

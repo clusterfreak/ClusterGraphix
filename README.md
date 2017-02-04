@@ -25,13 +25,14 @@ Display of objects and clusters - Grafische Anzeige von Punktemengen und Klassen
 * no
 
 ### Ideas
+* deleteCluster pixelViPath ?
 * calcutation of description every time an not only when description display is on
 * CTRL + SHIFT + F Source Code Pretty Print
 * clusterBotNet.clusterBotCenter only modified when realy modified
 
 ### Release Information
 v0.95.2
-* ?
+* deleteCluster() bugfix
 
 v0.95.1
 * ClusterCore v1.0.0 package
