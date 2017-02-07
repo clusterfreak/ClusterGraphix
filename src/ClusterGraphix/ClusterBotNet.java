@@ -2,12 +2,13 @@ package ClusterGraphix;
 
 import ClusterCore.FuzzyCMeans;
 import ClusterCore.Point2D;
+import ClusterCore.PointPixel;
 import ClusterGraphix.ClusterQuality;
 
 /**
  * Functions for ClusterBots
  * 
- * @version 0.1.0 (2016-04-10)
+ * @version 0.1.1 (2017-01-07)
  * @author Thomas Heym
  */
 public class ClusterBotNet {
@@ -102,5 +103,86 @@ public class ClusterBotNet {
 				fcm = null;
 			}
 		}
+	}
+
+	/**
+	 * Get number of cluster from cluster center pixel point (nothing found
+	 * returns 999999999)
+	 * 
+	 * @param center
+	 * @return
+	 */
+	public int clusterCenterNumber(PointPixel center) {
+		int centerNumber = 999999999;
+		if (clusterNet != null) {
+			for (int i = 0; i < clusterNet.length; i++) {
+				if (clusterNet[i].getCenterPixel().x == center.x && clusterNet[i].getCenterPixel().y == center.y)
+					centerNumber = clusterNet[i].getNumber();
+			}
+		}
+		return centerNumber;
+	}
+
+	/**
+	 * Get number of cluster from cluster center pixel point as a string
+	 * 
+	 * @param center
+	 * @return
+	 */
+	public String clusterCenterString(PointPixel center) {
+		String string = "";
+		if (clusterNet != null) {
+			for (int i = 0; i < clusterNet.length; i++) {
+				if (clusterNet[i].getCenterPixel().x == center.x && clusterNet[i].getCenterPixel().y == center.y) {
+					if (!string.equals(""))
+						string = string.concat(", ");
+					string = string.concat(String.valueOf(clusterNet[i].getNumber()));
+				}
+			}
+		}
+		return string;
+	}
+
+	/**
+	 * Get number of cluster for object pixel point (nothing found returns
+	 * 999999999)
+	 * 
+	 * @param point
+	 * @return
+	 */
+	public int clusterCenterPointNumber(PointPixel point) {
+		int centerNumber = 999999999;
+		if (clusterNet != null) {
+			for (int i = 0; i < clusterNet.length; i++) {
+				for (int k = 0; k < clusterNet[i].getPointPixel().length; k++) {
+					if (clusterNet[i].getPointPixel()[k].x == point.x && clusterNet[i].getPointPixel()[k].y == point.y)
+						centerNumber = clusterNet[i].getNumber();
+				}
+			}
+		}
+		return centerNumber;
+	}
+
+	/**
+	 * Get number of cluster for object pixel point as a string
+	 * 
+	 * @param point
+	 * @return
+	 */
+	public String clusterCenterPointString(PointPixel point) {
+		String string = "";
+		if (clusterNet != null) {
+			for (int i = 0; i < clusterNet.length; i++) {
+				for (int k = 0; k < clusterNet[i].getPointPixel().length; k++) {
+					if (clusterNet[i].getPointPixel()[k].x == point.x
+							&& clusterNet[i].getPointPixel()[k].y == point.y) {
+						if (!string.equals(""))
+							string = string.concat(", ");
+						string = string.concat(String.valueOf(clusterNet[i].getNumber()));
+					}
+				}
+			}
+		}
+		return string;
 	}
 }
