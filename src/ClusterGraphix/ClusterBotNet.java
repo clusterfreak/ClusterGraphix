@@ -106,11 +106,11 @@ public class ClusterBotNet {
 	}
 
 	/**
-	 * Get number of cluster from cluster center pixel point (nothing found
+	 * Get number of the cluster from cluster center pixel point (nothing found
 	 * returns 999999999)
 	 * 
-	 * @param center
-	 * @return
+	 * @param center Center
+	 * @return Number of the Cluster
 	 */
 	public int clusterCenterNumber(PointPixel center) {
 		int centerNumber = 999999999;
@@ -126,8 +126,8 @@ public class ClusterBotNet {
 	/**
 	 * Get number of cluster from cluster center pixel point as a string
 	 * 
-	 * @param center
-	 * @return
+	 * @param center Center
+	 * @return Number of the Cluster
 	 */
 	public String clusterCenterString(PointPixel center) {
 		String string = "";
@@ -147,8 +147,8 @@ public class ClusterBotNet {
 	 * Get number of cluster for object pixel point (nothing found returns
 	 * 999999999)
 	 * 
-	 * @param point
-	 * @return
+	 * @param point Point
+	 * @return Number of the Cluster
 	 */
 	public int clusterCenterPointNumber(PointPixel point) {
 		int centerNumber = 999999999;
@@ -166,8 +166,8 @@ public class ClusterBotNet {
 	/**
 	 * Get number of cluster for object pixel point as a string
 	 * 
-	 * @param point
-	 * @return
+	 * @param point Point
+	 * @return Number of the Cluster
 	 */
 	public String clusterCenterPointString(PointPixel point) {
 		String string = "";

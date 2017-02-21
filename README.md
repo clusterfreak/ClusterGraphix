@@ -27,6 +27,7 @@ Display of objects and clusters - Grafische Anzeige von Punktemengen und Klassen
 * clusterCenterPointNumber 99999999 when not found
 
 ### Ideas
+* https://www.w3schools.com/html/html_css.asp
 * check if objectMembership complete
 * CTRL + SHIFT + F Source Code Pretty Print
 * clusterBotNet.clusterBotCenter only modified when realy modified

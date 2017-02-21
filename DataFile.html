@@ -6,714 +6,669 @@
 		<title>ClusterGraphix-DataFile</title>
 		<link rel="shortcut icon" href="http://clusterfreak.com/favicon.ico" type="image/x-icon">
 	</head>
-	<body bgcolor="#f0f8ff" text="#001C66">
-		<font face="Arial">
-		ClusterGraphix 0.95.1 2016
-		<table border="1" bgcolor=#ffffff bordercolor=#000099>
-			<p style="font-size:small">
-			<tr bgcolor=#BDBDBD>
-				<th align=center rowspan="2">number</th>
-				<th align=left colspan="12"><font color=#04B431>description</font></th>
-			</tr>
-			<tr bgcolor=#BDBDBD>
-				<th align=left><font color=#FA5858>type</font></th>
-				<th align=left>name</th>
-				<th align=left>initial</th>
-				<th align=left>gui</th>
-				<th align=left><font color=#FA5858>set</font></th>
-				<th align=left><font color=#FA5858>get</font></th>
-				<th align=center>edit</th>
-				<th align=center>save</th>
-				<th align=center>Load</th>
-				<th align=left>nameCapital</th>
-				<th align=left>nameExtended</th>
-				<th align=left>data</th>
-			</tr>
-			<tr>
-				<th align=center rowspan="2">0</th>
-				<th align=left colspan="12"><font color=#04B431>General importance for conversion and saving</font></th>
-			</tr>
-			<tr>
-				<th align=left><font color=#FA5858>boolean</font></th>
-				<th align=left>pixel</th>
-				<th align=left>true</th>
-				<th align=left>Menü pixelMode</th>
-				<th align=left><font color=#FA5858>public</font></th>
-				<th align=left><font color=#FA5858>public</font></th>
-				<th align=center>x</th>
-				<th align=center>x</th>
-				<th align=center>x</th>
-				<th align=left>Pixel</th>
-				<th align=left>pixel</th>
-				<th align=left>true</th>
-			</tr>
-			<tr>
-				<th align=center rowspan="2">1</th>
-				<th align=left colspan="12"><font color=#04B431>Pixel resolution</font></th>
-			</tr>
-			<tr>
-				<th align=left><font color=#FA5858>int</font></th>
-				<th align=left>pixelDim</th>
-				<th align=left>2</th>
-				<th align=left>Data misc</th>
-				<th align=left><font color=#FA5858>public</font></th>
-				<th align=left><font color=#FA5858>public</font></th>
-				<th align=center>x</th>
-				<th align=center>x</th>
-				<th align=center>x</th>
-				<th align=left>PixelDim</th>
-				<th align=left>pixelDim</th>
-				<th align=left>false</th>
-			</tr>
-			<tr>
-				<th align=center rowspan="2">2</th>
-				<th align=left colspan="12"><font color=#04B431>Pixel size</font></th>
-			</tr>
-			<tr>
-				<th align=left><font color=#FA5858>int</font></th>
-				<th align=left>pixelOffset</th>
-				<th align=left>100</th>
-				<th align=left>Data misc</th>
-				<th align=left><font color=#FA5858>-</font></th>
-				<th align=left><font color=#FA5858>private</font></th>
-				<th align=center>-</th>
-				<th align=center>-</th>
-				<th align=center>-</th>
-				<th align=left>PixelOffset</th>
-				<th align=left>pixelOffset</th>
-				<th align=left>false</th>
-			</tr>
-			<tr>
-				<th align=center rowspan="2">3</th>
-				<th align=left colspan="12"><font color=#04B431>Pixel object original indicator</font></th>
-			</tr>
-			<tr>
-				<th align=left><font color=#FA5858>boolean</font></th>
-				<th align=left>pixelOriginal</th>
-				<th align=left>true</th>
-				<th align=left></th>
-				<th align=left><font color=#FA5858>private</font></th>
-				<th align=left><font color=#FA5858>private</font></th>
-				<th align=center>-</th>
-				<th align=center>x</th>
-				<th align=center>x</th>
-				<th align=left>PixelOriginal</th>
-				<th align=left>pixelOriginal</th>
-				<th align=left>false</th>
-			</tr>
-			<tr>
-				<th align=center rowspan="2">4</th>
-				<th align=left colspan="12"><font color=#04B431>Quantity/number of clusters</font></th>
-			</tr>
-			<tr>
-				<th align=left><font color=#FA5858>int</font></th>
-				<th align=left>cluster</th>
-				<th align=left>0</th>
-				<th align=left>Data misc</th>
-				<th align=left><font color=#FA5858>public</font></th>
-				<th align=left><font color=#FA5858>public</font></th>
-				<th align=center>x</th>
-				<th align=center>x</th>
-				<th align=center>x</th>
-				<th align=left>Cluster</th>
-				<th align=left>cluster</th>
-				<th align=left>true</th>
-			</tr>
-			<tr>
-				<th align=center rowspan="2">5</th>
-				<th align=left colspan="12"><font color=#04B431>Quantity/number of objects</font></th>
-			</tr>
-			<tr>
-				<th align=left><font color=#FA5858>int</font></th>
-				<th align=left>objects</th>
-				<th align=left>0</th>
-				<th align=left>Data misc</th>
-				<th align=left><font color=#FA5858>-</font></th>
-				<th align=left><font color=#FA5858>private</font></th>
-				<th align=center>-</th>
-				<th align=center>x</th>
-				<th align=center>x</th>
-				<th align=left>Objects</th>
-				<th align=left>objects</th>
-				<th align=left>true</th>
-			</tr>
-			<tr>
-				<th align=center rowspan="2">6</th>
-				<th align=left colspan="12"><font color=#04B431>Object matrix</font></th>
-			</tr>
-			<tr>
-				<th align=left><font color=#FA5858>double</font></th>
-				<th align=left>object</th>
-				<th align=left>null</th>
-				<th align=left>Data object</th>
-				<th align=left><font color=#FA5858>public</font></th>
-				<th align=left><font color=#FA5858>public</font></th>
-				<th align=center></th>
-				<th align=center>x</th>
-				<th align=center>x</th>
-				<th align=left>Object</th>
-				<th align=left>object[][]</th>
-				<th align=left>true</th>
-			</tr>
-			<tr>
-				<th align=center rowspan="2">7</th>
-				<th align=left colspan="12"><font color=#04B431>Object description with associated clusters</font></th>
-			</tr>
-			<tr>
-				<th align=left><font color=#FA5858>boolean</font></th>
-				<th align=left>objectMembership</th>
-				<th align=left>[0][0]</th>
-				<th align=left>Data objectMembership</th>
-				<th align=left><font color=#FA5858>private</font></th>
-				<th align=left><font color=#FA5858>private</font></th>
-				<th align=center>-</th>
-				<th align=center>x</th>
-				<th align=center>x</th>
-				<th align=left>ObjectMembership</th>
-				<th align=left>objectMembership[][]</th>
-				<th align=left>true</th>
-			</tr>
-			<tr>
-				<th align=center rowspan="2">8</th>
-				<th align=left colspan="12"><font color=#04B431>Cluster centers matrix vi</font></th>
-			</tr>
-			<tr>
-				<th align=left><font color=#FA5858>double</font></th>
-				<th align=left>vi</th>
-				<th align=left>[0][2]</th>
-				<th align=left>Data vi</th>
-				<th align=left><font color=#FA5858>private</font></th>
-				<th align=left><font color=#FA5858>public</font></th>
-				<th align=center></th>
-				<th align=center>x</th>
-				<th align=center>x</th>
-				<th align=left>Vi</th>
-				<th align=left>vi[][]</th>
-				<th align=left>true</th>
-			</tr>
-			<tr>
-				<th align=center rowspan="2">9</th>
-				<th align=left colspan="12"><font color=#04B431>History of cluster centers detection matrix</font></th>
-			</tr>
-			<tr>
-				<th align=left><font color=#FA5858>double</font></th>
-				<th align=left>viPath</th>
-				<th align=left>null</th>
-				<th align=left>Data viPath</th>
-				<th align=left><font color=#FA5858>private</font></th>
-				<th align=left><font color=#FA5858>private</font></th>
-				<th align=center></th>
-				<th align=center>x</th>
-				<th align=center>x</th>
-				<th align=left>ViPath</th>
-				<th align=left>viPath[][]</th>
-				<th align=left>true</th>
-			</tr>
-			<tr>
-				<th align=center rowspan="2">10</th>
-				<th align=left colspan="12"><font color=#04B431>Option to display the history of cluster centers detection</font></th>
-			</tr>
-			<tr>
-				<th align=left><font color=#FA5858>boolean</font></th>
-				<th align=left>pathOption</th>
-				<th align=left>false</th>
-				<th align=left>Menü pathOption</th>
-				<th align=left><font color=#FA5858>public</font></th>
-				<th align=left><font color=#FA5858>public</font></th>
-				<th align=center>x</th>
-				<th align=center>x</th>
-				<th align=center>x</th>
-				<th align=left>PathOption</th>
-				<th align=left>pathOption</th>
-				<th align=left>true</th>
-			</tr>
-			<tr>
-				<th align=center rowspan="2">11</th>
-				<th align=left colspan="12"><font color=#04B431>Option to display the object description with associated clusters</font></th>
-			</tr>
-			<tr>
-				<th align=left><font color=#FA5858>boolean</font></th>
-				<th align=left>descriptionDisplay</th>
-				<th align=left>false</th>
-				<th align=left>Menü descriptionDisplay</th>
-				<th align=left><font color=#FA5858>public</font></th>
-				<th align=left><font color=#FA5858>public</font></th>
-				<th align=center>x</th>
-				<th align=center>x</th>
-				<th align=center>x</th>
-				<th align=left>DescriptionDisplay</th>
-				<th align=left>descriptionDisplay</th>
-				<th align=left>true</th>
-			</tr>
-			<tr>
-				<th align=center rowspan="2">12</th>
-				<th align=left colspan="12"><font color=#04B431>Number of PCM passes</font></th>
-			</tr>
-			<tr>
-				<th align=left><font color=#FA5858>int</font></th>
-				<th align=left>repeat</th>
-				<th align=left>1</th>
-				<th align=left>Data misc</th>
-				<th align=left><font color=#FA5858>public</font></th>
-				<th align=left><font color=#FA5858>public</font></th>
-				<th align=center></th>
-				<th align=center>x</th>
-				<th align=center>x</th>
-				<th align=left>Repeat</th>
-				<th align=left>repeat</th>
-				<th align=left>false</th>
-			</tr>
-			<tr>
-				<th align=center rowspan="2">13</th>
-				<th align=left colspan="12"><font color=#04B431>Partition matrix (Membership values of the k-th object to the i-th cluster)</font></th>
-			</tr>
-			<tr>
-				<th align=left><font color=#FA5858>double</font></th>
-				<th align=left>mik</th>
-				<th align=left>[0][0]</th>
-				<th align=left>Data mik</th>
-				<th align=left><font color=#FA5858>private</font></th>
-				<th align=left><font color=#FA5858>public</font></th>
-				<th align=center></th>
-				<th align=center>x</th>
-				<th align=center>x</th>
-				<th align=left>Mik</th>
-				<th align=left>mik[][]</th>
-				<th align=left>true</th>
-			</tr>
-			<tr>
-				<th align=center rowspan="2">14</th>
-				<th align=left colspan="12"><font color=#04B431>Termination threshold</font></th>
-			</tr>
-			<tr>
-				<th align=left><font color=#FA5858>double</font></th>
-				<th align=left>e</th>
-				<th align=left>1.0e-7</th>
-				<th align=left>Data misc</th>
-				<th align=left><font color=#FA5858>public</font></th>
-				<th align=left><font color=#FA5858>public</font></th>
-				<th align=center>x</th>
-				<th align=center>x</th>
-				<th align=center>x</th>
-				<th align=left>E</th>
-				<th align=left>e</th>
-				<th align=left>false</th>
-			</tr>
-			<tr>
-				<th align=center rowspan="2">15</th>
-				<th align=left colspan="12"><font color=#04B431>Recalculation indicator</font></th>
-			</tr>
-			<tr>
-				<th align=left><font color=#FA5858>boolean</font></th>
-				<th align=left>calculate</th>
-				<th align=left>false</th>
-				<th align=left>Data misc</th>
-				<th align=left><font color=#FA5858>private</font></th>
-				<th align=left><font color=#FA5858>private</font></th>
-				<th align=center>x</th>
-				<th align=center>x</th>
-				<th align=center>x</th>
-				<th align=left>Calculate</th>
-				<th align=left>calculate</th>
-				<th align=left>false</th>
-			</tr>
-			<tr>
-				<th align=center rowspan="2">16</th>
-				<th align=left colspan="12"><font color=#04B431>Calculate with Fuzzy-C-Means clustering algorithm</font></th>
-			</tr>
-			<tr>
-				<th align=left><font color=#FA5858>boolean</font></th>
-				<th align=left>fuzzyCMeans</th>
-				<th align=left>false</th>
-				<th align=left>Data misc</th>
-				<th align=left><font color=#FA5858>private</font></th>
-				<th align=left><font color=#FA5858>private</font></th>
-				<th align=center></th>
-				<th align=center>x</th>
-				<th align=center>x</th>
-				<th align=left>FuzzyCMeans</th>
-				<th align=left>fuzzyCMeans</th>
-				<th align=left>true</th>
-			</tr>
-			<tr>
-				<th align=center rowspan="2">17</th>
-				<th align=left colspan="12"><font color=#04B431>Calculate with Possibilistic-C-Means clustering algorithm</font></th>
-			</tr>
-			<tr>
-				<th align=left><font color=#FA5858>boolean</font></th>
-				<th align=left>possibilisticCMeans</th>
-				<th align=left>false</th>
-				<th align=left>Data misc</th>
-				<th align=left><font color=#FA5858>private</font></th>
-				<th align=left><font color=#FA5858>private</font></th>
-				<th align=center></th>
-				<th align=center>x</th>
-				<th align=center>x</th>
-				<th align=left>PossibilisticCMeans</th>
-				<th align=left>possibilisticCMeans</th>
-				<th align=left>false</th>
-			</tr>
-			<tr>
-				<th align=center rowspan="2">18</th>
-				<th align=left colspan="12"><font color=#04B431>Matrixes mik, object, vi will be sorted with objectMembership in cluster sequence</font></th>
-			</tr>
-			<tr>
-				<th align=left><font color=#FA5858>boolean</font></th>
-				<th align=left>sortCluster</th>
-				<th align=left>true</th>
-				<th align=left>Data misc</th>
-				<th align=left><font color=#FA5858>private</font></th>
-				<th align=left><font color=#FA5858>private</font></th>
-				<th align=center></th>
-				<th align=center>x</th>
-				<th align=center>x</th>
-				<th align=left>SortCluster</th>
-				<th align=left>sortCluster</th>
-				<th align=left>false</th>
-			</tr>
-			<tr>
-				<th align=center rowspan="2">19</th>
-				<th align=left colspan="12"><font color=#04B431>Object description only for affiliation >0.5</font></th>
-			</tr>
-			<tr>
-				<th align=left><font color=#FA5858>boolean</font></th>
-				<th align=left>fiftyFiftyJoker</th>
-				<th align=left>false</th>
-				<th align=left>Data misc</th>
-				<th align=left><font color=#FA5858>private</font></th>
-				<th align=left><font color=#FA5858>private</font></th>
-				<th align=center></th>
-				<th align=center>x</th>
-				<th align=center>x</th>
-				<th align=left>FiftyFiftyJoker</th>
-				<th align=left>fiftyFiftyJoker</th>
-				<th align=left>false</th>
-			</tr>
-			<tr>
-				<th align=center rowspan="2">20</th>
-				<th align=left colspan="12"><font color=#04B431>Object description according to the largest affiliation</font></th>
-			</tr>
-			<tr>
-				<th align=left><font color=#FA5858>boolean</font></th>
-				<th align=left>clusterMax</th>
-				<th align=left>false</th>
-				<th align=left>Data misc</th>
-				<th align=left><font color=#FA5858>private</font></th>
-				<th align=left><font color=#FA5858>private</font></th>
-				<th align=center></th>
-				<th align=center>x</th>
-				<th align=center>x</th>
-				<th align=left>ClusterMax</th>
-				<th align=left>clusterMax</th>
-				<th align=left>true</th>
-			</tr>
-			<tr>
-				<th align=center rowspan="2">21</th>
-				<th align=left colspan="12"><font color=#04B431>Pixel object matrix</font></th>
-			</tr>
-			<tr>
-				<th align=left><font color=#FA5858>boolean</font></th>
-				<th align=left>pixelObject</th>
-				<th align=left>[100]</th>
-				<th align=left>pixelObject</th>
-				<th align=left><font color=#FA5858>private</font></th>
-				<th align=left><font color=#FA5858>private</font></th>
-				<th align=center></th>
-				<th align=center>x</th>
-				<th align=center>x</th>
-				<th align=left>PixelObject</th>
-				<th align=left>pixelObject[][]</th>
-				<th align=left>true</th>
-			</tr>
-			<tr>
-				<th align=center rowspan="2">22</th>
-				<th align=left colspan="12"><font color=#04B431>Pixel cluster centers matrix</font></th>
-			</tr>
-			<tr>
-				<th align=left><font color=#FA5858>boolean</font></th>
-				<th align=left>pixelVi</th>
-				<th align=left>[100]</th>
-				<th align=left>pixelVi</th>
-				<th align=left><font color=#FA5858>private</font></th>
-				<th align=left><font color=#FA5858>private</font></th>
-				<th align=center></th>
-				<th align=center>x</th>
-				<th align=center>x</th>
-				<th align=left>PixelVi</th>
-				<th align=left>pixelVi[][]</th>
-				<th align=left>false</th>
-			</tr>
-			<tr>
-				<th align=center rowspan="2">23</th>
-				<th align=left colspan="12"><font color=#04B431>Pixel history of cluster centers detection matrix</font></th>
-			</tr>
-			<tr>
-				<th align=left><font color=#FA5858>boolean</font></th>
-				<th align=left>pixelViPath</th>
-				<th align=left>[100]</th>
-				<th align=left>pixelViPath</th>
-				<th align=left><font color=#FA5858>private</font></th>
-				<th align=left><font color=#FA5858>private</font></th>
-				<th align=center></th>
-				<th align=center>x</th>
-				<th align=center>x</th>
-				<th align=left>PixelViPath</th>
-				<th align=left>pixelViPath[][]</th>
-				<th align=left>false</th>
-			</tr>
-			<tr>
-				<th align=center rowspan="2">24</th>
-				<th align=left colspan="12"><font color=#04B431>Pixel string memory</font></th>
-			</tr>
-			<tr>
-				<th align=left><font color=#FA5858>String</font></th>
-				<th align=left>pixelString</th>
-				<th align=left>0</th>
-				<th align=left>Data pixelString</th>
-				<th align=left><font color=#FA5858>private</font></th>
-				<th align=left><font color=#FA5858>private</font></th>
-				<th align=center></th>
-				<th align=center>x</th>
-				<th align=center>x</th>
-				<th align=left>PixelString</th>
-				<th align=left>pixelString[]</th>
-				<th align=left>true</th>
-			</tr>
-			<tr>
-				<th align=center rowspan="2">25</th>
-				<th align=left colspan="12"><font color=#04B431>Zoom factor</font></th>
-			</tr>
-			<tr>
-				<th align=left><font color=#FA5858>int</font></th>
-				<th align=left>zoom</th>
-				<th align=left>5</th>
-				<th align=left>Data misc</th>
-				<th align=left><font color=#FA5858>private</font></th>
-				<th align=left><font color=#FA5858>private</font></th>
-				<th align=center>x</th>
-				<th align=center>x</th>
-				<th align=center>x</th>
-				<th align=left>Zoom</th>
-				<th align=left>zoom</th>
-				<th align=left>false</th>
-			</tr>
-			<tr>
-				<th align=center rowspan="2">26</th>
-				<th align=left colspan="12"><font color=#04B431>Back part of title string</font></th>
-			</tr>
-			<tr>
-				<th align=left><font color=#FA5858>String</font></th>
-				<th align=left>title</th>
-				<th align=left></th>
-				<th align=left>Data misc</th>
-				<th align=left><font color=#FA5858>public</font></th>
-				<th align=left><font color=#FA5858>public</font></th>
-				<th align=center>x</th>
-				<th align=center>x</th>
-				<th align=center>x</th>
-				<th align=left>Title</th>
-				<th align=left>title</th>
-				<th align=left>true</th>
-			</tr>
-			<tr>
-				<th align=center rowspan="2">27</th>
-				<th align=left colspan="12"><font color=#04B431>Program version</font></th>
-			</tr>
-			<tr>
-				<th align=left><font color=#FA5858>String</font></th>
-				<th align=left>version</th>
-				<th align=left>0.95.1</th>
-				<th align=left>Data misc</th>
-				<th align=left><font color=#FA5858>-</font></th>
-				<th align=left><font color=#FA5858>-</font></th>
-				<th align=center>-</th>
-				<th align=center>x</th>
-				<th align=center>x</th>
-				<th align=left>Version</th>
-				<th align=left>version</th>
-				<th align=left>true</th>
-			</tr>
-			<tr>
-				<th align=center rowspan="2">28</th>
-				<th align=left colspan="12"><font color=#04B431>Development year of Program version</font></th>
-			</tr>
-			<tr>
-				<th align=left><font color=#FA5858>String</font></th>
-				<th align=left>jahr</th>
-				<th align=left>2016</th>
-				<th align=left>Data misc</th>
-				<th align=left><font color=#FA5858>-</font></th>
-				<th align=left><font color=#FA5858>-</font></th>
-				<th align=center>-</th>
-				<th align=center>x</th>
-				<th align=center>x</th>
-				<th align=left>Jahr</th>
-				<th align=left>jahr</th>
-				<th align=left>false</th>
-			</tr>
-			<tr>
-				<th align=center rowspan="2">29</th>
-				<th align=left colspan="12"><font color=#04B431>Static part of titel string</font></th>
-			</tr>
-			<tr>
-				<th align=left><font color=#FA5858>String</font></th>
-				<th align=left>titleString</th>
-				<th align=left>ClusterGraphix 0.95.1</th>
-				<th align=left>Data misc</th>
-				<th align=left><font color=#FA5858>-</font></th>
-				<th align=left><font color=#FA5858>-</font></th>
-				<th align=center>-</th>
-				<th align=center>-</th>
-				<th align=center>-</th>
-				<th align=left>TitleString</th>
-				<th align=left>titleString</th>
-				<th align=left>false</th>
-			</tr>
-			<tr>
-				<th align=center rowspan="2">30</th>
-				<th align=left colspan="12"><font color=#04B431>Ready indicator string for status bar</font></th>
-			</tr>
-			<tr>
-				<th align=left><font color=#FA5858>String</font></th>
-				<th align=left>ready</th>
-				<th align=left> ready</th>
-				<th align=left>Data misc</th>
-				<th align=left><font color=#FA5858>-</font></th>
-				<th align=left><font color=#FA5858>-</font></th>
-				<th align=center>-</th>
-				<th align=center>-</th>
-				<th align=center>-</th>
-				<th align=left>Ready</th>
-				<th align=left>ready</th>
-				<th align=left>false</th>
-			</tr>
-			<tr>
-				<th align=center rowspan="2">31</th>
-				<th align=left colspan="12"><font color=#04B431>Pixel image for program start</font></th>
-			</tr>
-			<tr>
-				<th align=left><font color=#FA5858>boolean</font></th>
-				<th align=left>clusterfreak</th>
-				<th align=left>{...</th>
-				<th align=left>Data misc</th>
-				<th align=left><font color=#FA5858>-</font></th>
-				<th align=left><font color=#FA5858>-</font></th>
-				<th align=center>-</th>
-				<th align=center>-</th>
-				<th align=center>-</th>
-				<th align=left>Clusterfreak</th>
-				<th align=left>clusterfreak</th>
-				<th align=left>false</th>
-			</tr>
-			<tr>
-				<th align=center rowspan="2">32</th>
-				<th align=left colspan="12"><font color=#04B431>Variables</font></th>
-			</tr>
-			<tr>
-				<th align=left><font color=#FA5858>ClusterFile</font></th>
-				<th align=left>clusterFile</th>
-				<th align=left>false</th>
-				<th align=left></th>
-				<th align=left><font color=#FA5858>-</font></th>
-				<th align=left><font color=#FA5858>-</font></th>
-				<th align=center>-</th>
-				<th align=center>-</th>
-				<th align=center>-</th>
-				<th align=left>ClusterFile</th>
-				<th align=left>clusterFile</th>
-				<th align=left>false</th>
-			</tr>
-			<tr>
-				<th align=center rowspan="2">33</th>
-				<th align=left colspan="12"><font color=#04B431>Cluster bot memory</font></th>
-			</tr>
-			<tr>
-				<th align=left><font color=#FA5858>ClusterBot</font></th>
-				<th align=left>clusterBot</th>
-				<th align=left>0</th>
-				<th align=left></th>
-				<th align=left><font color=#FA5858>-</font></th>
-				<th align=left><font color=#FA5858>-</font></th>
-				<th align=center>-</th>
-				<th align=center>-</th>
-				<th align=center>-</th>
-				<th align=left>ClusterBot</th>
-				<th align=left>clusterBot</th>
-				<th align=left>true</th>
-			</tr>
-			<tr>
-				<th align=center rowspan="2">34</th>
-				<th align=left colspan="12"><font color=#04B431>Error status from quickCheck()</font></th>
-			</tr>
-			<tr>
-				<th align=left><font color=#FA5858>boolean</font></th>
-				<th align=left>error</th>
-				<th align=left>false</th>
-				<th align=left>Data misc</th>
-				<th align=left><font color=#FA5858>private</font></th>
-				<th align=left><font color=#FA5858>private</font></th>
-				<th align=center>-</th>
-				<th align=center>x</th>
-				<th align=center>x</th>
-				<th align=left>Error</th>
-				<th align=left>error</th>
-				<th align=left>false</th>
-			</tr>
-			<tr>
-				<th align=center rowspan="2">35</th>
-				<th align=left colspan="12"><font color=#04B431>Head up display</font></th>
-			</tr>
-			<tr>
-				<th align=left><font color=#FA5858>boolean</font></th>
-				<th align=left>headUpDisplay</th>
-				<th align=left>true</th>
-				<th align=left>Data misc</th>
-				<th align=left><font color=#FA5858>private</font></th>
-				<th align=left><font color=#FA5858>private</font></th>
-				<th align=center>x</th>
-				<th align=center>x</th>
-				<th align=center>x</th>
-				<th align=left>HeadUpDisplay</th>
-				<th align=left>headUpDisplay</th>
-				<th align=left>false</th>
-			</tr>
-			<tr>
-				<th align=center rowspan="2">36</th>
-				<th align=left colspan="12"><font color=#04B431>Random ....</font></th>
-			</tr>
-			<tr>
-				<th align=left><font color=#FA5858>boolean</font></th>
-				<th align=left>random</th>
-				<th align=left>true</th>
-				<th align=left>Data misc</th>
-				<th align=left><font color=#FA5858>private</font></th>
-				<th align=left><font color=#FA5858>private</font></th>
-				<th align=center>x</th>
-				<th align=center>x</th>
-				<th align=center>x</th>
-				<th align=left>Random</th>
-				<th align=left>random</th>
-				<th align=left>false</th>
-			</tr>
-			<tr>
-				<th align=center rowspan="2">37</th>
-				<th align=left colspan="12"><font color=#04B431>Show more error messages</font></th>
-			</tr>
-			<tr>
-				<th align=left><font color=#FA5858>boolean</font></th>
-				<th align=left>developerMode</th>
-				<th align=left>false</th>
-				<th align=left>Data misc</th>
-				<th align=left><font color=#FA5858>private</font></th>
-				<th align=left><font color=#FA5858>private</font></th>
-				<th align=center>x</th>
-				<th align=center>x</th>
-				<th align=center>x</th>
-				<th align=left>DeveloperMode</th>
-				<th align=left>developerMode</th>
-				<th align=left>true</th>
+	<body bgcolor="#e2e6ea" text="#6D777F">
+		<p style="font-family:arial; font-size:13px">
+		ClusterGraphix 0.95.2 2017
+		<table width="890" border="1" cellspacing="0" cellpadding="0" align="">
+			<tbody>
+			<tr style="height: 12.75pt; font-family:arial; font-size:13px">
+				<th style="height: 12.75pt; width: 16pt;" width="21" height="17">&nbsp;</th>
+				<th style="width: 52pt; font-weight: bold;" width="69">type</th>
+				<th style="width: 93pt; font-weight: bold;" width="124">name</th>
+				<th style="width: 88pt; font-weight: bold;" width="117">initial</th>
+				<th style="width: 113pt; font-weight: bold;" width="151">gui</th>
+				<th style="width: 31pt; text-align: center; font-weight: bold;" width="41">set</th>
+				<th style="width: 31pt; text-align: center; font-weight: bold;" width="41">get</th>
+				<th style="width: 23pt; text-align: center; font-weight: bold;" width="31">edit</th>
+				<th style="width: 29pt; text-align: center; font-weight: bold;" width="39">save</th>
+				<th style="width: 29pt; text-align: center; font-weight: bold;" width="39">load</th>
+				<th style="width: 29pt; text-align: center; font-weight: bold;" width="39">nameCapital</th>
+				<th style="width: 29pt; text-align: center; font-weight: bold;" width="39">nameExtended</th>
+				<th style="width: 29pt; text-align: center; font-weight: bold;" width="39">data</th>
+				<th style="width: 100pt; text-align: center; font-weight: bold;" width="100">description</th>
+			</tr>
+			<tr style="height: 12.75pt; font-family:arial; font-size:13px">
+				<td style="height: 12.75pt;" align="right" height="17">0</td>
+				<td>boolean</td>
+				<td style="color: #ff0000;">pixel</td>
+				<td style="text-align: left;">true</td>
+				<td>Menü pixelMode</td>
+				<td style="text-align: center;">public</td>
+				<td style="text-align: center;">public</td>
+				<td style="text-align: center;">x</td>
+				<td style="text-align: center;">x</td>
+				<td style="text-align: center;">x</td>
+				<td>Pixel</td>
+				<td>pixel</td>
+				<td>false</td>
+				<td>General importance for conversion and saving</td>
+			</tr>
+			<tr style="height: 12.75pt; font-family:arial; font-size:13px">
+				<td style="height: 12.75pt;" align="right" height="17">1</td>
+				<td>int</td>
+				<td style="color: #ff0000;">pixelDim</td>
+				<td style="text-align: left;">2</td>
+				<td>Data misc</td>
+				<td style="text-align: center;">public</td>
+				<td style="text-align: center;">public</td>
+				<td style="text-align: center;">x</td>
+				<td style="text-align: center;">x</td>
+				<td style="text-align: center;">x</td>
+				<td>PixelDim</td>
+				<td>pixelDim</td>
+				<td>false</td>
+				<td>Pixel resolution</td>
+			</tr>
+			<tr style="height: 12.75pt; font-family:arial; font-size:13px">
+				<td style="height: 12.75pt;" align="right" height="17">2</td>
+				<td>int</td>
+				<td style="color: #ff0000;">pixelOffset</td>
+				<td style="text-align: left;">100</td>
+				<td>Data misc</td>
+				<td style="text-align: center;">-</td>
+				<td style="text-align: center;">private</td>
+				<td style="text-align: center;">-</td>
+				<td style="text-align: center;">-</td>
+				<td style="text-align: center;">-</td>
+				<td>PixelOffset</td>
+				<td>pixelOffset</td>
+				<td>false</td>
+				<td>Pixel size</td>
+			</tr>
+			<tr style="height: 12.75pt; font-family:arial; font-size:13px">
+				<td style="height: 12.75pt;" align="right" height="17">3</td>
+				<td>boolean</td>
+				<td style="color: #ff0000;">pixelOriginal</td>
+				<td style="text-align: left;">true</td>
+				<td></td>
+				<td style="text-align: center;">private</td>
+				<td style="text-align: center;">private</td>
+				<td style="text-align: center;">-</td>
+				<td style="text-align: center;">x</td>
+				<td style="text-align: center;">x</td>
+				<td>PixelOriginal</td>
+				<td>pixelOriginal</td>
+				<td>false</td>
+				<td>Pixel object original indicator</td>
+			</tr>
+			<tr style="height: 12.75pt; font-family:arial; font-size:13px">
+				<td style="height: 12.75pt;" align="right" height="17">4</td>
+				<td>int</td>
+				<td style="color: #ff0000;">cluster</td>
+				<td style="text-align: left;">0</td>
+				<td>Data misc</td>
+				<td style="text-align: center;">public</td>
+				<td style="text-align: center;">public</td>
+				<td style="text-align: center;">x</td>
+				<td style="text-align: center;">x</td>
+				<td style="text-align: center;">x</td>
+				<td>Cluster</td>
+				<td>cluster</td>
+				<td>false</td>
+				<td>Quantity/number of clusters</td>
+			</tr>
+			<tr style="height: 12.75pt; font-family:arial; font-size:13px">
+				<td style="height: 12.75pt;" align="right" height="17">5</td>
+				<td>int</td>
+				<td style="color: #ff0000;">objects</td>
+				<td style="text-align: left;">0</td>
+				<td>Data misc</td>
+				<td style="text-align: center;">-</td>
+				<td style="text-align: center;">private</td>
+				<td style="text-align: center;">-</td>
+				<td style="text-align: center;">x</td>
+				<td style="text-align: center;">x</td>
+				<td>Objects</td>
+				<td>objects</td>
+				<td>false</td>
+				<td>Quantity/number of objects</td>
+			</tr>
+			<tr style="height: 12.75pt; font-family:arial; font-size:13px">
+				<td style="height: 12.75pt;" align="right" height="17">6</td>
+				<td>double</td>
+				<td style="color: #ff0000;">object</td>
+				<td style="text-align: left;">null</td>
+				<td>Data object</td>
+				<td style="text-align: center;">public</td>
+				<td style="text-align: center;">public</td>
+				<td style="text-align: center;"></td>
+				<td style="text-align: center;">x</td>
+				<td style="text-align: center;">x</td>
+				<td>Object</td>
+				<td>object[][]</td>
+				<td>false</td>
+				<td>Object matrix</td>
+			</tr>
+			<tr style="height: 12.75pt; font-family:arial; font-size:13px">
+				<td style="height: 12.75pt;" align="right" height="17">7</td>
+				<td>boolean</td>
+				<td style="color: #ff0000;">objectMembership</td>
+				<td style="text-align: left;">[0][0]</td>
+				<td>Data objectMembership</td>
+				<td style="text-align: center;">private</td>
+				<td style="text-align: center;">private</td>
+				<td style="text-align: center;">-</td>
+				<td style="text-align: center;">x</td>
+				<td style="text-align: center;">x</td>
+				<td>ObjectMembership</td>
+				<td>objectMembership[][]</td>
+				<td>false</td>
+				<td>Object description with associated clusters</td>
+			</tr>
+			<tr style="height: 12.75pt; font-family:arial; font-size:13px">
+				<td style="height: 12.75pt;" align="right" height="17">8</td>
+				<td>double</td>
+				<td style="color: #ff0000;">vi</td>
+				<td style="text-align: left;">[0][2]</td>
+				<td>Data vi</td>
+				<td style="text-align: center;">private</td>
+				<td style="text-align: center;">public</td>
+				<td style="text-align: center;"></td>
+				<td style="text-align: center;">x</td>
+				<td style="text-align: center;">x</td>
+				<td>Vi</td>
+				<td>vi[][]</td>
+				<td>false</td>
+				<td>Cluster centers matrix vi</td>
+			</tr>
+			<tr style="height: 12.75pt; font-family:arial; font-size:13px">
+				<td style="height: 12.75pt;" align="right" height="17">9</td>
+				<td>double</td>
+				<td style="color: #ff0000;">viPath</td>
+				<td style="text-align: left;">null</td>
+				<td>Data viPath</td>
+				<td style="text-align: center;">private</td>
+				<td style="text-align: center;">private</td>
+				<td style="text-align: center;"></td>
+				<td style="text-align: center;">x</td>
+				<td style="text-align: center;">x</td>
+				<td>ViPath</td>
+				<td>viPath[][]</td>
+				<td>false</td>
+				<td>History of cluster centers detection matrix</td>
+			</tr>
+			<tr style="height: 12.75pt; font-family:arial; font-size:13px">
+				<td style="height: 12.75pt;" align="right" height="17">10</td>
+				<td>boolean</td>
+				<td style="color: #ff0000;">pathOption</td>
+				<td style="text-align: left;">false</td>
+				<td>Menü pathOption</td>
+				<td style="text-align: center;">public</td>
+				<td style="text-align: center;">public</td>
+				<td style="text-align: center;">x</td>
+				<td style="text-align: center;">x</td>
+				<td style="text-align: center;">x</td>
+				<td>PathOption</td>
+				<td>pathOption</td>
+				<td>false</td>
+				<td>Option to display the history of cluster centers detection</td>
+			</tr>
+			<tr style="height: 12.75pt; font-family:arial; font-size:13px">
+				<td style="height: 12.75pt;" align="right" height="17">11</td>
+				<td>boolean</td>
+				<td style="color: #ff0000;">descriptionDisplay</td>
+				<td style="text-align: left;">false</td>
+				<td>Menü descriptionDisplay</td>
+				<td style="text-align: center;">public</td>
+				<td style="text-align: center;">public</td>
+				<td style="text-align: center;">x</td>
+				<td style="text-align: center;">x</td>
+				<td style="text-align: center;">x</td>
+				<td>DescriptionDisplay</td>
+				<td>descriptionDisplay</td>
+				<td>false</td>
+				<td>Option to display the object description with associated clusters</td>
+			</tr>
+			<tr style="height: 12.75pt; font-family:arial; font-size:13px">
+				<td style="height: 12.75pt;" align="right" height="17">12</td>
+				<td>int</td>
+				<td style="color: #ff0000;">repeat</td>
+				<td style="text-align: left;">1</td>
+				<td>Data misc</td>
+				<td style="text-align: center;">public</td>
+				<td style="text-align: center;">public</td>
+				<td style="text-align: center;"></td>
+				<td style="text-align: center;">x</td>
+				<td style="text-align: center;">x</td>
+				<td>Repeat</td>
+				<td>repeat</td>
+				<td>false</td>
+				<td>Number of PCM passes</td>
+			</tr>
+			<tr style="height: 12.75pt; font-family:arial; font-size:13px">
+				<td style="height: 12.75pt;" align="right" height="17">13</td>
+				<td>double</td>
+				<td style="color: #ff0000;">mik</td>
+				<td style="text-align: left;">[0][0]</td>
+				<td>Data mik</td>
+				<td style="text-align: center;">private</td>
+				<td style="text-align: center;">public</td>
+				<td style="text-align: center;"></td>
+				<td style="text-align: center;">x</td>
+				<td style="text-align: center;">x</td>
+				<td>Mik</td>
+				<td>mik[][]</td>
+				<td>false</td>
+				<td>Partition matrix (Membership values of the k-th object to the i-th cluster)</td>
+			</tr>
+			<tr style="height: 12.75pt; font-family:arial; font-size:13px">
+				<td style="height: 12.75pt;" align="right" height="17">14</td>
+				<td>double</td>
+				<td style="color: #ff0000;">e</td>
+				<td style="text-align: left;">1.0e-7</td>
+				<td>Data misc</td>
+				<td style="text-align: center;">public</td>
+				<td style="text-align: center;">public</td>
+				<td style="text-align: center;">x</td>
+				<td style="text-align: center;">x</td>
+				<td style="text-align: center;">x</td>
+				<td>E</td>
+				<td>e</td>
+				<td>false</td>
+				<td>Termination threshold</td>
+			</tr>
+			<tr style="height: 12.75pt; font-family:arial; font-size:13px">
+				<td style="height: 12.75pt;" align="right" height="17">15</td>
+				<td>boolean</td>
+				<td style="color: #ff0000;">calculate</td>
+				<td style="text-align: left;">false</td>
+				<td>Data misc</td>
+				<td style="text-align: center;">private</td>
+				<td style="text-align: center;">private</td>
+				<td style="text-align: center;">x</td>
+				<td style="text-align: center;">x</td>
+				<td style="text-align: center;">x</td>
+				<td>Calculate</td>
+				<td>calculate</td>
+				<td>false</td>
+				<td>Recalculation indicator</td>
+			</tr>
+			<tr style="height: 12.75pt; font-family:arial; font-size:13px">
+				<td style="height: 12.75pt;" align="right" height="17">16</td>
+				<td>boolean</td>
+				<td style="color: #ff0000;">fuzzyCMeans</td>
+				<td style="text-align: left;">false</td>
+				<td>Data misc</td>
+				<td style="text-align: center;">private</td>
+				<td style="text-align: center;">private</td>
+				<td style="text-align: center;"></td>
+				<td style="text-align: center;">x</td>
+				<td style="text-align: center;">x</td>
+				<td>FuzzyCMeans</td>
+				<td>fuzzyCMeans</td>
+				<td>false</td>
+				<td>Calculate with Fuzzy-C-Means clustering algorithm</td>
+			</tr>
+			<tr style="height: 12.75pt; font-family:arial; font-size:13px">
+				<td style="height: 12.75pt;" align="right" height="17">17</td>
+				<td>boolean</td>
+				<td style="color: #ff0000;">possibilisticCMeans</td>
+				<td style="text-align: left;">false</td>
+				<td>Data misc</td>
+				<td style="text-align: center;">private</td>
+				<td style="text-align: center;">private</td>
+				<td style="text-align: center;"></td>
+				<td style="text-align: center;">x</td>
+				<td style="text-align: center;">x</td>
+				<td>PossibilisticCMeans</td>
+				<td>possibilisticCMeans</td>
+				<td>false</td>
+				<td>Calculate with Possibilistic-C-Means clustering algorithm</td>
+			</tr>
+			<tr style="height: 12.75pt; font-family:arial; font-size:13px">
+				<td style="height: 12.75pt;" align="right" height="17">18</td>
+				<td>boolean</td>
+				<td style="color: #ff0000;">sortCluster</td>
+				<td style="text-align: left;">true</td>
+				<td>Data misc</td>
+				<td style="text-align: center;">private</td>
+				<td style="text-align: center;">private</td>
+				<td style="text-align: center;"></td>
+				<td style="text-align: center;">x</td>
+				<td style="text-align: center;">x</td>
+				<td>SortCluster</td>
+				<td>sortCluster</td>
+				<td>false</td>
+				<td>Matrixes mik, object, vi will be sorted with objectMembership in cluster sequence</td>
+			</tr>
+			<tr style="height: 12.75pt; font-family:arial; font-size:13px">
+				<td style="height: 12.75pt;" align="right" height="17">19</td>
+				<td>boolean</td>
+				<td style="color: #ff0000;">fiftyFiftyJoker</td>
+				<td style="text-align: left;">false</td>
+				<td>Data misc</td>
+				<td style="text-align: center;">private</td>
+				<td style="text-align: center;">private</td>
+				<td style="text-align: center;"></td>
+				<td style="text-align: center;">x</td>
+				<td style="text-align: center;">x</td>
+				<td>FiftyFiftyJoker</td>
+				<td>fiftyFiftyJoker</td>
+				<td>false</td>
+				<td>Object description only for affiliation >0.5</td>
+			</tr>
+			<tr style="height: 12.75pt; font-family:arial; font-size:13px">
+				<td style="height: 12.75pt;" align="right" height="17">20</td>
+				<td>boolean</td>
+				<td style="color: #ff0000;">clusterMax</td>
+				<td style="text-align: left;">false</td>
+				<td>Data misc</td>
+				<td style="text-align: center;">private</td>
+				<td style="text-align: center;">private</td>
+				<td style="text-align: center;"></td>
+				<td style="text-align: center;">x</td>
+				<td style="text-align: center;">x</td>
+				<td>ClusterMax</td>
+				<td>clusterMax</td>
+				<td>false</td>
+				<td>Object description according to the largest affiliation</td>
+			</tr>
+			<tr style="height: 12.75pt; font-family:arial; font-size:13px">
+				<td style="height: 12.75pt;" align="right" height="17">21</td>
+				<td>boolean</td>
+				<td style="color: #ff0000;">pixelObject</td>
+				<td style="text-align: left;">[100]</td>
+				<td>pixelObject</td>
+				<td style="text-align: center;">private</td>
+				<td style="text-align: center;">private</td>
+				<td style="text-align: center;"></td>
+				<td style="text-align: center;">x</td>
+				<td style="text-align: center;">x</td>
+				<td>PixelObject</td>
+				<td>pixelObject[][]</td>
+				<td>false</td>
+				<td>Pixel object matrix</td>
+			</tr>
+			<tr style="height: 12.75pt; font-family:arial; font-size:13px">
+				<td style="height: 12.75pt;" align="right" height="17">22</td>
+				<td>boolean</td>
+				<td style="color: #ff0000;">pixelVi</td>
+				<td style="text-align: left;">[100]</td>
+				<td>pixelVi</td>
+				<td style="text-align: center;">private</td>
+				<td style="text-align: center;">private</td>
+				<td style="text-align: center;"></td>
+				<td style="text-align: center;">x</td>
+				<td style="text-align: center;">x</td>
+				<td>PixelVi</td>
+				<td>pixelVi[][]</td>
+				<td>false</td>
+				<td>Pixel cluster centers matrix</td>
+			</tr>
+			<tr style="height: 12.75pt; font-family:arial; font-size:13px">
+				<td style="height: 12.75pt;" align="right" height="17">23</td>
+				<td>boolean</td>
+				<td style="color: #ff0000;">pixelViPath</td>
+				<td style="text-align: left;">[100]</td>
+				<td>pixelViPath</td>
+				<td style="text-align: center;">private</td>
+				<td style="text-align: center;">private</td>
+				<td style="text-align: center;"></td>
+				<td style="text-align: center;">x</td>
+				<td style="text-align: center;">x</td>
+				<td>PixelViPath</td>
+				<td>pixelViPath[][]</td>
+				<td>false</td>
+				<td>Pixel history of cluster centers detection matrix</td>
+			</tr>
+			<tr style="height: 12.75pt; font-family:arial; font-size:13px">
+				<td style="height: 12.75pt;" align="right" height="17">24</td>
+				<td>String</td>
+				<td style="color: #ff0000;">pixelString</td>
+				<td style="text-align: left;">0</td>
+				<td>Data pixelString</td>
+				<td style="text-align: center;">private</td>
+				<td style="text-align: center;">private</td>
+				<td style="text-align: center;"></td>
+				<td style="text-align: center;">x</td>
+				<td style="text-align: center;">x</td>
+				<td>PixelString</td>
+				<td>pixelString[]</td>
+				<td>false</td>
+				<td>Pixel string memory</td>
+			</tr>
+			<tr style="height: 12.75pt; font-family:arial; font-size:13px">
+				<td style="height: 12.75pt;" align="right" height="17">25</td>
+				<td>int</td>
+				<td style="color: #ff0000;">zoom</td>
+				<td style="text-align: left;">5</td>
+				<td>Data misc</td>
+				<td style="text-align: center;">private</td>
+				<td style="text-align: center;">private</td>
+				<td style="text-align: center;">x</td>
+				<td style="text-align: center;">x</td>
+				<td style="text-align: center;">x</td>
+				<td>Zoom</td>
+				<td>zoom</td>
+				<td>false</td>
+				<td>Zoom factor</td>
+			</tr>
+			<tr style="height: 12.75pt; font-family:arial; font-size:13px">
+				<td style="height: 12.75pt;" align="right" height="17">26</td>
+				<td>String</td>
+				<td style="color: #ff0000;">title</td>
+				<td style="text-align: left;"></td>
+				<td>Data misc</td>
+				<td style="text-align: center;">public</td>
+				<td style="text-align: center;">public</td>
+				<td style="text-align: center;">x</td>
+				<td style="text-align: center;">x</td>
+				<td style="text-align: center;">x</td>
+				<td>Title</td>
+				<td>title</td>
+				<td>false</td>
+				<td>Back part of title string</td>
+			</tr>
+			<tr style="height: 12.75pt; font-family:arial; font-size:13px">
+				<td style="height: 12.75pt;" align="right" height="17">27</td>
+				<td>String</td>
+				<td style="color: #ff0000;">version</td>
+				<td style="text-align: left;">0.95.2</td>
+				<td>Data misc</td>
+				<td style="text-align: center;">-</td>
+				<td style="text-align: center;">-</td>
+				<td style="text-align: center;">-</td>
+				<td style="text-align: center;">x</td>
+				<td style="text-align: center;">x</td>
+				<td>Version</td>
+				<td>version</td>
+				<td>true</td>
+				<td>Program version</td>
+			</tr>
+			<tr style="height: 12.75pt; font-family:arial; font-size:13px">
+				<td style="height: 12.75pt;" align="right" height="17">28</td>
+				<td>String</td>
+				<td style="color: #ff0000;">jahr</td>
+				<td style="text-align: left;">2017</td>
+				<td>Data misc</td>
+				<td style="text-align: center;">-</td>
+				<td style="text-align: center;">-</td>
+				<td style="text-align: center;">-</td>
+				<td style="text-align: center;">x</td>
+				<td style="text-align: center;">x</td>
+				<td>Jahr</td>
+				<td>jahr</td>
+				<td>false</td>
+				<td>Development year of Program version</td>
+			</tr>
+			<tr style="height: 12.75pt; font-family:arial; font-size:13px">
+				<td style="height: 12.75pt;" align="right" height="17">29</td>
+				<td>String</td>
+				<td style="color: #ff0000;">titleString</td>
+				<td style="text-align: left;">ClusterGraphix 0.95.2</td>
+				<td>Data misc</td>
+				<td style="text-align: center;">-</td>
+				<td style="text-align: center;">-</td>
+				<td style="text-align: center;">-</td>
+				<td style="text-align: center;">-</td>
+				<td style="text-align: center;">-</td>
+				<td>TitleString</td>
+				<td>titleString</td>
+				<td>false</td>
+				<td>Static part of titel string</td>
+			</tr>
+			<tr style="height: 12.75pt; font-family:arial; font-size:13px">
+				<td style="height: 12.75pt;" align="right" height="17">30</td>
+				<td>String</td>
+				<td style="color: #ff0000;">ready</td>
+				<td style="text-align: left;"> ready</td>
+				<td>Data misc</td>
+				<td style="text-align: center;">-</td>
+				<td style="text-align: center;">-</td>
+				<td style="text-align: center;">-</td>
+				<td style="text-align: center;">-</td>
+				<td style="text-align: center;">-</td>
+				<td>Ready</td>
+				<td>ready</td>
+				<td>false</td>
+				<td>Ready indicator string for status bar</td>
+			</tr>
+			<tr style="height: 12.75pt; font-family:arial; font-size:13px">
+				<td style="height: 12.75pt;" align="right" height="17">31</td>
+				<td>boolean</td>
+				<td style="color: #ff0000;">clusterfreak</td>
+				<td style="text-align: left;">{...</td>
+				<td>Data misc</td>
+				<td style="text-align: center;">-</td>
+				<td style="text-align: center;">-</td>
+				<td style="text-align: center;">-</td>
+				<td style="text-align: center;">-</td>
+				<td style="text-align: center;">-</td>
+				<td>Clusterfreak</td>
+				<td>clusterfreak</td>
+				<td>false</td>
+				<td>Pixel image for program start</td>
+			</tr>
+			<tr style="height: 12.75pt; font-family:arial; font-size:13px">
+				<td style="height: 12.75pt;" align="right" height="17">32</td>
+				<td>ClusterFile</td>
+				<td style="color: #ff0000;">clusterFile</td>
+				<td style="text-align: left;">false</td>
+				<td></td>
+				<td style="text-align: center;">-</td>
+				<td style="text-align: center;">-</td>
+				<td style="text-align: center;">-</td>
+				<td style="text-align: center;">-</td>
+				<td style="text-align: center;">-</td>
+				<td>ClusterFile</td>
+				<td>clusterFile</td>
+				<td>false</td>
+				<td>Variables</td>
+			</tr>
+			<tr style="height: 12.75pt; font-family:arial; font-size:13px">
+				<td style="height: 12.75pt;" align="right" height="17">33</td>
+				<td>ClusterBot</td>
+				<td style="color: #ff0000;">clusterBot</td>
+				<td style="text-align: left;">0</td>
+				<td></td>
+				<td style="text-align: center;">-</td>
+				<td style="text-align: center;">-</td>
+				<td style="text-align: center;">-</td>
+				<td style="text-align: center;">-</td>
+				<td style="text-align: center;">-</td>
+				<td>ClusterBot</td>
+				<td>clusterBot</td>
+				<td>false</td>
+				<td>Cluster bot memory</td>
+			</tr>
+			<tr style="height: 12.75pt; font-family:arial; font-size:13px">
+				<td style="height: 12.75pt;" align="right" height="17">34</td>
+				<td>boolean</td>
+				<td style="color: #ff0000;">error</td>
+				<td style="text-align: left;">false</td>
+				<td>Data misc</td>
+				<td style="text-align: center;">private</td>
+				<td style="text-align: center;">private</td>
+				<td style="text-align: center;">-</td>
+				<td style="text-align: center;">x</td>
+				<td style="text-align: center;">x</td>
+				<td>Error</td>
+				<td>error</td>
+				<td>false</td>
+				<td>Error status from quickCheck()</td>
+			</tr>
+			<tr style="height: 12.75pt; font-family:arial; font-size:13px">
+				<td style="height: 12.75pt;" align="right" height="17">35</td>
+				<td>boolean</td>
+				<td style="color: #ff0000;">headUpDisplay</td>
+				<td style="text-align: left;">true</td>
+				<td>Data misc</td>
+				<td style="text-align: center;">private</td>
+				<td style="text-align: center;">private</td>
+				<td style="text-align: center;">x</td>
+				<td style="text-align: center;">x</td>
+				<td style="text-align: center;">x</td>
+				<td>HeadUpDisplay</td>
+				<td>headUpDisplay</td>
+				<td>false</td>
+				<td>Head up display</td>
+			</tr>
+			<tr style="height: 12.75pt; font-family:arial; font-size:13px">
+				<td style="height: 12.75pt;" align="right" height="17">36</td>
+				<td>boolean</td>
+				<td style="color: #ff0000;">random</td>
+				<td style="text-align: left;">true</td>
+				<td>Data misc</td>
+				<td style="text-align: center;">private</td>
+				<td style="text-align: center;">private</td>
+				<td style="text-align: center;">x</td>
+				<td style="text-align: center;">x</td>
+				<td style="text-align: center;">x</td>
+				<td>Random</td>
+				<td>random</td>
+				<td>false</td>
+				<td>Random ....</td>
+			</tr>
+			<tr style="height: 12.75pt; font-family:arial; font-size:13px">
+				<td style="height: 12.75pt;" align="right" height="17">37</td>
+				<td>boolean</td>
+				<td style="color: #ff0000;">developerMode</td>
+				<td style="text-align: left;">false</td>
+				<td>Data misc</td>
+				<td style="text-align: center;">private</td>
+				<td style="text-align: center;">private</td>
+				<td style="text-align: center;">x</td>
+				<td style="text-align: center;">x</td>
+				<td style="text-align: center;">x</td>
+				<td>DeveloperMode</td>
+				<td>developerMode</td>
+				<td>false</td>
+				<td>Show more error messages</td>
+			</tr>
+			<tr style="height: 12.75pt; font-family:arial; font-size:13px">
+				<td style="height: 12.75pt;" align="right" height="17">38</td>
+				<td>boolean</td>
+				<td style="color: #ff0000;">improve</td>
+				<td style="text-align: left;">true</td>
+				<td>Data misc</td>
+				<td style="text-align: center;">private</td>
+				<td style="text-align: center;">private</td>
+				<td style="text-align: center;">x</td>
+				<td style="text-align: center;">x</td>
+				<td style="text-align: center;">x</td>
+				<td>Improve</td>
+				<td>improve</td>
+				<td>false</td>
+				<td>Improved clusterfreak algorithm</td>
+			</tr>
+			<tr style="height: 12.75pt; font-family:arial; font-size:13px">
+				<td style="height: 12.75pt;" align="right" height="17">39</td>
+				<td>boolean</td>
+				<td style="color: #ff0000;">pixelObjectMembership</td>
+				<td style="text-align: left;">[100]</td>
+				<td>Data misc</td>
+				<td style="text-align: center;">private</td>
+				<td style="text-align: center;">private</td>
+				<td style="text-align: center;">-</td>
+				<td style="text-align: center;">-</td>
+				<td style="text-align: center;">-</td>
+				<td>PixelObjectMembership</td>
+				<td>pixelObjectMembership[][]</td>
+				<td>false</td>
+				<td>Pixel object description with associated clusters</td>
 			</tr>
 			</p>
+		</tbody>
 		</table>
 	</body>
 </html>

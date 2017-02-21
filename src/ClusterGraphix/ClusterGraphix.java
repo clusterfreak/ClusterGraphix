@@ -2368,7 +2368,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	/**
 	 * Set pixel object description with associated clusters
 	 * 
-	 * @param pixelObjectMembership
+	 * @param pixelObjectMembership PixelObjectMembership
 	 */
 	public void setPixelObjectMembership(boolean pixelObjectMembership[][]) {
 		this.pixelObjectMembership = pixelObjectMembership;
@@ -2381,7 +2381,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	/**
 	 * Get pixel object description with associated clusters
 	 * 
-	 * @return
+	 * @return pixelObjectMembership
 	 */
 	public boolean[][] getPixelObjectMembership() {
 		return pixelObjectMembership;
@@ -4371,63 +4371,55 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 			tab = tab.substring(1);
 			dataFile.println(tab + "</head>");
 			// <body>
-			dataFile.println(tab + "<body bgcolor=\"#f0f8ff\" text=\"#001C66\">");
+			dataFile.println(tab + "<body bgcolor=\"#e2e6ea\" text=\"#6D777F\">");
 			tab = tab.concat("\t");
-			dataFile.println(tab + "<font face=\"Arial\">");
+			dataFile.println(tab + "<p style=\"font-family:arial; font-size:13px\">");
 			dataFile.println(tab + "ClusterGraphix " + version + " " + jahr);
 			// <table>
-			dataFile.println(tab + "<table border=\"1\" bgcolor=#ffffff bordercolor=#000099>");
+			dataFile.println(tab + "<table summary=\"\" width=\"890\" border=\"1\" cellspacing=\"0\" cellpadding=\"0\" align=\"\">");
 			tab = tab.concat("\t");
-			dataFile.println(tab + "<p style=\"font-size:small\">");
-			dataFile.println(tab + "<tr bgcolor=#BDBDBD>");
+			dataFile.println(tab + "<tbody>");
+			dataFile.println(tab + "<tr style=\"height: 12.75pt; font-family:arial; font-size:13px\">");
 			tab = tab.concat("\t");
-			dataFile.println(tab + "<th align=center rowspan=\"2\">number</th>");
-			dataFile.println(tab + "<th align=left colspan=\"12\"><font color=#04B431>description</font></th>");
-			tab = tab.substring(1);
-			dataFile.println(tab + "</tr>");
-			dataFile.println(tab + "<tr bgcolor=#BDBDBD>");
-			tab = tab.concat("\t");
-			dataFile.println(tab + "<th align=left><font color=#FA5858>type</font></th>");
-			dataFile.println(tab + "<th align=left>" + "name" + "</th>");
-			dataFile.println(tab + "<th align=left>" + "initial" + "</th>");
-			dataFile.println(tab + "<th align=left>" + "gui" + "</th>");
-			dataFile.println(tab + "<th align=left><font color=#FA5858>" + "set" + "</font></th>");
-			dataFile.println(tab + "<th align=left><font color=#FA5858>" + "get" + "</font></th>");
-			dataFile.println(tab + "<th align=center>" + "edit" + "</th>");
-			dataFile.println(tab + "<th align=center>" + "save" + "</th>");
-			dataFile.println(tab + "<th align=center>" + "Load" + "</th>");
-			dataFile.println(tab + "<th align=left>" + "nameCapital" + "</th>");
-			dataFile.println(tab + "<th align=left>" + "nameExtended" + "</th>");
-			dataFile.println(tab + "<th align=left>" + "data" + "</th>");
+			dataFile.println(tab + "<th style=\"height: 12.75pt; width: 16pt;\" width=\"21\" height=\"17\">&nbsp;</th>");
+			dataFile.println(tab + "<th style=\"width: 52pt; font-weight: bold;\" width=\"69\">" + "type" + "</th>");
+			dataFile.println(tab + "<th style=\"width: 93pt; font-weight: bold;\" width=\"124\">" + "name" + "</th>");
+			dataFile.println(tab + "<th style=\"width: 88pt; font-weight: bold;\" width=\"117\">" + "initial" + "</th>");
+			dataFile.println(tab + "<th style=\"width: 113pt; font-weight: bold;\" width=\"151\">" + "gui" + "</th>");
+			dataFile.println(tab + "<th style=\"width: 31pt; text-align: center; font-weight: bold;\" width=\"41\">" + "set" + "</th>");
+			dataFile.println(tab + "<th style=\"width: 31pt; text-align: center; font-weight: bold;\" width=\"41\">" + "get" + "</th>");
+			dataFile.println(tab + "<th style=\"width: 23pt; text-align: center; font-weight: bold;\" width=\"31\">" + "edit" + "</th>");
+			dataFile.println(tab + "<th style=\"width: 29pt; text-align: center; font-weight: bold;\" width=\"39\">" + "save" + "</th>");
+			dataFile.println(tab + "<th style=\"width: 29pt; text-align: center; font-weight: bold;\" width=\"39\">" + "load" + "</th>");
+			dataFile.println(tab + "<th style=\"width: 29pt; text-align: center; font-weight: bold;\" width=\"39\">" + "nameCapital" + "</th>");
+			dataFile.println(tab + "<th style=\"width: 29pt; text-align: center; font-weight: bold;\" width=\"39\">" + "nameExtended" + "</th>");
+			dataFile.println(tab + "<th style=\"width: 29pt; text-align: center; font-weight: bold;\" width=\"39\">" + "data" + "</th>");
+			dataFile.println(tab + "<th style=\"width: 29pt; text-align: center; font-weight: bold;\" width=\"29\">" + "description" + "</th>");
 			tab = tab.substring(1);
 			dataFile.println(tab + "</tr>");
 			for (int i = 0; i < ClusterData.length; i++) {
-				dataFile.println(tab + "<tr>");
+				dataFile.println(tab + "<tr style=\"height: 12.75pt; font-family:arial; font-size:13px\">");
 				tab = tab.concat("\t");
-				dataFile.println(tab + "<th align=center rowspan=\"2\">" + ClusterData.number[i] + "</th>");
-				dataFile.println(tab + "<th align=left colspan=\"12\"><font color=#04B431>" + ClusterData.description[i]
-						+ "</font></th>");
-				tab = tab.substring(1);
-				dataFile.println(tab + "</tr>");
-				dataFile.println(tab + "<tr>");
-				tab = tab.concat("\t");
-				dataFile.println(tab + "<th align=left><font color=#FA5858>" + ClusterData.type[i] + "</font></th>");
-				dataFile.println(tab + "<th align=left>" + ClusterData.name[i] + "</th>");
-				dataFile.println(tab + "<th align=left>" + ClusterData.initial[i] + "</th>");
-				dataFile.println(tab + "<th align=left>" + ClusterData.gui[i] + "</th>");
-				dataFile.println(tab + "<th align=left><font color=#FA5858>" + ClusterData.set[i] + "</font></th>");
-				dataFile.println(tab + "<th align=left><font color=#FA5858>" + ClusterData.get[i] + "</font></th>");
-				dataFile.println(tab + "<th align=center>" + ClusterData.edit[i] + "</th>");
-				dataFile.println(tab + "<th align=center>" + ClusterData.save[i] + "</th>");
-				dataFile.println(tab + "<th align=center>" + ClusterData.load[i] + "</th>");
-				dataFile.println(tab + "<th align=left>" + ClusterData.nameCapital[i] + "</th>");
-				dataFile.println(tab + "<th align=left>" + ClusterData.nameExtended[i] + "</th>");
-				dataFile.println(tab + "<th align=left>" + ClusterData.data[i] + "</th>");
+				dataFile.println(tab + "<td style=\"height: 12.75pt;\" align=\"right\" height=\"17\">" + ClusterData.number[i] + "</td>");
+				dataFile.println(tab + "<td>" + ClusterData.type[i] + "</td>");
+				dataFile.println(tab + "<td style=\"color: #ff0000;\">" + ClusterData.name[i] + "</td>");
+				dataFile.println(tab + "<td style=\"text-align: left;\">" + ClusterData.initial[i] + "</td>");
+				dataFile.println(tab + "<td>" + ClusterData.gui[i] + "</td>");
+				dataFile.println(tab + "<td style=\"text-align: center;\">" + ClusterData.set[i] + "</td>");
+				dataFile.println(tab + "<td style=\"text-align: center;\">" + ClusterData.get[i] + "</td>");
+				dataFile.println(tab + "<td style=\"text-align: center;\">" + ClusterData.edit[i] + "</td>");
+				dataFile.println(tab + "<td style=\"text-align: center;\">" + ClusterData.save[i] + "</td>");
+				dataFile.println(tab + "<td style=\"text-align: center;\">" + ClusterData.load[i] + "</td>");
+				dataFile.println(tab + "<td>" + ClusterData.nameCapital[i] + "</td>");
+				dataFile.println(tab + "<td>" + ClusterData.nameExtended[i] + "</td>");
+				dataFile.println(tab + "<td>" + ClusterData.data[i] + "</td>");
+				dataFile.println(tab + "<td>" + ClusterData.description[i] + "</td>");
 				tab = tab.substring(1);
 				dataFile.println(tab + "</tr>");
 			}
 			dataFile.println(tab + "</p>");
 			tab = tab.substring(1);
+			dataFile.println(tab + "</tbody>");
 			dataFile.println(tab + "</table>");
 			tab = tab.substring(1);
 			dataFile.println(tab + "</body>");
