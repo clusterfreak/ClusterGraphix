@@ -4368,39 +4368,39 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 			dataFile.println(tab + "<title>ClusterGraphix-DataFile</title>");
 			dataFile.println(tab
 					+ "<link rel=\"shortcut icon\" href=\"http://clusterfreak.com/favicon.ico\" type=\"image/x-icon\">");
+			dataFile.println(tab + "<link rel=\"stylesheet\" href=\"ClusterGraphix.css\">");
 			tab = tab.substring(1);
 			dataFile.println(tab + "</head>");
 			// <body>
-			dataFile.println(tab + "<body bgcolor=\"#e2e6ea\" text=\"#6D777F\">");
+			dataFile.println(tab + "<body>");
 			tab = tab.concat("\t");
-			dataFile.println(tab + "<p style=\"font-family:arial; font-size:13px\">");
-			dataFile.println(tab + "ClusterGraphix " + version + " " + jahr);
+			dataFile.println(tab + "<p>ClusterGraphix " + version + " " + jahr + "</p>");
 			// <table>
-			dataFile.println(tab + "<table summary=\"\" width=\"890\" border=\"1\" cellspacing=\"0\" cellpadding=\"0\" align=\"\">");
+			dataFile.println(tab + "<table>");
 			tab = tab.concat("\t");
 			dataFile.println(tab + "<tbody>");
-			dataFile.println(tab + "<tr style=\"height: 12.75pt; font-family:arial; font-size:13px\">");
+			dataFile.println(tab + "<tr>");
 			tab = tab.concat("\t");
-			dataFile.println(tab + "<th style=\"height: 12.75pt; width: 16pt;\" width=\"21\" height=\"17\">&nbsp;</th>");
-			dataFile.println(tab + "<th style=\"width: 52pt; font-weight: bold;\" width=\"69\">" + "type" + "</th>");
-			dataFile.println(tab + "<th style=\"width: 93pt; font-weight: bold;\" width=\"124\">" + "name" + "</th>");
-			dataFile.println(tab + "<th style=\"width: 88pt; font-weight: bold;\" width=\"117\">" + "initial" + "</th>");
-			dataFile.println(tab + "<th style=\"width: 113pt; font-weight: bold;\" width=\"151\">" + "gui" + "</th>");
-			dataFile.println(tab + "<th style=\"width: 31pt; text-align: center; font-weight: bold;\" width=\"41\">" + "set" + "</th>");
-			dataFile.println(tab + "<th style=\"width: 31pt; text-align: center; font-weight: bold;\" width=\"41\">" + "get" + "</th>");
-			dataFile.println(tab + "<th style=\"width: 23pt; text-align: center; font-weight: bold;\" width=\"31\">" + "edit" + "</th>");
-			dataFile.println(tab + "<th style=\"width: 29pt; text-align: center; font-weight: bold;\" width=\"39\">" + "save" + "</th>");
-			dataFile.println(tab + "<th style=\"width: 29pt; text-align: center; font-weight: bold;\" width=\"39\">" + "load" + "</th>");
-			dataFile.println(tab + "<th style=\"width: 29pt; text-align: center; font-weight: bold;\" width=\"39\">" + "nameCapital" + "</th>");
-			dataFile.println(tab + "<th style=\"width: 29pt; text-align: center; font-weight: bold;\" width=\"39\">" + "nameExtended" + "</th>");
-			dataFile.println(tab + "<th style=\"width: 29pt; text-align: center; font-weight: bold;\" width=\"39\">" + "data" + "</th>");
-			dataFile.println(tab + "<th style=\"width: 29pt; text-align: center; font-weight: bold;\" width=\"29\">" + "description" + "</th>");
+			dataFile.println(tab + "<th>&nbsp;</th>");
+			dataFile.println(tab + "<th>" + "type" + "</th>");
+			dataFile.println(tab + "<th>" + "name" + "</th>");
+			dataFile.println(tab + "<th>" + "initial" + "</th>");
+			dataFile.println(tab + "<th>" + "gui" + "</th>");
+			dataFile.println(tab + "<th>" + "set" + "</th>");
+			dataFile.println(tab + "<th>" + "get" + "</th>");
+			dataFile.println(tab + "<th>" + "edit" + "</th>");
+			dataFile.println(tab + "<th>" + "save" + "</th>");
+			dataFile.println(tab + "<th>" + "load" + "</th>");
+			dataFile.println(tab + "<th>" + "nameCapital" + "</th>");
+			dataFile.println(tab + "<th>" + "nameExtended" + "</th>");
+			dataFile.println(tab + "<th>" + "data" + "</th>");
+			dataFile.println(tab + "<th>" + "description" + "</th>");
 			tab = tab.substring(1);
 			dataFile.println(tab + "</tr>");
 			for (int i = 0; i < ClusterData.length; i++) {
-				dataFile.println(tab + "<tr style=\"height: 12.75pt; font-family:arial; font-size:13px\">");
+				dataFile.println(tab + "<tr>");
 				tab = tab.concat("\t");
-				dataFile.println(tab + "<td style=\"height: 12.75pt;\" align=\"right\" height=\"17\">" + ClusterData.number[i] + "</td>");
+				dataFile.println(tab + "<td style=\"text-align: right;\">" + ClusterData.number[i] + "</td>");
 				dataFile.println(tab + "<td>" + ClusterData.type[i] + "</td>");
 				dataFile.println(tab + "<td style=\"color: #ff0000;\">" + ClusterData.name[i] + "</td>");
 				dataFile.println(tab + "<td style=\"text-align: left;\">" + ClusterData.initial[i] + "</td>");
@@ -4417,7 +4417,6 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 				tab = tab.substring(1);
 				dataFile.println(tab + "</tr>");
 			}
-			dataFile.println(tab + "</p>");
 			tab = tab.substring(1);
 			dataFile.println(tab + "</tbody>");
 			dataFile.println(tab + "</table>");

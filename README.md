@@ -20,6 +20,7 @@ Display of objects and clusters - Grafische Anzeige von Punktemengen und Klassen
 * ClusterTest v0.1.0 (2016-04-10)
 	* ClusterTest v0.1.0 (2016-04-10)
 	* WritePbm v0.1.0 (2016-04-10)
+* ClusterGraphix.css v0.0.1 (2017-01-07)
 
 ### Bugs
 * deleteNotAssigned
@@ -27,7 +28,6 @@ Display of objects and clusters - Grafische Anzeige von Punktemengen und Klassen
 * clusterCenterPointNumber 99999999 when not found
 
 ### Ideas
-* https://www.w3schools.com/html/html_css.asp
 * check if objectMembership complete
 * CTRL + SHIFT + F Source Code Pretty Print
 * clusterBotNet.clusterBotCenter only modified when realy modified
@@ -41,6 +41,7 @@ v0.95.2
 * paintComponent() objects with no membership are black in pixel mode
 * ClusterBotNet.clusterCenterNumber(); ClusterBotNet.clusterCenterString()
 * ClusterBotNet.clusterCenterPointNumber(); ClusterBotNet.clusterCenterPointString()
+* ClusterGraphix.css, dataFile() design
 
 v0.95.1
 * ClusterCore v1.0.0 package
