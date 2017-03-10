@@ -1,0 +1,33 @@
+/*
+ClusterGraphix.css
+
+@version 0.0.1 (2017-01-07)
+@author Thomas Heym
+*/
+body {
+	background-color: #e2e6ea;
+	color: #6D777F;
+}
+
+p {
+	font: normal 13px Arial;
+}
+
+table {
+	table-layout: fixed;
+	white-space: nowrap;
+	border-collapse: collapse;
+	border: 1px solid black;
+}
+
+th {
+	height: 12.75px;
+	font: bold 13px Arial;
+	border: 1px solid black;
+}
+
+td {
+	height: 12.75px;
+	font: normal 13px Arial;
+	border: 1px solid black;
+}

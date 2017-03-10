@@ -9,20 +9,20 @@ import javax.swing.JOptionPane;
  * @author Thomas Heym
  */
 public class ClusterData {
-	public static int length = 39;
+	public static int length = 40;
 	public static int number[] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23,
-			24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38 };
+			24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39 };
 	public static String type[] = { "boolean", "int", "int", "boolean", "int", "int", "double", "boolean", "double",
 			"double", "boolean", "boolean", "int", "double", "double", "boolean", "boolean", "boolean", "boolean",
 			"boolean", "boolean", "boolean", "boolean", "boolean", "String", "int", "String", "String", "String",
 			"String", "String", "boolean", "ClusterFile", "ClusterBot", "boolean", "boolean", "boolean", "boolean",
-			"boolean" };
+			"boolean", "boolean" };
 	public static String name[] = { "pixel", "pixelDim", "pixelOffset", "pixelOriginal", "cluster", "objects", "object",
 			"objectMembership", "vi", "viPath", "pathOption", "descriptionDisplay", "repeat", "mik", "e", "calculate",
 			"fuzzyCMeans", "possibilisticCMeans", "sortCluster", "fiftyFiftyJoker", "clusterMax", "pixelObject",
 			"pixelVi", "pixelViPath", "pixelString", "zoom", "title", "version", "jahr", "titleString", "ready",
-			"clusterfreak", "clusterFile", "clusterBot", "error", "headUpDisplay", "random", "developerMode",
-			"improve" };
+			"clusterfreak", "clusterFile", "clusterBot", "error", "headUpDisplay", "random", "developerMode", "improve",
+			"pixelObjectMembership" };
 	public static String description[] = { "General importance for conversion and saving", "Pixel resolution",
 			"Pixel size", "Pixel object original indicator", "Quantity/number of clusters",
 			"Quantity/number of objects", "Object matrix", "Object description with associated clusters",
@@ -39,51 +39,51 @@ public class ClusterData {
 			"Development year of Program version", "Static part of titel string",
 			"Ready indicator string for status bar", "Pixel image for program start", "Variables", "Cluster bot memory",
 			"Error status from quickCheck()", "Head up display", "Random ....", "Show more error messages",
-			"Improved clusterfreak algorithm" };
+			"Improved clusterfreak algorithm", "Pixel object description with associated clusters" };
 	public static String initial[] = { "true", "2", "100", "true", "0", "0", "null", "[0][0]", "[0][2]", "null",
 			"false", "false", "1", "[0][0]", "1.0e-7", "false", "false", "false", "true", "false", "false", "[100]",
 			"[100]", "[100]", "0", "5", "", "0.95.2", "2017", "ClusterGraphix " + "0.95.2", " ready", "{...", "false",
-			"0", "false", "true", "true", "false", "true" };
+			"0", "false", "true", "true", "false", "true", "[100]" };
 	public static String gui[] = { "Menü pixelMode", "Data misc", "Data misc", "", "Data misc", "Data misc",
 			"Data object", "Data objectMembership", "Data vi", "Data viPath", "Menü pathOption",
 			"Menü descriptionDisplay", "Data misc", "Data mik", "Data misc", "Data misc", "Data misc", "Data misc",
 			"Data misc", "Data misc", "Data misc", "pixelObject", "pixelVi", "pixelViPath", "Data pixelString",
 			"Data misc", "Data misc", "Data misc", "Data misc", "Data misc", "Data misc", "Data misc", "", "",
-			"Data misc", "Data misc", "Data misc", "Data misc", "Data misc" };
+			"Data misc", "Data misc", "Data misc", "Data misc", "Data misc", "Data misc" };
 	public static String set[] = { "public", "public", "-", "private", "public", "-", "public", "private", "private",
 			"private", "public", "public", "public", "private", "public", "private", "private", "private", "private",
 			"private", "private", "private", "private", "private", "private", "private", "public", "-", "-", "-", "-",
-			"-", "-", "-", "private", "private", "private", "private", "private" };
+			"-", "-", "-", "private", "private", "private", "private", "private", "private" };
 	public static String get[] = { "public", "public", "private", "private", "public", "private", "public", "private",
 			"public", "private", "public", "public", "public", "public", "public", "private", "private", "private",
 			"private", "private", "private", "private", "private", "private", "private", "private", "public", "-", "-",
-			"-", "-", "-", "-", "-", "private", "private", "private", "private", "private" };
+			"-", "-", "-", "-", "-", "private", "private", "private", "private", "private", "private" };
 	public static String edit[] = { "x", "x", "-", "-", "x", "-", "", "-", "", "", "x", "x", "", "", "x", "x", "", "",
-			"", "", "", "", "", "", "", "x", "x", "-", "-", "-", "-", "-", "-", "-", "-", "x", "x", "x", "x" };
+			"", "", "", "", "", "", "", "x", "x", "-", "-", "-", "-", "-", "-", "-", "-", "x", "x", "x", "x", "-" };
 	public static String save[] = { "x", "x", "-", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x",
 			"x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "-", "-", "-", "-", "-", "x", "x", "x", "x",
-			"x" };
+			"x", "-" };
 	public static String load[] = { "x", "x", "-", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x",
 			"x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "-", "-", "-", "-", "-", "x", "x", "x", "x",
-			"x" };
+			"x", "-" };
 	public static String nameCapital[] = { "Pixel", "PixelDim", "PixelOffset", "PixelOriginal", "Cluster", "Objects",
 			"Object", "ObjectMembership", "Vi", "ViPath", "PathOption", "DescriptionDisplay", "Repeat", "Mik", "E",
 			"Calculate", "FuzzyCMeans", "PossibilisticCMeans", "SortCluster", "FiftyFiftyJoker", "ClusterMax",
 			"PixelObject", "PixelVi", "PixelViPath", "PixelString", "Zoom", "Title", "Version", "Jahr", "TitleString",
 			"Ready", "Clusterfreak", "ClusterFile", "ClusterBot", "Error", "HeadUpDisplay", "Random", "DeveloperMode",
-			"Improve" };
+			"Improve", "PixelObjectMembership" };
 	public static String nameExtended[] = { "pixel", "pixelDim", "pixelOffset", "pixelOriginal", "cluster", "objects",
 			"object[][]", "objectMembership[][]", "vi[][]", "viPath[][]", "pathOption", "descriptionDisplay", "repeat",
 			"mik[][]", "e", "calculate", "fuzzyCMeans", "possibilisticCMeans", "sortCluster", "fiftyFiftyJoker",
 			"clusterMax", "pixelObject[][]", "pixelVi[][]", "pixelViPath[][]", "pixelString[]", "zoom", "title",
 			"version", "jahr", "titleString", "ready", "clusterfreak", "clusterFile", "clusterBot", "error",
-			"headUpDisplay", "random", "developerMode", "improve" };
+			"headUpDisplay", "random", "developerMode", "improve", "pixelObjectMembership[][]" };
 	public static String indexString2[] = { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11",
 			"12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29",
-			"30", "31", "32", "33", "34", "35", "36", "37", "38" };
+			"30", "31", "32", "33", "34", "35", "36", "37", "38", "39" };
 	public static boolean data[] = { false, false, false, false, false, false, false, false, false, false, false, false,
 			false, false, false, false, false, false, false, false, false, false, false, false, false, false, false,
-			true, false, false, false, false, false, false, false, false, false, false, false };
+			true, false, false, false, false, false, false, false, false, false, false, false, false };
 
 	/**
 	 * Get the extended string for the variable
