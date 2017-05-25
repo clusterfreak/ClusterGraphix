@@ -33,6 +33,7 @@ import java.awt.BasicStroke;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ItemListener;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.font.TextAttribute;
@@ -52,6 +53,7 @@ import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JToolBar;
+import javax.swing.KeyStroke;
 import javax.swing.JButton;
 import javax.swing.JTabbedPane;
 import javax.swing.JScrollPane;
@@ -350,6 +352,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	 * Pixel object description with associated clusters
 	 */
 	private boolean pixelObjectMembership[][] = null;
+	private boolean clusterCircle;
 	/**
 	 * Main frame
 	 */
@@ -373,6 +376,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	private final JCheckBoxMenuItem clusterMenuViewDescriptionDisplay = new JCheckBoxMenuItem("descriptionDisplay",
 			false);
 	private final JCheckBoxMenuItem clusterMenuViewHeadUpDisplay = new JCheckBoxMenuItem("headUpDisplay", true);
+	private final JCheckBoxMenuItem clusterMenuViewClusterCircle = new JCheckBoxMenuItem("clusterCircle", true);
 	private final JMenuItem clusterMenuViewRefresh = new JMenuItem("refresh");
 	private final JMenu clusterMenuZoom = new JMenu("Zoom");
 	private final JMenuItem clusterMenuZoomDefault = new JMenuItem("default");
@@ -381,6 +385,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	private final JMenu clusterMenuData = new JMenu("Data");
 	private final JMenuItem clusterMenuDataShow = new JMenuItem("Show");
 	private final JMenuItem clusterMenuDataCheck = new JMenuItem("Check");
+	private final JMenuItem clusterMenuDataCalculate = new JMenuItem("Calc", KeyEvent.VK_F8);
 	private final JMenu clusterMenuSet = new JMenu("Set");
 	private final JMenuItem clusterMenuSetPixelDim = new JMenuItem("pixelDim");
 	private final JMenuItem clusterMenuSetCluster = new JMenuItem("cluster");
@@ -533,7 +538,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 		setPixelString(ClusterGraphix.clusterfreak);
 		pixelStringToObject();
 		setPixelOriginal(true);
-		pixelMatrix();
+		pixelMatrix(true);
 		setTitle("clusterfreak");
 		f.repaint();
 		Thread.sleep(500);
@@ -660,6 +665,13 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 			}
 		});
 		clusterMenuViewHeadUpDisplay.addActionListener(this);
+		clusterMenuView.add(clusterMenuViewClusterCircle);
+		clusterMenuViewClusterCircle.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				setClusterCircle(clusterMenuViewClusterCircle.isSelected());
+			}
+		});
+		clusterMenuViewClusterCircle.addActionListener(this);
 		clusterMenuView.addSeparator();
 		clusterMenuView.add(clusterMenuViewRefresh);
 		clusterMenuView.setMnemonic('R');
@@ -681,6 +693,10 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 		clusterMenuDataShow.addActionListener(this);
 		clusterMenuData.add(clusterMenuDataCheck);
 		clusterMenuDataCheck.addActionListener(this);
+		clusterMenuData.add(clusterMenuDataCalculate);
+		clusterMenuDataCalculate.setMnemonic(KeyEvent.VK_F8);
+		clusterMenuDataCalculate.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F8, ActionEvent.CTRL_MASK));
+		clusterMenuDataCalculate.addActionListener(this);
 		// Menu Set
 		clusterMenu.add(clusterMenuSet);
 		clusterMenuSet.add(clusterMenuSetPixelDim);
@@ -943,6 +959,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 		if ("Check".equals(actionCommand)) {
 			clusterStatus.setText(" check");
 			Thread clusterThread = new Thread(clusterThreadGroup, "Check") {
+
 				public void run() {
 					checkReport();
 					SwingUtilities.invokeLater(new Runnable() {
@@ -956,6 +973,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 		}
 		if ("Clear All".equals(actionCommand)) {
 			clusterStatus.setText(" clear all");
+
 			Thread clusterThread = new Thread(clusterThreadGroup, "Clear all") {
 				public void run() {
 					clearAll();
@@ -968,7 +986,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 			};
 			clusterThread.start();
 		}
-		if ("Calculate".equals(actionCommand)) {
+		if (("Calculate".equals(actionCommand)) || ("Calc".equals(actionCommand))) {
 			clusterStatus.setText(" calculate");
 			Thread clusterThread = new Thread(clusterThreadGroup, "Calculate") {
 				public void run() {
@@ -1479,12 +1497,15 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 				miscData[39][3] = "[" + String.valueOf(getPixelObjectMembership().length) + "]";
 			else
 				miscData[39][3] = "[null]";
+			miscData[40][3] = String.valueOf(getClusterCircle());
 			miscTable = new JTable(miscData, miscColHeads);
 			miscScrollPane.setViewportView(miscTable);
 			// object
 			if (getObject() != null) {
 				String objectData[][] = new String[getObject().length][3];
-				for (int i = 0; i < getObject().length; i++) {
+				for (int i = 0; i <
+
+				getObject().length; i++) {
 					objectData[i][0] = String.valueOf(i);
 					objectData[i][1] = String.valueOf(getObject()[i][0]);
 					objectData[i][2] = String.valueOf(getObject()[i][1]);
@@ -1494,12 +1515,15 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 			} else
 				objectTable = null;
 			// objectMembership
-			if (getObjectMembership() != null) {
+			if (
+
+			getObjectMembership() != null) {
 				String membershipData[][] = new String[getObjectMembership().length][getCluster() + 1];
 				for (int i = 0; i < getObjectMembership().length; i++) {
 					membershipData[i][0] = String.valueOf(i);
 					for (int k = 0; k < getCluster(); k++) {
-						membershipData[i][k + 1] = String.valueOf(getObjectMembership()[i][k]);
+						if (getObjectMembership()[i][k])
+							membershipData[i][k + 1] = "X";
 					}
 				}
 				membershipColHeads = new String[getCluster() + 1];
@@ -1559,7 +1583,8 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 				for (int i = 0; i < getPixelObject().length; i++) {
 					pixelObjectData[i][0] = String.valueOf(i);
 					for (int k = 0; k < getPixelObject().length; k++) {
-						pixelObjectData[i][k + 1] = String.valueOf(getPixelObject()[i][k]);
+						if (getPixelObject()[i][k])
+							pixelObjectData[i][k + 1] = "X";
 					}
 				}
 				pixelObjectColHeads = new String[getPixelObject().length + 1];
@@ -1578,7 +1603,8 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 				for (int i = 0; i < getPixelObjectMembership().length; i++) {
 					pixelObjectMembershipData[i][0] = String.valueOf(i);
 					for (int k = 0; k < getPixelObjectMembership().length; k++) {
-						pixelObjectMembershipData[i][k + 1] = String.valueOf(getPixelObjectMembership()[i][k]);
+						if (getPixelObjectMembership()[i][k])
+							pixelObjectMembershipData[i][k + 1] = "X";
 					}
 				}
 				pixelObjectMembershipColHeads = new String[getPixelObjectMembership().length + 1];
@@ -1596,7 +1622,8 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 				for (int i = 0; i < getPixelVi().length; i++) {
 					pixelViData[i][0] = String.valueOf(i);
 					for (int k = 0; k < getPixelVi().length; k++) {
-						pixelViData[i][k + 1] = String.valueOf(getPixelVi()[i][k]);
+						if (getPixelVi()[i][k])
+							pixelViData[i][k + 1] = "X";
 					}
 				}
 				pixelViColHeads = new String[getPixelVi().length + 1];
@@ -1614,7 +1641,8 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 				for (int i = 0; i < getPixelViPath().length; i++) {
 					pixelViPathData[i][0] = String.valueOf(i);
 					for (int k = 0; k < getPixelViPath().length; k++) {
-						pixelViPathData[i][k + 1] = String.valueOf(getPixelViPath()[i][k]);
+						if (getPixelViPath()[i][k])
+							pixelViPathData[i][k + 1] = "X";
 					}
 				}
 				pixelViPathColHeads = new String[getPixelViPath().length + 1];
@@ -1642,6 +1670,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 
 		// zoom
 		if ("default".equals(actionCommand))
+
 			setZoom(5);
 		if ("+".equals(actionCommand)) {
 			if (getZoom() < 10)
@@ -1769,6 +1798,22 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 					}
 				}
 			} else {
+				// ClusterCircle
+				if (clusterCircle) {
+					if (clusterFile.getData("ClusterBot")) {
+						g2.setColor(Color.GRAY);
+						for (int r = 0; r < clusterBot.getClusterBots().length; r++) {
+							int radius = (int) (clusterBot.getClusterBots()[r].getRadius() * 2 * getZoom() * 100
+									- getZoom());
+							int substract = radius / 2;
+							g2.fillOval(
+									(int) (clusterBot.getClusterBots()[r].getCenter().x * getZoom() * 100 - substract),
+									(int) (clusterBot.getClusterBots()[r].getCenter().y * getZoom() * 100 - substract),
+									radius, radius);
+						}
+
+					}
+				}
 				// Yellow points (Path)
 				try {
 					if (getPathOption() == true && getViPath() != null) {
@@ -1883,7 +1928,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 		pixel = pixelMode;
 		clusterMenuViewPixelMode.setSelected(pixelMode);
 		if (pixel)
-			pixelMatrix();
+			pixelMatrix(false);
 		if (pixel)
 			clusterFile.setData("Pixel", false);
 		else
@@ -2375,7 +2420,8 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	/**
 	 * Set pixel object description with associated clusters
 	 * 
-	 * @param pixelObjectMembership PixelObjectMembership
+	 * @param pixelObjectMembership
+	 *            PixelObjectMembership
 	 */
 	public void setPixelObjectMembership(boolean pixelObjectMembership[][]) {
 		this.pixelObjectMembership = pixelObjectMembership;
@@ -2712,6 +2758,28 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	}
 
 	/**
+	 * Cluster as a circle on/off
+	 * 
+	 * @param clusterCircle
+	 */
+	private void setClusterCircle(boolean clusterCircle) {
+		this.clusterCircle = clusterCircle;
+		if (clusterCircle == false)
+			clusterFile.setData("ClusterCircle", true);
+		else
+			clusterFile.setData("ClusterCircle", false);
+	}
+
+	/**
+	 * Get status of cluster as a circle
+	 * 
+	 * @return
+	 */
+	private boolean getClusterCircle() {
+		return clusterCircle;
+	}
+
+	/**
 	 * Recalculation of all up to 10 steps depending on clusterQuality > 0.1
 	 */
 	private void calculateCluster() {
@@ -2739,7 +2807,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 			clusterStatus.setText(" calculate -> createClusterBots()");
 			createClusterBots();
 			clusterStatus.setText(" calculate -> pixelMatrix()");
-			pixelMatrix();
+			pixelMatrix(false);
 			clusterStatus.setText(" calculate -> set/getObject()");
 			if (object != null)
 				setObjects(getObject().length);
@@ -2839,7 +2907,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 		setMik(fcm.getMik());
 		fcm = null;
 		if (getPixel())
-			pixelMatrix();
+			pixelMatrix(false);
 	}
 
 	/**
@@ -2858,7 +2926,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 		setMik(pcm.getMik());
 		pcm = null;
 		if (getPixel())
-			pixelMatrix();
+			pixelMatrix(false);
 	}
 
 	/**
@@ -3076,7 +3144,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 		setCluster(getCluster() - 1);
 		// Refresh pixel data
 		clusterFile.setData("pixelObject", false);
-		pixelMatrix();
+		pixelMatrix(false);
 	}
 
 	/**
@@ -3086,9 +3154,12 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 		if (getObjectMembership() != null) {
 			int countMembership = 0;
 			for (int i = 0; i < getObjectMembership().length; i++) {
-				if (getObjectMembership()[i] == null)
-					;
-				else
+				boolean membership = false;
+				for (int k = 0; k < getCluster(); k++) {
+					if (getObjectMembership()[i][k])
+						membership = true;
+				}
+				if (membership)
 					countMembership++;
 			}
 			double tempObject[][] = new double[getObject().length][2];
@@ -3102,9 +3173,12 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 			setMik(new double[countMembership][getCluster()]);
 			int o = 0;
 			for (int i = 0; i < tempObjectMembership.length; i++) {
-				if (tempObjectMembership[i] == null)
-					;
-				else {
+				boolean membership = false;
+				for (int k = 0; k < getCluster(); k++) {
+					if (tempObjectMembership[i][k])
+						membership = true;
+				}
+				if (membership) {
 					getObject()[o][0] = tempObject[i][0];
 					getObject()[o][1] = tempObject[i][1];
 					getObjectMembership()[o] = tempObjectMembership[i];
@@ -3112,20 +3186,25 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 					getMik()[o][1] = tempMik[i][1];
 					o++;
 				}
+
 			}
+			pixelMatrix(true);
 		}
 	}
 
 	/**
 	 * Recalculate pixel matrixes
+	 * 
+	 * @param force
+	 *            overwrites when pixel original
 	 */
-	private void pixelMatrix() {
+	private void pixelMatrix(boolean force) {
 		boolean noPixelObject = false;
 		Point2D point2D = new Point2D(0.0, 0.0);
 		PointPixel pointPixel = new PointPixel(0, 0);
 		if (!clusterFile.getData("pixelObject"))
 			noPixelObject = true;
-		if ((!getPixelOriginal()) || (noPixelObject))
+		if ((!getPixelOriginal()) || (noPixelObject) || (force))
 			setPixelObject(new boolean[getPixelOffset()][getPixelOffset()]);
 		setPixelVi(new boolean[getPixelOffset()][getPixelOffset()]);
 		setPixelViPath(new boolean[getPixelOffset()][getPixelOffset()]);
@@ -3142,7 +3221,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 			}
 		}
 		if (getObject() != null) {
-			if ((!getPixelOriginal()) || (noPixelObject)) {
+			if ((!getPixelOriginal()) || (noPixelObject) || (force)) {
 				for (int i = 0; i < getObject().length; i++) {
 					point2D = new Point2D(getObject()[i][0], getObject()[i][1]);
 					pointPixel = point2D.toPointPixel(getPixelOffset());
@@ -3262,7 +3341,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 			getObject()[0][1] = y;
 		}
 		setPixelOriginal(false);
-		pixelMatrix();
+		pixelMatrix(false);
 	}
 
 	/**
@@ -3286,7 +3365,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 		getPixelString()[y] = getPixelString()[y].substring(0, x) + '1' + getPixelString()[y].substring(x + 1);
 		pixelStringToObject();
 		setPixelOriginal(true);
-		pixelMatrix();
+		pixelMatrix(false);
 		f.repaint();
 	}
 
@@ -3390,6 +3469,9 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 				if (clusterFile.getData(37))
 					eventWriter.add(
 							eventFactory.createAttribute(ClusterData.name[37], String.valueOf(getDeveloperMode())));
+				if (clusterFile.getData(37))
+					eventWriter.add(
+							eventFactory.createAttribute(ClusterData.name[40], String.valueOf(getClusterCircle())));
 				if (clusterFile.getData("ViPath"))
 					if (getViPath() != null)
 						eventWriter
@@ -3608,6 +3690,8 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 										setRandom(Boolean.parseBoolean(attribute.getValue()));
 									if (attribute.getName().toString().equals(ClusterData.name[37]))
 										setDeveloperMode(Boolean.parseBoolean(attribute.getValue()));
+									if (attribute.getName().toString().equals(ClusterData.name[40]))
+										setClusterCircle(Boolean.parseBoolean(attribute.getValue()));
 									if (attribute.getName().toString().equals("viPathLength"))
 										setViPath(new double[Integer.parseInt(attribute.getValue())][2]);
 								}
@@ -3939,7 +4023,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 						}
 						pixelStringToObject();
 						setPixelOriginal(true);
-						pixelMatrix();
+						pixelMatrix(false);
 						setTitle(clusterChooser.getSelectedFile().getName());
 						f.repaint();
 					} else
@@ -4029,6 +4113,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 		setDeveloperMode(false);// 37
 		setImprove(true);// 38
 		// setObjectMembership > setPixelDim;// 39
+		setClusterCircle(true);// 40
 		// user interface reset
 		clusterChooser.setSelectedFile(clusterChooserFileClear);
 		miscTable = null;
@@ -4076,21 +4161,23 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 			setError(true);
 			quickCheckStatus = false;
 		}
-//		// Check, if objectMembership length
-//		if (getObjectMembership().length != getObjects()) {
-//			JOptionPane.showConfirmDialog(null, "objectMembership length", "ClusterGraphix.quickCheck",
-//					JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
-//			setError(true);
-//			quickCheckStatus = false;
-//		} else {
-//			// Check, if objectMembership width
-//			if (getObjectMembership()[0].length != getCluster()) {
-//				JOptionPane.showConfirmDialog(null, "objectMembership width", "ClusterGraphix.quickCheck",
-//						JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
-//				setError(true);
-//				quickCheckStatus = false;
-//			}
-//		}
+		// // Check, if objectMembership length
+		// if (getObjectMembership().length != getObjects()) {
+		// JOptionPane.showConfirmDialog(null, "objectMembership length",
+		// "ClusterGraphix.quickCheck",
+		// JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
+		// setError(true);
+		// quickCheckStatus = false;
+		// } else {
+		// // Check, if objectMembership width
+		// if (getObjectMembership()[0].length != getCluster()) {
+		// JOptionPane.showConfirmDialog(null, "objectMembership width",
+		// "ClusterGraphix.quickCheck",
+		// JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
+		// setError(true);
+		// quickCheckStatus = false;
+		// }
+		// }
 		return quickCheckStatus;
 	}
 
@@ -4100,12 +4187,12 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	private void checkReport() {
 		String t = "";
 		fCheck.setVisible(true);
-		checkTextArea.setText("ClusterGraphix " + version + " - Check Report\n");
-		checkTextArea.append("*** begin *** ");
 		clusterDateFormat = DateFormat.getDateInstance(DateFormat.LONG);
-		checkTextArea.append(clusterDateFormat.format(clusterCalendar.getTime()) + ", ");
+		checkTextArea.setText("ClusterGraphix " + version + " - Check Report - "
+				+ clusterDateFormat.format(clusterCalendar.getTime()));
 		clusterDateFormat = DateFormat.getTimeInstance(DateFormat.LONG);
 		checkTextArea.append(clusterDateFormat.format(clusterCalendar.getTime()) + "\n");
+		checkTextArea.append("*** begin ***\n");		
 		// 0; pixel
 		// 1; pixelDim
 		// 2; pixelOffset
@@ -4322,11 +4409,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 			Thread.sleep(1);
 		} catch (Exception sleep) {
 		}
-		checkTextArea.append("*** end *** ");
-		clusterDateFormat = DateFormat.getDateInstance(DateFormat.LONG);
-		checkTextArea.append(clusterDateFormat.format(clusterCalendar.getTime()) + ", ");
-		clusterDateFormat = DateFormat.getTimeInstance(DateFormat.LONG);
-		checkTextArea.append(clusterDateFormat.format(clusterCalendar.getTime()) + "\n");
+		checkTextArea.append("*** end ***\n");
 		if (checkTextArea.getText().contains("error"))
 			checkTextArea.append(" error\n");
 		else
@@ -4353,6 +4436,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 							"  pointPixel[" + p + "]={" + getClusterBot().getClusterBots()[i].getPointPixel()[p].x + ","
 									+ getClusterBot().getClusterBots()[i].getPointPixel()[p].y + "}\n");
 				}
+				checkTextArea.append("  radius=" + getClusterBot().getClusterBots()[i].getRadius() + "\n");
 			}
 		}
 	}

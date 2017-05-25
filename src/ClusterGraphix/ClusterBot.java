@@ -22,8 +22,10 @@ public class ClusterBot {
 	private double pointMik[][];
 	private double offset[] = { 0.0, 0.0 };
 	private boolean modified;
+	private double radius;
 
-	public ClusterBot(int number, String name, int pixelOffset, int points, Point2D point[], Point2D center, double pointMik[][]) {
+	public ClusterBot(int number, String name, int pixelOffset, int points, Point2D point[], Point2D center,
+			double pointMik[][]) {
 		setNumber(number);
 		setName(name);
 		setPixelOffset(pixelOffset);
@@ -35,6 +37,7 @@ public class ClusterBot {
 		setCenterPixel(pp);
 		setPointMik(pointMik);
 		setModified(false);
+		setRadius();
 	}
 
 	/**
@@ -64,6 +67,7 @@ public class ClusterBot {
 				setPointPixel(ppNew);
 			}
 		}
+		setRadius();
 	}
 
 	/**
@@ -224,7 +228,8 @@ public class ClusterBot {
 	}
 
 	/**
-	 * @param pixelOffset the pixelOffset to set
+	 * @param pixelOffset
+	 *            the pixelOffset to set
 	 */
 	public void setPixelOffset(int pixelOffset) {
 		this.pixelOffset = pixelOffset;
@@ -238,9 +243,30 @@ public class ClusterBot {
 	}
 
 	/**
-	 * @param modified the modified to set
+	 * @param modified
+	 *            the modified to set
 	 */
 	public void setModified(boolean modified) {
 		this.modified = modified;
+	}
+
+	/**
+	 * @return radius
+	 */
+	public double getRadius() {
+		return radius;
+	}
+
+	/**
+	 * Calculates the radius
+	 */
+	private void setRadius() {
+		double r = 0.0;
+		for (int i = 0; i < points; i++) {
+			double s = Math.sqrt(Math.pow(point[i].x - center.x, 2) + Math.pow(point[i].y - center.y, 2));
+			if (s > r)
+				r = s;
+		}
+		this.radius = r;
 	}
 }
