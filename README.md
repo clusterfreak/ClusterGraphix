@@ -23,25 +23,30 @@ Display of objects and clusters - Grafische Anzeige von Punktemengen und Klassen
 * ClusterGraphix.css v0.0.1 (2017-01-07)
 
 ### Bugs
-* deleteNotAssigned
-* addPoint pixel
 * clusterCenterPointNumber 99999999 when not found
+* add second point, index outbound, not in pixelMode
 
 ### Ideas
-* check if objectMembership complete
 * CTRL + SHIFT + F Source Code Pretty Print
+* check if objectMembership complete
 * clusterBotNet.clusterBotCenter only modified when realy modified
 
 ### Release Information
 v0.95.2
 * deleteCluster() bugfix
+* deleteNotAssigned() bugfix
 * checkReport() bugfix, design
+* pixelMatrix() parameter force
 * example2() changed to pixel mode
 * paintComponent() objectDesciption for pixel mode
 * paintComponent() objects with no membership are black in pixel mode
 * ClusterBotNet.clusterCenterNumber(); ClusterBotNet.clusterCenterString()
 * ClusterBotNet.clusterCenterPointNumber(); ClusterBotNet.clusterCenterPointString()
+* ClusterBot.radius
 * ClusterGraphix.css, dataFile() design
+* calculate new with STRG-F8
+* clusterCircle
+* miscData tab, design
 
 v0.95.1
 * ClusterCore v1.0.0 package
