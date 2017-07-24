@@ -25,7 +25,7 @@ Display of objects and clusters - Grafische Anzeige von Punktemengen und Klassen
 
 ### Bugs
 * clusterCenterPointNumber 99999999 when not found
-* add second point, index outbound, not in pixelMode
+* add second point, index outbound, not in pixelMode, ->? Error in ObjectMembership
 
 ### Ideas
 * CTRL + SHIFT + F Source Code Pretty Print
