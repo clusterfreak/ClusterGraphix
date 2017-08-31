@@ -84,8 +84,8 @@ import ClusterCore.PossibilisticCMeans;
  * <P>
  * Display of objects and clusters with integrated cluster analysis
  * 
- * @version 0.95.2 (2017-01-07)
- * @author Thomas Heym
+ * @version 0.95.3 (2017-08-19)
+ * @author Thomas HEYM
  */
 public class ClusterGraphix extends JPanel implements ActionListener {
 	private static final long serialVersionUID = -3221752010018099832L;

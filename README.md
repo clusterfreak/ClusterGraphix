@@ -10,11 +10,11 @@ Display of objects and clusters - Grafische Anzeige von Punktemengen und Klassen
 	* PossibilisticCMeans v1.2.1 (2016-04-10)
 	* Point2D v1.3.1 (2016-04-10)
 	* PointPixel v1.0.1 (2016-04-10)
-* ClusterGraphix v0.95.2 (2017-01-07)
-	* ClusterGraphix v0.95.2 (2017-01-07)
+* ClusterGraphix v0.95.3 (2017-08-19)
+	* ClusterGraphix v0.95.3 (2017-08-19)
 	* ClusterBot v0.1.1 (2016-04-10)
 	* ClusterBotNet v0.1.1 (2017-01-07)
-	* ClusterData v0.1.2 (2017-01-07)
+	* ClusterData v0.1.3 (2017-08-19)
 	* ClusterFile v0.1.1 (2016-04-10)
 	* ClusterQuality v0.1.0 (2016-04-10)
 * ClusterTest v0.1.0 (2016-04-10)
@@ -33,6 +33,9 @@ Display of objects and clusters - Grafische Anzeige von Punktemengen und Klassen
 * clusterBotNet.clusterBotCenter only modified when realy modified
 
 ### Release Information
+v0.95.3 (2017-08-19)
+* 
+
 v0.95.2
 * deleteCluster() bugfix
 * deleteNotAssigned() bugfix
