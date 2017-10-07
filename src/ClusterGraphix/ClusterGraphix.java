@@ -4185,7 +4185,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 				+ clusterDateFormat.format(clusterCalendar.getTime()));
 		clusterDateFormat = DateFormat.getTimeInstance(DateFormat.LONG);
 		checkTextArea.append(clusterDateFormat.format(clusterCalendar.getTime()) + "\n");
-		checkTextArea.append("*** begin ***\n");		
+		checkTextArea.append("*** begin ***\n");
 		// 0; pixel
 		// 1; pixelDim
 		// 2; pixelOffset
