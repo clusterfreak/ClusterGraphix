@@ -25,7 +25,7 @@ Display of objects and clusters - Grafische Anzeige von Punktemengen und Klassen
 
 ### Bugs
 * clusterCenterPointNumber 99999999 when not found
-* add second point, index outbound, not in pixelMode, ->? Error in ObjectMembership, in pixelMatrix() after calculation completed, add an object and clearall doesn't work, nothing try it, pixelStringToObject shows a hint
+* add second point, index outbound, not in pixelMode, ->? Error in ObjectMembership, in pixelMatrix() after calculation completed, add an object and clearall doesn't work, nothing try it, pixelStringToObject shows a hint; add a point to example1 -> objectMembership is 6 not 7; add a point to example2 -> nothing at all; point duplicate ->?
 
 ### Ideas
 * CTRL + SHIFT + F Source Code Pretty Print

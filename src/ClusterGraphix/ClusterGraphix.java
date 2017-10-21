@@ -3307,7 +3307,6 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 				}
 			}
 		}
-		setObjects(getObject().length);
 	}
 
 	/**
