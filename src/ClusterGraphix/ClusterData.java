@@ -41,8 +41,8 @@ public class ClusterData {
 			"Error status from quickCheck()", "Head up display", "Random ....", "Show more error messages",
 			"Improved clusterfreak algorithm", "Pixel object description with associated clusters",
 			"Cluster as a circle" };
-	public static String initial[] = { "true", "2", "100", "true", "0", "0", "null", "[0][0]", "[0][2]", "null",
-			"false", "false", "1", "[0][0]", "1.0e-7", "false", "false", "false", "true", "false", "false", "[100]",
+	public static String initial[] = { "true", "2", "100", "true", "1", "0", "null", "[0][0]", "[0][2]", "null",
+			"false", "false", "1", "[0][0]", "1.0e-7", "false", "true", "false", "true", "false", "false", "[100]",
 			"[100]", "[100]", "0", "5", "", "0.95.3", "2017", "ClusterGraphix " + "0.95.3", " ready", "{...", "false",
 			"0", "false", "true", "true", "false", "true", "[100]", "true" };
 	public static String gui[] = { "Menü pixelMode", "Data misc", "Data misc", "", "Data misc", "Data misc",

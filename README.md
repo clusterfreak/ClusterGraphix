@@ -27,6 +27,21 @@ Display of objects and clusters - Grafische Anzeige von Punktemengen und Klassen
 * clusterCenterPointNumber 99999999 when not found
 * add second point, index outbound, not in pixelMode, ->? Error in ObjectMembership, in pixelMatrix() after calculation completed, add an object and clearall doesn't work, nothing try it, pixelStringToObject shows a hint; add a point to example1 -> objectMembership is 6 not 7; add a point to example2 -> nothing at all; point duplicate ->?
 
+einfügen in pixelStringToObject()
+
+clusterStatus.setText(" calculate -> sortCluster()");
+			if (getSortCluster())
+				sortCluster();
+			clusterStatus.setText(" calculate -> fiftyFiftyJoker()");
+			if (getFiftyFiftyJoker())
+				fiftyFiftyJoker();
+			clusterStatus.setText(" calculate -> clusterMax()");
+			if (getClusterMax())
+				clusterMax();
+			clusterStatus.setText(" calculate -> createClusterBots()");
+			createClusterBots();
+			clusterStatus.setText(" calculate -> pixelMatrix()");
+
 ### Ideas
 * CTRL + SHIFT + F Source Code Pretty Print
 * check if objectMembership complete
@@ -34,7 +49,10 @@ Display of objects and clusters - Grafische Anzeige von Punktemengen und Klassen
 
 ### Release Information
 v0.95.3 (2017-08-19)
-* 
+* lay fInfo over f
+* add object on mouseClicked
+* cluster default 1
+* fuzzyCMeans default true
 
 v0.95.2
 * deleteCluster() bugfix
