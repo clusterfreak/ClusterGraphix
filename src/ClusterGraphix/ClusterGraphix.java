@@ -3628,7 +3628,6 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 							StartElement startElement = event.asStartElement();
 							if (startElement.getName().getLocalPart().equals("ClusterGraphix")) {
 								clearAll();
-								@SuppressWarnings("unchecked")
 								Iterator<Attribute> attributes = startElement.getAttributes();
 								while (attributes.hasNext()) {
 									Attribute attribute = attributes.next();
@@ -3725,7 +3724,6 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 							if (startElement.getName().getLocalPart().equals(ClusterData.name[6]))
 								if (clusterFile.getData("Object")) {
 									event = eventReader.nextEvent();
-									@SuppressWarnings("unchecked")
 									Iterator<Attribute> attributes = startElement.getAttributes();
 									int objectI;
 									while (attributes.hasNext()) {
@@ -3751,7 +3749,6 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 							if (startElement.getName().getLocalPart().equals(ClusterData.name[8]))
 								if (clusterFile.getData("Vi")) {
 									event = eventReader.nextEvent();
-									@SuppressWarnings("unchecked")
 									Iterator<Attribute> attributes = startElement.getAttributes();
 									int viI;
 									while (attributes.hasNext()) {
@@ -3768,7 +3765,6 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 							if (startElement.getName().getLocalPart().equals(ClusterData.name[9]))
 								if (clusterFile.getData("ViPath")) {
 									event = eventReader.nextEvent();
-									@SuppressWarnings("unchecked")
 									Iterator<Attribute> attributes = startElement.getAttributes();
 									int viPathI;
 									while (attributes.hasNext()) {
@@ -3786,7 +3782,6 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 							if (startElement.getName().getLocalPart().equals(ClusterData.name[21]))
 								if (clusterFile.getData("PixelObject")) {
 									event = eventReader.nextEvent();
-									@SuppressWarnings("unchecked")
 									Iterator<Attribute> attributes = startElement.getAttributes();
 									int pixelObjectI;
 									while (attributes.hasNext()) {
@@ -3804,7 +3799,6 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 							if (startElement.getName().getLocalPart().equals(ClusterData.name[22]))
 								if (clusterFile.getData("PixelVi")) {
 									event = eventReader.nextEvent();
-									@SuppressWarnings("unchecked")
 									Iterator<Attribute> attributes = startElement.getAttributes();
 									int pixelViI;
 									while (attributes.hasNext()) {
@@ -3822,7 +3816,6 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 							if (startElement.getName().getLocalPart().equals(ClusterData.name[23]))
 								if (clusterFile.getData("PixelViPath")) {
 									event = eventReader.nextEvent();
-									@SuppressWarnings("unchecked")
 									Iterator<Attribute> attributes = startElement.getAttributes();
 									int pixelViPathI;
 									while (attributes.hasNext()) {
@@ -3840,7 +3833,6 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 							if (startElement.getName().getLocalPart().equals(ClusterData.name[24]))
 								if (clusterFile.getData("PixelString")) {
 									event = eventReader.nextEvent();
-									@SuppressWarnings("unchecked")
 									Iterator<Attribute> attributes = startElement.getAttributes();
 									while (attributes.hasNext()) {
 										Attribute attribute = attributes.next();
@@ -3902,7 +3894,6 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 						if (event.isStartElement()) {
 							StartElement startElement = event.asStartElement();
 							if (startElement.getName().getLocalPart().equals("ClusterGraphix")) {
-								@SuppressWarnings("unchecked")
 								Iterator<Attribute> attributes = startElement.getAttributes();
 								while (attributes.hasNext()) {
 									Attribute attribute = attributes.next();
