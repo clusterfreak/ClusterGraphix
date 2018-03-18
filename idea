@@ -10,9 +10,7 @@ HighM.soft
 - Object.zoom
 - J2ME Numerische Translation
 - The Double with Integer
-- Java-Connector for SAP (RFC)
-- Java-Services for SAP Business Connector
-
+- Java-Connector for SAP (RFC), Java-Services for SAP Business Connector
 
 Clustermotion
 Clustermotion.drift

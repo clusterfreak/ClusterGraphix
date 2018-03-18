@@ -5,18 +5,18 @@ Display of objects and clusters - Grafische Anzeige von Punktemengen und Klassen
 **&copy; Thomas Heym - clusterfreak**
 
 ### Version Information
-* ClusterCore v1.0.0 (2016-04-10)
-	* FuzzyCMeans v1.6.1 (2016-04-10)
-	* PossibilisticCMeans v1.2.1 (2016-04-10)
-	* Point2D v1.3.1 (2016-04-10)
-	* PointPixel v1.0.1 (2016-04-10)
-* ClusterGraphix v0.95.3 (2017-08-19)
-	* ClusterGraphix v0.95.3 (2017-08-19)
-	* ClusterBot v0.1.1 (2016-04-10)
-	* ClusterBotNet v0.1.1 (2017-01-07)
-	* ClusterData v0.1.3 (2017-08-19)
-	* ClusterFile v0.1.1 (2016-04-10)
-	* ClusterQuality v0.1.0 (2016-04-10)
+* ClusterCore 1.0.0 (2016-04-10)
+	* FuzzyCMeans 1.6.1 (2016-04-10)
+	* PossibilisticCMeans 1.2.1 (2016-04-10)
+	* Point2D 1.3.1 (2016-04-10)
+	* PointPixel 1.0.1 (2016-04-10)
+* ClusterGraphix 0.95.3 (2017-08-19)
+	* ClusterGraphix 0.95.3 (2017-08-19)
+	* ClusterBot 	0.1.1 (2016-04-10)
+	* ClusterBotNet 0.1.1 (2017-01-07)
+	* ClusterData 0.1.3 (2017-08-19)
+	* ClusterFile 0.1.1 (2016-04-10)
+	* ClusterQuality 0.1.0 (2016-04-10)
 * ClusterTest v0.1.0 (2016-04-10)
 	* ClusterTest v0.1.0 (2016-04-10)
 	* CoreTest v0.1.0 (2016-04-10)
@@ -25,22 +25,6 @@ Display of objects and clusters - Grafische Anzeige von Punktemengen und Klassen
 
 ### Bugs
 * clusterCenterPointNumber 99999999 when not found
-* add second point, index outbound, not in pixelMode, ->? Error in ObjectMembership, in pixelMatrix() after calculation completed, add an object and clearall doesn't work, nothing try it, pixelStringToObject shows a hint; add a point to example1 -> objectMembership is 6 not 7; add a point to example2 -> nothing at all; point duplicate ->?
-
-einfügen in pixelStringToObject()
-
-clusterStatus.setText(" calculate -> sortCluster()");
-			if (getSortCluster())
-				sortCluster();
-			clusterStatus.setText(" calculate -> fiftyFiftyJoker()");
-			if (getFiftyFiftyJoker())
-				fiftyFiftyJoker();
-			clusterStatus.setText(" calculate -> clusterMax()");
-			if (getClusterMax())
-				clusterMax();
-			clusterStatus.setText(" calculate -> createClusterBots()");
-			createClusterBots();
-			clusterStatus.setText(" calculate -> pixelMatrix()");
 
 ### Ideas
 * CTRL + SHIFT + F Source Code Pretty Print
@@ -48,13 +32,15 @@ clusterStatus.setText(" calculate -> sortCluster()");
 * clusterBotNet.clusterBotCenter only modified when realy modified
 
 ### Release Information
-v0.95.3 (2017-08-19)
+0.95.3 (2017-08-19)
 * lay fInfo over f
 * add object on mouseClicked
 * cluster default 1
 * fuzzyCMeans default true
+* rename packages
+* bugfix in addPointObject
 
-v0.95.2
+0.95.2
 * deleteCluster() bugfix
 * deleteNotAssigned() bugfix
 * checkReport() bugfix, design
@@ -70,7 +56,7 @@ v0.95.2
 * clusterCircle
 * miscData tab, design
 
-v0.95.1
+0.95.1
 * ClusterCore v1.0.0 package
 * ClusterTest v0.1.0 package
 * String objectDescirption -> int objectMembership
@@ -84,7 +70,7 @@ v0.95.1
 * developerMode
 * Recalculation of all up to 10 steps depending on clusterQuality > 0.1
 
-v0.95.0
+0.95.0
 * rename from ClusterGraphics
 * clusterBot-Info at the end of the check report
 * rename fiftyFiftyJoker
@@ -105,7 +91,7 @@ v0.95.0
 	* PointPixel v1.0.0
 		* new class for ClusterBot
 
-v0.94.9
+0.94.9
 * download function for data file
 * UTF-8 text for unix support
 * fully integrate Error variable
@@ -123,14 +109,14 @@ v0.94.9
 * PossibilisticCMeans v1.1.5 (28.12.2015)
 * start GitHub with Branch *V0.94.9* on *17.09.2015*
 
-v0.94.8
+0.94.8
 * Error-Button function
 
-v0.94.7
+0.94.7
 * Error-Variable
 * quickCheck()
 
-v0.94.6
+0.94.6
 * file import/export
 * ClusterBot visualisation
 * extended viPath from Possibil and fuzzy

@@ -5,4 +5,4 @@
  * @author Thomas HEYM
  *
  */
-package ClusterGraphix;
+package de.clusterfreak.ClusterGraphix;

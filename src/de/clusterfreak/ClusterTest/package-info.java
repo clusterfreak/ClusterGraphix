@@ -16,4 +16,4 @@
  * - load, save
  * </pre>
  */
-package ClusterTest;
+package de.clusterfreak.ClusterTest;

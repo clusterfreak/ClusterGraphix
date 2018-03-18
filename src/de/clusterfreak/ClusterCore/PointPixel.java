@@ -1,4 +1,4 @@
-package ClusterCore;
+package de.clusterfreak.ClusterCore;
 
 /**
  * Point with pixel coordinates
