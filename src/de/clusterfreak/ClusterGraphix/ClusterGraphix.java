@@ -1,4 +1,5 @@
 package de.clusterfreak.ClusterGraphix;
+<<<<<<< HEAD:src/de/clusterfreak/ClusterGraphix/ClusterGraphix.java
 
 import com.apple.eawt.Application;
 
@@ -6,6 +7,8 @@ import de.clusterfreak.ClusterCore.FuzzyCMeans;
 import de.clusterfreak.ClusterCore.Point2D;
 import de.clusterfreak.ClusterCore.PointPixel;
 import de.clusterfreak.ClusterCore.PossibilisticCMeans;
+=======
+>>>>>>> master:src/de/clusterfreak/ClusterGraphix/ClusterGraphix.java
 
 import java.io.FileOutputStream;
 import java.io.FileInputStream;
@@ -42,6 +45,7 @@ import java.awt.event.ItemListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.font.TextAttribute;
 import java.awt.event.ItemEvent;
 //javax.imageio.*
@@ -79,6 +83,12 @@ import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.events.StartDocument;
 import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
+
+import de.clusterfreak.ClusterCore.FuzzyCMeans;
+import de.clusterfreak.ClusterCore.Point2D;
+import de.clusterfreak.ClusterCore.PointPixel;
+import de.clusterfreak.ClusterCore.PossibilisticCMeans;
+
 import javax.xml.stream.events.Attribute;
 
 /**
@@ -86,8 +96,8 @@ import javax.xml.stream.events.Attribute;
  * <P>
  * Display of objects and clusters with integrated cluster analysis
  * 
- * @version 0.95.2 (2017-01-07)
- * @author Thomas Heym
+ * @version 0.95.3 (2017-08-19)
+ * @author Thomas HEYM
  */
 public class ClusterGraphix extends JPanel implements ActionListener {
 	private static final long serialVersionUID = -3221752010018099832L;
@@ -391,7 +401,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	private final JMenuItem clusterMenuSetPixelDim = new JMenuItem("pixelDim");
 	private final JMenuItem clusterMenuSetCluster = new JMenuItem("cluster");
 	private final JMenuItem clusterMenuSetE = new JMenuItem("e");
-	private final JRadioButtonMenuItem clusterMenuSetFuzzyCMeans = new JRadioButtonMenuItem("FuzzyCMeans", false);
+	private final JRadioButtonMenuItem clusterMenuSetFuzzyCMeans = new JRadioButtonMenuItem("FuzzyCMeans", true);
 	private final JRadioButtonMenuItem clusterMenuSetPossibilisticCMeans = new JRadioButtonMenuItem(
 			"PossibilisticCMeans", false);
 	private final ButtonGroup clusterButtonGroupSet1 = new ButtonGroup();
@@ -545,7 +555,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 		Thread.sleep(500);
 		clearAll();
 	}
-
+	
 	/**
 	 * Display of objects and clusters
 	 * 
@@ -580,11 +590,15 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 		// Main frame
 		f = new JFrame(titleString + " - " + getTitle());
 		try {
+<<<<<<< HEAD:src/de/clusterfreak/ClusterGraphix/ClusterGraphix.java
 			f.setIconImage(ImageIO.read(getClass().getResource("/ClusterCore/sphere32.png")));
 			if(System.getProperty("os.name").equals("Mac OS X")){
 				application = Application.getApplication();
 				application.setDockIconImage(ImageIO.read(getClass().getResource("/ClusterCore/sphere32.png")));
 			}
+=======
+			f.setIconImage(ImageIO.read(getClass().getResource("/de/clusterfreak/ClusterCore/sphere32.png")));
+>>>>>>> master:src/de/clusterfreak/ClusterGraphix/ClusterGraphix.java
 		} catch (Exception e) {
 			JOptionPane.showConfirmDialog(null, e, "ClusterGraphix.setIconImage", JOptionPane.CLOSED_OPTION,
 					JOptionPane.INFORMATION_MESSAGE);
@@ -810,12 +824,25 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 		clusterChooser.setFileFilter(clusterFileFilterXML);
 		clusterChooser.setMultiSelectionEnabled(false);
 		// Main frame
+		f.addMouseListener(new MouseListener() {
+	        public void mousePressed(MouseEvent me) { }
+	        public void mouseReleased(MouseEvent me) { }
+	        public void mouseEntered(MouseEvent me) { }
+	        public void mouseExited(MouseEvent me) { }
+	        //add Object on mouseClicked
+	        public void mouseClicked(MouseEvent me) { 
+	          int x = me.getX()/getZoom();
+	          int y = me.getY()/getZoom()-10;
+	          addPointPixelObject(x,y);
+	          setCalculate(true);
+	        }
+	    });
 		f.pack();
 		f.setVisible(true);
 		// FileValidation frame
 		fValidate = new JFrame(titleString + " - Validate");
 		try {
-			fValidate.setIconImage(ImageIO.read(getClass().getResource("/ClusterCore/sphere32.png")));
+			fValidate.setIconImage(ImageIO.read(getClass().getResource("/de/clusterfreak/ClusterCore/sphere32.png")));
 		} catch (Exception e) {
 			JOptionPane.showConfirmDialog(null, e, "ClusterGraphix.setIconImage", JOptionPane.CLOSED_OPTION,
 					JOptionPane.INFORMATION_MESSAGE);
@@ -827,7 +854,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 		// Data frame
 		fData = new JFrame(titleString + " - Data");
 		try {
-			fData.setIconImage(ImageIO.read(getClass().getResource("/ClusterCore/sphere32.png")));
+			fData.setIconImage(ImageIO.read(getClass().getResource("/de/clusterfreak/ClusterCore/sphere32.png")));
 		} catch (Exception e) {
 			JOptionPane.showConfirmDialog(null, e, "ClusterGraphix.setIconImage", JOptionPane.CLOSED_OPTION,
 					JOptionPane.INFORMATION_MESSAGE);
@@ -870,7 +897,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 		// Check report frame
 		fCheck = new JFrame(titleString + " - Check");
 		try {
-			fCheck.setIconImage(ImageIO.read(getClass().getResource("/ClusterCore/sphere32.png")));
+			fCheck.setIconImage(ImageIO.read(getClass().getResource("/de/clusterfreak/ClusterCore/sphere32.png")));
 		} catch (Exception e) {
 			JOptionPane.showConfirmDialog(null, e, "ClusterGraphix.setIconImage", JOptionPane.CLOSED_OPTION,
 					JOptionPane.INFORMATION_MESSAGE);
@@ -883,7 +910,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 		fInfo = new JFrame(titleString + " - Info");
 		fInfo.setSize(300, 300);
 		try {
-			fInfo.setIconImage(ImageIO.read(getClass().getResource("/ClusterCore/sphere32.png")));
+			fInfo.setIconImage(ImageIO.read(getClass().getResource("/de/clusterfreak/ClusterCore/sphere32.png")));
 		} catch (Exception e) {
 			JOptionPane.showConfirmDialog(null, e, "ClusterGraphix.setIconImage", JOptionPane.CLOSED_OPTION,
 					JOptionPane.INFORMATION_MESSAGE);
@@ -891,7 +918,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 		fInfo.setLayout(new GridLayout(3, 1)); // 3 rows, 1 column
 		ImageIcon logo = null;
 		try {
-			logo = new ImageIcon(ImageIO.read(getClass().getResource("/ClusterGraphix/ClusterGraphicsInfo.png")));
+			logo = new ImageIcon(ImageIO.read(getClass().getResource("/de/clusterfreak/ClusterGraphix/ClusterGraphicsInfo.png")));
 		} catch (IOException e1) {
 			JOptionPane.showConfirmDialog(null, e1, "ClusterGraphix.setIconImage", JOptionPane.CLOSED_OPTION,
 					JOptionPane.INFORMATION_MESSAGE);
@@ -2024,7 +2051,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 			if (clusterFile.getData("Objects"))
 				setObjectMembership(new boolean[getObjects()][cluster]);
 		}
-		if (cluster == 0)
+		if (cluster == 1)
 			clusterFile.setData("Cluster", false);
 		else
 			clusterFile.setData("Cluster", true);
@@ -2335,9 +2362,9 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 		fuzzyCMeans = fcm;
 		clusterMenuSetFuzzyCMeans.setSelected(fcm);
 		if (fuzzyCMeans)
-			clusterFile.setData("FuzzyCMeans", true);
-		else
 			clusterFile.setData("FuzzyCMeans", false);
+		else
+			clusterFile.setData("FuzzyCMeans", true);
 	}
 
 	/**
@@ -3289,6 +3316,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	 * error)
 	 */
 	private void pixelStringToObject() {
+		//String clusterStatusBefore = clusterStatus.getText();
 		setPixelObject(new boolean[getPixelOffset()][getPixelOffset()]);
 		for (int i = 0; i < getPixelOffset(); i++) {
 			for (int k = 0; k < getPixelOffset(); k++) {
@@ -3315,7 +3343,6 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 				}
 			}
 		}
-		setObjects(getObject().length);
 	}
 
 	/**
@@ -3341,7 +3368,6 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 			getObject()[0][0] = x;
 			getObject()[0][1] = y;
 		}
-		setPixelOriginal(false);
 		pixelMatrix(false);
 	}
 
@@ -3623,7 +3649,6 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 							StartElement startElement = event.asStartElement();
 							if (startElement.getName().getLocalPart().equals("ClusterGraphix")) {
 								clearAll();
-								@SuppressWarnings("unchecked")
 								Iterator<Attribute> attributes = startElement.getAttributes();
 								while (attributes.hasNext()) {
 									Attribute attribute = attributes.next();
@@ -3720,7 +3745,6 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 							if (startElement.getName().getLocalPart().equals(ClusterData.name[6]))
 								if (clusterFile.getData("Object")) {
 									event = eventReader.nextEvent();
-									@SuppressWarnings("unchecked")
 									Iterator<Attribute> attributes = startElement.getAttributes();
 									int objectI;
 									while (attributes.hasNext()) {
@@ -3746,7 +3770,6 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 							if (startElement.getName().getLocalPart().equals(ClusterData.name[8]))
 								if (clusterFile.getData("Vi")) {
 									event = eventReader.nextEvent();
-									@SuppressWarnings("unchecked")
 									Iterator<Attribute> attributes = startElement.getAttributes();
 									int viI;
 									while (attributes.hasNext()) {
@@ -3763,7 +3786,6 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 							if (startElement.getName().getLocalPart().equals(ClusterData.name[9]))
 								if (clusterFile.getData("ViPath")) {
 									event = eventReader.nextEvent();
-									@SuppressWarnings("unchecked")
 									Iterator<Attribute> attributes = startElement.getAttributes();
 									int viPathI;
 									while (attributes.hasNext()) {
@@ -3781,7 +3803,6 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 							if (startElement.getName().getLocalPart().equals(ClusterData.name[21]))
 								if (clusterFile.getData("PixelObject")) {
 									event = eventReader.nextEvent();
-									@SuppressWarnings("unchecked")
 									Iterator<Attribute> attributes = startElement.getAttributes();
 									int pixelObjectI;
 									while (attributes.hasNext()) {
@@ -3799,7 +3820,6 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 							if (startElement.getName().getLocalPart().equals(ClusterData.name[22]))
 								if (clusterFile.getData("PixelVi")) {
 									event = eventReader.nextEvent();
-									@SuppressWarnings("unchecked")
 									Iterator<Attribute> attributes = startElement.getAttributes();
 									int pixelViI;
 									while (attributes.hasNext()) {
@@ -3817,7 +3837,6 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 							if (startElement.getName().getLocalPart().equals(ClusterData.name[23]))
 								if (clusterFile.getData("PixelViPath")) {
 									event = eventReader.nextEvent();
-									@SuppressWarnings("unchecked")
 									Iterator<Attribute> attributes = startElement.getAttributes();
 									int pixelViPathI;
 									while (attributes.hasNext()) {
@@ -3835,7 +3854,6 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 							if (startElement.getName().getLocalPart().equals(ClusterData.name[24]))
 								if (clusterFile.getData("PixelString")) {
 									event = eventReader.nextEvent();
-									@SuppressWarnings("unchecked")
 									Iterator<Attribute> attributes = startElement.getAttributes();
 									while (attributes.hasNext()) {
 										Attribute attribute = attributes.next();
@@ -3897,7 +3915,6 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 						if (event.isStartElement()) {
 							StartElement startElement = event.asStartElement();
 							if (startElement.getName().getLocalPart().equals("ClusterGraphix")) {
-								@SuppressWarnings("unchecked")
 								Iterator<Attribute> attributes = startElement.getAttributes();
 								while (attributes.hasNext()) {
 									Attribute attribute = attributes.next();
@@ -4068,16 +4085,18 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	 * Resets all variables
 	 */
 	public void clearAll() {
+		clusterButtonGroupSet1.clearSelection();
+		clusterButtonGroupSet2.clearSelection();
 		// Variablen
 		setPixel(true);// 0
 		setPixelDim(2);// 1
 		// pixelOffset > setPixelDim//2
 		setPixelOriginal(true);// 3
-		setCluster(0);// 4
+		setCluster(1);// 4
 		// objects > setObject//5
 		setObject(null);// 6
 		setObjectMembership(new boolean[0][0]);// 7
-		setVi(new double[getCluster()][2]);// 8
+		setVi(new double[0][2]);// 8
 		setViPath(null);// 9
 		setPathOption(false);// 10
 		setDescriptionDisplay(false);// 11
@@ -4085,7 +4104,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 		setMik(new double[getObjects()][getCluster()]);// 13
 		setE(1.0e-7);// 14
 		setCalculate(false);// 15
-		setFuzzyCMeans(false);// 16
+		setFuzzyCMeans(true);// 16
 		setPossibilisticCMeans(false);// 17
 		setSortCluster(true);// 18
 		setFiftyFiftyJoker(false);// 19
@@ -4127,8 +4146,6 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 		pixelViTable = null;
 		pixelViPathTable = null;
 		pixelStringTable = null;
-		clusterButtonGroupSet1.clearSelection();
-		clusterButtonGroupSet2.clearSelection();
 		fValidate.dispose();
 		fData.dispose();
 		fCheck.dispose();
@@ -4193,7 +4210,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 				+ clusterDateFormat.format(clusterCalendar.getTime()));
 		clusterDateFormat = DateFormat.getTimeInstance(DateFormat.LONG);
 		checkTextArea.append(clusterDateFormat.format(clusterCalendar.getTime()) + "\n");
-		checkTextArea.append("*** begin ***\n");		
+		checkTextArea.append("*** begin ***\n");
 		// 0; pixel
 		// 1; pixelDim
 		// 2; pixelOffset
@@ -4563,6 +4580,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 		addPointPixelObject(90, 20);
 		addPointPixelObject(60, 60);
 		addPointPixelObject(90, 50);
+		setPixelOriginal(true);
 		setCluster(2);
 		setFuzzyCMeans(true);
 		setClusterMax(true);
@@ -4588,6 +4606,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 		addPointObject(0.9, 0.2);
 		addPointObject(0.6, 0.6);
 		addPointObject(0.9, 0.5);
+		setPixelOriginal(false);
 		setCluster(2);
 		setFuzzyCMeans(true);
 		setClusterMax(true);
@@ -4630,8 +4649,13 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 		infoLabel1.setToolTipText("Version number");
 		infoLabel2.setToolTipText("Copyright");
 		infoLabel3.setToolTipText("http://clusterfreak.de");
-		fInfo.setLocation((int) (d.getWidth() / 2 - (fInfo.getWidth() / 2)),
-				(int) (d.getHeight() / 2 - (fInfo.getHeight() / 2)));
+		//lay fInfo over f
+		int x = (int) (d.getWidth() / 2 - (getWidth() / 2));
+		int y = (int) (d.getHeight() / 2 - (getHeight() / 2));
+		x = x - f.getLocation().x;
+		y = y - f.getLocation().y;
+		fInfo.setLocation((int) (d.getWidth() / 2 - (fInfo.getWidth() / 2) - x),
+				(int) (d.getHeight() / 2 - (fInfo.getHeight() / 2) - y));
 		fInfo.pack();
 		fInfo.setResizable(false);
 		fInfo.setVisible(true);
