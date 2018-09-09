@@ -1,6 +1,12 @@
-package ClusterGraphix;
+package de.clusterfreak.ClusterGraphix;
 
 import com.apple.eawt.Application;
+
+import de.clusterfreak.ClusterCore.FuzzyCMeans;
+import de.clusterfreak.ClusterCore.Point2D;
+import de.clusterfreak.ClusterCore.PointPixel;
+import de.clusterfreak.ClusterCore.PossibilisticCMeans;
+
 import java.io.FileOutputStream;
 import java.io.FileInputStream;
 import java.io.File;
@@ -74,11 +80,6 @@ import javax.xml.stream.events.StartDocument;
 import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
 import javax.xml.stream.events.Attribute;
-//ClusterCore
-import ClusterCore.FuzzyCMeans;
-import ClusterCore.Point2D;
-import ClusterCore.PointPixel;
-import ClusterCore.PossibilisticCMeans;
 
 /**
  * ClusterGraphix

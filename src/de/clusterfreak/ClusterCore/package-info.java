@@ -4,4 +4,4 @@
  * @version 1.0.0 (2016-04-10)
  * @author Thomas Heym
  */
-package ClusterCore;
+package de.clusterfreak.ClusterCore;

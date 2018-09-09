@@ -1,9 +1,9 @@
-package ClusterGraphix;
+package de.clusterfreak.ClusterGraphix;
 
-import ClusterCore.FuzzyCMeans;
-import ClusterCore.Point2D;
-import ClusterCore.PointPixel;
-import ClusterGraphix.ClusterQuality;
+import de.clusterfreak.ClusterCore.FuzzyCMeans;
+import de.clusterfreak.ClusterCore.Point2D;
+import de.clusterfreak.ClusterCore.PointPixel;
+import de.clusterfreak.ClusterGraphix.ClusterQuality;
 
 /**
  * Functions for ClusterBots

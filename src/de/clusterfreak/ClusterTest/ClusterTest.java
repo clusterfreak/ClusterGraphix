@@ -1,6 +1,6 @@
-package ClusterTest;
+package de.clusterfreak.ClusterTest;
 
-import ClusterGraphix.ClusterData;
+import de.clusterfreak.ClusterGraphix.ClusterData;
 
 /**
  * 

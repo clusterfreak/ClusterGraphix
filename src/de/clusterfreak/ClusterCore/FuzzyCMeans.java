@@ -1,4 +1,4 @@
-package ClusterCore;
+package de.clusterfreak.ClusterCore;
 
 import java.util.Vector;
 

@@ -1,4 +1,4 @@
-package ClusterGraphix;
+package de.clusterfreak.ClusterGraphix;
 
 import javax.swing.JOptionPane;
 

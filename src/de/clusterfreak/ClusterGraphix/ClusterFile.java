@@ -1,4 +1,4 @@
-package ClusterGraphix;
+package de.clusterfreak.ClusterGraphix;
 
 /**
  * Available data values for ClusterGraphix

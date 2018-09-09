@@ -1,7 +1,7 @@
-package ClusterGraphix;
+package de.clusterfreak.ClusterGraphix;
 
-import ClusterCore.Point2D;
-import ClusterCore.PointPixel;
+import de.clusterfreak.ClusterCore.Point2D;
+import de.clusterfreak.ClusterCore.PointPixel;
 
 /**
  * Cluster structure
