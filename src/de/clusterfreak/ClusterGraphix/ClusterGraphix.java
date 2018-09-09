@@ -86,7 +86,7 @@ import javax.xml.stream.events.Attribute;
  * <P>
  * Display of objects and clusters with integrated cluster analysis
  * 
- * @version 0.95.3 (2017-08-19)
+ * @version 0.95.4 (2018-09-09)
  * @author Thomas HEYM
  */
 public class ClusterGraphix extends JPanel implements ActionListener {
