@@ -1,5 +1,4 @@
 package de.clusterfreak.ClusterGraphix;
-<<<<<<< HEAD:src/de/clusterfreak/ClusterGraphix/ClusterGraphix.java
 
 import com.apple.eawt.Application;
 
@@ -7,9 +6,6 @@ import de.clusterfreak.ClusterCore.FuzzyCMeans;
 import de.clusterfreak.ClusterCore.Point2D;
 import de.clusterfreak.ClusterCore.PointPixel;
 import de.clusterfreak.ClusterCore.PossibilisticCMeans;
-=======
->>>>>>> master:src/de/clusterfreak/ClusterGraphix/ClusterGraphix.java
-
 import java.io.FileOutputStream;
 import java.io.FileInputStream;
 import java.io.File;
@@ -590,15 +586,11 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 		// Main frame
 		f = new JFrame(titleString + " - " + getTitle());
 		try {
-<<<<<<< HEAD:src/de/clusterfreak/ClusterGraphix/ClusterGraphix.java
-			f.setIconImage(ImageIO.read(getClass().getResource("/ClusterCore/sphere32.png")));
+			f.setIconImage(ImageIO.read(getClass().getResource("/de/clusterfreak/ClusterCore/sphere32.png")));
 			if(System.getProperty("os.name").equals("Mac OS X")){
 				application = Application.getApplication();
-				application.setDockIconImage(ImageIO.read(getClass().getResource("/ClusterCore/sphere32.png")));
+				application.setDockIconImage(ImageIO.read(getClass().getResource("/de/clusterfreak/ClusterCore/sphere32.png")));
 			}
-=======
-			f.setIconImage(ImageIO.read(getClass().getResource("/de/clusterfreak/ClusterCore/sphere32.png")));
->>>>>>> master:src/de/clusterfreak/ClusterGraphix/ClusterGraphix.java
 		} catch (Exception e) {
 			JOptionPane.showConfirmDialog(null, e, "ClusterGraphix.setIconImage", JOptionPane.CLOSED_OPTION,
 					JOptionPane.INFORMATION_MESSAGE);
