@@ -324,7 +324,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	/**
 	 * Variables
 	 */
-	private ClusterFile clusterFile = new ClusterFile();
+	private final ClusterFile clusterFile = new ClusterFile();
 	/**
 	 * Cluster bot memory
 	 */
@@ -358,7 +358,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	 * Main frame
 	 */
 	private JFrame f;
-	private JLabel l = new JLabel();
+	private final JLabel l = new JLabel();
 	/**
 	 * Menu main frame
 	 */
@@ -531,7 +531,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	 * @throws InterruptedException
 	 *             not used
 	 */
-	public ClusterGraphix() throws InterruptedException {
+	private ClusterGraphix() throws InterruptedException {
 		clusterGraphixGenerator();
 		clearAll();
 		setPixelString(ClusterGraphix.clusterfreak);
@@ -550,7 +550,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	 * @param object
 	 *            Objects matrix
 	 */
-	public ClusterGraphix(double object[][]) {
+	private ClusterGraphix(double object[][]) {
 		clusterGraphixGenerator();
 		clearAll();
 		setObject(object);
@@ -564,7 +564,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	 * @param userTitle
 	 *            Back part of title string
 	 */
-	public ClusterGraphix(double object[][], String userTitle) {
+	private ClusterGraphix(double object[][], String userTitle) {
 		clusterGraphixGenerator();
 		clearAll();
 		setObject(object);
@@ -1932,7 +1932,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	 * @param pixelMode
 	 *            true false
 	 */
-	public void setPixel(boolean pixelMode) {
+	private void setPixel(boolean pixelMode) {
 		pixel = pixelMode;
 		clusterMenuViewPixelMode.setSelected(pixelMode);
 		if (pixel)
@@ -1948,7 +1948,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	 * 
 	 * @return pixel yes/no
 	 */
-	public boolean getPixel() {
+	private boolean getPixel() {
 		return pixel;
 	}
 
@@ -1963,7 +1963,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	 * @param pixelDim
 	 *            Dimension 1..2
 	 */
-	public void setPixelDim(int pixelDim) {
+	private void setPixelDim(int pixelDim) {
 		this.pixelDim = pixelDim;
 		pixelOffset = (int) Math.pow(10, pixelDim);
 		setPixelObject(null);
@@ -1984,7 +1984,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	 * 
 	 * @return pixelDim 1..2
 	 */
-	public int getPixelDim() {
+	private int getPixelDim() {
 		return pixelDim;
 	}
 
@@ -2025,7 +2025,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	 * @param cluster
 	 *            New number of clusters
 	 */
-	public void setCluster(int cluster) {
+	private void setCluster(int cluster) {
 		if (this.cluster != cluster) {
 			this.cluster = cluster;
 			if (clusterFile.getData("Objects"))
@@ -2042,7 +2042,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	 * 
 	 * @return cluster Actual number of clusters
 	 */
-	public int getCluster() {
+	private int getCluster() {
 		return cluster;
 	}
 
@@ -2079,7 +2079,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	 * @param clusterObject
 	 *            Objects matrix
 	 */
-	public void setObject(double clusterObject[][]) {
+	private void setObject(double clusterObject[][]) {
 		object = clusterObject;
 		if (object != null) {
 			setObjects(object.length);
@@ -2097,7 +2097,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	 * 
 	 * @return object Objects matrix
 	 */
-	public double[][] getObject() {
+	private double[][] getObject() {
 		return object;
 	}
 
@@ -2156,7 +2156,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	 * 
 	 * @return vi
 	 */
-	public double[][] getVi() {
+	private double[][] getVi() {
 		return vi;
 	}
 
@@ -2193,7 +2193,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	 * @param path
 	 *            true/false
 	 */
-	public void setPathOption(boolean path) {
+	private void setPathOption(boolean path) {
 		pathOption = path;
 		clusterMenuViewPathOption.setState(path);
 		if (pathOption)
@@ -2207,7 +2207,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	 * 
 	 * @return pathOption pathOption
 	 */
-	public boolean getPathOption() {
+	private boolean getPathOption() {
 		return pathOption;
 	}
 
@@ -2217,7 +2217,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	 * @param descriptionDisplay
 	 *            true/false
 	 */
-	public void setDescriptionDisplay(boolean descriptionDisplay) {
+	private void setDescriptionDisplay(boolean descriptionDisplay) {
 		this.descriptionDisplay = descriptionDisplay;
 		clusterMenuViewDescriptionDisplay.setState(descriptionDisplay);
 		if (descriptionDisplay)
@@ -2231,7 +2231,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	 * 
 	 * @return descriptionDisplay true/false
 	 */
-	public boolean getDescriptionDisplay() {
+	private boolean getDescriptionDisplay() {
 		return descriptionDisplay;
 	}
 
@@ -2241,7 +2241,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	 * @param number
 	 *            Number of passes
 	 */
-	public void setRepeat(int number) {
+	private void setRepeat(int number) {
 		repeat = number;
 		if (repeat == 1)
 			clusterFile.setData("Repeat", false);
@@ -2254,7 +2254,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	 * 
 	 * @return repeat Number of passes
 	 */
-	public int getRepeat() {
+	private int getRepeat() {
 		return repeat;
 	}
 
@@ -2282,7 +2282,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	 * 
 	 * @return mik Partition matrix
 	 */
-	public double[][] getMik() {
+	private double[][] getMik() {
 		return mik;
 	}
 
@@ -2292,7 +2292,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	 * @param e
 	 *            Termination threshold
 	 */
-	public void setE(double e) {
+	private void setE(double e) {
 		this.e = e;
 		if (e == 1.0e-7)
 			clusterFile.setData("E", false);
@@ -2305,7 +2305,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	 * 
 	 * @return e Termination threshold
 	 */
-	public double getE() {
+	private double getE() {
 		return e;
 	}
 
@@ -2431,7 +2431,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	 * @param pixelObjectMembership
 	 *            PixelObjectMembership
 	 */
-	public void setPixelObjectMembership(boolean pixelObjectMembership[][]) {
+	private void setPixelObjectMembership(boolean pixelObjectMembership[][]) {
 		this.pixelObjectMembership = pixelObjectMembership;
 		if (pixelObjectMembership == null)
 			clusterFile.setData("PixelObjectMembership", false);
@@ -2444,7 +2444,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	 * 
 	 * @return pixelObjectMembership
 	 */
-	public boolean[][] getPixelObjectMembership() {
+	private boolean[][] getPixelObjectMembership() {
 		return pixelObjectMembership;
 	}
 
@@ -2675,7 +2675,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	 * @param title
 	 *            title
 	 */
-	public void setTitle(String title) {
+	private void setTitle(String title) {
 		this.title = title;
 		if (title.equals(""))
 			f.setTitle(titleString);
@@ -2696,7 +2696,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	 * 
 	 * @return title
 	 */
-	public String getTitle() {
+	private String getTitle() {
 		return title;
 	}
 
@@ -2902,7 +2902,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	/**
 	 * Use the Fuzzy-C-Means clustering algorithm
 	 */
-	public void useFuzzyCMeans() {
+	private void useFuzzyCMeans() {
 		setFuzzyCMeans(true);
 		setPossibilisticCMeans(false);
 		clusterMenuSetFuzzyCMeans.setSelected(true);
@@ -2921,7 +2921,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	/**
 	 * Use the Possibilistic-C-Means clustering algorithm
 	 */
-	public void usePossibilisticCMeans() {
+	private void usePossibilisticCMeans() {
 		setFuzzyCMeans(false);
 		setPossibilisticCMeans(true);
 		clusterMenuSetPossibilisticCMeans.setSelected(true);
@@ -2941,7 +2941,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	 * Matrixes mik, object, vi will be sorted with objectMembership in cluster
 	 * sequence
 	 */
-	public void sortCluster() {
+	private void sortCluster() {
 		setSortCluster(true);
 		if ((getCluster() > 0) & (getMik() != null)) {
 			if (getMik().length > 0) {
@@ -3008,7 +3008,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	/**
 	 * Produce object membership only for affiliation {@literal >} 0.5
 	 */
-	public void fiftyFiftyJoker() {
+	private void fiftyFiftyJoker() {
 		setFiftyFiftyJoker(true);
 		setClusterMax(false);
 		clusterMenuSetFiftyFiftyJoker.setSelected(true);
@@ -3039,7 +3039,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	/**
 	 * Produce object membership according to the largest affiliation
 	 */
-	public void clusterMax() {
+	private void clusterMax() {
 		setFiftyFiftyJoker(false);
 		setClusterMax(true);
 		clusterMenuSetClusterMax.setSelected(true);
@@ -3077,7 +3077,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	 * @param clusterToDelete
 	 *            cluster to delete
 	 */
-	public void deleteCluster(int clusterToDelete) {
+	private void deleteCluster(int clusterToDelete) {
 		int tempI = 0;
 		int tempK = 0;
 		double tempObject[][] = new double[getObject().length][2];
@@ -3158,7 +3158,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	/**
 	 * Deletes Objects witch not assigned to a cluster
 	 */
-	public void deleteNotAssigned() {
+	private void deleteNotAssigned() {
 		if (getObjectMembership() != null) {
 			int countMembership = 0;
 			for (int i = 0; i < getObjectMembership().length; i++) {
@@ -3333,7 +3333,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	 * @param x
 	 *            x
 	 */
-	public void addPointObject(double x, double y) {
+	private void addPointObject(double x, double y) {
 		if (clusterFile.getData("Object")) {
 			double tempObject[][] = new double[getObject().length + 1][2];
 			for (int i = 0; i < getObject().length; i++) {
@@ -3359,7 +3359,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	 * @param x
 	 *            x
 	 */
-	public void addPointPixelObject(int x, int y) {
+	private void addPointPixelObject(int x, int y) {
 		if (!clusterFile.getData("pixelString")) {
 			setPixelString(new String[getPixelOffset()]);
 			for (int i = 0; i < getPixelOffset(); i++) {
@@ -3379,7 +3379,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	/**
 	 * Save all data in an XML-file
 	 */
-	public void save() {
+	private void save() {
 		clusterChooser.setFileFilter(clusterFileFilterXML);
 		clusterChooser.setSelectedFile(clusterChooserFileClear);
 		try {
@@ -3613,7 +3613,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	/**
 	* 
 	*/
-	public void open() {
+	private void open() {
 		clusterChooser.setFileFilter(clusterFileFilterXML);
 		clusterChooser.setSelectedFile(clusterChooserFileClear);
 		String zversion = "";
@@ -3927,7 +3927,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	/**
 	 * Imports a PBM-file
 	 */
-	public void importPBM() {
+	private void importPBM() {
 		clusterChooser.setFileFilter(clusterFileFilterPBM);
 		clusterChooser.setSelectedFile(clusterChooserFileClear);
 		try {
@@ -4039,7 +4039,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	/**
 	 * Exports a PBM-file
 	 */
-	public void exportPBM() {
+	private void exportPBM() {
 		clusterChooser.setFileFilter(clusterFileFilterPBM);
 		clusterChooser.setSelectedFile(clusterChooserFileClear);
 		if (clusterFile.getData("PixelString")) {
@@ -4064,7 +4064,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	/**
 	 * Resets all variables
 	 */
-	public void clearAll() {
+	private void clearAll() {
 		clusterButtonGroupSet1.clearSelection();
 		clusterButtonGroupSet2.clearSelection();
 		// Variablen
