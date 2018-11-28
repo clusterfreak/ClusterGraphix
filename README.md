@@ -4,7 +4,7 @@ Display of objects and clusters - Grafische Anzeige von Punktemengen und Klassen
 
 **&copy; Thomas Heym - clusterfreak**
 
-### Version Information
+### Version Information X.X.X (YYYY-MM-DD)
 * ClusterCore 1.0.0 (2016-04-10)
 	* FuzzyCMeans 1.6.1 (2016-04-10)
 	* PossibilisticCMeans 1.2.1 (2016-04-10)
