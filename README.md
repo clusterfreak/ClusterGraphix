@@ -1,4 +1,4 @@
-# Cluster
+# ClusterGraphix
 **ClusterGraphix**
 Display of objects and clusters - Grafische Anzeige von Punktemengen und Klassenzentren  
 
