@@ -1,14 +1,13 @@
 package de.clusterfreak.ClusterGraphix;
 
+import de.clusterfreak.ClusterCore.PointPixel;
 import de.clusterfreak.ClusterCore.FuzzyCMeans;
 import de.clusterfreak.ClusterCore.Point2D;
-import de.clusterfreak.ClusterCore.PointPixel;
-import de.clusterfreak.ClusterGraphix.ClusterQuality;
 
 /**
  * Functions for ClusterBots
  * 
- * @version 0.1.1 (2017-01-07)
+ * @version 0.1.2 (2020-07-18)
  * @author Thomas Heym
  */
 public class ClusterBotNet {

@@ -6,7 +6,7 @@ import de.clusterfreak.ClusterCore.PointPixel;
 /**
  * Cluster structure
  * 
- * @version 0.1.1 (2016-04-10)
+ * @version 0.1.2 (2020-07-18)
  * @author Thomas Heym
  */
 public class ClusterBot {

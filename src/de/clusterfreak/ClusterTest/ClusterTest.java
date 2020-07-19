@@ -1,6 +1,7 @@
 package de.clusterfreak.ClusterTest;
 
 import de.clusterfreak.ClusterGraphix.ClusterData;
+import de.clusterfreak.ClusterCore.CoreTest;
 
 /**
  * 
@@ -14,7 +15,7 @@ import de.clusterfreak.ClusterGraphix.ClusterData;
 public class ClusterTest {
 
 	public static void main(String[] args) {
-		System.out.println(System.getProperty("os.name")+" "+System.getProperty("os.version")+" "+System.getProperty("os.arch"));
+		CoreTest.main(null);
 		System.out.println("ClusterData.length = " + ClusterData.length);
 		System.out.println("ClusterData.number.length = " + ClusterData.number.length);
 		System.out.println("ClusterData.type.length = " + ClusterData.type.length);

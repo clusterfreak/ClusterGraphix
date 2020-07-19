@@ -2,7 +2,7 @@
  * 
  * Internal Program Tests
  * 
- * @version 0.1.0 (2016-04-10)
+ * @version 0.1.1 (2020-07-18)
  * @author Thomas Heym
  * <p>
  * Steps to insert a new variable

@@ -1,5 +1,10 @@
 package de.clusterfreak.ClusterGraphix;
 
+import de.clusterfreak.ClusterCore.PointPixel;
+import de.clusterfreak.ClusterCore.Point2D;
+import de.clusterfreak.ClusterCore.FuzzyCMeans;
+import de.clusterfreak.ClusterCore.PossibilisticCMeans;
+
 import java.io.FileOutputStream;
 import java.io.FileInputStream;
 import java.io.File;
@@ -73,11 +78,6 @@ import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.events.StartDocument;
 import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
-
-import de.clusterfreak.ClusterCore.FuzzyCMeans;
-import de.clusterfreak.ClusterCore.Point2D;
-import de.clusterfreak.ClusterCore.PointPixel;
-import de.clusterfreak.ClusterCore.PossibilisticCMeans;
 
 import javax.xml.stream.events.Attribute;
 
