@@ -1,38 +1,41 @@
-# ClusterGraphix
-**ClusterGraphix**
-Display of objects and clusters - Grafische Anzeige von Punktemengen und Klassenzentren  
+:encoding: iso-8859-1
+:icons: font
+:toc:
+= ClusterGraphix 0.96 (2020-07-18)
+Thomas Heym <thomas.heym@clusterfreak.de>
+0.96, 2020-07-18
 
-**&copy; Thomas Heym - clusterfreak**
+Display of objects and clusters - Grafische Anzeige von Punktemengen und Klassenzentren
 
-### Version Information X.X.X (YYYY-MM-DD)
-* ClusterGraphix 0.96 (2020-07-18)
-	* ClusterGraphix 0.96 (2020-07-18)
-	* ClusterBot 0.1.2 (2020-07-18)
-	* ClusterBotNet 0.1.2 (2020-07-18)
-	* ClusterData 0.1.5 (2020-07-18)
-	* ClusterFile 0.1.1 (2016-04-10)
-	* ClusterQuality 0.1.0 (2016-04-10)
+=== Version Information X.X.X (YYYY-MM-DD)
+ClusterGraphix 0.96 (2020-07-18) +
+ClusterBot 0.1.2 (2020-07-18) +
+ClusterBotNet 0.1.2 (2020-07-18) +
+ClusterData 0.1.5 (2020-07-18) +
+ClusterFile 0.1.1 (2016-04-10) +
+ClusterQuality 0.1.0 (2016-04-10) +
+
 * ClusterTest v0.1.1 (2020-07-18)
 	* ClusterTest 0.1.0 (2016-04-10)
 	* WritePbm v0.1.0 (2016-04-10)
 * ClusterGraphix.css v0.0.1 (2017-01-07)
 
-### Bugs
+=== Bugs
 * clusterCenterPointNumber 99999999 when not found
 
-### Ideas
+=== Ideas
 * CTRL + SHIFT + F Source Code Pretty Print
 * check if objectMembership complete
 * clusterBotNet.clusterBotCenter only modified when realy modified
 
-### Release Information
-0.96 (2020-07-18)
+== Release Notes
+=== ClusterGraphix 0.96 (2020-07-18) +
 * delete Package ClusterCore, integrate ClusterCore.jar
 * delete Class CoreTest in Package ClusterTest, integrate into ClusterTest
 
-0.95.4 (2018-09-09)
+=== ClusterGraphix 0.95.4 (2018-09-09)
 
-0.95.3 (2017-08-19)
+=== ClusterGraphix 0.95.3 (2017-08-19)
 * lay fInfo over f
 * add object on mouseClicked
 * cluster default 1
@@ -40,7 +43,7 @@ Display of objects and clusters - Grafische Anzeige von Punktemengen und Klassen
 * rename packages
 * bugfix in addPointObject
 
-0.95.2
+=== ClusterGraphix 0.95.2 (2017-01-07)
 * deleteCluster() bugfix
 * deleteNotAssigned() bugfix
 * checkReport() bugfix, design
@@ -56,7 +59,7 @@ Display of objects and clusters - Grafische Anzeige von Punktemengen und Klassen
 * clusterCircle
 * miscData tab, design
 
-0.95.1
+=== ClusterGraphix 0.95.1 (2016-04-05)
 * ClusterCore v1.0.0 package
 * ClusterTest v0.1.0 package
 * String objectDescirption -> int objectMembership
@@ -70,7 +73,7 @@ Display of objects and clusters - Grafische Anzeige von Punktemengen und Klassen
 * developerMode
 * Recalculation of all up to 10 steps depending on clusterQuality > 0.1
 
-0.95.0
+=== ClusterGraphix 0.95.0 (2016-01-31)
 * rename from ClusterGraphics
 * clusterBot-Info at the end of the check report
 * rename fiftyFiftyJoker
@@ -91,7 +94,7 @@ Display of objects and clusters - Grafische Anzeige von Punktemengen und Klassen
 	* PointPixel v1.0.0
 		* new class for ClusterBot
 
-0.94.9
+=== ClusterGraphics 0.94.9 (2015-09-17)
 * download function for data file
 * UTF-8 text for unix support
 * fully integrate Error variable
@@ -109,14 +112,14 @@ Display of objects and clusters - Grafische Anzeige von Punktemengen und Klassen
 * PossibilisticCMeans v1.1.5 (28.12.2015)
 * start GitHub with Branch *V0.94.9* on *17.09.2015*
 
-0.94.8
+=== ClusterGraphics 0.94.8
 * Error-Button function
 
-0.94.7
+=== ClusterGraphics 0.94.7
 * Error-Variable
 * quickCheck()
 
-0.94.6
+=== ClusterGraphics 0.94.6
 * file import/export
 * ClusterBot visualisation
 * extended viPath from Possibil and fuzzy
