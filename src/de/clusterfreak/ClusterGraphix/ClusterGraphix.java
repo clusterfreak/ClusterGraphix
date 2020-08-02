@@ -1684,7 +1684,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 			if (getZoom() < 10)
 				setZoom(getZoom() + 1);
 			else {
-				JOptionPane.showConfirmDialog(null, "Maximale Vergrößerung erreicht.", "ClusterGraphix Hinweis",
+				JOptionPane.showConfirmDialog(null, "Maximum magnification reached.", "ClusterGraphix Hinweis",
 						JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
 				clusterMenuZoomOut.setEnabled(false);
 			}
@@ -1693,7 +1693,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 			if (getZoom() > 1)
 				setZoom(getZoom() - 1);
 			else {
-				JOptionPane.showConfirmDialog(null, "Maximale Verkleinerung erreicht.", "ClusterGraphix Hinweis",
+				JOptionPane.showConfirmDialog(null, "Maximum reduction achieved.", "ClusterGraphix Hinweis",
 						JOptionPane.CLOSED_OPTION, JOptionPane.ERROR_MESSAGE);
 				clusterMenuZoomIn.setEnabled(false);
 			}
@@ -2000,7 +2000,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	/**
 	 * Set Pixel object or Double object as the original
 	 * 
-	 * @param pixelOriginal
+	 * @param pixelOriginal pixelOriginal
 	 */
 	private void setPixelOriginal(boolean pixelOriginal) {
 		this.pixelOriginal = pixelOriginal;
@@ -2104,7 +2104,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	/**
 	 * Set description of objects
 	 * 
-	 * @param objectMembership
+	 * @param objectMembership objectMembership
 	 */
 	private void setObjectMembership(boolean[][] objectMembership) {
 		this.objectMembership = objectMembership;
@@ -2138,7 +2138,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	/**
 	 * Set cluster centers
 	 * 
-	 * @param vi
+	 * @param vi vi
 	 */
 	private void setVi(double vi[][]) {
 		this.vi = vi;
@@ -2163,7 +2163,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	/**
 	 * Set the history of cluster centers detection matrix
 	 * 
-	 * @param viPath
+	 * @param viPath viPath
 	 */
 	private void setViPath(double viPath[][]) {
 		this.viPath = viPath;
@@ -2312,7 +2312,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	/**
 	 * Set recalculation indicator
 	 * 
-	 * @param calc
+	 * @param calc calc
 	 */
 	private void setCalculate(boolean calc) {
 		calculate = calc;
@@ -2359,7 +2359,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	/**
 	 * Set flag to calculate with Possibilistic-C-Means clustering algorithm
 	 * 
-	 * @param pcm
+	 * @param pcm pcm
 	 */
 	private void setPossibilisticCMeans(boolean pcm) {
 		possibilisticCMeans = pcm;
@@ -2382,7 +2382,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	/**
 	 * Set random
 	 * 
-	 * @param random
+	 * @param random random
 	 */
 	private void setRandom(boolean random) {
 		this.random = random;
@@ -2405,7 +2405,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	/**
 	 * Set improve
 	 * 
-	 * @param improve
+	 * @param improve improve
 	 */
 	private void setImprove(boolean improve) {
 		this.improve = improve;
@@ -2451,7 +2451,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	/**
 	 * Get flag to show more error messages
 	 * 
-	 * @return
+	 * @return flag
 	 */
 	private boolean getDeveloperMode() {
 		return developerMode;
@@ -2459,6 +2459,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 
 	/**
 	 * Set flag to show more error messages
+	 * @param developerMode developerMode
 	 */
 	private void setDeveloperMode(boolean developerMode) {
 		this.developerMode = developerMode;
@@ -2473,7 +2474,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	 * Set flag for sorting matrixes mik, object, vi with objectMembership in
 	 * cluster sequence
 	 * 
-	 * @param sortCluster
+	 * @param sortCluster sortCluster
 	 */
 	private void setSortCluster(boolean sortCluster) {
 		this.sortCluster = sortCluster;
@@ -2495,7 +2496,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	}
 
 	/**
-	 * Set flag for object description only for affiliation >0.5
+	 * Set flag for object description only for affiliation greater than 0.5
 	 * 
 	 * @param fiftyFiftyJoker
 	 *            true false
@@ -2510,7 +2511,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	}
 
 	/**
-	 * Get flag for object description only for affiliation >0.5
+	 * Get flag for object description only for affiliation greater than 0.5
 	 * 
 	 * @return fiftyFiftyJoker
 	 */
@@ -2545,7 +2546,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	/**
 	 * Set pixel object matrix
 	 * 
-	 * @param pixelObject
+	 * @param pixelObject pixelObject
 	 */
 	private void setPixelObject(boolean pixelObject[][]) {
 		this.pixelObject = pixelObject;
@@ -2567,7 +2568,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	/**
 	 * Set pixel cluster centers matrix
 	 * 
-	 * @param pixelVi
+	 * @param pixelVi pixelVI
 	 */
 	private void setPixelVi(boolean pixelVi[][]) {
 		this.pixelVi = pixelVi;
@@ -2589,7 +2590,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	/**
 	 * Set pixel history of cluster centers detection matrix
 	 * 
-	 * @param pixelViPath
+	 * @param pixelViPath pixelViPath
 	 */
 	private void setPixelViPath(boolean pixelViPath[][]) {
 		this.pixelViPath = pixelViPath;
@@ -2611,7 +2612,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	/**
 	 * Set pixel string memory
 	 * 
-	 * @param pixelString
+	 * @param pixelString pixelString
 	 */
 	private void setPixelString(String[] pixelString) {
 		this.pixelString = pixelString;
@@ -2703,7 +2704,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	/**
 	 * Set Cluster bot memory
 	 * 
-	 * @param clusterBot
+	 * @param clusterBot clusterBot
 	 */
 	private void setClusterBot(ClusterBot[] clusterBot) {
 		this.clusterBot = new ClusterBotNet(clusterBot);
@@ -2716,7 +2717,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	/**
 	 * Get Cluster bot memory
 	 * 
-	 * @return
+	 * @return clusterBot
 	 */
 	private ClusterBotNet getClusterBot() {
 		return clusterBot;
@@ -2725,7 +2726,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	/**
 	 * Set error status from quickCheck()
 	 * 
-	 * @param error
+	 * @param error error
 	 */
 	private void setError(boolean error) {
 		this.error = error;
@@ -2739,7 +2740,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	/**
 	 * Get error status from quickCheck()
 	 * 
-	 * @return
+	 * @return error
 	 */
 	private boolean getError() {
 		return error;
@@ -2748,7 +2749,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	/**
 	 * Switch head up display on/off
 	 * 
-	 * @param headUpDisplay
+	 * @param headUpDisplay headUpDisplay
 	 */
 	private void setHeadUpDisplay(boolean headUpDisplay) {
 		this.headUpDisplay = headUpDisplay;
@@ -2760,6 +2761,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 
 	/**
 	 * Get status of head up display
+	 * @return headUpDisplay
 	 */
 	private boolean getHeadUpDisplay() {
 		return headUpDisplay;
@@ -2768,7 +2770,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	/**
 	 * Cluster as a circle on/off
 	 * 
-	 * @param clusterCircle
+	 * @param clusterCircle clusterCircle
 	 */
 	private void setClusterCircle(boolean clusterCircle) {
 		this.clusterCircle = clusterCircle;
@@ -2781,14 +2783,14 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	/**
 	 * Get status of cluster as a circle
 	 * 
-	 * @return
+	 * @return clusterCircle
 	 */
 	private boolean getClusterCircle() {
 		return clusterCircle;
 	}
 
 	/**
-	 * Recalculation of all up to 10 steps depending on clusterQuality > 0.1
+	 * Recalculation of all up to 10 steps depending on clusterQuality greater than 0.1
 	 */
 	private void calculateCluster() {
 		final long timeBegin = System.currentTimeMillis();
@@ -4134,6 +4136,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 
 	/**
 	 * Simple consistency check
+	 * @return boolean
 	 */
 	private boolean quickCheck() {
 		boolean quickCheckStatus = true;
@@ -4523,8 +4526,8 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	/**
 	 * Get the object description as a comma separated String
 	 * 
-	 * @param i
-	 *            number
+	 * @param i number
+	 * @param c c
 	 * @return String
 	 */
 	private String getDescriptionX(int i, int c) {
@@ -4615,7 +4618,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
 	/**
 	 * Show Info Frame
 	 * 
-	 * @throws IOException
+	 * @throws IOException IOException
 	 */
 	@SuppressWarnings("deprecation")
 	private void info() throws IOException {

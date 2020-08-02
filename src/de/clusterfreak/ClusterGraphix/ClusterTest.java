@@ -1,4 +1,4 @@
-package de.clusterfreak.ClusterTest;
+package de.clusterfreak.ClusterGraphix;
 
 import de.clusterfreak.ClusterGraphix.ClusterData;
 import de.clusterfreak.ClusterCore.CoreTest;

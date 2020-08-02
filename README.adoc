@@ -14,11 +14,8 @@ ClusterBotNet 0.1.2 (2020-07-18) +
 ClusterData 0.1.5 (2020-07-18) +
 ClusterFile 0.1.1 (2016-04-10) +
 ClusterQuality 0.1.0 (2016-04-10) +
-
-* ClusterTest v0.1.1 (2020-07-18)
-	* ClusterTest 0.1.0 (2016-04-10)
-	* WritePbm v0.1.0 (2016-04-10)
-* ClusterGraphix.css v0.0.1 (2017-01-07)
+ClusterTest 0.1.0 (2016-04-10) +
+WritePbm v0.1.0 (2016-04-10) +
 
 === Bugs
 * clusterCenterPointNumber 99999999 when not found
@@ -30,8 +27,10 @@ ClusterQuality 0.1.0 (2016-04-10) +
 
 == Release Notes
 === ClusterGraphix 0.96 (2020-07-18) +
-* delete Package ClusterCore, integrate ClusterCore.jar
-* delete Class CoreTest in Package ClusterTest, integrate into ClusterTest
+* delete Packages ClusterCore and ClusterTest, integrate ClusterCore.jar
+* delete Class CoreTest and integrate into ClusterTest
+* ClusterData: Text Translation
+* ClusterGraphix: Text Translation, JavaDoc Updates
 
 === ClusterGraphix 0.95.4 (2018-09-09)
 

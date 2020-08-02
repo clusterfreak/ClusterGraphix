@@ -1,4 +1,4 @@
-package de.clusterfreak.ClusterTest;
+package de.clusterfreak.ClusterGraphix;
 
 import java.io.FileWriter;
 import java.io.PrintWriter;

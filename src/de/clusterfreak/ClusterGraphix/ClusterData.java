@@ -45,9 +45,9 @@ public class ClusterData {
 			"false", "false", "1", "[0][0]", "1.0e-7", "false", "true", "false", "true", "false", "false", "[100]",
 			"[100]", "[100]", "0", "5", "", "0.96", "2020", "ClusterGraphix " + "0.96", " ready", "{...", "false",
 			"0", "false", "true", "true", "false", "true", "[100]", "true" };
-	public static String gui[] = { "Menü pixelMode", "Data misc", "Data misc", "", "Data misc", "Data misc",
-			"Data object", "Data objectMembership", "Data vi", "Data viPath", "Menü pathOption",
-			"Menü descriptionDisplay", "Data misc", "Data mik", "Data misc", "Data misc", "Data misc", "Data misc",
+	public static String gui[] = { "Menu pixelMode", "Data misc", "Data misc", "", "Data misc", "Data misc",
+			"Data object", "Data objectMembership", "Data vi", "Data viPath", "Menu pathOption",
+			"Menu descriptionDisplay", "Data misc", "Data mik", "Data misc", "Data misc", "Data misc", "Data misc",
 			"Data misc", "Data misc", "Data misc", "pixelObject", "pixelVi", "pixelViPath", "Data pixelString",
 			"Data misc", "Data misc", "Data misc", "Data misc", "Data misc", "Data misc", "Data misc", "", "",
 			"Data misc", "Data misc", "Data misc", "Data misc", "Data misc", "Data misc", "Data misc" };
