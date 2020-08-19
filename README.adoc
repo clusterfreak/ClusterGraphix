@@ -127,3 +127,6 @@ WritePbm v0.1.0 (2016-04-10) +
 * status bar
 * main-methode
 * import/export of pixel objects in pbm format
+
+=== ClusterGraphics 0.94.3 (2013)
+* A lot of bug fixes and new Clusterfreak Logo
