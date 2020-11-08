@@ -794,7 +794,7 @@ public class ClusterGraphix extends JPanel implements ActionListener {
         fInfo.setLayout(new GridLayout(3, 1)); // 3 rows, 1 column
         ImageIcon logo = null;
         try {
-            logo = new ImageIcon(ImageIO.read(getClass().getResource("/de/clusterfreak/ClusterGraphix/ClusterGraphicsInfo.png")));
+            logo = new ImageIcon(ImageIO.read(getClass().getResource("/images/ClusterGraphicsInfo.png")));
         } catch (IOException e1) {
             JOptionPane.showConfirmDialog(null, e1, "ClusterGraphix.setIconImage", JOptionPane.DEFAULT_OPTION,
                     JOptionPane.INFORMATION_MESSAGE);
