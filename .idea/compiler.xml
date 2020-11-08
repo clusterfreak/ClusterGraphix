@@ -9,8 +9,5 @@
         <module name="ClusterGraphix" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="ClusterGraphix" target="1.5" />
-    </bytecodeTargetLevel>
   </component>
 </project>

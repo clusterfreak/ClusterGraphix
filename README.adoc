@@ -11,6 +11,7 @@ image:https://img.shields.io/github/last-commit/clusterfreak/ClusterGraphix?[]
 image:https://img.shields.io/github/license/clusterfreak/ClusterGraphix?[]
 
 image::https://files.clusterfreak.com/ClusterGraphicsInfo.png[]
+image::https://files.clusterfreak.com/ScreenshotV0.96.0.png[]
 
 ClusterGraphix 0.96.0 (2020-07-18) +
 ClusterBot 0.1.2 (2020-07-18) +
