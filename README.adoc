@@ -2,14 +2,15 @@
 :icons: font
 = ClusterGraphix 0.96 (2020-07-18)
 Thomas Heym <thomas.heym@clusterfreak.de>
-0.96.0, 2020-07-18
+0.96, 2020-07-18
 
 == Display of objects and clusters - Grafische Anzeige von Punktemengen und Klassenzentren
-
 image:https://img.shields.io/github/v/release/clusterfreak/ClusterGraphix?[]
 image:https://img.shields.io/github/repo-size/clusterfreak/ClusterGraphix?[]
 image:https://img.shields.io/github/last-commit/clusterfreak/ClusterGraphix?[]
 image:https://img.shields.io/github/license/clusterfreak/ClusterGraphix?[]
+
+image::https://files.clusterfreak.com/ClusterGraphicsInfo.png[]
 
 ClusterGraphix 0.96.0 (2020-07-18) +
 ClusterBot 0.1.2 (2020-07-18) +
@@ -22,11 +23,6 @@ WritePbm 0.1.1 (2020-07-18) +
 
 == Bugs
 * clusterCenterPointNumber 99999999 when not found
-
-== Ideas
-* CTRL + SHIFT + F Source Code Pretty Print
-* check if objectMembership complete
-* clusterBotNet.clusterBotCenter only modified when realy modified
 
 == Release Notes
 === ClusterGraphix 0.96 (2020-07-18) +
