@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <!-- Correct Coordinates -->
+    <groupId>de.clusterfreak</groupId>
+    <artifactId>ClusterGraphix</artifactId>
+    <version>0.96</version>
+    <!-- Project Name, Description and URL -->
+    <name>${project.artifactId}</name>
+    <description>Core classes for cluster analysis</description>
+    <url>https://github.com/clusterfreak/ClusterGraphix</url>
+    <!-- License Information -->
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>http://www.opensource.org/licenses/mit-license.php</url>
+        </license>
+    </licenses>
+    <!-- Developer Information -->
+    <developers>
+        <developer>
+            <name>Thomas Heym</name>
+            <email>thomas.heym@clusterfreak.de</email>
+            <organization>Clusterfreak</organization>
+            <organizationUrl>https://clusterfreak.de</organizationUrl>
+        </developer>
+    </developers>
+    <!-- Java Version -->
+    <properties>
+        <maven.compiler.release>14</maven.compiler.release>
+        <maven.compiler.source>14</maven.compiler.source>
+        <maven.compiler.target>14</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+    <build>
+    <plugins>
+    <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+    </plugin>
+    </plugins>
+    </build>
+</project>

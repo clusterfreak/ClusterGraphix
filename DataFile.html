@@ -8,7 +8,7 @@
 		<link rel="stylesheet" href="ClusterGraphix.css">
 	</head>
 	<body>
-		<p>ClusterGraphix 0.95.3 2017</p>
+		<p>ClusterGraphix 0.96.0 2020</p>
 		<table>
 			<tbody>
 			<tr>
@@ -32,7 +32,7 @@
 				<td>boolean</td>
 				<td style="color: #ff0000;">pixel</td>
 				<td style="text-align: left;">true</td>
-				<td>Menü pixelMode</td>
+				<td>Menu pixelMode</td>
 				<td style="text-align: center;">public</td>
 				<td style="text-align: center;">public</td>
 				<td style="text-align: center;">x</td>
@@ -40,7 +40,7 @@
 				<td style="text-align: center;">x</td>
 				<td>Pixel</td>
 				<td>pixel</td>
-				<td>true</td>
+				<td>false</td>
 				<td>General importance for conversion and saving</td>
 			</tr>
 			<tr>
@@ -95,7 +95,7 @@
 				<td style="text-align: right;">4</td>
 				<td>int</td>
 				<td style="color: #ff0000;">cluster</td>
-				<td style="text-align: left;">0</td>
+				<td style="text-align: left;">1</td>
 				<td>Data misc</td>
 				<td style="text-align: center;">public</td>
 				<td style="text-align: center;">public</td>
@@ -104,7 +104,7 @@
 				<td style="text-align: center;">x</td>
 				<td>Cluster</td>
 				<td>cluster</td>
-				<td>true</td>
+				<td>false</td>
 				<td>Quantity/number of clusters</td>
 			</tr>
 			<tr>
@@ -120,7 +120,7 @@
 				<td style="text-align: center;">x</td>
 				<td>Objects</td>
 				<td>objects</td>
-				<td>true</td>
+				<td>false</td>
 				<td>Quantity/number of objects</td>
 			</tr>
 			<tr>
@@ -136,7 +136,7 @@
 				<td style="text-align: center;">x</td>
 				<td>Object</td>
 				<td>object[][]</td>
-				<td>true</td>
+				<td>false</td>
 				<td>Object matrix</td>
 			</tr>
 			<tr>
@@ -152,7 +152,7 @@
 				<td style="text-align: center;">x</td>
 				<td>ObjectMembership</td>
 				<td>objectMembership[][]</td>
-				<td>true</td>
+				<td>false</td>
 				<td>Object description with associated clusters</td>
 			</tr>
 			<tr>
@@ -168,7 +168,7 @@
 				<td style="text-align: center;">x</td>
 				<td>Vi</td>
 				<td>vi[][]</td>
-				<td>true</td>
+				<td>false</td>
 				<td>Cluster centers matrix vi</td>
 			</tr>
 			<tr>
@@ -184,7 +184,7 @@
 				<td style="text-align: center;">x</td>
 				<td>ViPath</td>
 				<td>viPath[][]</td>
-				<td>true</td>
+				<td>false</td>
 				<td>History of cluster centers detection matrix</td>
 			</tr>
 			<tr>
@@ -192,7 +192,7 @@
 				<td>boolean</td>
 				<td style="color: #ff0000;">pathOption</td>
 				<td style="text-align: left;">false</td>
-				<td>Menü pathOption</td>
+				<td>Menu pathOption</td>
 				<td style="text-align: center;">public</td>
 				<td style="text-align: center;">public</td>
 				<td style="text-align: center;">x</td>
@@ -200,7 +200,7 @@
 				<td style="text-align: center;">x</td>
 				<td>PathOption</td>
 				<td>pathOption</td>
-				<td>true</td>
+				<td>false</td>
 				<td>Option to display the history of cluster centers detection</td>
 			</tr>
 			<tr>
@@ -208,7 +208,7 @@
 				<td>boolean</td>
 				<td style="color: #ff0000;">descriptionDisplay</td>
 				<td style="text-align: left;">false</td>
-				<td>Menü descriptionDisplay</td>
+				<td>Menu descriptionDisplay</td>
 				<td style="text-align: center;">public</td>
 				<td style="text-align: center;">public</td>
 				<td style="text-align: center;">x</td>
@@ -216,7 +216,7 @@
 				<td style="text-align: center;">x</td>
 				<td>DescriptionDisplay</td>
 				<td>descriptionDisplay</td>
-				<td>true</td>
+				<td>false</td>
 				<td>Option to display the object description with associated clusters</td>
 			</tr>
 			<tr>
@@ -248,7 +248,7 @@
 				<td style="text-align: center;">x</td>
 				<td>Mik</td>
 				<td>mik[][]</td>
-				<td>true</td>
+				<td>false</td>
 				<td>Partition matrix (Membership values of the k-th object to the i-th cluster)</td>
 			</tr>
 			<tr>
@@ -287,7 +287,7 @@
 				<td style="text-align: right;">16</td>
 				<td>boolean</td>
 				<td style="color: #ff0000;">fuzzyCMeans</td>
-				<td style="text-align: left;">false</td>
+				<td style="text-align: left;">true</td>
 				<td>Data misc</td>
 				<td style="text-align: center;">private</td>
 				<td style="text-align: center;">private</td>
@@ -296,7 +296,7 @@
 				<td style="text-align: center;">x</td>
 				<td>FuzzyCMeans</td>
 				<td>fuzzyCMeans</td>
-				<td>true</td>
+				<td>false</td>
 				<td>Calculate with Fuzzy-C-Means clustering algorithm</td>
 			</tr>
 			<tr>
@@ -360,7 +360,7 @@
 				<td style="text-align: center;">x</td>
 				<td>ClusterMax</td>
 				<td>clusterMax</td>
-				<td>true</td>
+				<td>false</td>
 				<td>Object description according to the largest affiliation</td>
 			</tr>
 			<tr>
@@ -376,7 +376,7 @@
 				<td style="text-align: center;">x</td>
 				<td>PixelObject</td>
 				<td>pixelObject[][]</td>
-				<td>true</td>
+				<td>false</td>
 				<td>Pixel object matrix</td>
 			</tr>
 			<tr>
@@ -392,7 +392,7 @@
 				<td style="text-align: center;">x</td>
 				<td>PixelVi</td>
 				<td>pixelVi[][]</td>
-				<td>true</td>
+				<td>false</td>
 				<td>Pixel cluster centers matrix</td>
 			</tr>
 			<tr>
@@ -408,7 +408,7 @@
 				<td style="text-align: center;">x</td>
 				<td>PixelViPath</td>
 				<td>pixelViPath[][]</td>
-				<td>true</td>
+				<td>false</td>
 				<td>Pixel history of cluster centers detection matrix</td>
 			</tr>
 			<tr>
@@ -424,7 +424,7 @@
 				<td style="text-align: center;">x</td>
 				<td>PixelString</td>
 				<td>pixelString[]</td>
-				<td>true</td>
+				<td>false</td>
 				<td>Pixel string memory</td>
 			</tr>
 			<tr>
@@ -456,14 +456,14 @@
 				<td style="text-align: center;">x</td>
 				<td>Title</td>
 				<td>title</td>
-				<td>true</td>
+				<td>false</td>
 				<td>Back part of title string</td>
 			</tr>
 			<tr>
 				<td style="text-align: right;">27</td>
 				<td>String</td>
 				<td style="color: #ff0000;">version</td>
-				<td style="text-align: left;">0.95.3</td>
+				<td style="text-align: left;">0.96.0</td>
 				<td>Data misc</td>
 				<td style="text-align: center;">-</td>
 				<td style="text-align: center;">-</td>
@@ -479,7 +479,7 @@
 				<td style="text-align: right;">28</td>
 				<td>String</td>
 				<td style="color: #ff0000;">jahr</td>
-				<td style="text-align: left;">2017</td>
+				<td style="text-align: left;">2020</td>
 				<td>Data misc</td>
 				<td style="text-align: center;">-</td>
 				<td style="text-align: center;">-</td>
@@ -495,7 +495,7 @@
 				<td style="text-align: right;">29</td>
 				<td>String</td>
 				<td style="color: #ff0000;">titleString</td>
-				<td style="text-align: left;">ClusterGraphix 0.95.3</td>
+				<td style="text-align: left;">ClusterGraphix 0.96.0</td>
 				<td>Data misc</td>
 				<td style="text-align: center;">-</td>
 				<td style="text-align: center;">-</td>
@@ -568,7 +568,7 @@
 				<td style="text-align: center;">-</td>
 				<td>ClusterBot</td>
 				<td>clusterBot</td>
-				<td>true</td>
+				<td>false</td>
 				<td>Cluster bot memory</td>
 			</tr>
 			<tr>
@@ -664,7 +664,7 @@
 				<td style="text-align: center;">-</td>
 				<td>PixelObjectMembership</td>
 				<td>pixelObjectMembership[][]</td>
-				<td>true</td>
+				<td>false</td>
 				<td>Pixel object description with associated clusters</td>
 			</tr>
 			<tr>
