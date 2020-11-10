@@ -119,7 +119,7 @@ WritePbm 0.1.1 (2020-07-18) +
 * Error-Variable
 * quickCheck()
 
-=== ClusterGraphics 0.94.6
+=== ClusterGraphics 0.94.6 (2014-04-27)
 * file import/export
 * ClusterBot visualisation
 * extended viPath from Possibil and fuzzy
@@ -129,5 +129,115 @@ WritePbm 0.1.1 (2020-07-18) +
 * main-methode
 * import/export of pixel objects in pbm format
 
-=== ClusterGraphics 0.94.3 (2013)
+ClusterBot 0.0.2 (2013-02-28) +
+ClusterFile 0.0.3 (2013-03-24) +
+ClusterExpert 0.2.2 (2010-10-1) +
+ClusterGraphics 0.94.6 (2014-04-27) +
+ClusterMaster 0.4.3 (2012-06-29) +
+FuzzyCMeans 1.5.4 (2012-02-28) +
+PossibilisticCMeans 1.1.4 (2012-02-28) +
+Punkt2D 1.1.0 (2013-02-27)
+
+=== ClusterGraphics 0.94.5 (2013-10-08)
+ClusterBot 0.0.2 (2013-02-28) +
+ClusterFile 0.0.3 (2013-03-24) +
+ClusterExpert 0.2.2 (2010-10-1) +
+ClusterGraphics 0.94.5 (2013-10-08) +
+ClusterMaster 0.4.3 (2012-06-29) +
+FuzzyCMeans 1.5.4 (2012-02-28) +
+PossibilisticCMeans 1.1.4 (2012-02-28) +
+Punkt2D 1.1.0 (2013-02-27)
+
+=== ClusterGraphics 0.94.4 (2013-04-20)
+ClusterBot 0.0.2 (2013-02-28) +
+ClusterFile 0.0.3 (2013-03-24) +
+ClusterExpert 0.2.2 (2010-10-1) +
+ClusterGraphics 0.94.4 (2013-04-20) +
+ClusterMaster 0.4.3 (2012-06-29) +
+FuzzyCMeans 1.5.4 (2012-02-28) +
+PossibilisticCMeans 1.1.4 (2012-02-28) +
+Punkt2D 1.1.0 (2013-02-27)
+
+=== ClusterGraphics 0.94.3b (2013-01-01)
+ClusterBot 0.0.2 (2013-02-28) +
+ClusterFile 0.0.3 (2013-03-24) +
+ClusterExpert 0.2.2 (2010-10-1) +
+ClusterGraphics 0.94.3 (2013-01-01) +
+ClusterMaster 0.4.3 (2012-06-29) +
+FuzzyCMeans 1.5.4 (2012-02-28) +
+PossibilisticCMeans 1.1.4 (2012-02-28) +
+Punkt2D 1.1.0 (2013-02-27)
+
+=== ClusterGraphics 0.94.3a (2013-01-01)
+ClusterBot 0.0.1 (2013-02-10) +
+ClusterFile 0.0.2 (2012-12-05) +
+ClusterExpert 0.2.2 (2010-10-1) +
+ClusterGraphics 0.94.3 (2013-01-01) +
+ClusterMaster 0.4.3 (2012-06-29) +
+FuzzyCMeans 1.5.4 (2012-02-28) +
+PossibilisticCMeans 1.1.4 (2012-02-28) +
+Punkt2D 1.0.0 (2012-02-28)
+
+=== ClusterGraphics 0.94.3 (2013-01-01)
 * A lot of bug fixes and new Clusterfreak Logo
+
+ClusterFile 0.0.2 (2012-12-05) +
+ClusterExpert 0.2.2 (2010-10-1) +
+ClusterGraphics 0.94.3 (2013-01-01) +
+ClusterMaster 0.4.3 (2012-06-29) +
+FuzzyCMeans 1.5.4 (2012-02-28) +
+PossibilisticCMeans 1.1.4 (2012-02-28)
+
+=== ClusterGraphics 0.94.2b (2012-02-14)
+ClusterFile 0.0.2 (2012-12-05) +
+ClusterExpert 0.2.2 (2010-10-1) +
+ClusterGraphics 0.94.2 (2012-02-14) +
+ClusterMaster 0.4.3 (2012-06-29) +
+FuzzyCMeans 1.5.4 (2012-02-28) +
+PossibilisticCMeans 1.1.4 (2012-02-28) +
+
+=== ClusterGraphics 0.94.2a (2012-02-14)
+ClusterFile 0.0.1 (2012-06-30) +
+ClusterExpert 0.2.2 (2010-10-1) +
+ClusterGraphics 0.94.2 (2012-02-14) +
+ClusterMaster 0.4.3 (2012-06-29) +
+FuzzyCMeans 1.5.4 (2012-02-28) +
+PossibilisticCMeans 1.1.4 (2012-02-28)
+
+=== ClusterGraphics 0.94.2 (2012-02-14)
+ClusterExpert 0.2.2 (2010-10-1) +
+ClusterGraphics 0.94.2 (2012-02-14) +
+ClusterMaster 0.4.2 (2011-10-01) +
+FuzzyCMeans 1.5.4 (2012-02-28) +
+PossibilisticCMeans 1.1.4 (2012-02-28)
+
+=== ClusterGraphics V0.94.1 (2012-01-18)
+
+=== ClusterGraphics 0.93.1 (2011-01-27)
+ClusterExpert V0.2.1 (2007-04-05) +
+ClusterGraphics V0.93.1 (2011-01-27) +
+ClusterMaster V0.4.1 (2011-01-16) +
+FuzzyCMeans V1.5.2 (2011-01-24) +
+PossibilisticCMeans V1.1.2 (2011-01-24)
+
+=== ClusterGraphics V0.92.0 (2010-12-20)
+
+=== ClusterGraphics 0.9.0 (2010-08-15)
+ClusterExpert V0.2.1 (2007-04-05) +
+ClusterFreak V0.1.1 (2007-04-06) +
+ClusterGraphics V0.9.0 (2010-08-15) +
+ClusterMaster V0.4.0 (2010-04-14) +
+FuzzyCMeans V1.5.1 (2007-04-06) +
+PossibilisticCMeans V1.1.1 (2007-04-07)
+
+=== ClusterGraphics 0.8.4 (2007-05-09)
+ClusterExpert V0.2.1 (2007-04-05) +
+ClusterFreak V0.1.1 (2007-04-06) +
+ClusterGraphics V0.8.4 (2007-05-09) +
+ClusterMaster V0.1.0 (2009-02-28) +
+FuzzyCMeans V1.5.1 (2007-04-06) +
+PossibilisticCMeans V1.1.1 (2007-04-07)
+
+=== ClusterGraphics V0.6.0 (2006-06-06)
+=== ClusterGraphics V0.5.0 (2006-03-12)
+=== ClusterGraphics V0.3.0 (2005-05-10)
