@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c6585eea-eb7a-4751-9fab-c613a490b309" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/README.adoc" beforeDir="false" afterPath="$PROJECT_DIR$/README.adoc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,6 +15,9 @@
   </component>
   <component name="CodeStyleSettingsInfer">
     <option name="done" value="true" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -24,16 +28,12 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="JupyterTrust" id="cf85a66d-393b-46ab-98a9-1f11be10c3f9" />
+  <component name="KotlinMultiplatform">
+    <allAvailableExecutables />
+  </component>
   <component name="KubernetesApiPersistence">
     <option name="context" value="docker-desktop" />
     <option name="namespace" value="default" />
-  </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHome" value="$APPLICATION_HOME_DIR$/plugins/maven/lib/maven3" />
-      </MavenGeneralSettings>
-    </option>
   </component>
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="1" />
@@ -45,12 +45,31 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="preferences.pathVariables" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.ClusterGraphix">
     <configuration name="ClusterGraphix" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="de.clusterfreak.ClusterGraphix.ClusterGraphix" />
+      <module name="ClusterGraphix" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="de.clusterfreak.ClusterGraphix.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ClusterTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="de.clusterfreak.ClusterGraphix.ClusterTest" />
       <module name="ClusterGraphix" />
       <extension name="coverage">
         <pattern>
@@ -76,6 +95,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.ClusterGraphix" />
+        <item itemvalue="Application.ClusterTest" />
       </list>
     </recent_temporary>
   </component>
@@ -89,32 +109,35 @@
       <updated>1604951246699</updated>
       <workItem from="1604951249959" duration="152000" />
       <workItem from="1604951473204" duration="1759000" />
+      <workItem from="1605375180941" duration="83000" />
+      <workItem from="1605375545086" duration="20000" />
+      <workItem from="1605379068891" duration="153000" />
+      <workItem from="1605379737051" duration="14000" />
+      <workItem from="1605800233809" duration="373000" />
+      <workItem from="1605801069896" duration="327000" />
+      <workItem from="1605809998570" duration="50000" />
+      <workItem from="1605957330444" duration="461000" />
+      <workItem from="1606855578067" duration="150000" />
+      <workItem from="1607184418263" duration="65000" />
+      <workItem from="1607184647014" duration="205000" />
+      <workItem from="1609079882987" duration="74000" />
+      <workItem from="1609079988688" duration="79000" />
+      <workItem from="1609339283973" duration="60000" />
+      <workItem from="1609339698376" duration="81000" />
+      <workItem from="1609340151002" duration="20000" />
+      <workItem from="1609409544025" duration="21000" />
+      <workItem from="1609852265620" duration="76000" />
+      <workItem from="1609852383475" duration="3000" />
+      <workItem from="1611131838736" duration="1223000" />
+      <workItem from="1611690157182" duration="62000" />
+      <workItem from="1611733071650" duration="86000" />
+      <workItem from="1620922272725" duration="94000" />
+      <workItem from="1621084556369" duration="517000" />
+      <workItem from="1621099419696" duration="87000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="184" y="104" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1604951605813">
-      <screen x="0" y="23" width="1440" height="836" />
-    </state>
-    <state x="184" y="104" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.836@0.23.1440.836" timestamp="1604951605813" />
-    <state width="1398" height="217" key="GridCell.Tab.0.bottom" timestamp="1604953339704">
-      <screen x="0" y="23" width="1440" height="836" />
-    </state>
-    <state width="1398" height="217" key="GridCell.Tab.0.bottom/0.23.1440.836@0.23.1440.836" timestamp="1604953339704" />
-    <state width="1398" height="217" key="GridCell.Tab.0.center" timestamp="1604953339703">
-      <screen x="0" y="23" width="1440" height="836" />
-    </state>
-    <state width="1398" height="217" key="GridCell.Tab.0.center/0.23.1440.836@0.23.1440.836" timestamp="1604953339703" />
-    <state width="1398" height="217" key="GridCell.Tab.0.left" timestamp="1604953339703">
-      <screen x="0" y="23" width="1440" height="836" />
-    </state>
-    <state width="1398" height="217" key="GridCell.Tab.0.left/0.23.1440.836@0.23.1440.836" timestamp="1604953339703" />
-    <state width="1398" height="217" key="GridCell.Tab.0.right" timestamp="1604953339704">
-      <screen x="0" y="23" width="1440" height="836" />
-    </state>
-    <state width="1398" height="217" key="GridCell.Tab.0.right/0.23.1440.836@0.23.1440.836" timestamp="1604953339704" />
   </component>
 </project>
