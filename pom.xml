@@ -6,7 +6,7 @@
     <!-- Correct Coordinates -->
     <groupId>de.clusterfreak</groupId>
     <artifactId>ClusterGraphix</artifactId>
-    <version>0.96</version>
+    <version>0.96.1</version>
     <!-- Project Name, Description and URL -->
     <name>${project.artifactId}</name>
     <description>Core classes for cluster analysis</description>
@@ -15,7 +15,7 @@
     <licenses>
         <license>
             <name>MIT License</name>
-            <url>http://www.opensource.org/licenses/mit-license.php</url>
+            <url>https://www.opensource.org/licenses/mit-license.php</url>
         </license>
     </licenses>
     <!-- Developer Information -->
@@ -29,9 +29,9 @@
     </developers>
     <!-- Java Version -->
     <properties>
-        <maven.compiler.release>14</maven.compiler.release>
-        <maven.compiler.source>14</maven.compiler.source>
-        <maven.compiler.target>14</maven.compiler.target>
+        <maven.compiler.release>16</maven.compiler.release>
+        <maven.compiler.source>16</maven.compiler.source>
+        <maven.compiler.target>16</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <build>
