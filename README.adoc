@@ -1,6 +1,7 @@
 :encoding: iso-8859-1
 :icons: font
-= ClusterGraphix 0.96 (2020-07-18) - [new beta branch is V0.96.1 !!!]
+= ClusterGraphix 0.96 (2020-07-18) +
+[new beta branch is V0.96.1 !!!]
 Thomas Heym <thomas.heym@clusterfreak.de>
 0.96, 2020-07-18
 
