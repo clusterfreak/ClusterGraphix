@@ -5,8 +5,8 @@ import javax.swing.*;
 /**
  * ClusterGraphix meta data
  *
- * @author Thomas HEYM
- * @version 0.1.5 (2020-07-18)
+ * @author Thomas Heym
+ * @version 0.1.6 (2021-05-16)
  */
 public class ClusterData {
     public static int length = 41;
@@ -20,7 +20,7 @@ public class ClusterData {
     public static String[] name = {"pixel", "pixelDim", "pixelOffset", "pixelOriginal", "cluster", "objects", "object",
             "objectMembership", "vi", "viPath", "pathOption", "descriptionDisplay", "repeat", "mik", "e", "calculate",
             "fuzzyCMeans", "possibilisticCMeans", "sortCluster", "fiftyFiftyJoker", "clusterMax", "pixelObject",
-            "pixelVi", "pixelViPath", "pixelString", "zoom", "title", "version", "jahr", "titleString", "ready",
+            "pixelVi", "pixelViPath", "pixelString", "zoom", "title", "version", "year", "titleString", "ready",
             "clusterfreak", "clusterFile", "clusterBot", "error", "headUpDisplay", "random", "developerMode", "improve",
             "pixelObjectMembership", "clusterCircle"};
     public static String[] description = {"General importance for conversion and saving", "Pixel resolution",
@@ -43,7 +43,7 @@ public class ClusterData {
             "Cluster as a circle"};
     public static String[] initial = {"true", "2", "100", "true", "1", "0", "null", "[0][0]", "[0][2]", "null",
             "false", "false", "1", "[0][0]", "1.0e-7", "false", "true", "false", "true", "false", "false", "[100]",
-            "[100]", "[100]", "0", "5", "", "0.96.0", "2020", "ClusterGraphix " + "0.96.0", " ready", "{...", "false",
+            "[100]", "[100]", "0", "5", "", "0.96.1", "2021", "ClusterGraphix " + "0.96.1", " ready", "{...", "false",
             "0", "false", "true", "true", "false", "true", "[100]", "true"};
     public static String[] gui = {"Menu pixelMode", "Data misc", "Data misc", "", "Data misc", "Data misc",
             "Data object", "Data objectMembership", "Data vi", "Data viPath", "Menu pathOption",
@@ -71,14 +71,14 @@ public class ClusterData {
     public static String[] nameCapital = {"Pixel", "PixelDim", "PixelOffset", "PixelOriginal", "Cluster", "Objects",
             "Object", "ObjectMembership", "Vi", "ViPath", "PathOption", "DescriptionDisplay", "Repeat", "Mik", "E",
             "Calculate", "FuzzyCMeans", "PossibilisticCMeans", "SortCluster", "FiftyFiftyJoker", "ClusterMax",
-            "PixelObject", "PixelVi", "PixelViPath", "PixelString", "Zoom", "Title", "Version", "Jahr", "TitleString",
+            "PixelObject", "PixelVi", "PixelViPath", "PixelString", "Zoom", "Title", "Version", "Year", "TitleString",
             "Ready", "Clusterfreak", "ClusterFile", "ClusterBot", "Error", "HeadUpDisplay", "Random", "DeveloperMode",
             "Improve", "PixelObjectMembership", "ClusterCircle"};
     public static String[] nameExtended = {"pixel", "pixelDim", "pixelOffset", "pixelOriginal", "cluster", "objects",
             "object[][]", "objectMembership[][]", "vi[][]", "viPath[][]", "pathOption", "descriptionDisplay", "repeat",
             "mik[][]", "e", "calculate", "fuzzyCMeans", "possibilisticCMeans", "sortCluster", "fiftyFiftyJoker",
             "clusterMax", "pixelObject[][]", "pixelVi[][]", "pixelViPath[][]", "pixelString[]", "zoom", "title",
-            "version", "jahr", "titleString", "ready", "clusterfreak", "clusterFile", "clusterBot", "error",
+            "version", "year", "titleString", "ready", "clusterfreak", "clusterFile", "clusterBot", "error",
             "headUpDisplay", "random", "developerMode", "improve", "pixelObjectMembership[][]", "clusterCircle"};
     public static String[] indexString2 = {"00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11",
             "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29",

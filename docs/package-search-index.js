@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"de.clusterfreak.ClusterGraphix"}]
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"de.clusterfreak.ClusterGraphix"}];updateSearchResults();

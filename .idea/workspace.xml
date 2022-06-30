@@ -6,9 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="c6585eea-eb7a-4751-9fab-c613a490b309" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" />
+<<<<<<< Updated upstream
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClusterGraphix.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ClusterGraphix.iml" afterDir="false" />
+=======
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.adoc" beforeDir="false" afterPath="$PROJECT_DIR$/README.adoc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+>>>>>>> Stashed changes
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,15 +50,29 @@
     <option name="version" value="2" />
   </component>
   <component name="ProjectId" id="1k4E1LaRLfdUT8lJg30dsJNODvW" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< Updated upstream
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "WebServerToolWindowFactoryState": "false"
+    "WebServerToolWindowFactoryState": "false",
+    "project.structure.last.edited": "SDKs",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2"
   }
 }]]></component>
+=======
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;
+  }
+}</component>
+>>>>>>> Stashed changes
   <component name="RunManager" selected="Application.ClusterGraphix">
     <configuration name="ClusterGraphix" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="de.clusterfreak.ClusterGraphix.ClusterGraphix" />
@@ -76,6 +96,19 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -122,8 +155,23 @@
       <workItem from="1620922272725" duration="94000" />
       <workItem from="1621084556369" duration="517000" />
       <workItem from="1621099419696" duration="762000" />
+<<<<<<< Updated upstream
+      <workItem from="1621153127574" duration="5574000" />
+      <workItem from="1621163894496" duration="118000" />
+      <workItem from="1621164268116" duration="413000" />
+      <workItem from="1621322050560" duration="864000" />
+      <workItem from="1621422983968" duration="174000" />
+      <workItem from="1622644940715" duration="216000" />
+      <workItem from="1635611261757" duration="192000" />
+      <workItem from="1635928097771" duration="26000" />
+      <workItem from="1638264774786" duration="39000" />
+      <workItem from="1639563447408" duration="126000" />
+      <workItem from="1656588021442" duration="195000" />
+=======
       <workItem from="1621163468664" duration="301000" />
-      <workItem from="1656589622694" duration="294000" />
+      <workItem from="1656588575169" duration="24000" />
+      <workItem from="1656588861262" duration="380000" />
+>>>>>>> Stashed changes
     </task>
     <servers />
   </component>
@@ -140,5 +188,8 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>
