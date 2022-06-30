@@ -1,8 +1,8 @@
 :encoding: iso-8859-1
 :icons: font
-= ClusterGraphix 0.96 (2020-07-18) - [beta branch is V0.96.1]
+= ClusterGraphix 0.96.1 (2021-05-16)
 Thomas Heym <thomas.heym@clusterfreak.de>
-0.96, 2020-07-18
+0.96.1, 2021-05-16
 
 == Display of objects and clusters - Grafische Anzeige von Punktemengen und Klassenzentren
 image:https://img.shields.io/github/v/release/clusterfreak/ClusterGraphix?[]
@@ -13,10 +13,10 @@ image:https://img.shields.io/github/license/clusterfreak/ClusterGraphix?[]
 image::https://files.clusterfreak.com/ClusterGraphicsInfo.png[]
 image::https://files.clusterfreak.com/ScreenshotV0.96.0.png[]
 
-ClusterGraphix 0.96.0 (2020-07-18) +
+ClusterGraphix 0.96.1 (2021-05-16) +
 ClusterBot 0.1.2 (2020-07-18) +
 ClusterBotNet 0.1.2 (2020-07-18) +
-ClusterData 0.1.5 (2020-07-18) +
+ClusterData 0.1.6 (2021-05-16) +
 ClusterFile 0.1.2 (2020-07-18) +
 ClusterQuality 0.1.1 (2020-07-18) +
 ClusterTest 0.1.1 (2020-07-18) +
@@ -26,6 +26,12 @@ WritePbm 0.1.1 (2020-07-18) +
 * clusterCenterPointNumber 99999999 when not found
 
 == Release Notes
+=== ClusterGraphix 0.96.1 (2021-05-16) +
+* ClusterCore 1.1.4
+* Delete lib folder, Intellij Maven Integration
+* Rename variable 28 jahr -> year
+* ClusterGraphix: Info Frame, Code optimization
+
 === ClusterGraphix 0.96 (2020-07-18) +
 * delete Packages ClusterCore and ClusterTest, integrate ClusterCore 1.1.3
 * delete Class CoreTest and integrate into ClusterTest
@@ -79,20 +85,20 @@ WritePbm 0.1.1 (2020-07-18) +
 * rename fiftyFiftyJoker
 * clear file chooser all the time
 * Core classes
-	* ClusterData v0.1.0
-		* new initial values
-		* extended error handling
-	* FuzzyCMeans v1.6.0, PossibilisticCMeans v1.2.0
-		* if NaN-Error mik=1.0
-		* separate getViPath method
-	* ClusterFile v0.1.0
-		* stable release
-	* ClusterBot v0.1.0
-		* add pointPixel[] and centerPixel
-	* Point2D v1.3.0
-		* new function toPointPixel(int pixelOffset)
-	* PointPixel v1.0.0
-		* new class for ClusterBot
+* ClusterData v0.1.0
+* new initial values
+* extended error handling
+* FuzzyCMeans v1.6.0, PossibilisticCMeans v1.2.0
+* if NaN-Error mik=1.0
+* separate getViPath method
+* ClusterFile v0.1.0
+* stable release
+* ClusterBot v0.1.0
+* add pointPixel[] and centerPixel
+* Point2D v1.3.0
+* new function toPointPixel(int pixelOffset)
+* PointPixel v1.0.0
+* new class for ClusterBot
 
 === ClusterGraphics 0.94.9 (2015-09-17)
 * download function for data file
@@ -104,7 +110,7 @@ WritePbm 0.1.1 (2020-07-18) +
 * application icon image
 * rename durchlauf to pass
 * ClusterFile v0.0.5 (22.09.2015)
-	* common functions moved to ClusterData
+* common functions moved to ClusterData
 * ClusterData v0.0.2 (28.12.2015)
 * FuzzyCMeans v1.5.5 (28.12.2015)
 * Punkt2D v1.2.0 (28.12.2015)
