@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c6585eea-eb7a-4751-9fab-c613a490b309" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -49,7 +49,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="RunManager" selected="Application.ClusterGraphix">
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "WebServerToolWindowFactoryState": "false",
+    "project.structure.last.edited": "SDKs",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2"
+  }
+}]]></component>
+  <component name="RunManager" selected="Application.ClusterTest">
     <configuration name="ClusterGraphix" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="de.clusterfreak.ClusterGraphix.ClusterGraphix" />
       <module name="ClusterGraphix" />
@@ -76,10 +84,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ClusterGraphix" />
         <item itemvalue="Application.ClusterTest" />
+        <item itemvalue="Application.ClusterGraphix" />
       </list>
     </recent_temporary>
   </component>
@@ -118,6 +132,9 @@
       <workItem from="1620922272725" duration="94000" />
       <workItem from="1621084556369" duration="517000" />
       <workItem from="1621099419696" duration="762000" />
+      <workItem from="1656592075181" duration="1734000" />
+      <workItem from="1663844138289" duration="46000" />
+      <workItem from="1663856814065" duration="404000" />
     </task>
     <servers />
   </component>
