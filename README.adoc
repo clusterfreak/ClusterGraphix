@@ -1,8 +1,8 @@
 :encoding: iso-8859-1
 :icons: font
-= ClusterGraphix 0.96.1 (2021-05-16)
+= ClusterGraphix 0.96.2 (2022-09-24)
 Thomas Heym <thomas.heym@clusterfreak.de>
-0.96.1, 2021-05-16
+0.96.2, 2022-09-24
 
 == Display of objects and clusters - Grafische Anzeige von Punktemengen und Klassenzentren
 image:https://img.shields.io/github/v/release/clusterfreak/ClusterGraphix?[]
@@ -13,19 +13,22 @@ image:https://img.shields.io/github/license/clusterfreak/ClusterGraphix?[]
 image::https://files.clusterfreak.com/ClusterGraphicsInfo.png[]
 image::https://files.clusterfreak.com/ScreenshotV0.96.0.png[]
 
-ClusterGraphix 0.96.1 (2021-05-16) +
-ClusterBot 0.1.2 (2020-07-18) +
-ClusterBotNet 0.1.2 (2020-07-18) +
-ClusterData 0.1.6 (2021-05-16) +
-ClusterFile 0.1.2 (2020-07-18) +
-ClusterQuality 0.1.1 (2020-07-18) +
-ClusterTest 0.1.1 (2020-07-18) +
-WritePbm 0.1.1 (2020-07-18) +
+ClusterGraphix 0.96.2 (2022-09-24) +
+ClusterBot 0.1.3 (2022-09-24) +
+ClusterBotNet 0.1.3 (2022-09-24) +
+ClusterData 0.1.7 (2022-09-24) +
+ClusterFile 0.1.3 (2022-09-24) +
+ClusterQuality 0.1.2 (2022-09-24) +
+ClusterTest 0.1.2 (2022-09-24) +
+WritePbm 0.1.3 (2022-09-24) +
 
 == Bugs
 * clusterCenterPointNumber 99999999 when not found
 
 == Release Notes
+=== ClusterGraphix 0.96.2 (2022-09-24) +
+* Fixed JavaDoc Warnings and Security Alert with JavaDoc 19
+
 === ClusterGraphix 0.96.1 (2021-05-16) +
 * ClusterCore 1.1.4
 * Delete lib folder, Intellij Maven Integration

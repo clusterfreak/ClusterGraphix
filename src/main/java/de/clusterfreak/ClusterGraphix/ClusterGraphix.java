@@ -27,9 +27,12 @@ import java.util.*;
  * Display of objects and clusters with integrated cluster analysis
  *
  * @author Thomas Heym
- * @version 0.96.1 (2021-05-16)
+ * @version 0.96.2 (2022-09-24)
  */
 public class ClusterGraphix extends JPanel implements ActionListener {
+    /**
+     * long serialVersionUID
+     */
     @Serial
     private static final long serialVersionUID = -3221752010018099832L;
     /**
@@ -140,67 +143,232 @@ public class ClusterGraphix extends JPanel implements ActionListener {
      * Variables
      */
     private final ClusterFile clusterFile = new ClusterFile();
+    /**
+     * JLabel l
+     */
     private final JLabel l = new JLabel();
     /**
-     * Menu main frame
+     * JMenuBar clusterMenu
      */
     private final JMenuBar clusterMenu = new JMenuBar();
+    /**
+     * JMenu clusterMenuFile
+     */
     private final JMenu clusterMenuFile = new JMenu("File");
+    /**
+     * JMenuItem clusterMenuFileOpen
+     */
     private final JMenuItem clusterMenuFileOpen = new JMenuItem("Open");
+    /**
+     * JMenuItem clusterMenuFileSave
+     */
     private final JMenuItem clusterMenuFileSave = new JMenuItem("Save");
+    /**
+     * JMenuItem clusterMenuFileValidate
+     */
     private final JMenuItem clusterMenuFileValidate = new JMenuItem("Validate");
+    /**
+     * JMenuItem clusterMenuFileImport
+     */
     private final JMenuItem clusterMenuFileImport = new JMenuItem("Import");
+    /**
+     * JMenuItem clusterMenuFileExport
+     */
     private final JMenuItem clusterMenuFileExport = new JMenuItem("Export");
+    /**
+     * JMenu clusterMenuView
+     */
     private final JMenu clusterMenuView = new JMenu("View");
+    /**
+     * JCheckBoxMenuItem clusterMenuViewPixelMode
+     */
     private final JCheckBoxMenuItem clusterMenuViewPixelMode = new JCheckBoxMenuItem("PixelMode", true);
+    /**
+     * JCheckBoxMenuItem clusterMenuViewPathOption
+     */
     private final JCheckBoxMenuItem clusterMenuViewPathOption = new JCheckBoxMenuItem("pathOption", false);
+    /**
+     * JCheckBoxMenuItem clusterMenuViewDescriptionDisplay
+     */
     private final JCheckBoxMenuItem clusterMenuViewDescriptionDisplay = new JCheckBoxMenuItem("descriptionDisplay",
             false);
+    /**
+     * JCheckBoxMenuItem clusterMenuViewHeadUpDisplay
+     */
     private final JCheckBoxMenuItem clusterMenuViewHeadUpDisplay = new JCheckBoxMenuItem("headUpDisplay", true);
+    /**
+     * JCheckBoxMenuItem clusterMenuViewClusterCircle
+     */
     private final JCheckBoxMenuItem clusterMenuViewClusterCircle = new JCheckBoxMenuItem("clusterCircle", true);
+    /**
+     * JMenuItem clusterMenuViewRefresh
+     */
     private final JMenuItem clusterMenuViewRefresh = new JMenuItem("refresh");
+    /**
+     * JMenu clusterMenuZoom
+     */
     private final JMenu clusterMenuZoom = new JMenu("Zoom");
+    /**
+     * JMenuItem clusterMenuZoomDefault
+     */
     private final JMenuItem clusterMenuZoomDefault = new JMenuItem("default");
+    /**
+     * JMenuItem clusterMenuZoomOut
+     */
     private final JMenuItem clusterMenuZoomOut = new JMenuItem("+");
+    /**
+     * JMenuItem clusterMenuZoomIn
+     */
     private final JMenuItem clusterMenuZoomIn = new JMenuItem("-");
+    /**
+     * JMenu clusterMenuData
+     */
     private final JMenu clusterMenuData = new JMenu("Data");
+    /**
+     * JMenuItem clusterMenuDataShow
+     */
     private final JMenuItem clusterMenuDataShow = new JMenuItem("Show");
+    /**
+     * JMenuItem clusterMenuDataCheck
+     */
     private final JMenuItem clusterMenuDataCheck = new JMenuItem("Check");
+    /**
+     * JMenuItem clusterMenuDataCalculate
+     */
     private final JMenuItem clusterMenuDataCalculate = new JMenuItem("Calc", KeyEvent.VK_F8);
+    /**
+     * JMenu clusterMenuSet
+     */
     private final JMenu clusterMenuSet = new JMenu("Set");
+    /**
+     * JMenuItem clusterMenuSetPixelDim
+     */
     private final JMenuItem clusterMenuSetPixelDim = new JMenuItem("pixelDim");
+    /**
+     * JMenuItem clusterMenuSetCluster
+     */
     private final JMenuItem clusterMenuSetCluster = new JMenuItem("cluster");
+    /**
+     * JMenuItem clusterMenuSetE
+     */
     private final JMenuItem clusterMenuSetE = new JMenuItem("e");
+    /**
+     * JRadioButtonMenuItem clusterMenuSetFuzzyCMeans
+     */
     private final JRadioButtonMenuItem clusterMenuSetFuzzyCMeans = new JRadioButtonMenuItem("FuzzyCMeans", true);
+    /**
+     * JRadioButtonMenuItem clusterMenuSetPossibilisticCMeans
+     */
     private final JRadioButtonMenuItem clusterMenuSetPossibilisticCMeans = new JRadioButtonMenuItem(
             "PossibilisticCMeans", false);
+    /**
+     * ButtonGroup clusterButtonGroupSet1
+     */
     private final ButtonGroup clusterButtonGroupSet1 = new ButtonGroup();
+    /**
+     * JMenuItem clusterMenuSetRepeat
+     */
     private final JMenuItem clusterMenuSetRepeat = new JMenuItem("repeat");
+    /**
+     * JCheckBoxMenuItem clusterMenuSetRandom
+     */
     private final JCheckBoxMenuItem clusterMenuSetRandom = new JCheckBoxMenuItem("random", true);
+    /**
+     * JCheckBoxMenuItem clusterMenuSetImprove
+     */
     private final JCheckBoxMenuItem clusterMenuSetImprove = new JCheckBoxMenuItem("improve", true);
+    /**
+     * JCheckBoxMenuItem clusterMenuSetSortCluster
+     */
     private final JCheckBoxMenuItem clusterMenuSetSortCluster = new JCheckBoxMenuItem("SortCluster", true);
+    /**
+     * JRadioButtonMenuItem clusterMenuSetFiftyFiftyJoker
+     */
     private final JRadioButtonMenuItem clusterMenuSetFiftyFiftyJoker = new JRadioButtonMenuItem("FiftyFiftyJoker",
             false);
+    /**
+     * JRadioButtonMenuItem clusterMenuSetClusterMax
+     */
     private final JRadioButtonMenuItem clusterMenuSetClusterMax = new JRadioButtonMenuItem("ClusterMax", false);
+    /**
+     * ButtonGroup clusterButtonGroupSet2
+     */
     private final ButtonGroup clusterButtonGroupSet2 = new ButtonGroup();
+    /**
+     * JMenuItem clusterMenuSetTitle
+     */
     private final JMenuItem clusterMenuSetTitle = new JMenuItem("title");
+    /**
+     * JMenu clusterMenuTools
+     */
     private final JMenu clusterMenuTools = new JMenu("Tools");
+    /**
+     * JMenuItem clusterMenuToolsError
+     */
     private final JMenuItem clusterMenuToolsError = new JMenuItem("Error");
+    /**
+     * JMenuItem clusterMenuToolsAddPoint
+     */
     private final JMenuItem clusterMenuToolsAddPoint = new JMenuItem("Add Point");
+    /**
+     * JMenuItem clusterMenuToolsDelete
+     */
     private final JMenuItem clusterMenuToolsDelete = new JMenuItem("Delete Cluster");
+    /**
+     * JMenuItem clusterMenuToolsDeleteNotAssigned
+     */
     private final JMenuItem clusterMenuToolsDeleteNotAssigned = new JMenuItem("Delete not assigned");
+    /**
+     * JMenuItem clusterMenuToolsClearAll
+     */
     private final JMenuItem clusterMenuToolsClearAll = new JMenuItem("Clear All");
+    /**
+     * JMenu clusterMenuHelp
+     */
     private final JMenu clusterMenuHelp = new JMenu("?");
+    /**
+     * JMenuItem clusterMenuHelpDataFile
+     */
     private final JMenuItem clusterMenuHelpDataFile = new JMenuItem("DataFile");
+    /**
+     * JMenuItem clusterMenuHelpExample1
+     */
     private final JMenuItem clusterMenuHelpExample1 = new JMenuItem("Example 1");
+    /**
+     * JMenuItem clusterMenuHelpExample2
+     */
     private final JMenuItem clusterMenuHelpExample2 = new JMenuItem("Example 2");
+    /**
+     * JCheckBoxMenuItem clusterMenuHelpDeveloperMode
+     */
     private final JCheckBoxMenuItem clusterMenuHelpDeveloperMode = new JCheckBoxMenuItem("DeveloperMode", false);
+    /**
+     * JMenuItem clusterMenuHelpInfo
+     */
     private final JMenuItem clusterMenuHelpInfo = new JMenuItem("Info");
+    /**
+     * JToolBar clusterToolBar
+     */
     private final JToolBar clusterToolBar = new JToolBar("ClusterGraphix");
+    /**
+     * JButton clusterButtonCalculate
+     */
     private final JButton clusterButtonCalculate = new JButton("Calculate");
+    /**
+     * JButton clusterButtonError
+     */
     private final JButton clusterButtonError = new JButton("Error");
+    /**
+     * ThreadGroup clusterThreadGroup
+     */
     private final ThreadGroup clusterThreadGroup = new ThreadGroup("CusterTreadGroup");
+    /**
+     * JFileChooser clusterChooser
+     */
     private final JFileChooser clusterChooser = new JFileChooser();
+    /**
+     * File clusterChooserFileClear
+     */
     private final File clusterChooserFileClear = new File("");
     /**
      * FileFilter for XML-files
@@ -231,42 +399,144 @@ public class ClusterGraphix extends JPanel implements ActionListener {
         }
     };
     /**
-     * Status bar main frame
+     * JLabel clusterStatus
      */
     private final JLabel clusterStatus = new JLabel();
+    /**
+     * JPanel validatePanel
+     */
     private final JPanel validatePanel = new JPanel();
+    /**
+     * JScrollPane validateScrollPane
+     */
     private final JScrollPane validateScrollPane = new JScrollPane();
+    /**
+     * String[] validateColHeads
+     */
     private final String[] validateColHeads = {"Typ", "Variable", "Data", "File"};
+    /**
+     * JTabbedPane tabbedPaneData
+     */
     private final JTabbedPane tabbedPaneData = new JTabbedPane();
+    /**
+     * JPanel objectPanel
+     */
     private final JPanel objectPanel = new JPanel();
+    /**
+     * JScrollPane objectScrollPane
+     */
     private final JScrollPane objectScrollPane = new JScrollPane();
+    /**
+     * String[] objectColHeads
+     */
     private final String[] objectColHeads = {"#", "X", "Y"};
+    /**
+     * JPanel membershipPanel
+     */
     private final JPanel membershipPanel = new JPanel();
+    /**
+     * JScrollPane membershipScrollPane
+     */
     private final JScrollPane membershipScrollPane = new JScrollPane();
+    /**
+     * JPanel viPanel
+     */
     private final JPanel viPanel = new JPanel();
+    /**
+     * JScrollPane viScrollPane
+     */
     private final JScrollPane viScrollPane = new JScrollPane();
+    /**
+     * String[] viColHeads
+     */
     private final String[] viColHeads = {"#", "X", "Y"};
+    /**
+     * JPanel mikPanel
+     */
     private final JPanel mikPanel = new JPanel();
+    /**
+     * JScrollPane mikScrollPane
+     */
     private final JScrollPane mikScrollPane = new JScrollPane();
+    /**
+     * JPanel viPathPanel
+     */
     private final JPanel viPathPanel = new JPanel();
+    /**
+     * JScrollPane viPathScrollPane
+     */
     private final JScrollPane viPathScrollPane = new JScrollPane();
+    /**
+     * String[] viPathColHeads
+     */
     private final String[] viPathColHeads = {"#", "X", "Y"};
+    /**
+     * JPanel pixelObjectPanel
+     */
     private final JPanel pixelObjectPanel = new JPanel();
+    /**
+     * JScrollPane pixelObjectScrollPane
+     */
     private final JScrollPane pixelObjectScrollPane = new JScrollPane();
+    /**
+     * JPanel pixelObjectMembershipPanel
+     */
     private final JPanel pixelObjectMembershipPanel = new JPanel();
+    /**
+     * JScrollPane pixelObjectMembershipScrollPane
+     */
     private final JScrollPane pixelObjectMembershipScrollPane = new JScrollPane();
+    /**
+     * JPanel pixelViPanel
+     */
     private final JPanel pixelViPanel = new JPanel();
+    /**
+     * JScrollPane pixelViScrollPane
+     */
     private final JScrollPane pixelViScrollPane = new JScrollPane();
+    /**
+     * JPanel pixelViPathPanel
+     */
     private final JPanel pixelViPathPanel = new JPanel();
+    /**
+     * JScrollPane pixelViPathScrollPane
+     */
     private final JScrollPane pixelViPathScrollPane = new JScrollPane();
+    /**
+     * JPanel pixelStringPanel
+     */
     private final JPanel pixelStringPanel = new JPanel();
+    /**
+     * JScrollPane pixelStringScrollPane
+     */
     private final JScrollPane pixelStringScrollPane = new JScrollPane();
+    /**
+     * String[] pixelStringColHeads
+     */
     private final String[] pixelStringColHeads = {"#", "String"};
+    /**
+     * JPanel miscPanel
+     */
     private final JPanel miscPanel = new JPanel();
+    /**
+     * JScrollPane miscScrollPane
+     */
     private final JScrollPane miscScrollPane = new JScrollPane();
+    /**
+     * String[] miscColHeads
+     */
     private final String[] miscColHeads = {"number", "type", "variable", "value", "data"};
+    /**
+     * JScrollPane checkScrollPane
+     */
     private final JScrollPane checkScrollPane = new JScrollPane();
+    /**
+     * JTextArea checkTextArea
+     */
     private final JTextArea checkTextArea = new JTextArea();
+    /**
+     * GregorianCalendar clusterCalendar
+     */
     private final GregorianCalendar clusterCalendar = new GregorianCalendar();
     /**
      * General importance for conversion and saving
@@ -422,6 +692,9 @@ public class ClusterGraphix extends JPanel implements ActionListener {
      * Pixel object description with associated clusters
      */
     private boolean[][] pixelObjectMembership = null;
+    /**
+     * clusterCircle
+     */
     private boolean clusterCircle;
     /**
      * Main frame
@@ -435,15 +708,45 @@ public class ClusterGraphix extends JPanel implements ActionListener {
      * Data frame
      */
     private JFrame fData;
+    /**
+     * JTable objectTable
+     */
     private JTable objectTable = new JTable();
+    /**
+     * JTable membershipTable
+     */
     private JTable membershipTable = new JTable();
+    /**
+     * JTable viTable
+     */
     private JTable viTable = new JTable();
+    /**
+     * JTable mikTable
+     */
     private JTable mikTable = new JTable();
+    /**
+     * JTable viPathTable
+     */
     private JTable viPathTable = new JTable();
+    /**
+     * JTable pixelObjectTable
+     */
     private JTable pixelObjectTable = new JTable();
+    /**
+     * JTable pixelViTable
+     */
     private JTable pixelViTable = new JTable();
+    /**
+     * JTable pixelViPathTable
+     */
     private JTable pixelViPathTable = new JTable();
+    /**
+     * JTable pixelStringTable
+     */
     private JTable pixelStringTable = new JTable();
+    /**
+     * JTable miscTable
+     */
     private JTable miscTable = new JTable();
     /**
      * Check report frame
@@ -453,8 +756,17 @@ public class ClusterGraphix extends JPanel implements ActionListener {
      * Info frame
      */
     private JFrame fInfo;
+    /**
+     * JLabel infoLabel1
+     */
     private JLabel infoLabel1 = new JLabel();
+    /**
+     * JLabel infoLabel2
+     */
     private JLabel infoLabel2 = new JLabel();
+    /**
+     * JLabel infoLabel3
+     */
     private JLabel infoLabel3 = new JLabel();
 
     /**

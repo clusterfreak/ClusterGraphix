@@ -4,9 +4,12 @@ package de.clusterfreak.ClusterGraphix;
  * Available data values for ClusterGraphix
  *
  * @author Thomas Heym
- * @version 0.1.2 (2020-07-18)
+ * @version 0.1.3 (2022-09-24)
  */
 public class ClusterFile {
+    /**
+     * data
+     */
     private final boolean[] data = ClusterData.data;
 
     /**

@@ -8,15 +8,26 @@ import de.clusterfreak.ClusterCore.PointPixel;
  * Functions for ClusterBots
  *
  * @author Thomas Heym
- * @version 0.1.2 (2020-07-18)
+ * @version 0.1.3 (2022-09-24)
  */
 public class ClusterBotNet {
+    /**
+     * clusterNet
+     */
     private final ClusterBot[] clusterNet;
 
+    /**
+     * ClusterBotNet
+     * @param net net
+     */
     public ClusterBotNet(ClusterBot[] net) {
         clusterNet = net;
     }
 
+    /**
+     * Get ClusterBots
+     * @return clusterbotNet
+     */
     public ClusterBot[] getClusterBots() {
         return clusterNet;
     }

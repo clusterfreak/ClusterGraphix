@@ -7,23 +7,72 @@ import de.clusterfreak.ClusterCore.PointPixel;
  * Cluster structure
  *
  * @author Thomas Heym
- * @version 0.1.2 (2020-07-18)
+ * @version 0.1.3 (2022-09-24)
  */
 public class ClusterBot {
+    /**
+     * number
+     */
     private int number;
+    /**
+     * name
+     */
     private String name;
+    /**
+     * pixelOffset
+     */
     private int pixelOffset;
+    /**
+     * points
+     */
     private int points;
+    /**
+     * point
+     */
     private Point2D[] point;
+    /**
+     * center
+     */
     private Point2D center;
+    /**
+     * pointsPixel
+     */
     private int pointsPixel = 0;
+    /**
+     * pointPixel
+     */
     private PointPixel[] pointPixel;
+    /**
+     * centerPixel
+     */
     private PointPixel centerPixel;
+    /**
+     * pointMik
+     */
     private double[][] pointMik;
+    /**
+     * offset
+     */
     private double[] offset = {0.0, 0.0};
+    /**
+     * modified
+     */
     private boolean modified;
+    /**
+     * radius
+     */
     private double radius;
 
+    /**
+     * Generate ClusterBot
+     * @param number number
+     * @param name name
+     * @param pixelOffset pixelOffset
+     * @param points points
+     * @param point point
+     * @param center center
+     * @param pointMik paintMik
+     */
     public ClusterBot(int number, String name, int pixelOffset, int points, Point2D[] point, Point2D center,
                       double[][] pointMik) {
         setNumber(number);
@@ -70,6 +119,7 @@ public class ClusterBot {
     }
 
     /**
+     * Return number
      * @return the number
      */
     public int getNumber() {
@@ -77,6 +127,7 @@ public class ClusterBot {
     }
 
     /**
+     * Set number
      * @param number the number to set
      */
     public void setNumber(int number) {
@@ -84,6 +135,7 @@ public class ClusterBot {
     }
 
     /**
+     * Get name
      * @return the name
      */
     public String getName() {
@@ -91,6 +143,7 @@ public class ClusterBot {
     }
 
     /**
+     * Set name
      * @param name the name to set
      */
     public void setName(String name) {
@@ -98,6 +151,7 @@ public class ClusterBot {
     }
 
     /**
+     * Get points
      * @return the points
      */
     public int getPoints() {
@@ -105,6 +159,7 @@ public class ClusterBot {
     }
 
     /**
+     * Set points
      * @param points the points to set
      */
     public void setPoints(int points) {
@@ -112,6 +167,7 @@ public class ClusterBot {
     }
 
     /**
+     * Get point 2D
      * @return the point
      */
     public Point2D[] getPoint() {
@@ -119,6 +175,7 @@ public class ClusterBot {
     }
 
     /**
+     * Set point 2D
      * @param point the point to set
      */
     public void setPoint(Point2D[] point) {
@@ -126,6 +183,7 @@ public class ClusterBot {
     }
 
     /**
+     * Get center
      * @return the center
      */
     public Point2D getCenter() {
@@ -133,6 +191,7 @@ public class ClusterBot {
     }
 
     /**
+     * Set center
      * @param center the center to set
      */
     public void setCenter(Point2D center) {
@@ -140,6 +199,7 @@ public class ClusterBot {
     }
 
     /**
+     * Get offset
      * @return the offset
      */
     public double[] getOffset() {
@@ -147,6 +207,7 @@ public class ClusterBot {
     }
 
     /**
+     * Set Offset
      * @param offset the offset to set
      */
     public void setOffset(double[] offset) {
@@ -154,6 +215,7 @@ public class ClusterBot {
     }
 
     /**
+     * Get pointsPixel
      * @return the pointsPixel
      */
     public int getPointsPixel() {
@@ -161,6 +223,7 @@ public class ClusterBot {
     }
 
     /**
+     * Set pointsPixel
      * @param pointsPixel the pointsPixel to set
      */
     public void setPointsPixel(int pointsPixel) {
@@ -168,6 +231,7 @@ public class ClusterBot {
     }
 
     /**
+     * Get pointPixel
      * @return the pointPixel
      */
     public PointPixel[] getPointPixel() {
@@ -175,6 +239,7 @@ public class ClusterBot {
     }
 
     /**
+     * Set pointPixel
      * @param pointPixel the pointPixel to set
      */
     public void setPointPixel(PointPixel[] pointPixel) {
@@ -182,6 +247,7 @@ public class ClusterBot {
     }
 
     /**
+     * Get centerPixel
      * @return the centerPixel
      */
     public PointPixel getCenterPixel() {
@@ -189,6 +255,7 @@ public class ClusterBot {
     }
 
     /**
+     * Set centerPixel
      * @param centerPixel the centerPixel to set
      */
     public void setCenterPixel(PointPixel centerPixel) {
@@ -196,6 +263,7 @@ public class ClusterBot {
     }
 
     /**
+     * Get pointMik
      * @return the pointMik
      */
     public double[][] getPointMik() {
@@ -203,6 +271,7 @@ public class ClusterBot {
     }
 
     /**
+     * Set pointMik
      * @param pointMik2 the pointMik to set
      */
     public void setPointMik(double[][] pointMik2) {
@@ -210,6 +279,7 @@ public class ClusterBot {
     }
 
     /**
+     * Get pixelOffset
      * @return the pixelOffset
      */
     public int getPixelOffset() {
@@ -217,6 +287,7 @@ public class ClusterBot {
     }
 
     /**
+     * Set pixelOffset
      * @param pixelOffset the pixelOffset to set
      */
     public void setPixelOffset(int pixelOffset) {
@@ -224,6 +295,7 @@ public class ClusterBot {
     }
 
     /**
+     * Get modified
      * @return the modified
      */
     public boolean isModified() {
@@ -231,6 +303,7 @@ public class ClusterBot {
     }
 
     /**
+     * Set modified
      * @param modified the modified to set
      */
     public void setModified(boolean modified) {
@@ -238,6 +311,7 @@ public class ClusterBot {
     }
 
     /**
+     * Get radius
      * @return radius
      */
     public double getRadius() {
@@ -245,7 +319,7 @@ public class ClusterBot {
     }
 
     /**
-     * Calculates the radius
+     * Set and calculate radius
      */
     private void setRadius() {
         double r = 0.0;

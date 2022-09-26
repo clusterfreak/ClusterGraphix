@@ -7,15 +7,30 @@ import java.io.PrintWriter;
  * Write sample pbm file with clusters
  *
  * @author Thomas Heym
- * @version 0.1.2 (2020-07-18)
+ * @version 0.1.3 (2022-09-24)
  */
 
 public class WritePbm {
-
+    /**
+     * int pixelOffset
+     */
     private static final int pixelOffset = 1000;
+    /**
+     * boolean[][] pixelObject
+     */
     private static final boolean[][] pixelObject = new boolean[pixelOffset][pixelOffset];
+    /**
+     * String[] pixelString
+     */
     private static final String[] pixelString = new String[pixelOffset];
 
+    /**
+     * drawClusterInMatrix
+     * @param matrix matrix
+     * @param x x
+     * @param y y
+     * @param ray ray
+     */
     public static void drawClusterInMatrix(boolean[][] matrix, int x, int y, int ray) {
         double yy, xx;
         double diameter = ray * 2.0;
@@ -40,6 +55,13 @@ public class WritePbm {
         }
     }
 
+    /**
+     * writeLine
+     * @param matrix matrix
+     * @param xx xx
+     * @param yy yy
+     * @param distance distance
+     */
     private static void writeLine(boolean[][] matrix, int xx, int yy, double distance) {
         boolean[] row = matrix[yy];
         for (int i = 0; i < distance; i++) {
@@ -48,6 +70,10 @@ public class WritePbm {
         }
     }
 
+    /**
+     * public static void main(String[] args)
+     * @param args args
+     */
     public static void main(String[] args) {
         try {
             // get a pixelObject

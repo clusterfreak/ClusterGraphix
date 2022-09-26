@@ -6,11 +6,14 @@ import de.clusterfreak.ClusterCore.CoreTest;
  * Internal Program Tests
  *
  * @author Thomas Heym
- * @version 0.1.1 (2020-07-18)
+ * @version 0.1.2 (2022-09-24)
  */
 
 public class ClusterTest {
-
+    /**
+     * public static void main(String[] args)
+     * @param args args
+     */
     public static void main(String[] args) {
         CoreTest.main(null);
         System.out.println("ClusterData.length = " + ClusterData.length);
