@@ -6,7 +6,7 @@
     <!-- Correct Coordinates -->
     <groupId>de.clusterfreak</groupId>
     <artifactId>ClusterGraphix</artifactId>
-    <version>0.96.1</version>
+    <version>0.96.2</version>
     <!-- Project Name, Description and URL -->
     <name>${project.artifactId}</name>
     <description>Core classes for cluster analysis</description>
@@ -29,15 +29,9 @@
     </developers>
     <!-- Java Version -->
     <properties>
-<<<<<<< Updated upstream
-        <maven.compiler.release>16</maven.compiler.release>
-        <maven.compiler.source>16</maven.compiler.source>
-        <maven.compiler.target>16</maven.compiler.target>
-=======
-        <maven.compiler.release>18</maven.compiler.release>
-        <maven.compiler.source>18</maven.compiler.source>
-        <maven.compiler.target>18</maven.compiler.target>
->>>>>>> Stashed changes
+        <maven.compiler.release>19</maven.compiler.release>
+        <maven.compiler.source>19</maven.compiler.source>
+        <maven.compiler.target>19</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <build>

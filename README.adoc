@@ -27,7 +27,7 @@ WritePbm 0.1.3 (2022-09-24) +
 
 == Release Notes
 === ClusterGraphix 0.96.2 (2022-09-24) +
-* Fixed JavaDoc Warnings and Security Alert with JavaDoc 19
+* Fixed JavaDoc Warnings and Security Alerts with JavaDoc 19
 
 === ClusterGraphix 0.96.1 (2021-05-16) +
 * ClusterCore 1.1.4
