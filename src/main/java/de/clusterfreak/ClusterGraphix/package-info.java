@@ -1,7 +1,7 @@
 /**
  * Display of objects and clusters
  * 
- * @version 0.96.2 (2022-09-24)
+ * @version 0.96.3 (2023-07-25)
  * @author Thomas Heym
  *
  */

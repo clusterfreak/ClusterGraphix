@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="JavadocGenerationManager">
     <option name="OUTPUT_DIRECTORY" value="$PROJECT_DIR$/docs" />
     <option name="OPTION_SCOPE" value="private" />
@@ -14,7 +15,10 @@
       </list>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_16" project-jdk-name="19" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_20_PREVIEW" project-jdk-name="20" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="jpab" />
   </component>
 </project>
