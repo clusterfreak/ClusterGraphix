@@ -4,70 +4,79 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c6585eea-eb7a-4751-9fab-c613a490b309" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/docs/script-dir/jquery-3.6.1.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+    <list default="true" id="c6585eea-eb7a-4751-9fab-c613a490b309" name="Default Changelist" comment="0.96.3">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClusterGraphix.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/README.adoc" beforeDir="false" afterPath="$PROJECT_DIR$/README.adoc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/allclasses-index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/allclasses-index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/allpackages-index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/allpackages-index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/constant-values.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/constant-values.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/ClusterBot.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/ClusterBot.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/ClusterBotNet.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/ClusterBotNet.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/ClusterData.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/ClusterData.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/ClusterFile.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/ClusterFile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/ClusterGraphix.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/ClusterGraphix.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/ClusterQuality.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/ClusterQuality.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/ClusterTest.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/ClusterTest.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/WritePbm.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/WritePbm.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/class-use/ClusterBot.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/class-use/ClusterBot.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/class-use/ClusterBotNet.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/class-use/ClusterBotNet.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/class-use/ClusterData.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/class-use/ClusterData.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/class-use/ClusterFile.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/class-use/ClusterFile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/class-use/ClusterGraphix.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/class-use/ClusterGraphix.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/class-use/ClusterQuality.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/class-use/ClusterQuality.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/class-use/ClusterTest.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/class-use/ClusterTest.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/class-use/WritePbm.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/class-use/WritePbm.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/package-use.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/package-use.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/help-doc.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/help-doc.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/index-files/index-1.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/index-files/index-1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/index-files/index-10.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/index-files/index-10.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/index-files/index-11.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/index-files/index-11.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/index-files/index-12.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/index-files/index-12.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/index-files/index-13.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/index-files/index-13.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/index-files/index-14.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/index-files/index-14.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/index-files/index-15.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/index-files/index-15.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/index-files/index-16.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/index-files/index-16.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/index-files/index-17.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/index-files/index-17.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/index-files/index-18.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/index-files/index-18.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/index-files/index-19.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/index-files/index-19.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/index-files/index-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/index-files/index-2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/index-files/index-20.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/index-files/index-20.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/index-files/index-21.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/index-files/index-21.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/index-files/index-22.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/index-files/index-22.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/index-files/index-3.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/index-files/index-3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/index-files/index-4.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/index-files/index-4.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/index-files/index-5.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/index-files/index-5.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/index-files/index-6.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/index-files/index-6.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/index-files/index-7.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/index-files/index-7.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/index-files/index-8.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/index-files/index-8.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/index-files/index-9.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/index-files/index-9.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/jquery-ui.overrides.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/legal/jquery.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/legal/jquery.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/legal/jqueryUI.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/legal/jqueryUI.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/overview-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/overview-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/script-dir/jquery-3.6.0.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/script.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/search.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/search.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/search.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/serialized-form.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/serialized-form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/stylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/docs/stylesheet.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/allclasses-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/allpackages-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/constant-values.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/copy.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/ClusterBot.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/ClusterBotNet.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/ClusterData.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/ClusterFile.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/ClusterGraphix.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/ClusterQuality.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/ClusterTest.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/WritePbm.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/class-use/ClusterBot.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/class-use/ClusterBotNet.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/class-use/ClusterData.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/class-use/ClusterFile.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/class-use/ClusterGraphix.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/class-use/ClusterQuality.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/class-use/ClusterTest.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/class-use/WritePbm.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/package-use.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/element-list" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/help-doc.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/index-files/index-1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/index-files/index-10.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/index-files/index-11.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/index-files/index-12.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/index-files/index-13.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/index-files/index-14.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/index-files/index-15.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/index-files/index-16.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/index-files/index-17.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/index-files/index-18.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/index-files/index-19.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/index-files/index-2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/index-files/index-20.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/index-files/index-21.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/index-files/index-22.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/index-files/index-3.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/index-files/index-4.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/index-files/index-5.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/index-files/index-6.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/index-files/index-7.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/index-files/index-8.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/index-files/index-9.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/legal/COPYRIGHT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/legal/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/legal/jquery.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/legal/jqueryUI.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/member-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/module-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/overview-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/package-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/resources/glass.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/resources/x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/script-dir/jquery-3.6.1.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/script-dir/jquery-ui.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/script-dir/jquery-ui.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/script.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/search-page.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/search.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/search.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/serialized-form.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/stylesheet.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/type-search-index.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/de/clusterfreak/ClusterGraphix/ClusterGraphix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/clusterfreak/ClusterGraphix/ClusterGraphix.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/de/clusterfreak/ClusterGraphix/package-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/clusterfreak/ClusterGraphix/package-info.java" afterDir="false" />
     </list>
@@ -105,6 +114,10 @@
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="2" />
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="1k4E1LaRLfdUT8lJg30dsJNODvW" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -115,6 +128,8 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "master",
     "last_opened_file_path": "/Users/thomas/Documents/Project/IdeaProjects/ClusterGraphix",
@@ -213,8 +228,19 @@
       <workItem from="1670178616853" duration="21000" />
       <workItem from="1680695772389" duration="99000" />
       <workItem from="1681909066735" duration="9000" />
-      <workItem from="1690286824144" duration="728000" />
+      <workItem from="1690286824144" duration="1408000" />
+      <workItem from="1690887515457" duration="64000" />
+      <workItem from="1690889206140" duration="221000" />
     </task>
+    <task id="LOCAL-00001" summary="0.96.3">
+      <option name="closed" value="true" />
+      <created>1690287814437</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1690287814437</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -233,5 +259,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="0.96.3" />
+    <option name="LAST_COMMIT_MESSAGE" value="0.96.3" />
   </component>
 </project>
