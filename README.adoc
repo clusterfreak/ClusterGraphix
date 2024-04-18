@@ -26,12 +26,11 @@ WritePbm 0.1.3 (2022-09-24) +
 * clusterCenterPointNumber 99999999 when not found
 
 == Release Notes
-==== ClusterGraphix 0.96.5 (in progress) +
+
+=== ClusterGraphix 0.96.4 (in progess) +
 * Java 21
 * README.adoc Link to c1f.de
-
-=== ClusterGraphix 0.96.4 (2023-08-01) +
-* ReGenerate JavaDoc
+* ReGenerate JavaDoc ?
 
 === ClusterGraphix 0.96.3 (2023-07-25) +
 * Fixed JavaDoc Security Alerts with JavaDoc 20
