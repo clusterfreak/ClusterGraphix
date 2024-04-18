@@ -10,8 +10,8 @@ image:https://img.shields.io/github/repo-size/clusterfreak/ClusterGraphix?[]
 image:https://img.shields.io/github/last-commit/clusterfreak/ClusterGraphix?[]
 image:https://img.shields.io/github/license/clusterfreak/ClusterGraphix?[]
 
-image::https://files.clusterfreak.com/ClusterGraphicsInfo.png[]
-image::https://files.clusterfreak.com/ScreenshotV0.96.0.png[]
+image::https://c1f.de/files/ClusterGraphicsInfo.png[]
+image::https://c1f.de/files/ScreenshotV0.96.0.png[]
 
 ClusterGraphix 0.96.4 (2023-08-01) +
 ClusterBot 0.1.3 (2022-09-24) +
@@ -26,6 +26,10 @@ WritePbm 0.1.3 (2022-09-24) +
 * clusterCenterPointNumber 99999999 when not found
 
 == Release Notes
+==== ClusterGraphix 0.96.5 (in progress) +
+* Java 21
+* README.adoc Link to c1f.de
+
 === ClusterGraphix 0.96.4 (2023-08-01) +
 * ReGenerate JavaDoc
 

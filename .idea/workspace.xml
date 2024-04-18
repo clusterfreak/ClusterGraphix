@@ -5,80 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c6585eea-eb7a-4751-9fab-c613a490b309" name="Default Changelist" comment="0.96.3">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.adoc" beforeDir="false" afterPath="$PROJECT_DIR$/README.adoc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/allclasses-index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/allpackages-index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/constant-values.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/copy.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/ClusterBot.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/ClusterBotNet.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/ClusterData.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/ClusterFile.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/ClusterGraphix.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/ClusterQuality.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/ClusterTest.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/WritePbm.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/class-use/ClusterBot.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/class-use/ClusterBotNet.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/class-use/ClusterData.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/class-use/ClusterFile.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/class-use/ClusterGraphix.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/class-use/ClusterQuality.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/class-use/ClusterTest.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/class-use/WritePbm.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/de/clusterfreak/ClusterGraphix/package-use.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/element-list" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/help-doc.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/index-files/index-1.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/index-files/index-10.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/index-files/index-11.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/index-files/index-12.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/index-files/index-13.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/index-files/index-14.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/index-files/index-15.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/index-files/index-16.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/index-files/index-17.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/index-files/index-18.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/index-files/index-19.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/index-files/index-2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/index-files/index-20.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/index-files/index-21.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/index-files/index-22.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/index-files/index-3.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/index-files/index-4.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/index-files/index-5.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/index-files/index-6.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/index-files/index-7.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/index-files/index-8.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/index-files/index-9.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/legal/COPYRIGHT" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/legal/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/legal/jquery.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/legal/jqueryUI.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/member-search-index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/module-search-index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/overview-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/package-search-index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/resources/glass.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/resources/x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/script-dir/jquery-3.6.1.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/script-dir/jquery-ui.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/script-dir/jquery-ui.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/script.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/search-page.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/search.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/search.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/serialized-form.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/stylesheet.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag-search-index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/type-search-index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/clusterfreak/ClusterGraphix/ClusterGraphix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/clusterfreak/ClusterGraphix/ClusterGraphix.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/clusterfreak/ClusterGraphix/package-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/clusterfreak/ClusterGraphix/package-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,6 +27,18 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "clusterfreak"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/clusterfreak/ClusterGraphix.git",
+    "accountId": "52a5a624-e756-4c67-89c8-a163d923b322"
+  }
+}]]></component>
   <component name="JupyterTrust" id="cf85a66d-393b-46ab-98a9-1f11be10c3f9" />
   <component name="KotlinMultiplatform">
     <allAvailableExecutables />
@@ -126,23 +66,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/thomas/Documents/Project/IdeaProjects/ClusterGraphix&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Problems&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/thomas/Documents/Project/IdeaProjects/ClusterGraphix",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Application.ClusterGraphix">
     <configuration name="ClusterGraphix" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="de.clusterfreak.ClusterGraphix.ClusterGraphix" />
@@ -176,6 +118,14 @@
         <item itemvalue="Application.ClusterTest" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -225,6 +175,8 @@
       <workItem from="1690286824144" duration="1408000" />
       <workItem from="1690887515457" duration="64000" />
       <workItem from="1690889206140" duration="221000" />
+      <workItem from="1690889517080" duration="553000" />
+      <workItem from="1713439861206" duration="244000" />
     </task>
     <task id="LOCAL-00001" summary="0.96.3">
       <option name="closed" value="true" />
